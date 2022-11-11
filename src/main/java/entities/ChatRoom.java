@@ -9,6 +9,10 @@ public class ChatRoom {
         this.messages = new ArrayList<>();
     }
 
+    /**Adds message to ArrayList of Messages.
+     *
+     * @param message: Message to be added.
+     */
     public void AddMessage(Message message){
         this.messages.add(message);
     }
