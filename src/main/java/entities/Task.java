@@ -65,6 +65,7 @@ public class Task {
      */
     public Task(String name, /* User user */ String description) {
         this.name = name;
+        this.description = description;
         //this.user = user;
     }
 
