@@ -9,6 +9,11 @@ public class ChatRoom {
         this.messages = new ArrayList<>();
     }
 
+    @Override
+    public String toString(){
+        return "chatRoom with messages " + this.messages.toString();
+    }
+
     /**Adds message to ArrayList of Messages.
      *
      * @param message: Message to be added.

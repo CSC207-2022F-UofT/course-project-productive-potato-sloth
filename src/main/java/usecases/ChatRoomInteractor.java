@@ -5,6 +5,9 @@ import entities.*;
 public class ChatRoomInteractor {
     ChatRoom room;
 
+    public ChatRoomInteractor(ChatRoom room){
+        this.room = room;
+    }
     public void sendMessage(String message/*, User user*/){
         Message temp_message = new Message(message/*, user*/);
         this.room.AddMessage(temp_message);
