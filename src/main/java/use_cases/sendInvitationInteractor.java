@@ -22,8 +22,8 @@ public class sendInvitationInteractor implements InvitationInputBoundary {
         Invitation invitation = invitationFactory.create(inputModel.sender, inputModel.receiver, inputModel.task);
         // depends on how
         // changeOutgoingInvitations is implemented <=> may or may not use InvitationFactory here
-        inputModel.sender.changeOutgoingInvitations(invitation); // add invitation
-        inputModel.receiver.changeIncomingInvitations(invitation); // add invitation
+        inputModel.sender.addOutgoingInvitation(invitation); // add invitation
+        inputModel.receiver.addIncomingInvitation(invitation); // add invitation
 
         InvitationOutputModel outputModel = new InvitationOutputModel(invitation.getSender(), invitation.getReceiver(), invitation.getTask());
         return presenter.prepareSentView(outputModel);

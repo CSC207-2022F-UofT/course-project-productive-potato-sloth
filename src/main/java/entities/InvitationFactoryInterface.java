@@ -1,5 +1,5 @@
 package entities;
 
 public interface InvitationFactoryInterface {
-    Invitation create(User toUser, User fromUser, Task task);
+    Invitation create(User sender, User receiver, Task task);
 }
