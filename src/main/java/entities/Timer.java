@@ -45,6 +45,7 @@ public class Timer {
      */
     public Timer(Duration duration) {
         //TODO:  add it to current user's list
+        // currentUserService??
         this.startDuration = duration;
         this.startTime = LocalDateTime.now();
     }
