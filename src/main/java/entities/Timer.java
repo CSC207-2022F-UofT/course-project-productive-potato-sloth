@@ -44,6 +44,7 @@ public class Timer {
      * @param duration The duration for the Timer (how long of a Timer session do we want)
      */
     public Timer(Duration duration) {
+        //TODO:  add it to current user's list
         this.startDuration = duration;
         this.startTime = LocalDateTime.now();
     }
