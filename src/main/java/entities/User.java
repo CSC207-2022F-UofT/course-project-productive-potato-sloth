@@ -36,12 +36,12 @@ public class User {
     /**
      * * The list of Users sending Incoming Invitations of the User
      */
-    List<User> incomingInvitations;
+//    List<Invitation> incomingInvitations;
 
     /**
      * * The list of Users the current User has sent Outgoing Invitations
      */
-    List<User> outgoingInvitations;
+//    List<Invitation> outgoingInvitations;
 
     /**
      * * Stores whether the Calendar shows weekends (1) or not (0)
@@ -152,52 +152,52 @@ public class User {
 //        return this.events;
 //    }
 
-    /**
-     * Adds a user to this User's outgoingInvitations
-     * @param user The new user to add
-     */
-    public void addOutgoingInvitation(User user) {
-        this.outgoingInvitations.add(user);
-    }
+//    /**
+//     * Adds an invitation to this User's outgoingInvitations
+//     * @param invitation The new invitation to add
+//     */
+//    public void addOutgoingInvitation(Invitation invitation) {
+//        this.outgoingInvitations.add(invitation);
+//    }
 
-    /**
-     * Removes a user from this User's outgoingInvitations
-     * @param user The new user to remove
-     */
-    public void removeOutgoingInvitation(User user) {
-        this.outgoingInvitations.remove(user);
-    }
+//    /**
+//     * Removes an invitation from this User's outgoingInvitations
+//     * @param invitation The new invitation to remove
+//     */
+//    public void removeOutgoingInvitation(Invitation invitation) {
+//        this.outgoingInvitations.remove(invitation);
+//    }
 
     /**
      * Gets the list of outgoingInvitations associated with this User
      * @return outgoingInvitations A list of outgoingInvitations associated with this User
      */
-    public List<User> getOutgoingInvitations() {
-        return this.outgoingInvitations;
-    }
+ //   public List<Invitation> getOutgoingInvitations() {
+ //       return this.outgoingInvitations;
+ //   }
 
-    /**
-     * Adds a user to this User's incomingInvitations
-     * @param user The new user to add
-     */
-    public void addIncomingInvitation(User user) {
-        this.incomingInvitations.add(user);
-    }
+//    /**
+//     * Adds an invitation to this User's incomingInvitations
+//     * @param invitation The new invitation to add
+//     */
+//    public void addIncomingInvitation(Invitation invitation) {
+//        this.incomingInvitations.add(invitation);
+//    }
 
-    /**
-     * Removes a user from this User's incomingInvitations
-     * @param user The new user to remove
-     */
-    public void removeIncomingInvitation(User user) {
-        this.incomingInvitations.remove(user);
-    }
+//    /**
+//     * Removes an invitation from this User's incomingInvitations
+//     * @param invitation The new invitation to remove
+//     */
+//    public void removeIncomingInvitation(Invitation invitation) {
+//        this.incomingInvitations.remove(invitation);
+//    }
 
-    /**
-     * Gets the list of incomingInvitations associated with this User
-     * @return incomingInvitations A list of incomingInvitations associated with this User
-     */
-    public List<User> getIncomingInvitations() {
-        return this.incomingInvitations;
-    }
+//    /**
+//     * Gets the list of incomingInvitations associated with this User
+//     * @return incomingInvitations A list of incomingInvitations associated with this User
+//     */
+//    public List<Invitation> getIncomingInvitations() {
+//        return this.incomingInvitations;
+//    }
 
 }
