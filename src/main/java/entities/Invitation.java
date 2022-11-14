@@ -3,24 +3,24 @@ import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
 public class Invitation implements InvitationInterface {
-    public User toUser;
-    public User fromUser;
+    public User sender;
+    public User receiver;
     public String sentTime;
 
     public Task task;
 
-    public Invitation(User toUser, User fromUser, Task task){
-        this.toUser = toUser;
-        this.fromUser = fromUser;
+    public Invitation(User sender, User receiver, Task task){
+        this.sender = sender;
+        this.receiver = receiver;
         this.sentTime = getSentTime();
         this.task = task;
     }
 
     @Override
-    public User getSender(){return this.fromUser;}
+    public User getSender(){return this.sender;}
 
     @Override
-    public User getReceiver(){return this.toUser;}
+    public User getReceiver(){return this.receiver;}
 
     @Override
     public String getSentTime() {
