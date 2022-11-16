@@ -1,6 +1,7 @@
 package entities;
+import org.junit.After;
 import org.junit.Before;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.time.LocalDateTime;
 
@@ -10,10 +11,14 @@ public class MessageTest {
     @Before
     public void setUp() {
     }
-    Message temp = new Message("abcd");
+
+    @After
+    public void tearDown() {
+    }
 
     @Test
     public void testMessageToString(){
+        Message temp = new Message("abcd");
 
         //assertion
         assertEquals("abcd", temp.toString());
@@ -21,10 +26,11 @@ public class MessageTest {
 
     @Test
     public void testMessageSetContent(){
-        temp.setContent("efgh");
+        Message temp = new Message("efgh");
+        temp.setContent("abcd");
 
         //assertion
-        assertEquals("efgh", temp.toString());
+        assertEquals("abcd", temp.toString());
     }
 
     /*
@@ -40,10 +46,10 @@ public class MessageTest {
 
     @Test
     public void testMessageGetDateTime(){
-        Message temp2 = new Message("efgh");
+        Message temp = new Message("abcd");
         LocalDateTime tempDate = LocalDateTime.now();
 
         //assertion
-        assertEquals(tempDate.getSecond(), temp2.getDateTime().getSecond());
+        assertEquals(tempDate.getSecond(), temp.getDateTime().getSecond());
     }
 }

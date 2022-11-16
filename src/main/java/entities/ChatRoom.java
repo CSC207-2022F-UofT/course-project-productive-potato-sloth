@@ -18,11 +18,11 @@ public class ChatRoom {
      *
      * @param message: Message to be added.
      */
-    public void addMessage(Message message){
+    public void AddMessage(Message message){
         this.messages.add(message);
     }
 
-    public ArrayList<Message> getMessages(){
+    public ArrayList<Message> GetMessages(){
         return this.messages;
     }
 }
