@@ -8,6 +8,10 @@ import java.util.ArrayList;
 public class Task {
 
     /**
+     * The User that this Task belongs to
+     */
+    final User user;
+    /**
      * The name of the Task
      */
     String name;
@@ -25,12 +29,7 @@ public class Task {
     /**
      * A list of the associated tags of this Task
      */
-//    ArrayList<Tag> tags;
-
-    /**
-     * The User that this Task belongs to
-     */
-//    final User user;
+    ArrayList<Tag> tags;
 
     /**
      * A list of the associated events of this Task
@@ -53,22 +52,22 @@ public class Task {
      * @param name The name of the Task
      *             // @param user The owner (User) of the Task
      */
-    public Task(String name /* User user */) {
+    public Task(String name, User user) {
         this.name = name;
-        // this.user = user;
+        this.user = user;
     }
 
     /**
      * Constructs a Task given the name and description of the new Task
      *
      * @param name        The name of the Task
-     *                    // @param user The owner (User) of the Task
+     * @param user        The owner (User) of the Task
      * @param description The description of the Task
      */
-    public Task(String name, /* User user */ String description) {
+    public Task(String name, User user, String description) {
         this.name = name;
+        this.user = user;
         this.description = description;
-        //this.user = user;
     }
 
     /**
@@ -107,37 +106,39 @@ public class Task {
         this.description = description;
     }
 
-    // getters and setters for other events
     /**
      * Adds a tag to this Task
+     *
      * @param tag The new tag to add
      */
-//    public void addTag(Tag tag) {
-//        this.tags.add(tag);
-//    }
+    public void addTag(Tag tag) {
+        this.tags.add(tag);
+    }
 
     /**
      * Removes a tag from this Task
+     *
      * @param tag The new tag to add
      */
-//    public void removeTag(Tag tag) {
-//        this.tags.remove(tag);
-//    }
+    public void removeTag(Tag tag) {
+        this.tags.remove(tag);
+    }
 
     /**
      * Gets a list of tags associated with this Task
+     *
      * @return tags A list of tags associated with this Task
      */
-//    public ArrayList<Tag> getTags() {
-//        return this.tags;
-//    }
+    public ArrayList<Tag> getTags() {
+        return this.tags;
+    }
 
     /**
      * Gets the User of this Task
      */
-//    public User getUser() {
-//        return this.user;
-//    }
+    public User getUser() {
+        return this.user;
+    }
 
 
     /**
