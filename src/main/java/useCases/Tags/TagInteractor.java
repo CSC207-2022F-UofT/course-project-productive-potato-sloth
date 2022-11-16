@@ -38,7 +38,7 @@ public class TagInteractor {
      * @param tag   The instance of the tag
      * @param color The new color of the tag
      */
-    public static void editTagDescription(Tag tag, Color color) {
+    public static void editTagColor(Tag tag, Color color) {
         EditTag editTag = new EditTag(tag);
         editTag.editTagColour(color);
     }
