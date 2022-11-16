@@ -14,7 +14,7 @@ public class User {
 //    List<Invitation> outgoingInvitations;
 
     /**
-     * * Stores whether the Calendar shows weekends (1) or not (0)
+     * Stores whether the Calendar shows weekends (1) or not (0)
      */
     boolean calendarView;
 
@@ -67,50 +67,50 @@ public class User {
         return this.password;
     }
 
-//    /**
-//     * Adds a tag to this User
-//     * @param tag The new tag to add
-//     */
+    /**
+     * Adds a tag to this User
+     * @param tag The new tag to add
+     */
 //    public void addTag(Tag tag) {
 //        this.tags.add(tag);
 //    }
-//
-//    /**
-//     * Removes a tag from this User
-//     * @param tag The new tag to remove
-//     */
+
+    /**
+     * Removes a tag from this User
+     * @param tag The new tag to remove
+     */
 //    public void removeTag(Tag tag) {
 //        this.tags.remove(tag);
 //    }
-//
-//    /**
-//     * Gets a list of tags associated with this User
-//     * @return tags A list of tags associated with this User
-//     */
+
+    /**
+     * Gets a list of tags associated with this User
+     * @return tags A list of tags associated with this User
+     */
 //    public List<Tag> getTags() {
 //        return this.tags;
 //    }
 
-//    /**
-//     * Adds an event to this User
-//     * @param event The new event to add
-//     */
+    /**
+     * Adds an event to this User
+     * @param event The new event to add
+     */
 //    public void addEvent(Event event) {
 //        this.events.add(event);
 //    }
 
-//    /**
-//     * Removes an event from this User
-//     * @param event The new event to remove
-//     */
+    /**
+     * Removes an event from this User
+     * @param event The new event to remove
+     */
 //    public void removeEvent(Event event) {
 //        this.events.remove(event);
 //    }
-//
-//    /**
-//     * Gets the list of events associated with this User
-//     * @return events A list of events associated with this User
-//     */
+
+    /**
+     * Gets the list of events associated with this User
+     * @return events A list of events associated with this User
+     */
 //    public List<Event> getEvents() {
 //        return this.events;
 //    }
@@ -139,42 +139,42 @@ public class User {
         return this.tasks;
     }
 
-//    /**
-//     * Adds a timer to this User
-//     * @param timer The new timer to add
-//     */
+    /**
+     * Adds a timer to this User
+     * @param timer The new timer to add
+     */
 //    public void addTimer(Timer timer) {
 //        this.timers.add(timer);
 //    }
-//
-//    /**
-//     * Removes a timer from this User
-//     * @param timer The new timer to remove
-//     */
+
+    /**
+     * Removes a timer from this User
+     * @param timer The new timer to remove
+     */
 //    public void removeTimer(Timer timer) {
 //        this.timers.remove(timer);
 //    }
-//
-//    /**
-//     * Gets the list of timers associated with this User
-//     * @return timers A list of timers associated with this User
-//     */
+
+    /**
+     * Gets the list of timers associated with this User
+     * @return timers A list of timers associated with this User
+     */
 //    public List<Timers> getTimers() {
 //        return this.timers;
 //    }
 
-//    /**
-//     * Adds an invitation to this User's outgoingInvitations
-//     * @param invitation The new invitation to add
-//     */
+    /**
+     * Adds an invitation to this User's outgoingInvitations
+     * @param invitation The new invitation to add
+     */
 //    public void addOutgoingInvitation(Invitation invitation) {
 //        this.outgoingInvitations.add(invitation);
 //    }
 
-//    /**
-//     * Removes an invitation from this User's outgoingInvitations
-//     * @param invitation The new invitation to remove
-//     */
+    /**
+     * Removes an invitation from this User's outgoingInvitations
+     * @param invitation The new invitation to remove
+     */
 //    public void removeOutgoingInvitation(Invitation invitation) {
 //        this.outgoingInvitations.remove(invitation);
 //    }
@@ -187,26 +187,26 @@ public class User {
  //       return this.outgoingInvitations;
  //   }
 
-//    /**
-//     * Adds an invitation to this User's incomingInvitations
-//     * @param invitation The new invitation to add
-//     */
+    /**
+     * Adds an invitation to this User's incomingInvitations
+     * @param invitation The new invitation to add
+     */
 //    public void addIncomingInvitation(Invitation invitation) {
 //        this.incomingInvitations.add(invitation);
 //    }
 
-//    /**
-//     * Removes an invitation from this User's incomingInvitations
-//     * @param invitation The new invitation to remove
-//     */
+    /**
+     * Removes an invitation from this User's incomingInvitations
+     * @param invitation The new invitation to remove
+     */
 //    public void removeIncomingInvitation(Invitation invitation) {
 //        this.incomingInvitations.remove(invitation);
 //    }
 
-//    /**
-//     * Gets the list of incomingInvitations associated with this User
-//     * @return incomingInvitations A list of incomingInvitations associated with this User
-//     */
+    /**
+     * Gets the list of incomingInvitations associated with this User
+     * @return incomingInvitations A list of incomingInvitations associated with this User
+     */
 //    public List<Invitation> getIncomingInvitations() {
 //        return this.incomingInvitations;
 //    }
