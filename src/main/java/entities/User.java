@@ -50,6 +50,7 @@ public class User {
 
     /**
      * Adds a task to this User
+     *
      * @param task The new task to add
      */
     public void addTask(Task task) {
@@ -74,6 +75,7 @@ public class User {
 
     /**
      * Changes the username of this User
+     *
      * @param username The new username of the User
      */
     public void changeUsername(String username) {
@@ -82,6 +84,7 @@ public class User {
 
     /**
      * Gets the username of the User
+     *
      * @return username The string storing the username of the User
      */
     public String getUsername() {
@@ -90,6 +93,7 @@ public class User {
 
     /**
      * Changes the password of this User
+     *
      * @param password The new password of the User
      */
     public void changePassword(String password) {
@@ -154,6 +158,7 @@ public class User {
 
     /**
      * Adds a user to this User's outgoingInvitations
+     *
      * @param user The new user to add
      */
     public void addOutgoingInvitation(User user) {
@@ -162,6 +167,7 @@ public class User {
 
     /**
      * Removes a user from this User's outgoingInvitations
+     *
      * @param user The new user to remove
      */
     public void removeOutgoingInvitation(User user) {
@@ -170,6 +176,7 @@ public class User {
 
     /**
      * Gets the list of outgoingInvitations associated with this User
+     *
      * @return outgoingInvitations A list of outgoingInvitations associated with this User
      */
     public List<User> getOutgoingInvitations() {
@@ -178,6 +185,7 @@ public class User {
 
     /**
      * Adds a user to this User's incomingInvitations
+     *
      * @param user The new user to add
      */
     public void addIncomingInvitation(User user) {
@@ -186,6 +194,7 @@ public class User {
 
     /**
      * Removes a user from this User's incomingInvitations
+     *
      * @param user The new user to remove
      */
     public void removeIncomingInvitation(User user) {
@@ -194,6 +203,7 @@ public class User {
 
     /**
      * Gets the list of incomingInvitations associated with this User
+     *
      * @return incomingInvitations A list of incomingInvitations associated with this User
      */
     public List<User> getIncomingInvitations() {
