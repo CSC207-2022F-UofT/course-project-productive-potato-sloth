@@ -3,44 +3,14 @@ package entities;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * * An entity class representing a User
- */
 public class User {
-
-    /**
-     * * The Username of the User
-     */
     String username;
-
-    /**
-     * * The Password of the User
-     */
     String password;
-
-    /**
-     * * The list of Tags of the User
-     */
 //    List<Tag> tags;
-
-    /**
-     * * The list of Events of the User
-     */
 //    List<Event> events;
-
-    /**
-     * * The list of Tasks of the User
-     */
     List<Task> tasks;
-
-    /**
-     * * The list of Users sending Incoming Invitations of the User
-     */
+//    List<Timer> timers;
 //    List<Invitation> incomingInvitations;
-
-    /**
-     * * The list of Users the current User has sent Outgoing Invitations
-     */
 //    List<Invitation> outgoingInvitations;
 
     /**
@@ -49,34 +19,27 @@ public class User {
     boolean calendarView;
 
     /**
-     * Adds a task to this User
-     * @param task The new task to add
+     * Initiaties a new User
      */
-    public void addTask(Task task) {
-        this.tasks.add(task);
+    public User(String username, String password, /* List<Tag> tags, List<Event> events, */ List<Task> tasks,
+                /* List<Timer> timers, List<Invitation> incomingInvitations, List<Invitation> outgoingInvitations, */
+                boolean calendarView){
+        this.username = username;
+        this.password = password;
+//        this.tags = tags;
+//        this.events = events;
+        this.tasks = tasks;
+//        this.timers = timers;
+//        this.incomingInvitations = incomingInvitations;
+//        this.outgoingInvitations = outgoingInvitations;
+        this.calendarView = calendarView;
     }
 
-//    /**
-//     * Removes a task from this User
-//     * @param task The new task to remove
-//     */
-//    public void removeTask(Task task) {
-//        this.tasks.remove(task);
-//    }
-//
-//    /**
-//     * Gets the list of tasks associated with this User
-//     * @return tasks A list of tasks associated with this User
-//     */
-//    public ArrayList<Task> getTasks() {
-//        return this.tasks;
-//    }
-
     /**
-     * Changes the username of this User
+     * Sets the username of this User
      * @param username The new username of the User
      */
-    public void changeUsername(String username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 
@@ -89,20 +52,20 @@ public class User {
     }
 
     /**
-     * Changes the password of this User
+     * Sets the password of this User
      * @param password The new password of the User
      */
-    public void changePassword(String password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
-//    /**
-//     * Gets the password of the User
-//     * @return password The string storing the password of the User
-//     */
-//    public String getPassword() {
-//        return this.password;
-//    }
+    /**
+     * Gets the password of the User
+     * @return password The string storing the password of the User
+     */
+    public String getPassword() {
+        return this.password;
+    }
 
 //    /**
 //     * Adds a tag to this User
@@ -152,6 +115,54 @@ public class User {
 //        return this.events;
 //    }
 
+    /**
+     * Adds a task to this User
+     * @param task The new task to add
+     */
+    public void addTask(Task task) {
+        this.tasks.add(task);
+    }
+
+    /**
+     * Removes a task from this User
+     * @param task The new task to remove
+     */
+    public void removeTask(Task task) {
+        this.tasks.remove(task);
+    }
+
+    /**
+     * Gets the list of tasks associated with this User
+     * @return tasks A list of tasks associated with this User
+     */
+    public List<Task> getTasks() {
+        return this.tasks;
+    }
+
+//    /**
+//     * Adds a timer to this User
+//     * @param timer The new timer to add
+//     */
+//    public void addTimer(Timer timer) {
+//        this.timers.add(timer);
+//    }
+//
+//    /**
+//     * Removes a timer from this User
+//     * @param timer The new timer to remove
+//     */
+//    public void removeTimer(Timer timer) {
+//        this.timers.remove(timer);
+//    }
+//
+//    /**
+//     * Gets the list of timers associated with this User
+//     * @return timers A list of timers associated with this User
+//     */
+//    public List<Timers> getTimers() {
+//        return this.timers;
+//    }
+
 //    /**
 //     * Adds an invitation to this User's outgoingInvitations
 //     * @param invitation The new invitation to add
@@ -199,5 +210,7 @@ public class User {
 //    public List<Invitation> getIncomingInvitations() {
 //        return this.incomingInvitations;
 //    }
+
+    public void setCalendarView(boolean calendarView) {this.calendarView = calendarView;}
 
 }
