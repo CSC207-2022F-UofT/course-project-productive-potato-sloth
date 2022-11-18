@@ -21,19 +21,9 @@ public class User {
     /**
      * Initiaties a new User
      */
-    public User(String username, String password, List<Tag> tags, /*List<Event> events, */
-                List<Task> tasks,
-                /* List<Timer> timers, List<Invitation> incomingInvitations, List<Invitation> outgoingInvitations, */
-                boolean calendarView){
+    public User(String username, String password){
         this.username = username;
         this.password = password;
-        this.tags = tags;
-//        this.events = events;
-        this.tasks = tasks;
-//        this.timers = timers;
-//        this.incomingInvitations = incomingInvitations;
-//        this.outgoingInvitations = outgoingInvitations;
-        this.calendarView = calendarView;
     }
 
     /**
