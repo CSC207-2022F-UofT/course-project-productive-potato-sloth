@@ -19,7 +19,8 @@ public class ChatRoomInteractorTest {
     public void testMessageToString(){
         ChatRoom room = new ChatRoom();
         ChatRoomInteractor interactor = new ChatRoomInteractor(room);
-        interactor.sendMessage("abcd");
+        User user1 = new User();
+        interactor.sendMessage("abcd", user1);
         //assertion
         assertEquals("chatRoom with messages [abcd]", room.toString());
     }

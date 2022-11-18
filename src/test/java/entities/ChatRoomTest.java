@@ -1,5 +1,4 @@
 package entities;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.jupiter.api.*;
 
@@ -9,14 +8,12 @@ public class ChatRoomTest {
     @Before
     public void setUp() {
     }
-
-    @After
-    public void tearDown() {
-    }
+    ChatRoom temp = new ChatRoom();
+    User user1 = new User();
 
     @Test
     public void testChatRoomConstructor(){
-        ChatRoom temp = new ChatRoom();
+
 
         //assertion
         assertEquals("chatRoom with messages []", temp.toString());
@@ -24,8 +21,7 @@ public class ChatRoomTest {
 
     @Test
     public void testChatRoomAddMessage(){
-        ChatRoom temp = new ChatRoom();
-        temp.AddMessage(new Message("abcd"));
+        temp.AddMessage(new Message("abcd", user1));
 
         //assertion
         assertEquals("chatRoom with messages [abcd]", temp.toString());
@@ -33,9 +29,8 @@ public class ChatRoomTest {
 
     @Test
     public void testChatRoomGetMessages(){
-        ChatRoom temp = new ChatRoom();
-        temp.AddMessage(new Message("abcd"));
-        temp.AddMessage(new Message("efgh"));
+        temp.AddMessage(new Message("abcd", user1));
+        temp.AddMessage(new Message("efgh", user1));
 
         //assertion
         assertEquals("chatRoom with messages [abcd, efgh]", temp.toString());

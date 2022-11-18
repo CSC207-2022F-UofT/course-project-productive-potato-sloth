@@ -11,14 +11,11 @@ public class MessageTest {
     @Before
     public void setUp() {
     }
-
-    @After
-    public void tearDown() {
-    }
+    User user1 = new User();
+    Message temp = new Message("abcd", user1);
 
     @Test
     public void testMessageToString(){
-        Message temp = new Message("abcd");
 
         //assertion
         assertEquals("abcd", temp.toString());
@@ -26,27 +23,24 @@ public class MessageTest {
 
     @Test
     public void testMessageSetContent(){
-        Message temp = new Message("efgh");
-        temp.setContent("abcd");
+        temp.setContent("efgh");
 
         //assertion
-        assertEquals("abcd", temp.toString());
+        assertEquals("efgh", temp.toString());
     }
 
-    /*
-    This test is not yet implemented because it depends on the User entity.
     @Test
-    public void testMessageGetAuthor(){
-        user1 = new User();
-        Message temp = new Message("abcd", user1);
+    public void testMessageGetAuthor() {
+        user1.changeUsername("Kerensky");
+        Message temp2 = new Message("", user1);
 
         //assertion
-        assertEquals("abcd", temp.getAuthor());
-    }*/
+        assertEquals("Kerensky", temp2.getAuthor());
+    }
 
     @Test
     public void testMessageGetDateTime(){
-        Message temp = new Message("abcd");
+        Message temp = new Message("abcd", user1);
         LocalDateTime tempDate = LocalDateTime.now();
 
         //assertion
