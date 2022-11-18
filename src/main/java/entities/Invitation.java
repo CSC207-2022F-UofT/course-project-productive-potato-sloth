@@ -33,4 +33,24 @@ public class Invitation implements InvitationInterface {
     public Task getTask(){
         return this.task;
     }
+
+    @Override
+    public void setTask(Task task){
+        this.task = task;
+    }
+
+    @Override
+    public void setSender(User sender){this.sender = sender;}
+
+    @Override
+    public void setReceiver(User receiver){this.receiver = sender;}
+
+//    @Override
+//    public String getSentTime(String str) {
+//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+//        LocalDateTime now = LocalDateTime.now();
+//        return dtf.format(now);
+//    }                  -- to be implemented --
+
+
 }
