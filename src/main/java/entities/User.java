@@ -36,6 +36,7 @@ public class User {
 
     /**
      * Gets the username of the User
+     *
      * @return username The string storing the username of the User
      */
     public String getUsername() {
@@ -172,6 +173,7 @@ public class User {
 
     /**
      * Gets the list of outgoingInvitations associated with this User
+     *
      * @return outgoingInvitations A list of outgoingInvitations associated with this User
      */
  //   public List<Invitation> getOutgoingInvitations() {
@@ -196,6 +198,7 @@ public class User {
 
     /**
      * Gets the list of incomingInvitations associated with this User
+     *
      * @return incomingInvitations A list of incomingInvitations associated with this User
      */
 //    public List<Invitation> getIncomingInvitations() {
