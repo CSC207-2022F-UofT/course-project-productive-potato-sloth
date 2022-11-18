@@ -3,8 +3,6 @@ package entities;
 import java.time.LocalDateTime;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.Temporal;
-import java.time.temporal.TemporalUnit;
 
 /**
  * An entity class representing a Timer object
@@ -120,7 +118,15 @@ public class Timer {
      * @param breakTime the break duration that needs to be added to totalBreakTime
      */
     public void addToTotalBreakTime(Duration breakTime) {
-        remainingDuration = remainingDuration.plus(breakTime);
+        totalBreakTime = totalBreakTime.plus(breakTime);
+    }
+
+    /**
+     * adds to the total study time of the timer the specified duration
+     * @param studyTime the break duration that needs to be added to totalBreakTime
+     */
+    public void addToTotalStudyTime(Duration studyTime) {
+        totalStudyTime = totalStudyTime.plus(studyTime);
     }
 
     /**
