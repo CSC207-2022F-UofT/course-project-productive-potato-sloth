@@ -1,5 +1,9 @@
 package use_cases;
 
+
+import entities.Task;
+import entities.User;
+
 public class InvitationInputModel {
     User sender;
 
@@ -13,12 +17,12 @@ public class InvitationInputModel {
         this.task = task;
 }
 
-    User senderGetter(){return sender;}
-    void senderSetter(User sender){this.sender = sender;}
+    public User senderGetter(){return sender;}
+    public void senderSetter(User sender){this.sender = sender;}
 
-    User receiverGetter(){return receiver;}
-    void receiverSetter(User receiver){this.receiver = receiver;}
+    public User receiverGetter(){return receiver;}
+    public void receiverSetter(User receiver){this.receiver = receiver;}
 
-    Task taskGetter(){return task;}
-    void taskSetter(Task task ){this.task = task;}
+    public Task taskGetter(){return task;}
+    public void taskSetter(Task task ){this.task = task;}
 }

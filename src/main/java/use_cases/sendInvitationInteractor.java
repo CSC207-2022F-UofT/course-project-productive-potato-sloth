@@ -5,11 +5,14 @@ import entities.InvitationFactory;
 import entities.User;
 import entities.Invitation;
 
+import java.time.LocalDateTime;
+
+
 public class sendInvitationInteractor implements InvitationInputBoundary {
 
     final InvitationOutputBoundary presenter;
 
-    final InvitationFactory invitationFactory; //maybe?
+    final InvitationFactory invitationFactory;
 
     public sendInvitationInteractor(InvitationOutputBoundary presenter, InvitationFactory invitationFactory) {
         this.presenter = presenter;
@@ -20,12 +23,12 @@ public class sendInvitationInteractor implements InvitationInputBoundary {
 
 
         Invitation invitation = invitationFactory.create(inputModel.sender, inputModel.receiver, inputModel.task);
-        // depends on how
-        // changeOutgoingInvitations is implemented <=> may or may not use InvitationFactory here
+
         inputModel.sender.addOutgoingInvitation(invitation); // add invitation
         inputModel.receiver.addIncomingInvitation(invitation); // add invitation
 
-        InvitationOutputModel outputModel = new InvitationOutputModel(invitation.getSender(), invitation.getReceiver(), invitation.getTask());
+        LocalDateTime time = LocalDateTime.now();
+        InvitationOutputModel outputModel = new InvitationOutputModel(invitation.getSender(), invitation.getReceiver(), invitation.getTask(), time.toString());
         return presenter.prepareSentView(outputModel);
 
     }
