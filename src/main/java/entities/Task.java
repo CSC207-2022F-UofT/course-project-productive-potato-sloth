@@ -25,7 +25,7 @@ public class Task {
     /**
      * A list of the associated tags of this Task
      */
-//    ArrayList<Tag> tags;
+   ArrayList<Tag> tags;
 
     /**
      * The User that this Task belongs to
