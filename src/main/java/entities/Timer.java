@@ -2,6 +2,9 @@ package entities;
 
 import java.time.LocalDateTime;
 import java.time.Duration;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.Temporal;
+import java.time.temporal.TemporalUnit;
 
 /**
  * An entity class representing a Timer object
@@ -47,7 +50,11 @@ public class Timer {
         //TODO:  add it to current user's list
         // currentUserService??
         this.startDuration = duration;
+        this.remainingDuration = duration;
         this.startTime = LocalDateTime.now();
+        this.totalBreakTime = Duration.of(0, ChronoUnit.MINUTES);
+        this.totalStudyTime = Duration.of(0, ChronoUnit.MINUTES);
+        this.numOfBreaks = 0;
     }
 
 // getters
@@ -122,4 +129,5 @@ public class Timer {
     public void oneUpNumOfBreaks(){
         numOfBreaks += 1;
     }
+
 }
