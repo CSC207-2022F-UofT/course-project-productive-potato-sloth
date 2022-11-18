@@ -6,7 +6,7 @@ import java.util.List;
 public class User {
     String username;
     String password;
-//    List<Tag> tags;
+    List<Tag> tags;
 //    List<Event> events;
     List<Task> tasks;
 //    List<Timer> timers;
@@ -27,7 +27,7 @@ public class User {
                 boolean calendarView){
         this.username = username;
         this.password = password;
-//        this.tags = tags;
+        this.tags = tags;
 //        this.events = events;
         this.tasks = tasks;
 //        this.timers = timers;
