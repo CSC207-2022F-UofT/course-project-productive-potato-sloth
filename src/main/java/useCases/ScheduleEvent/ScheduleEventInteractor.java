@@ -13,9 +13,9 @@ public class ScheduleEventInteractor {
         this.currentUserService = currentUserService;
     }
 
-    public Event scheduleEvent(ScheduleEventInputData inputData){
-
-        User user = currentUserService.getCurrentUser();
-
-    }
+//    public Event scheduleEvent(ScheduleEventInputData inputData){
+//
+//        User user = currentUserService.getCurrentUser();
+//
+//    }
 }

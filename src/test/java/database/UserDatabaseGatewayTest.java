@@ -9,7 +9,7 @@ import java.io.IOException;
 public class UserDatabaseGatewayTest {
     @Test public void testLoadUsersFromEmptyFile() {
         try {
-            UserDatabaseGateway userGateway = new UserDatabaseGateway("src/main/java/database/emptyUserFile.ser");
+            UserDatabaseGateway userGateway = new UserDatabaseGateway("database/emptyUserFile.ser");
         } catch (IOException e){
             assert false;
             throw new RuntimeException(e);
@@ -21,7 +21,7 @@ public class UserDatabaseGatewayTest {
          * This test creates users in a stupid way, and may break if the user class constructor changes.
          */
         try{
-            UserDatabaseGateway userGateway = new UserDatabaseGateway("src/main/java/database/testSaveUsersUserfile.ser");
+            UserDatabaseGateway userGateway = new UserDatabaseGateway("database/testSaveUsersUserfile.ser");
             userGateway.deleteAll();
             User user1 = new User();
             user1.changeUsername("user1");
