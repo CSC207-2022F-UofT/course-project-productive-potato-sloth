@@ -14,11 +14,11 @@ public class acceptInvitationController {
         this.userInput = userInput;
     }
 
-    AcceptInvitationOutputModel acceptInvitations(User sender, User receiver, Task task, boolean accept){
+    public void acceptInvitations(String sender, String receiver, String task, boolean accept){
         AcceptInvitationInputModel requestModel = new AcceptInvitationInputModel(
                 sender, receiver, task, accept);
 
-        return userInput.acceptInvitations(requestModel);
+        userInput.acceptInvitations(requestModel);
     }
 
 }

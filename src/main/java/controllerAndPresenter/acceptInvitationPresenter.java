@@ -6,10 +6,17 @@ import use_cases.InvitationOutputModel;
 
 public class acceptInvitationPresenter implements AcceptInvitationsOutputBoundary {
 
+    acceptInvitationPresenterOutput view;
+
+    public void acceptInvitationPresenter(acceptInvitationPresenterOutput view){this.view = view;} //inject the view (the screen) into the presenter
+//    @Override
+//    public AcceptInvitationOutputModel prepareAcceptView(AcceptInvitationOutputModel outputModel){
+//        // implementation
+//        return new AcceptInvitationOutputModel(outputModel.senderGetter(), outputModel.receiverGetter(), outputModel.taskGetter(), outputModel.acceptGetter(), outputModel.getTimeAccepted());
+//    }
     @Override
-    public AcceptInvitationOutputModel prepareAcceptView(AcceptInvitationOutputModel outputModel){
-        // implementation
-        return new AcceptInvitationOutputModel(outputModel.senderGetter(), outputModel.receiverGetter(), outputModel.taskGetter(), outputModel.acceptGetter(), outputModel.getTimeAccepted());
+    public void prepareAcceptView(AcceptInvitationOutputModel outputModel) {
+        view.updateView(outputModel);
 
     }
 }

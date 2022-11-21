@@ -1,6 +1,7 @@
 package use_cases;
 
 import entities.InvitationFactory;
+import entities.Task;
 import entities.User;
 import entities.Invitation;
 
@@ -17,27 +18,38 @@ public class acceptInvitationsInteractor implements AcceptInvitationInputBoundar
 
     final InvitationFactory invitationFactory;
 
-    public acceptInvitationsInteractor(AcceptInvitationsOutputBoundary presenter, InvitationFactory invitationFactory) {
+    final DataAccessInterface UserDataBaseGateway;
+
+    final DataAccessInterface TaskDataBaseGateway;
+
+    public acceptInvitationsInteractor(AcceptInvitationsOutputBoundary presenter, InvitationFactory invitationFactory,
+                                       DataAccessInterface UserDataBaseGateway, DataAccessInterface TaskDataBaseGateway) {
         this.presenter = presenter;
         this.invitationFactory = invitationFactory;
+        this.UserDataBaseGateway = UserDataBaseGateway;
+        this.TaskDataBaseGateway = TaskDataBaseGateway;
     }
 
 
     @Override
-    public AcceptInvitationOutputModel acceptInvitations(AcceptInvitationInputModel inputModel){
+    public void acceptInvitations(AcceptInvitationInputModel inputModel){
 
-        Invitation invitation = invitationFactory.create(inputModel.sender, inputModel.receiver, inputModel.task);
+        User sender = UserDataBaseGateway.get(inputModel.sender); // get the sender from the database using the unique identifier
+        User receiver = UserDataBaseGateway.get(inputModel.receiver); // get the receiver
+        Task task = TaskDataBaseGateway.get(inputModel.task);// get the task
 
-        inputModel.sender.removeOutgoingInvitation(invitation); // remove invitation
-        inputModel.receiver.removeIncomingInvitation(invitation); // remove invitation
+        Invitation invitation = invitationFactory.create(sender, receiver, task);
+
+        sender.removeOutgoingInvitation(invitation); // remove invitation
+        receiver.removeIncomingInvitation(invitation); // remove invitation
 
         if (inputModel.accept) {
-            inputModel.task.addCollaborator(inputModel.receiver); // call addCollaborator method of task
+            task.addCollaborator(receiver); // call addCollaborator method of task
         } else {}
 
         LocalDateTime time = LocalDateTime.now();
-        AcceptInvitationOutputModel outputModel = new AcceptInvitationOutputModel(invitation.getSender(), invitation.getReceiver(), invitation.getTask(), inputModel.accept, time.toString());
-        return presenter.prepareAcceptView(outputModel);
+        AcceptInvitationOutputModel outputModel = new AcceptInvitationOutputModel(inputModel.sender, inputModel.receiver, inputModel.task, inputModel.accept, time.toString());
+        presenter.prepareAcceptView(outputModel);
     }
 
 }

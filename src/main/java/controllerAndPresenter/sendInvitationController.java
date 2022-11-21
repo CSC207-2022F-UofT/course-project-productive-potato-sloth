@@ -14,11 +14,11 @@ public class sendInvitationController {
         this.userInput = userInput; // initialize userInput with the passed-in interactor from Main
     }
 
-    InvitationOutputModel sendInvitationControllerMethod(User sender, User receiver, Task task){// get sender, receiver, task from View and
+    public void sendInvitationControllerMethod(String sender, String receiver, String task){// get sender, receiver, task from View and
         //wrap them in a requestModel object
         InvitationInputModel requestModel = new InvitationInputModel(
                 sender, receiver, task);
 
-        return userInput.sendInvitation(requestModel); // pass the object down to the interactor and call it's sendInvitation method
+        userInput.sendInvitation(requestModel); // pass the object down to the interactor and call it's sendInvitation method
     }
 }

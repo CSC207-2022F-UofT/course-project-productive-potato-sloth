@@ -5,24 +5,24 @@ import entities.Task;
 import entities.User;
 
 public class InvitationInputModel {
-    User sender;
+    String sender;
 
-    User receiver;
+    String receiver;
 
-    Task task;
+    String task;
 
-    public InvitationInputModel(User sender, User receiver, Task task){
+    public InvitationInputModel(String sender, String receiver, String task){
         this.sender = sender;
         this.receiver = receiver;
         this.task = task;
 }
 
-    public User senderGetter(){return sender;}
-    public void senderSetter(User sender){this.sender = sender;}
+    public String senderGetter(){return sender;}
+    public void senderSetter(String sender){this.sender = sender;}
 
-    public User receiverGetter(){return receiver;}
-    public void receiverSetter(User receiver){this.receiver = receiver;}
+    public String receiverGetter(){return receiver;}
+    public void receiverSetter(String receiver){this.receiver = receiver;}
 
-    public Task taskGetter(){return task;}
-    public void taskSetter(Task task ){this.task = task;}
+    public String taskGetter(){return task;}
+    public void taskSetter(String task ){this.task = task;}
 }
