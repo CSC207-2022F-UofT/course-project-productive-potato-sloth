@@ -155,6 +155,10 @@ public class User {
 //    public List<Event> getEvents() {
 //        return this.events;
 //    }
+    public List<Event> getEvents(){
+        return this.getEvents();
+
+    }
 
     /**
      * Adds a user to this User's outgoingInvitations
