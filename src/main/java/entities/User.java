@@ -7,9 +7,9 @@ public class User {
     String username;
     String password;
     List<Tag> tags;
-//    List<Event> events;
+    List<Event> events;
     List<Task> tasks;
-//    List<Timer> timers;
+    List<Timer> timers;
 //    List<Invitation> incomingInvitations;
 //    List<Invitation> outgoingInvitations;
 
@@ -52,60 +52,61 @@ public class User {
     }
 
     /**
-     * Gets the password of the User
-     * @return password The string storing the password of the User
+     * Checks whether the password inputted is the same as that of the User
+     * @param user The user corresponding to the username inputted
+     * @return whether the password inputted is that of user
      */
-    public String getPassword() {
-        return this.password;
+    public boolean checkCredentia(User user) {
+        return this.password.equals(user.password);
     }
 
     /**
      * Adds a tag to this User
      * @param tag The new tag to add
      */
-//    public void addTag(Tag tag) {
-//        this.tags.add(tag);
-//    }
+    public void addTag(Tag tag) {
+        this.tags.add(tag);
+    }
 
     /**
      * Removes a tag from this User
      * @param tag The new tag to remove
      */
-//    public void removeTag(Tag tag) {
-//        this.tags.remove(tag);
-//    }
+    public void removeTag(Tag tag) {
+        this.tags.remove(tag);
+    }
 
     /**
      * Gets a list of tags associated with this User
      * @return tags A list of tags associated with this User
      */
-//    public List<Tag> getTags() {
-//        return this.tags;
-//    }
+    public List<Tag> getTags() {
+        return this.tags;
+    }
 
     /**
      * Adds an event to this User
      * @param event The new event to add
      */
-//    public void addEvent(Event event) {
-//        this.events.add(event);
-//    }
+    public void addEvent(Event event) {
+        this.events.add(event);
+    }
 
     /**
      * Removes an event from this User
      * @param event The new event to remove
      */
-//    public void removeEvent(Event event) {
-//        this.events.remove(event);
-//    }
+    public void removeEvent(Event event) {
+        this.events.remove(event);
+    }
 
     /**
      * Gets the list of events associated with this User
      * @return events A list of events associated with this User
      */
-//    public List<Event> getEvents() {
-//        return this.events;
-//    }
+    public List<Event> getEvents() {
+        return this.events;
+    }
 
     /**
      * Adds a task to this User
@@ -135,25 +136,25 @@ public class User {
      * Adds a timer to this User
      * @param timer The new timer to add
      */
-//    public void addTimer(Timer timer) {
-//        this.timers.add(timer);
-//    }
+    public void addTimer(Timer timer) {
+        this.timers.add(timer);
+    }
 
     /**
      * Removes a timer from this User
      * @param timer The new timer to remove
      */
-//    public void removeTimer(Timer timer) {
-//        this.timers.remove(timer);
-//    }
+    public void removeTimer(Timer timer) {
+        this.timers.remove(timer);
+    }
 
     /**
      * Gets the list of timers associated with this User
      * @return timers A list of timers associated with this User
      */
-//    public List<Timers> getTimers() {
-//        return this.timers;
-//    }
+    public List<Timer> getTimers() {
+        return this.timers;
+    }
 
     /**
      * Adds an invitation to this User's outgoingInvitations
