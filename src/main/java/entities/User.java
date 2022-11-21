@@ -22,12 +22,12 @@ public class User implements Serializable {
     /**
      * * The list of Tags of the User
      */
-//    List<Tag> tags;
+    List<Tag> tags;
 
     /**
      * * The list of Events of the User
      */
-//    List<Event> events;
+    List<Event> events;
 
     /**
      * * The list of Tasks of the User
@@ -66,13 +66,13 @@ public class User implements Serializable {
 //        this.tasks.remove(task);
 //    }
 //
-//    /**
-//     * Gets the list of tasks associated with this User
-//     * @return tasks A list of tasks associated with this User
-//     */
-//    public ArrayList<Task> getTasks() {
-//        return this.tasks;
-//    }
+    /**
+     * Gets the list of tasks associated with this User
+     * @return tasks A list of tasks associated with this User
+     */
+    public List<Task> getTasks() {
+        return this.tasks;
+    }
 
     /**
      * Changes the username of this User
@@ -125,21 +125,21 @@ public class User implements Serializable {
 //        this.tags.remove(tag);
 //    }
 //
-//    /**
-//     * Gets a list of tags associated with this User
-//     * @return tags A list of tags associated with this User
-//     */
-//    public List<Tag> getTags() {
-//        return this.tags;
-//    }
+    /**
+     * Gets a list of tags associated with this User
+     * @return tags A list of tags associated with this User
+     */
+    public List<Tag> getTags() {
+        return this.tags;
+    }
 
-//    /**
-//     * Adds an event to this User
-//     * @param event The new event to add
-//     */
-//    public void addEvent(Event event) {
-//        this.events.add(event);
-//    }
+    /**
+     * Adds an event to this User
+     * @param event The new event to add
+     */
+    public void addEvent(Event event) {
+        this.events.add(event);
+    }
 
 //    /**
 //     * Removes an event from this User

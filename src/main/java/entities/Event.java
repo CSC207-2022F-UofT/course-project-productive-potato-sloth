@@ -11,7 +11,6 @@ TODO: document this class
 public class Event {
     private LocalDateTime start_time;
     private LocalDateTime end_time;
-    private List<String> collaborator_usernames;
 
     public Task getTask() {
         return task;
@@ -70,7 +69,6 @@ public class Event {
 
     public Event(LocalDateTime start_time,
                  LocalDateTime end_time,
-                 List<String> collaborator_usernames,
                  Task task,
                  String name,
                  boolean repeats,
@@ -79,7 +77,6 @@ public class Event {
     ) {
         this.start_time = start_time;
         this.end_time = end_time;
-        this.collaborator_usernames = collaborator_usernames;
         this.task = task;
         this.name = name;
         this.repeats = repeats;
