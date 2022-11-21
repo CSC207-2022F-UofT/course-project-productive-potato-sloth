@@ -1,5 +1,5 @@
 package use_cases;
 
 public interface AcceptInvitationsOutputBoundary {
-    AcceptInvitationOutputModel prepareAcceptView(AcceptInvitationOutputModel output);
+    void prepareAcceptView(AcceptInvitationOutputModel output);
 }

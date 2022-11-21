@@ -5,7 +5,7 @@ import entities.User;
 
 public class InvitationOutputModel extends InvitationInputModel{
     String timeSent;
-    public InvitationOutputModel(User sender, User receiver, Task task, String time){
+    public InvitationOutputModel(String sender, String receiver, String task, String time){
         super(sender, receiver, task);
         this.timeSent = time;}
 
