@@ -45,14 +45,16 @@ public class Timer {
      * @param duration The duration for the Timer (how long of a Timer session do we want)
      */
     public Timer(Duration duration) {
-        //TODO:  add it to current user's list
-        // currentUserService??
+
         this.startDuration = duration;
         this.remainingDuration = duration;
         this.startTime = LocalDateTime.now();
         this.totalBreakTime = Duration.of(0, ChronoUnit.MINUTES);
         this.totalStudyTime = Duration.of(0, ChronoUnit.MINUTES);
         this.numOfBreaks = 0;
+        //TODO:  add it to current user's list
+        // currentUserService??
+        //User curruser.timers.add(this);
     }
 
 // getters
