@@ -23,6 +23,7 @@ public class UserDatabaseGateway extends DatabaseGateway implements DataAccessIn
         userList = loadFromFile();
     }
 
+    @Override
     public User get(String username) {
         /**
          *  Returns a user with the given username, if it exists.
