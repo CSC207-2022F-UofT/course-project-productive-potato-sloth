@@ -1,12 +1,13 @@
 package entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * * An entity class representing a User
  */
-public class User {
+public class User implements Serializable {
 
     /**
      * * The Username of the User
