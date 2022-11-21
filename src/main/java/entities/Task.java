@@ -1,3 +1,4 @@
+
 package entities;
 
 import java.util.ArrayList;
@@ -29,7 +30,7 @@ public class Task {
     /**
      * A list of the associated tags of this Task
      */
-//    ArrayList<Tag> tags;
+    ArrayList<Tag> tags;
 
     /**
      * A list of the associated events of this Task
@@ -216,4 +217,5 @@ public class Task {
 //    }
 
 }
+
 
