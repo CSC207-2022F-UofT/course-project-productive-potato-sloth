@@ -1,6 +1,6 @@
 package useCases.CreateUser;
 
-import src.main.java.entities.User;
+import entities.User;
 
 public class CreateUserInteractor {
 
