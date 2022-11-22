@@ -1,4 +1,4 @@
-package use_cases;
+package useCases.InvitationAcceptOrDecline;
 
 public interface AcceptInvitationInputBoundary {
     void acceptInvitations(AcceptInvitationInputModel input);

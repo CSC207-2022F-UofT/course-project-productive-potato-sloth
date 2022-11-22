@@ -1,7 +1,4 @@
-package use_cases;
-
-import entities.Task;
-import entities.User;
+package useCases.InvitationSending;
 
 public class InvitationOutputModel extends InvitationInputModel{
     String timeSent;

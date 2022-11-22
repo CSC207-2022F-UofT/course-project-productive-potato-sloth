@@ -1,9 +1,8 @@
-package use_cases;
+package useCases.InvitationAcceptOrDecline;
 
-import entities.Task;
-import entities.User;
+import useCases.InvitationSending.InvitationInputModel;
 
-public class AcceptInvitationInputModel extends InvitationInputModel{
+public class AcceptInvitationInputModel extends InvitationInputModel {
 
     boolean accept;
 

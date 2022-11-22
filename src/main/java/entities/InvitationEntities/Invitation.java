@@ -1,4 +1,7 @@
-package entities;
+package entities.InvitationEntities;
+import entities.Task;
+import entities.User;
+
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 

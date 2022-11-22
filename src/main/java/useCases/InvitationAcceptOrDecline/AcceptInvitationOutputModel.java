@@ -1,7 +1,4 @@
-package use_cases;
-
-import entities.Task;
-import entities.User;
+package useCases.InvitationAcceptOrDecline;
 
 public class AcceptInvitationOutputModel extends AcceptInvitationInputModel{
     String timeAccepted;

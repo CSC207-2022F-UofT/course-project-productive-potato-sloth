@@ -1,10 +1,11 @@
 
-package use_cases;
+package useCases.InvitationSending;
 
-import entities.InvitationFactory;
+import entities.InvitationEntities.InvitationFactory;
 import entities.Task;
 import entities.User;
-import entities.Invitation;
+import entities.InvitationEntities.Invitation;
+import gateways.DataAccessInterface;
 
 import java.time.LocalDateTime;
 
@@ -15,14 +16,14 @@ public class sendInvitationInteractor implements InvitationInputBoundary {
 
     final InvitationFactory invitationFactory;
 
-    final DataAccessInterface UserDataBaseGateway;
+    final DataAccessInterface<User> UserDataBaseGateway;
 
-    final DataAccessInterface TaskDatabaseGateway;
+    final DataAccessInterface<Task> TaskDatabaseGateway;
 
 
 
     public sendInvitationInteractor(InvitationOutputBoundary presenter, InvitationFactory invitationFactory,
-    DataAccessInterface UserDataBaseGateway, DataAccessInterface TaskDatabaseGateway ) {
+    DataAccessInterface<User> UserDataBaseGateway, DataAccessInterface<Task> TaskDatabaseGateway ) {
         this.presenter = presenter;
         this.invitationFactory = invitationFactory;
         this.UserDataBaseGateway = UserDataBaseGateway;
@@ -36,8 +37,8 @@ public class sendInvitationInteractor implements InvitationInputBoundary {
         Task task = TaskDatabaseGateway.get(inputModel.task);// get the task
         Invitation invitation = invitationFactory.create(sender, receiver, task); //creates an invitation object
 
-        sender.addOutgoingInvitation(invitation); // add invitation to the sender's outgoing invitations list
-        receiver.addIncomingInvitation(invitation); // add invitation to the receiver's incoming invitations list
+        //sender.addOutgoingInvitation(invitation); // add invitation to the sender's outgoing invitations list
+        //receiver.addIncomingInvitation(invitation); // add invitation to the receiver's incoming invitations list
 
         LocalDateTime time = LocalDateTime.now(); // get the current time to pass in the output model to display in view
         InvitationOutputModel outputModel = new InvitationOutputModel(inputModel.sender, inputModel.receiver,

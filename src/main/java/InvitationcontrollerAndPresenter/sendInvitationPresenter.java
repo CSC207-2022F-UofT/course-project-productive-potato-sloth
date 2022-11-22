@@ -1,7 +1,7 @@
-package controllerAndPresenter;
+package InvitationcontrollerAndPresenter;
 
-import use_cases.InvitationOutputBoundary;
-import use_cases.InvitationOutputModel;
+import useCases.InvitationSending.InvitationOutputBoundary;
+import useCases.InvitationSending.InvitationOutputModel;
 
 /** sendInvitationPresenter which takes in a view and calls the view's update method */
 public class sendInvitationPresenter implements InvitationOutputBoundary {

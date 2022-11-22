@@ -1,6 +1,6 @@
-package controllerAndPresenter;
+package InvitationcontrollerAndPresenter;
 
-import use_cases.AcceptInvitationOutputModel;
+import useCases.InvitationAcceptOrDecline.AcceptInvitationOutputModel;
 
 public interface acceptInvitationPresenterOutput {
     public void updateView(AcceptInvitationOutputModel outputModel);

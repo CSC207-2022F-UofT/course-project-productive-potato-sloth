@@ -1,8 +1,8 @@
-package controllerAndPresenter;
+package InvitationcontrollerAndPresenter;
 
-import entities.Task;
-import entities.User;
-import use_cases.*;
+import useCases.InvitationSending.InvitationInputBoundary;
+import useCases.InvitationSending.InvitationInputModel;
+
 /**
  * * The controller responsible for calling the sendInvitationInteractor
  */

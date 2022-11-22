@@ -1,4 +1,7 @@
-package entities;
+package entities.InvitationEntities;
+
+import entities.Task;
+import entities.User;
 
 public interface InvitationInterface {
     public User getSender();

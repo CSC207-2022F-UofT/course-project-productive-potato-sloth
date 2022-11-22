@@ -1,10 +1,7 @@
-package controllerAndPresenter;
+package InvitationcontrollerAndPresenter;
 
-import entities.Task;
-import entities.User;
-import use_cases.AcceptInvitationInputBoundary;
-import use_cases.AcceptInvitationOutputModel;
-import use_cases.AcceptInvitationInputModel;
+import useCases.InvitationAcceptOrDecline.AcceptInvitationInputBoundary;
+import useCases.InvitationAcceptOrDecline.AcceptInvitationInputModel;
 
 public class acceptInvitationController {
 
