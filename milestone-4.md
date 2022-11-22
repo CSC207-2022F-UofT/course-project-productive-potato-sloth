@@ -13,3 +13,14 @@ The controllers, presenters, interactors, and entities, which make up the Enterp
 
 [Pull Request 2](https://github.com/CSC207-2022F-UofT/course-project-productive-potato-sloth/pull/24) - Code Review <br />
 I was able to check for correctness as well as offer my opinions on what the next steps could be. 
+
+## Vishnu Nittoor
+
+[Pull Request 1](https://github.com/CSC207-2022F-UofT/course-project-productive-potato-sloth/pull/19) - Implementation 
+
+This pull request featured the creation of the class UserDatabaseGateway, a class that implements the DataAccessInterface. This is the entirety of the our application's implementation of data storage and access. It included relevant tests for the class. Although this pull request was two files, it is my most significant one -- since I have ensured that I frequently create pull requests, the other pull requests for my branch may individually be less significant.
+
+[Pull Request 2](https://github.com/CSC207-2022F-UofT/course-project-productive-potato-sloth/pull/14) - Code Review
+
+My review of this pull request included some comments regarding concrete return types, but found that the majority of the code was good for merging into the main branch. I indicated that although the changes should be ideally incorporated, the pull request was ready for approval and they may be done in the next pull request.
+
