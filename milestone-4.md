@@ -24,7 +24,7 @@ This pull request featured the creation of the class UserDatabaseGateway, a clas
 
 My review of this pull request included some comments regarding concrete return types, but found that the majority of the code was good for merging into the main branch. I indicated that although the changes should be ideally incorporated, the pull request was ready for approval and they may be done in the next pull request.
 
-Milestone 4 report--Dawei He
+## Dawei He
 
 Pull request 1: Code Contribution (6-feature-6-chatroom, pull request #18) (https://github.com/CSC207-2022F-UofT/course-project-productive-potato-sloth/pull/18)
 
