@@ -12,8 +12,8 @@ public class TimerInputData {
     private Duration inputDurationOfTimer;
 
     /**
-     * Stores Input string that depends on the user’s input
-     * (Input_string = “start” , “pause” , “end”)
+     * Stores Input string that depends on the user's input
+     * (Input_string = ''start'' , ''pause'' , “end”)
      */
     private String userCommand;
 

@@ -1,4 +1,5 @@
 package useCases.LoginPage;
 
-public class CreateAccountInputBoundary {
+public interface CreateAccountInputBoundary {
+    CreateAccountResponseModel create(CreateAccountRequestModel requestModel);
 }
