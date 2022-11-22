@@ -72,3 +72,20 @@ Methods are relevant docstrings written up to help understand functionality.
 
 [Pull Request 2](https://github.com/CSC207-2022F-UofT/course-project-productive-potato-sloth/pull/24) - Code Review <br />
 I believe this to be my most valuable review as it was one I did after I better understood the Clean Architecture structure and what needs to be implemented to ensure the structure is maintained. I raised questions about whether the structure was implemented right (in terms of where the Presenter and RequestModel should be called instead of implementing the functionalities of those classes within the Interactor). I hope this helps build our project unifomrly among us seven.
+
+## Paridhi Goel
+
+[Pull Request](https://github.com/CSC207-2022F-UofT/course-project-productive-potato-sloth/pull/22) 
+
+This pull request includes the creation of Timer Entity, the Input Data Structure/Boundary and the Timer Interactor.
+It is significant because this code forms the basis of the functionality of the Timer feature in this project. 
+It adheres to Clean Architecture and SOLID design principles because on the outer layer (use cases) depends on the entity Timer and
+not the other way round. The code includes appropriate documentation for all classes and methods.
+
+[Code Review](https://github.com/CSC207-2022F-UofT/course-project-productive-potato-sloth/pull/21) 
+
+This review addressed a missing instance variable in the entity class which was required for testing by another member and me. 
+Otherwise, the code was ready to be merged although some methods
+were commented out because the entities they depended on were not merged into main then.
+
+
