@@ -63,3 +63,12 @@ those reviews were often simple approvals instead of a comprehensive review or a
 the code did not normally raise any errors by the time it was put on a pull request, and is
 usually well documented, thus there was simply not much to write about, unlike with this 
 particular pull request in which there were a number of errors in coding.
+
+## Chhavi Shah
+[Pull Request 1](https://github.com/CSC207-2022F-UofT/course-project-productive-potato-sloth/pull/21) - Implementation <br />
+This pull request included an almost-completed User entity, which most of our team depends on for their implementations. The code adheres to the Clean Architecture structure and the SOLID Design Principles as the entity does not depend on anything from the external layers (use cases / controller / UI) of the Clean Architecture model, and is self-sufficient. 
+I understand that commenting out the methods of the class for parameters that were not implemented (by my team) is not the most efficient way of writing up my code while waiting for others to implement their parts. This is inefficient as it requires me to keep uncommenting code as updates are made, which is not the best. Derek mentioneed implementing an interface to help with this, but I'm not sure how to write that in code and I'm almost done with uncommenting all the code in User as most of the entities are completed and merged to main. So that is something I could consider when implementing something of this sort next time. 
+Methods are relevant docstrings written up to help understand functionality. 
+
+[Pull Request 2](https://github.com/CSC207-2022F-UofT/course-project-productive-potato-sloth/pull/24) - Code Review <br />
+I believe this to be my most valuable review as it was one I did after I better understood the Clean Architecture structure and what needs to be implemented to ensure the structure is maintained. I raised questions about whether the structure was implemented right (in terms of where the Presenter and RequestModel should be called instead of implementing the functionalities of those classes within the Interactor). I hope this helps build our project unifomrly among us seven.
