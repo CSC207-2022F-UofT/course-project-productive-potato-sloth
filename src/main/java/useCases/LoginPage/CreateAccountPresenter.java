@@ -1,7 +1,7 @@
 package useCases.LoginPage;
 
 public interface CreateAccountPresenter {
-    CreateAccountResponseModel prepareSuccessView(CreateAccountRequestModel user);
+    CreateAccountResponseModel prepareSuccessView(String success);
 
     CreateAccountResponseModel prepareFailureView(String error);
 

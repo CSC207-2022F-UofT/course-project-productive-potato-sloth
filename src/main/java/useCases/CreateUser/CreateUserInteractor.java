@@ -6,7 +6,7 @@ import useCases.LoginPage.CreateAccountPresenter;
 import useCases.LoginPage.CreateAccountRequestModel;
 import useCases.LoginPage.CreateAccountResponseModel;
 
-public class CreateUserInteractor implements CreateAccountInputBoundary {
+public abstract class CreateUserInteractor implements CreateAccountInputBoundary {
 
         final UserDatabaseGateway gateway;
         final CreateAccountPresenter userPresenter;
@@ -18,19 +18,16 @@ public class CreateUserInteractor implements CreateAccountInputBoundary {
                 this.userPresenter = userPresenter;
         }
 
-        @Override
-        public CreateAccountResponseModel create(CreateAccountRequestModel requestModel) {
+        public CreateAccountResponseModel create(CreateAccountRequestModel requestModel, String username) {
                 return null;
-        }
 
-//        @Override
-//        public CreateAccountResponseModel create(CreateAccountRequestModel requestModel) {
-//                if (gateway.get() {
-//                        return userPresenter.prepareFailureView("User already exists.");
-//                } else if (!requestModel.getPassword().equals(requestModel.getRepeatPassword())) {
-//                        return userPresenter.prepareFailureView("Passwords don't match.");
+
+//                if (gateway.get(username)) {
+//                        return userPresenter.prepareFailureView("Username already exists.");
+//                } else {
+//                        gateway.insert(User.createUser);
 //                }
-//
+//      }
 //                User user = userFactory.create(requestModel.getName(), requestModel.getPassword());
 //                if (!user.passwordIsValid()) {
 //                        return userPresenter.prepareFailureView("User password must have more than 5 characters.");
@@ -42,5 +39,5 @@ public class CreateUserInteractor implements CreateAccountInputBoundary {
 //
 //                UserRegisterResponseModel accountResponseModel = new UserRegisterResponseModel(user.getName(), now.toString());
 //                return userPresenter.prepareSuccessView(accountResponseModel);
-//        }
+        }
 }

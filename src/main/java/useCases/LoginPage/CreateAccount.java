@@ -7,8 +7,10 @@ import useCases.CreateUser.CreateUserData;
 
 public class CreateAccount{
     DataAccessInterface<User> gateway;
-    public CreateAccount(DataAccessInterface<User> gateway)  {
+    CreateAccountPresenter presenter;
+    public CreateAccount(DataAccessInterface<User> gateway, CreateAccountPresenter presenter)  {
         this.gateway = gateway;
+        this.presenter = presenter;
     }
 
     public void createAccount(String username, String password) {
