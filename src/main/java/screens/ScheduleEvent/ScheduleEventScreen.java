@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.lang.reflect.Array;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,8 @@ import com.github.lgooddatepicker.components.DateTimePicker;
 import screens.CheckboxListItem;
 import screens.CheckboxListRenderer;
 import screens.LabelTextPanel;
+import services.CurrentUserService;
+import useCases.ScheduleEvent.ScheduleEventInputBoundary;
 
 
 // From Paul's UserRegisterScreen
@@ -39,14 +42,18 @@ public class ScheduleEventScreen extends JPanel implements ActionListener {
      */
     JPasswordField repeatPassword = new JPasswordField(15);
 
-    //    UserRegisterController userRegisterController;
+    JComboBox<String> tag_combo_box = new JComboBox<String>();
+
+    JComboBox<String> task_combo_box;
+
+    ScheduleEventController scheduleEventController;
 
     /**
      * A window with a title and a JButton.
      */
-    public ScheduleEventScreen() {
+    public ScheduleEventScreen(ScheduleEventController controller) {
 
-//        this.userRegisterController = controller;
+        this.scheduleEventController = controller;
 
         JLabel title = new JLabel("Schedule a new event");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -77,16 +84,18 @@ public class ScheduleEventScreen extends JPanel implements ActionListener {
         JLabel task_info_label = new JLabel("Select Task: ");
         JPanel task_info = new JPanel();
         task_info.add(task_info_label);
-        String[] taskNames = {"India", "USA"};
-        JComboBox<String> task_combo_box = new JComboBox<>(taskNames);
+        String[] taskNames = {"Task", "Task2"};
+        task_combo_box = new JComboBox<>(taskNames);
         task_info.add(task_combo_box);
         this.add(task_info);
 
         JLabel tag_info_label = new JLabel("Select Tags: ");
         JPanel tag_info = new JPanel();
         tag_info.add(tag_info_label);
-        String[] tagNames = {"hehe", "hoohoo"};
-        JComboBox<String> tag_combo_box = new JComboBox<>(tagNames);
+        String[] tagNames = {"tag1", "tag2", "etc"};
+        for(String tagName: tagNames){
+            tag_combo_box.addItem(tagName);
+        }
         tag_info.add(tag_combo_box);
         this.add(tag_info);
 
@@ -135,17 +144,18 @@ public class ScheduleEventScreen extends JPanel implements ActionListener {
      */
     public void actionPerformed(ActionEvent evt) {
         System.out.println("Click " + evt.getActionCommand());
-    }
 
-    public static void main(String[] args) {
-        JFrame application = new JFrame("Schedule Event");
-        CardLayout cardLayout = new CardLayout();
-        JPanel screens = new JPanel(cardLayout);
-        application.add(screens);
-        ScheduleEventScreen scheduleEventScreen = new ScheduleEventScreen();
-        screens.add(scheduleEventScreen, "welcome");
-        cardLayout.show(screens, "register");
-        application.pack();
-        application.setVisible(true);
+        try {
+            ScheduleEventResponseModel responseModel = scheduleEventController.scheduleEvent(
+                    start_time.getDateTimePermissive(),
+                    end_time.getDateTimePermissive(),
+                    task_combo_box.getName(),
+                    eventName.getText(),
+                    List.of(new String[]{"placeholder",})
+            );
+            JOptionPane.showMessageDialog(this, responseModel.getEventName() + " created.");
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }
 }

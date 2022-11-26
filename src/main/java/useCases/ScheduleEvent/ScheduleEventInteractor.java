@@ -5,23 +5,27 @@ import entities.Tag;
 import entities.Task;
 import entities.User;
 import gateways.DataAccessInterface;
+import screens.ScheduleEvent.ScheduleEventResponseModel;
 import services.CurrentUserService;
 
 import java.util.ArrayList;
 import java.util.List;
 
 // TODO: document this class
-public class ScheduleEventInteractor {
+public class ScheduleEventInteractor implements ScheduleEventInputBoundary{
 
     CurrentUserService currentUserService;
     DataAccessInterface<User> database;
 
-    ScheduleEventInteractor(CurrentUserService currentUserService, DataAccessInterface<User> database){
+    ScheduleEventPresenter presenter;
+
+    public ScheduleEventInteractor(CurrentUserService currentUserService, DataAccessInterface<User> database, ScheduleEventPresenter scheduleEventPresenter){
         this.currentUserService = currentUserService;
         this.database = database;
+        this.presenter = scheduleEventPresenter;
     }
 
-    public void scheduleEvent(ScheduleEventInputData inputData){
+    public ScheduleEventResponseModel scheduleEvent(ScheduleEventRequestModel requestModel){
 
         User currentUser = currentUserService.getCurrentUser();
 
@@ -33,15 +37,15 @@ public class ScheduleEventInteractor {
 
         Task selectedTask = null;
 
-        if(inputData.taskName != null){
+        if(requestModel.taskName != null){
             for(Task task: currentUser.getTasks()){
-                if(task.getName().equals(inputData.taskName)){
+                if(task.getName().equals(requestModel.taskName)){
                     selectedTask = task;
                     break;
                 }
             }
             if(selectedTask == null){
-                throw new RuntimeException("Task with name " + inputData.taskName + " does not exist.");
+                return presenter.prepareFailView("No task with the given name exists.");
             }
         }
 
@@ -52,7 +56,7 @@ public class ScheduleEventInteractor {
          */
 
         List<Tag> eventTags = new ArrayList<>();
-        for(String tagName: inputData.tagNames){
+        for(String tagName: requestModel.tagNames){
             for(Tag tag: currentUser.getTags()){
                 if(tag.getName().equals(tagName)){
                     eventTags.add(tag);
@@ -61,13 +65,11 @@ public class ScheduleEventInteractor {
         }
 
         /*
-        Check that frequency is null if and only if repeats is null.
+        Check that the event ends after it starts.
          */
 
-        if(inputData.frequency == null && inputData.repeats){
-            throw new RuntimeException("Repeat frequency not specified!");
-        } else if (inputData.frequency != null && !inputData.repeats) {
-            inputData.frequency = null;
+        if(requestModel.start_time.isAfter(requestModel.end_time)){
+            return presenter.prepareFailView("The start time must be before the end time");
         }
 
         /*
@@ -75,15 +77,17 @@ public class ScheduleEventInteractor {
          */
 
         Event newEvent = new Event(
-                inputData.start_time,
-                inputData.end_time,
+                requestModel.start_time,
+                requestModel.end_time,
                 selectedTask,
-                inputData.name,
-                inputData.repeats,
-                inputData.frequency,
+                requestModel.name,
                 eventTags
         );
 
         currentUser.addEvent(newEvent);
+
+        ScheduleEventResponseModel response = new ScheduleEventResponseModel(requestModel.name);
+
+        return presenter.prepareSuccessView(response);
     }
 }

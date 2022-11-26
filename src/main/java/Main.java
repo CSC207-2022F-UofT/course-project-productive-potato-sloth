@@ -1,9 +1,6 @@
-package usecases;
-
 import entities.User;
 import gateways.DataAccessInterface;
 import gateways.UserDatabaseGateway;
-import org.junit.jupiter.api.Test;
 import screens.ScheduleEvent.ScheduleEventController;
 import screens.ScheduleEvent.ScheduleEventScreen;
 import services.CurrentUserService;
@@ -16,14 +13,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
-public class ScheduleEventTest {
-    @Test
-    public void testScheduleEventOne(){
-
-    }
-
-    @Test
-    public void testGeneral() throws IOException {
+public class Main {
+    public static void setupScheduleEvent() throws IOException {
         JFrame application = new JFrame("Schedule Event");
         CardLayout cardLayout = new CardLayout();
         JPanel screens = new JPanel(cardLayout);
@@ -38,5 +29,9 @@ public class ScheduleEventTest {
         cardLayout.show(screens, "register");
         application.pack();
         application.setVisible(true);
+    }
+
+    public static void main(String[] args) throws IOException {
+        setupScheduleEvent();
     }
 }
