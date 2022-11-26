@@ -13,7 +13,7 @@ public class TimerInputData {
     private Duration inputDurationOfTimer;
 
     /**
-     * Stores Input string that depends on the user’s input
+     * Stores Input string that depends on the user's input
      * (Input_string = "start" , "pause" , "end")
      */
     private String userCommand;
@@ -35,7 +35,7 @@ public class TimerInputData {
      * Constructs TimerInputData object given the input duration
      *
      * @param inputDuration The duration for the Timer (how long of a Timer session do we want)
-     * @param userCommand   Stores Input string that depends on the user’s input (Input_string = "start" , "pause" , "end")
+     * @param userCommand   Stores Input string that depends on the user's input (Input_string = "start" , "pause" , "end")
      */
     TimerInputData(Duration inputDuration, String userCommand) {
         this.inputDurationOfTimer = inputDuration;
