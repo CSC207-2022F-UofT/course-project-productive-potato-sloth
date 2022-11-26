@@ -1,4 +1,4 @@
-package useCases.Tags;
+package gateways.Tags;
 
 import entities.User;
 
@@ -10,12 +10,16 @@ public class TagResponseModel {
     private final String name;
     private final Color color;
 
-    public TagResponseModel(User user, String name, Color color) {
+    private final boolean success;
+
+    public TagResponseModel(String name, Color color, User user, boolean success) {
         this.user = user;
         this.name = name;
         this.color = color;
+        this.success = success;
 
     }
+
 
     public User getUser() {
         return user;
@@ -27,6 +31,10 @@ public class TagResponseModel {
 
     public Color getColor() {
         return color;
+    }
+
+    public boolean getSuccess() {
+        return success;
     }
 
 }

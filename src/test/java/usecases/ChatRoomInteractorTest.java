@@ -1,4 +1,5 @@
-package usecases;
+package useCases;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.jupiter.api.*;
@@ -16,9 +17,9 @@ public class ChatRoomInteractorTest {
     }
 
     @Test
-    public void testMessageToString(){
+    public void testMessageToString() {
         ChatRoom room = new ChatRoom();
-        ChatRoomInteractor interactor = new ChatRoomInteractor(room);
+        usecases.ChatRoomInteractor interactor = new usecases.ChatRoomInteractor(room);
         interactor.sendMessage("abcd");
         //assertion
         assertEquals("chatRoom with messages [abcd]", room.toString());

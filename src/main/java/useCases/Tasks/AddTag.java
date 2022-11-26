@@ -1,28 +1,31 @@
 package useCases.Tasks;
-import entities.Tag;
+
 import entities.Task;
+import gateways.Tasks.TaskDatbaseGateway;
+import gateways.Tasks.TaskRequestModel;
+import gateways.Tasks.TaskResponseModel;
 
 /***
  * A use case that adds a tag to a Task
  */
-public class AddTag {
+public class AddTag implements AddTagInputBoundary {
 
-    Task task;
+    private final TaskDatbaseGateway taskDatbaseGateway;
 
-    /**
-     * Constructs an AddTag use case given a task
-     * @param task The task to be modified
-     */
-    public AddTag(Task task) {
-        this.task = task;
+    public AddTag(TaskDatbaseGateway taskDatbaseGateway) {
+        this.taskDatbaseGateway = taskDatbaseGateway;
     }
 
     /**
      * Adds a tag to a task
-     * @param tag The tag to be added
+     *
+     * @param taskRequestModel Contains tag to be added
      */
-    public void addTag(Tag tag) {
-        task.addTag(tag);
+    @Override
+    public TaskResponseModel addTag(TaskRequestModel taskRequestModel) {
+        Task task = taskDatbaseGateway.get(taskRequestModel.getName());
+        task.addTag(taskRequestModel.getTag());
+        taskDatbaseGateway.update(task);
+        return new TaskResponseModel(true, "Tag added successfully");
     }
-
 }

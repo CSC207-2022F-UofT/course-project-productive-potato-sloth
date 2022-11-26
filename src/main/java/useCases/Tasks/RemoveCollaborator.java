@@ -1,24 +1,26 @@
 package useCases.Tasks;
 
 import entities.Task;
+import gateways.Tasks.TaskDatbaseGateway;
+import gateways.Tasks.TaskRequestModel;
+import gateways.Tasks.TaskResponseModel;
 
 /***
  * A use case which adds a collaborator to a User's Task
  */
-public class RemoveCollaborator {
+public class RemoveCollaborator implements RemoveCollaboratorInputBoundary {
 
-    private final Task task;
+    private final TaskDatbaseGateway taskDatbaseGateway;
 
-    /**
-     * Instantiating AddCollaborator with a target task
-     *
-     * @param task The target task
-     */
-    public RemoveCollaborator(Task task) {
-        this.task = task;
+    public RemoveCollaborator(TaskDatbaseGateway taskDatbaseGateway) {
+        this.taskDatbaseGateway = taskDatbaseGateway;
     }
 
-//    public void removeCollaborator(User collaborator) {
-//        task.removeCollaborator(collaborator)
-//    }
+    @Override
+    public TaskResponseModel removeCollaborator(TaskRequestModel taskRequestModel) {
+        Task task = taskDatbaseGateway.get(taskRequestModel.getName());
+        task.removeCollaborator(taskRequestModel.getCollaborator());
+        taskDatbaseGateway.update(task);
+        return new TaskResponseModel(true, "Collaborated removed successfully");
+    }
 }

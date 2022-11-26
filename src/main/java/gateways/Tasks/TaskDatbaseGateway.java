@@ -1,6 +1,6 @@
-package gateways.Tags;
+package gateways.Tasks;
 
-import entities.Tag;
+import entities.Task;
 import entities.User;
 import gateways.DatabaseGateway;
 import gateways.UserDatabaseGateway;
@@ -10,14 +10,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TagDatabaseGateway extends DatabaseGateway implements TagDataAccessInterface {
+public class TaskDatbaseGateway extends DatabaseGateway implements TaskDataAccessInterface {
+
 
     private final CurrentUserService currentUserService;
     private UserDatabaseGateway userDatabaseGateway;
     private List<User> userList;
     private User currentUser;
-    private ArrayList<Tag> tagList;
-
+    private ArrayList<Task> taskList;
 
     /**
      * Instantiating DatabaseGateway with a relative path will store the absolute path to the respective database.
@@ -26,7 +26,7 @@ public class TagDatabaseGateway extends DatabaseGateway implements TagDataAccess
      *
      * @throws IOException Throws exception if encountering failed or interrupted IO exceptions
      */
-    public TagDatabaseGateway(CurrentUserService currentUserService, UserDatabaseGateway userDatabaseGateway) throws IOException {
+    public TaskDatbaseGateway(CurrentUserService currentUserService, UserDatabaseGateway userDatabaseGateway) throws IOException {
         super(userDatabaseGateway.getAbsoluteFilepath());
         this.currentUserService = currentUserService;
         this.userDatabaseGateway = userDatabaseGateway;
@@ -36,37 +36,39 @@ public class TagDatabaseGateway extends DatabaseGateway implements TagDataAccess
     public void load() {
         this.userList = userDatabaseGateway.loadFromFile();
         this.currentUser = userDatabaseGateway.get(currentUserService.getCurrentUser().getUsername());
-        this.tagList = (ArrayList<Tag>) currentUser.getTags();
+        this.taskList = (ArrayList<Task>) currentUser.getTasks();
     }
 
-    public Tag get(String name) {
+    public Task get(String name) {
         load();
-        for (Tag tag : tagList) {
-            if (tag.getName().equals(name)) {
-                return tag;
+        for (Task task : taskList) {
+            if (task.getName().equals(name)) {
+                return task;
             }
         }
         return null;
     }
 
-    public List<Tag> getAll() {
+
+    @Override
+    public List<Task> getAll() {
         load();
-        return tagList;
+        return taskList;
     }
 
     @Override
-    public void insert(Tag tag) {
+    public void insert(Task task) {
         load();
-        currentUser.addTag(tag);
+        currentUser.addTask(task);
         userDatabaseGateway.saveToFile();
     }
 
     @Override
-    public boolean update(Tag tag) {
+    public boolean update(Task task) {
         load();
         try {
-            delete(tag);
-            insert(tag);
+            delete(task);
+            insert(task);
         } catch (Exception e) {
             userDatabaseGateway.saveToFile();
             return false;
@@ -76,10 +78,10 @@ public class TagDatabaseGateway extends DatabaseGateway implements TagDataAccess
     }
 
     @Override
-    public boolean delete(Tag tag) {
+    public boolean delete(Task task) {
         load();
         try {
-            currentUser.removeTag(tag);
+            currentUser.removeTask(task);
         } catch (Exception e) {
             userDatabaseGateway.saveToFile();
             return false;
@@ -91,13 +93,11 @@ public class TagDatabaseGateway extends DatabaseGateway implements TagDataAccess
     @Override
     public boolean contains(String name) {
         load();
-        for (Tag tag : tagList) {
-            if (tag.getName().equals(name)) {
+        for (Task task : taskList) {
+            if (task.getName().equals(name)) {
                 return true;
             }
         }
         return false;
     }
-
-
 }

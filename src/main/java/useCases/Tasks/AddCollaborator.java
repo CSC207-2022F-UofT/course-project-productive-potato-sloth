@@ -1,25 +1,26 @@
 package useCases.Tasks;
 
 import entities.Task;
+import gateways.Tasks.TaskDatbaseGateway;
+import gateways.Tasks.TaskRequestModel;
+import gateways.Tasks.TaskResponseModel;
 
 /***
  * A use case which adds a collaborator to a User's Task
  */
-public class AddCollaborator {
+public class AddCollaborator implements AddCollaboratorInputBoundary {
 
-    private final Task task;
+    private final TaskDatbaseGateway taskDatbaseGateway;
 
-    /**
-     * Instantiating AddCollaborator with a target task
-     *
-     * @param task The target task
-     */
-    public AddCollaborator(Task task) {
-        this.task = task;
+    public AddCollaborator(TaskDatbaseGateway taskDatbaseGateway) {
+        this.taskDatbaseGateway = taskDatbaseGateway;
     }
 
-//    public void addCollaborator(User collaborator) {
-//        task.addCollaborator(collaborator)
-//    }
-
+    @Override
+    public TaskResponseModel addCollaborator(TaskRequestModel taskRequestModel) {
+        Task task = taskDatbaseGateway.get(taskRequestModel.getName());
+        task.addCollaborator(taskRequestModel.getCollaborator());
+        taskDatbaseGateway.update(task);
+        return new TaskResponseModel(true, "Collaborated added successfully");
+    }
 }

@@ -1,4 +1,4 @@
-package useCases.Tags;
+package gateways.Tags;
 
 import entities.User;
 

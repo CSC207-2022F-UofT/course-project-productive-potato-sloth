@@ -16,8 +16,8 @@ public class TaskTest {
 
     @BeforeEach
     public void setup() {
-        this.tag = new Tag("tag", Color.RED);
         this.user = new User();
+        this.tag = new Tag("tag", Color.RED, this.user);
     }
 
     /**
@@ -75,7 +75,7 @@ public class TaskTest {
      */
     @Test
     public void testTaskAddTag() {
-        Tag tag2 = new Tag("tag2", Color.RED);
+        Tag tag2 = new Tag("tag2", Color.RED, this.user);
         Task task = new Task("tag", user, "");
         task.addTag(tag);
         assertEquals(task.getTags().size(), 1);
@@ -91,7 +91,7 @@ public class TaskTest {
      */
     @Test
     public void testTaskRemoveTag() {
-        Tag tag2 = new Tag("tag2", Color.RED);
+        Tag tag2 = new Tag("tag2", Color.RED, this.user);
         Task task = new Task("tag", user, "description");
         task.addTag(tag);
         task.addTag(tag2);

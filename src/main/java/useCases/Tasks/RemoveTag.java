@@ -1,31 +1,32 @@
 package useCases.Tasks;
 
-import entities.Tag;
 import entities.Task;
+import gateways.Tasks.TaskDatbaseGateway;
+import gateways.Tasks.TaskRequestModel;
+import gateways.Tasks.TaskResponseModel;
 
 /***
  * A use case that removes a tag from a Task
  */
-public class RemoveTag {
+public class RemoveTag implements RemoveTagInputBoundary {
 
-    private final Task task;
+    private final TaskDatbaseGateway taskDatbaseGateway;
 
-    /**
-     * Constructs a RemoveTag use case given a task
-     *
-     * @param task The task to be modified
-     */
-    public RemoveTag(Task task) {
-        this.task = task;
+    public RemoveTag(TaskDatbaseGateway taskDatbaseGateway) {
+        this.taskDatbaseGateway = taskDatbaseGateway;
     }
 
     /**
-     * Removes a tag from a task
+     * Adds a tag to a task
      *
-     * @param tag The tag to be added
+     * @param taskRequestModel Contains tag to be added
      */
-    public void removeTag(Tag tag) {
-        task.removeTag(tag);
+    @Override
+    public TaskResponseModel removeTag(TaskRequestModel taskRequestModel) {
+        Task task = taskDatbaseGateway.get(taskRequestModel.getName());
+        task.removeTag(taskRequestModel.getTag());
+        taskDatbaseGateway.update(task);
+        return new TaskResponseModel(true, "Tag removed successfully");
     }
 
 }

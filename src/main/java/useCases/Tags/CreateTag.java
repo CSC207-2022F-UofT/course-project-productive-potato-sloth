@@ -1,22 +1,53 @@
 package useCases.Tags;
 
 import entities.Tag;
+import entities.TagFactory;
+import gateways.Tags.TagDatabaseGateway;
+import gateways.Tags.TagRequestModel;
+import gateways.Tags.TagResponseModel;
 
-import java.awt.Color;
 
 /**
  * A use case which creates a new tag for a user
  */
-public class CreateTag {
+public class CreateTag implements CreateTagInputBoundary {
+
+    final TagDatabaseGateway databaseGateway;
+    final TagFactory tagFactory;
+
+
+    public CreateTag(TagDatabaseGateway tagDatabaseGateway, TagFactory tagFactory /*, TagPreseter tagPresenter */) {
+        this.databaseGateway = tagDatabaseGateway;
+        this.tagFactory = tagFactory;
+//        this.tagPresenter = tagPresenter;
+    }
 
     /**
      * Constructs a CreateTag use case given a name and a color
      *
-     * @param name  The name of the new Tag
-     * @param color The colour of the new Tag
-     * @return The new Tag
+     * @param tagRequestModel The input data with all required fields
+     * @return The output data with all required fields
      */
-    public Tag createTag(String name, Color color) {
-        return new Tag(name, color);
+
+    @Override
+    public TagResponseModel create(TagRequestModel tagRequestModel) {
+        if (databaseGateway.contains(tagRequestModel.getName())) {
+//            return tagPresenter.prepareFailView("This tag already exists.");
+        } else {
+            Tag tag = tagFactory.create(
+                    tagRequestModel.getName(),
+                    tagRequestModel.getColor(),
+                    tagRequestModel.getUser()
+            );
+
+            databaseGateway.insert(tag);
+            return new TagResponseModel(
+                    tagRequestModel.getName(),
+                    tagRequestModel.getColor(),
+                    tagRequestModel.getUser(),
+                    true
+            );
+        }
+        return null; // temp for compiling
     }
 }

@@ -1,42 +1,36 @@
 package useCases.Tasks;
 
 import entities.Task;
+import gateways.Tasks.TaskDatbaseGateway;
+import gateways.Tasks.TaskRequestModel;
+import gateways.Tasks.TaskResponseModel;
 
 /**
  * A use case which edits the attributes of a Task
  */
-public class EditTask {
+public class EditTask implements EditTaskInputBoundary {
 
-    /**
-     * The task to be edited
-     */
-    private final Task task;
+    private final TaskDatbaseGateway taskDatbaseGateway;
 
-    /**
-     * Instantiates EditTask with a target task for editing
-     *
-     * @param task The task to be edited
-     */
-    public EditTask(Task task) {
-        this.task = task;
+    public EditTask(TaskDatbaseGateway taskDatbaseGateway) {
+        this.taskDatbaseGateway = taskDatbaseGateway;
     }
 
-    /**
-     * Edits the name of the target task
-     *
-     * @param name The new name of the task
-     */
-    public void editName(String name) {
-        task.setName(name);
+
+    @Override
+    public TaskResponseModel editName(TaskRequestModel taskRequestModel) {
+        Task task = taskDatbaseGateway.get(taskRequestModel.getName());
+        task.setName(taskRequestModel.getName());
+        taskDatbaseGateway.update(task);
+        return new TaskResponseModel(true, "Name changed successfully");
     }
 
-    /**
-     * Edits the description of the target task
-     *
-     * @param description The new description of the task
-     */
-    public void editDescription(String description) {
-        task.setDescription(description);
+    @Override
+    public TaskResponseModel editDescription(TaskRequestModel taskRequestModel) {
+        Task task = taskDatbaseGateway.get(taskRequestModel.getName());
+        task.setDescription(taskRequestModel.getDescription());
+        taskDatbaseGateway.update(task);
+        return new TaskResponseModel(true, "Description changed successfully");
     }
 }
 
