@@ -56,17 +56,26 @@ public class ScheduleEventInteractor implements ScheduleEventInputBoundary{
          */
 
         List<Tag> eventTags = new ArrayList<>();
-        for(String tagName: requestModel.tagNames){
-            for(Tag tag: currentUser.getTags()){
-                if(tag.getName().equals(tagName)){
-                    eventTags.add(tag);
-                }
-            }
-        }
+//        for(String tagName: requestModel.tagNames){
+//            for(Tag tag: currentUser.getTags()){
+//                if(tag.getName().equals(tagName)){
+//                    eventTags.add(tag);
+//                }
+//            }
+//        }
 
         /*
+        Check that the times are not null.
         Check that the event ends after it starts.
          */
+
+        if(requestModel.start_time == null){
+            return presenter.prepareFailView("No start time provided.");
+        }
+
+        if(requestModel.end_time == null){
+            return presenter.prepareFailView("No end time provided.");
+        }
 
         if(requestModel.start_time.isAfter(requestModel.end_time)){
             return presenter.prepareFailView("The start time must be before the end time");

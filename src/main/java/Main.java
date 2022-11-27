@@ -15,6 +15,9 @@ import java.io.IOException;
 
 public class Main {
     public static void setupScheduleEvent() throws IOException {
+
+        // doesn't work as the current user service doesn't have anyone logged in
+
         JFrame application = new JFrame("Schedule Event");
         CardLayout cardLayout = new CardLayout();
         JPanel screens = new JPanel(cardLayout);

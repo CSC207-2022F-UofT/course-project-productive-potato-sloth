@@ -31,8 +31,6 @@ public class ScheduleEventScreen extends JPanel implements ActionListener {
 
     DateTimePicker end_time = new DateTimePicker();
 
-    JTextField collaborator_usernames = new JTextField(40);
-
     /**
      * The password
      */
@@ -74,12 +72,6 @@ public class ScheduleEventScreen extends JPanel implements ActionListener {
         end_time_panel.add(end_time_panel_text);
         end_time_panel.add(end_time);
         this.add(end_time_panel);
-
-        JLabel collaborator_usernames_info_label = new JLabel("Collaborator Usernames (comma separated): ");
-        JPanel collaborator_usernames_info = new JPanel();
-        collaborator_usernames_info.add(collaborator_usernames_info_label);
-        collaborator_usernames_info.add(collaborator_usernames);
-        this.add(collaborator_usernames_info);
 
         JLabel task_info_label = new JLabel("Select Task: ");
         JPanel task_info = new JPanel();
@@ -149,7 +141,7 @@ public class ScheduleEventScreen extends JPanel implements ActionListener {
             ScheduleEventResponseModel responseModel = scheduleEventController.scheduleEvent(
                     start_time.getDateTimePermissive(),
                     end_time.getDateTimePermissive(),
-                    task_combo_box.getName(),
+                    task_combo_box.getItemAt(task_combo_box.getSelectedIndex()),
                     eventName.getText(),
                     List.of(new String[]{"placeholder",})
             );
