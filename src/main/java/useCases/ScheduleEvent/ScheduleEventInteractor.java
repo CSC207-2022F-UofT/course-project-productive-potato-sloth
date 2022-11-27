@@ -4,7 +4,6 @@ import entities.Event;
 import entities.Tag;
 import entities.Task;
 import entities.User;
-import gateways.DataAccessInterface;
 import screens.ScheduleEvent.ScheduleEventResponseModel;
 import services.CurrentUserService;
 
@@ -15,19 +14,25 @@ import java.util.List;
 public class ScheduleEventInteractor implements ScheduleEventInputBoundary{
 
     CurrentUserService currentUserService;
-    DataAccessInterface<User> database;
 
     ScheduleEventPresenter presenter;
 
-    public ScheduleEventInteractor(CurrentUserService currentUserService, DataAccessInterface<User> database, ScheduleEventPresenter scheduleEventPresenter){
+    public ScheduleEventInteractor(CurrentUserService currentUserService, ScheduleEventPresenter scheduleEventPresenter){
         this.currentUserService = currentUserService;
-        this.database = database;
         this.presenter = scheduleEventPresenter;
     }
 
     public ScheduleEventResponseModel scheduleEvent(ScheduleEventRequestModel requestModel){
 
         User currentUser = currentUserService.getCurrentUser();
+
+        /*
+        Check that the event name is not empty or whitespace.
+         */
+
+        if(requestModel.eventName.isBlank()){
+            return presenter.prepareFailView("Your event name must not be empty.");
+        }
 
         /*
         Check that the task exists, if given. Select it.
@@ -37,9 +42,9 @@ public class ScheduleEventInteractor implements ScheduleEventInputBoundary{
 
         Task selectedTask = null;
 
-        if(requestModel.taskName != null){
+        if(requestModel.selectedTaskName != null){
             for(Task task: currentUser.getTasks()){
-                if(task.getName().equals(requestModel.taskName)){
+                if(task.getName().equals(requestModel.selectedTaskName)){
                     selectedTask = task;
                     break;
                 }
@@ -56,13 +61,13 @@ public class ScheduleEventInteractor implements ScheduleEventInputBoundary{
          */
 
         List<Tag> eventTags = new ArrayList<>();
-//        for(String tagName: requestModel.tagNames){
-//            for(Tag tag: currentUser.getTags()){
-//                if(tag.getName().equals(tagName)){
-//                    eventTags.add(tag);
-//                }
-//            }
-//        }
+        for(String tagName: requestModel.selectedTagNames){
+            for(Tag tag: currentUser.getTags()){
+                if(tag.getName().equals(tagName)){
+                    eventTags.add(tag);
+                }
+            }
+        }
 
         /*
         Check that the times are not null.
@@ -78,7 +83,7 @@ public class ScheduleEventInteractor implements ScheduleEventInputBoundary{
         }
 
         if(requestModel.start_time.isAfter(requestModel.end_time)){
-            return presenter.prepareFailView("The start time must be before the end time");
+            return presenter.prepareFailView("The event must end after it begins.");
         }
 
         /*
@@ -89,13 +94,13 @@ public class ScheduleEventInteractor implements ScheduleEventInputBoundary{
                 requestModel.start_time,
                 requestModel.end_time,
                 selectedTask,
-                requestModel.name,
+                requestModel.eventName,
                 eventTags
         );
 
         currentUser.addEvent(newEvent);
 
-        ScheduleEventResponseModel response = new ScheduleEventResponseModel(requestModel.name);
+        ScheduleEventResponseModel response = new ScheduleEventResponseModel(requestModel.eventName);
 
         return presenter.prepareSuccessView(response);
     }

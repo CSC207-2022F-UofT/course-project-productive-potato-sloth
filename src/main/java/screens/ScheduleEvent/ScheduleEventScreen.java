@@ -46,11 +46,14 @@ public class ScheduleEventScreen extends JPanel implements ActionListener {
 
     ScheduleEventController scheduleEventController;
 
+    ScheduleEventViewModel view_model;
+
     /**
      * A window with a title and a JButton.
      */
-    public ScheduleEventScreen(ScheduleEventController controller) {
+    public ScheduleEventScreen(ScheduleEventController controller, ScheduleEventViewModel view_model) {
 
+        this.view_model = view_model;
         this.scheduleEventController = controller;
 
         JLabel title = new JLabel("Schedule a new event");
@@ -76,15 +79,14 @@ public class ScheduleEventScreen extends JPanel implements ActionListener {
         JLabel task_info_label = new JLabel("Select Task: ");
         JPanel task_info = new JPanel();
         task_info.add(task_info_label);
-        String[] taskNames = {"Task", "Task2"};
-        task_combo_box = new JComboBox<>(taskNames);
+        task_combo_box = new JComboBox<>(view_model.getTaskNamesArray());
         task_info.add(task_combo_box);
         this.add(task_info);
 
         JLabel tag_info_label = new JLabel("Select Tags: ");
         JPanel tag_info = new JPanel();
         tag_info.add(tag_info_label);
-        String[] tagNames = {"tag1", "tag2", "etc"};
+        String[] tagNames = view_model.getTagNamesArray();
         for(String tagName: tagNames){
             tag_combo_box.addItem(tagName);
         }
@@ -137,17 +139,24 @@ public class ScheduleEventScreen extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent evt) {
         System.out.println("Click " + evt.getActionCommand());
 
-        try {
-            ScheduleEventResponseModel responseModel = scheduleEventController.scheduleEvent(
-                    start_time.getDateTimePermissive(),
-                    end_time.getDateTimePermissive(),
-                    task_combo_box.getItemAt(task_combo_box.getSelectedIndex()),
-                    eventName.getText(),
-                    List.of(new String[]{"placeholder",})
-            );
-            JOptionPane.showMessageDialog(this, responseModel.getEventName() + " created.");
-        } catch (Exception e){
-            JOptionPane.showMessageDialog(this, e.getMessage());
-        }
+        switch(evt.getActionCommand()){
+            case "Schedule": {
+                try {
+                    ScheduleEventResponseModel responseModel = scheduleEventController.scheduleEvent(
+                            start_time.getDateTimePermissive(),
+                            end_time.getDateTimePermissive(),
+                            task_combo_box.getItemAt(task_combo_box.getSelectedIndex()),
+                            eventName.getText(),
+                            List.of(new String[]{"placeholder",})
+                    );
+                    JOptionPane.showMessageDialog(this, responseModel.getEventName() + " created.");
+                } catch (Exception e){
+                    JOptionPane.showMessageDialog(this, e.getMessage());
+                }
+            }
+            case "Cancel": {
+
+            }
+        };
     }
 }
