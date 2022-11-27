@@ -13,14 +13,14 @@ public class TimerInputData {
 
     /**
      * Stores Input string that depends on the user’s input
-     * (Input_string = “start” , “pause” , “end”)
+     * Input string like start, pause, end
      */
     private String userCommand;
 
     //constructor
     /**
      * Constructs TimerInputData object given the input duration
-     * @param inputDuration The duration for the Timer (how long of a Timer session do we want)
+     * @param inputDuration The duration for the Timer, how long of a Timer session do we want
      */
     TimerInputData(Duration inputDuration){
         this.inputDurationOfTimer = inputDuration;
@@ -29,8 +29,8 @@ public class TimerInputData {
     //constructor 2
     /**
      * Constructs TimerInputData object given the input duration
-     * @param inputDuration The duration for the Timer (how long of a Timer session do we want)
-     * @param userCommand Stores Input string that depends on the user’s input (Input_string = “start” , “pause” , “end”)
+     * @param inputDuration The duration for the Timer, how long of a Timer session do we want
+     * @param userCommand Stores Input string that depends on the user input, Input string like start, pause, end
      */
     TimerInputData(Duration inputDuration, String userCommand){
         this.inputDurationOfTimer = inputDuration;
@@ -39,7 +39,7 @@ public class TimerInputData {
 
     /**
      * Gets the startTime of the Timer
-     * @return startTime of the Timer (LocalDateTime when the timer was started)
+     * @return startTime of the Timer, LocalDateTime when the timer was started
      */
     Duration getInputDurationOfTimer(){
         return this.inputDurationOfTimer;
@@ -47,7 +47,7 @@ public class TimerInputData {
 
     /**
      * Gets the startTime of the Timer
-     * @return startTime of the Timer (LocalDateTime when the timer was started)
+     * @return startTime of the Timer, LocalDateTime when the timer was started
      */
     String getUserCommand(){
         return this.userCommand;
