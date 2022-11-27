@@ -36,6 +36,7 @@ public class MessageTest {
 
         //assertion
         assertEquals("Kerensky", temp2.getAuthor());
+        assertEquals("Kerensky", temp.getAuthor());
     }
 
     @Test

@@ -1,9 +1,11 @@
 package entities;
 
 import java.util.ArrayList;
+import java.io.Serializable;
+import java.util.List;
 
-public class ChatRoom {
-    ArrayList<Message> messages;
+public class ChatRoom implements Serializable{
+    List<Message> messages;
 
     public ChatRoom(){
         this.messages = new ArrayList<>();
@@ -22,7 +24,18 @@ public class ChatRoom {
         this.messages.add(message);
     }
 
-    public ArrayList<Message> GetMessages(){
+    public List<Message> GetMessages(){
         return this.messages;
+    }
+
+    public List<Message> GetMessages(int number, int index){
+        List<Message> return_list= new ArrayList<Message>();
+        int len = this.messages.size();
+        for(int i = index + 1; i <= number; i++){
+            if(len - i >= 0) {
+                return_list.add(this.messages.get(len - i));
+            }
+        }
+        return return_list;
     }
 }
