@@ -14,6 +14,7 @@ public class Timer {
      * Stores starting Time of the Timer
      */
 
+
     Duration startDuration;
     /**
      * Stores starting Duration of the Timer
@@ -42,7 +43,7 @@ public class Timer {
 // constructor
     /**
      * Constructs a Timer given the starting duration
-     * @param duration The duration for the Timer (how long of a Timer session do we want)
+     * @param duration The duration for the Timer, how long of a Timer session do we want
      */
     public Timer(Duration duration) {
 
@@ -60,20 +61,20 @@ public class Timer {
 // getters
     /**
      * Gets the startTime of the Timer
-     * @return startTime of the Timer (LocalDateTime when the timer was started)
+     * @return startTime of the Timer, LocalDateTime when the timer was started
      */
     public LocalDateTime getStartTime() {return this.startTime; }
 
 
     /**
-     * Gets the startDuration of the Timer (Duration for which user wants to run the timer)
+     * Gets the startDuration of the Timer, Duration for which user wants to run the timer
      * @return startDuration of the Timer
      */
     public Duration getStartDuration() {return this.startDuration; }
 
 
     /**
-     * Gets the remainingDuration of the Timer (Remaining duration before the Timer runs out)
+     * Gets the remainingDuration of the Timer, Remaining duration before the Timer runs out
      * @return remainingDuration of the Timer
      */
     public Duration getRemainingDuration() {return this.remainingDuration; }
