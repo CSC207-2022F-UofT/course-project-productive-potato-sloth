@@ -1,4 +1,6 @@
 package useCases.LoginPage;
 
-public class LoginInputBoundary {
+public interface LoginInputBoundary {
+    LoginResponseModel create(CreateAccountRequestModel requestModel);
+
 }

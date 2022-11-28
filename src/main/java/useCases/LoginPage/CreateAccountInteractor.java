@@ -1,11 +1,8 @@
 package useCases.LoginPage;
 
+import entities.User;
 import gateways.UserDatabaseGateway;
-import useCases.CreateUser.CreateUserData;
-import useCases.LoginPage.CreateAccountInputBoundary;
-import useCases.LoginPage.CreateAccountPresenter;
-import useCases.LoginPage.CreateAccountRequestModel;
-import useCases.LoginPage.CreateAccountResponseModel;
+
 
 public abstract class CreateAccountInteractor implements CreateAccountInputBoundary {
 
@@ -19,12 +16,13 @@ public abstract class CreateAccountInteractor implements CreateAccountInputBound
         this.userPresenter = userPresenter;
     }
 
-    public CreateAccountResponseModel create(CreateAccountRequestModel requestModel, String username, String password) {
+    public CreateAccountResponseModel create(CreateAccountRequestModel requestModel) {
 
-                if (gateway.get(username) != null) {
+                if (gateway.get(requestModel.getUsername()) != null) {
                         return userPresenter.prepareFailureView("Username already exists.");
                 } else {
-                        gateway.insert(CreateUserData.createUser(username, password));
+                        User user = new User(requestModel.getUsername(), requestModel.getPassword());
+                        gateway.insert(user);
                         return userPresenter.prepareSuccessView("User is successfully created.");
                 }
       }

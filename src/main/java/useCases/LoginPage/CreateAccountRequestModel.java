@@ -18,7 +18,7 @@ public class CreateAccountRequestModel {
         return username;
     }
 
-    public void getPassword(String password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 

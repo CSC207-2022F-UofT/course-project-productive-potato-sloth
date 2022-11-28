@@ -1,4 +1,6 @@
 package useCases.LoginPage;
 
-public class LoginPresenter {
+public interface LoginPresenter {
+    LoginResponseModel prepareSuccessView(String success);
+    LoginResponseModel prepareFailureView(String error);
 }

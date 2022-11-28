@@ -24,6 +24,7 @@ public class User {
     public User(String username, String password){
         this.username = username;
         this.password = password;
+
     }
 
     /**
@@ -59,6 +60,8 @@ public class User {
     public boolean checkCredentia(User user) {
         return this.password.equals(user.password);
     }
+
+    public String getPassword() {return this.password;}
 
     /**
      * Adds a tag to this User
