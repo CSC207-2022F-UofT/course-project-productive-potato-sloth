@@ -24,7 +24,12 @@ public class User {
     public User(String username, String password){
         this.username = username;
         this.password = password;
-
+        this.tags = new ArrayList<Tag>();
+        this.events = new ArrayList<Event>();
+        this.tasks = new ArrayList<Task>();
+        this.timers = new ArrayList<Timer>();
+//        this.incomingInvitations = new ArrayList<Invitation>();
+//        this.outgoingInvitations = new ArrayList<Invitiation>();
     }
 
     /**
