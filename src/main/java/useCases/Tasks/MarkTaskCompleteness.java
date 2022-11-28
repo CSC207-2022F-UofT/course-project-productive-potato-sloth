@@ -1,7 +1,7 @@
 package useCases.Tasks;
 
 import entities.Task;
-import gateways.Tasks.TaskDatbaseGateway;
+import gateways.Tasks.TaskDataAccessInterface;
 import gateways.Tasks.TaskRequestModel;
 import gateways.Tasks.TaskResponseModel;
 
@@ -10,24 +10,24 @@ import gateways.Tasks.TaskResponseModel;
  */
 public class MarkTaskCompleteness implements MarkTaskCompletenessInputBoundary {
 
-    private final TaskDatbaseGateway taskDatbaseGateway;
+    private final TaskDataAccessInterface taskDatabaseGateway;
 
-    public MarkTaskCompleteness(TaskDatbaseGateway taskDatbaseGateway) {
-        this.taskDatbaseGateway = taskDatbaseGateway;
+    public MarkTaskCompleteness(TaskDataAccessInterface taskDatabaseGateway) {
+        this.taskDatabaseGateway = taskDatabaseGateway;
     }
 
 
     @Override
     public TaskResponseModel setCompleteness(TaskRequestModel taskRequestModel) {
-        Task task = taskDatbaseGateway.get(taskRequestModel.getName());
+        Task task = taskDatabaseGateway.get(taskRequestModel.getName());
         if (taskRequestModel.getCompleted()) {
             task.setCompleted();
-            taskDatbaseGateway.update(task);
+            taskDatabaseGateway.update(task);
             return new TaskResponseModel(true, "Task completed!");
 
         } else {
             task.setIncompleted();
-            taskDatbaseGateway.update(task);
+            taskDatabaseGateway.update(task);
             return new TaskResponseModel(true, "Task incomplete!");
         }
     }

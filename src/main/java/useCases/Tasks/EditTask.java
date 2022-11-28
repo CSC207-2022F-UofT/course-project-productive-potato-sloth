@@ -1,7 +1,7 @@
 package useCases.Tasks;
 
 import entities.Task;
-import gateways.Tasks.TaskDatbaseGateway;
+import gateways.Tasks.TaskDataAccessInterface;
 import gateways.Tasks.TaskRequestModel;
 import gateways.Tasks.TaskResponseModel;
 
@@ -10,26 +10,26 @@ import gateways.Tasks.TaskResponseModel;
  */
 public class EditTask implements EditTaskInputBoundary {
 
-    private final TaskDatbaseGateway taskDatbaseGateway;
+    private final TaskDataAccessInterface taskDatabaseGateway;
 
-    public EditTask(TaskDatbaseGateway taskDatbaseGateway) {
-        this.taskDatbaseGateway = taskDatbaseGateway;
+    public EditTask(TaskDataAccessInterface taskDatabaseGateway) {
+        this.taskDatabaseGateway = taskDatabaseGateway;
     }
 
 
     @Override
     public TaskResponseModel editName(TaskRequestModel taskRequestModel) {
-        Task task = taskDatbaseGateway.get(taskRequestModel.getName());
+        Task task = taskDatabaseGateway.get(taskRequestModel.getName());
         task.setName(taskRequestModel.getName());
-        taskDatbaseGateway.update(task);
+        taskDatabaseGateway.update(task);
         return new TaskResponseModel(true, "Name changed successfully");
     }
 
     @Override
     public TaskResponseModel editDescription(TaskRequestModel taskRequestModel) {
-        Task task = taskDatbaseGateway.get(taskRequestModel.getName());
+        Task task = taskDatabaseGateway.get(taskRequestModel.getName());
         task.setDescription(taskRequestModel.getDescription());
-        taskDatbaseGateway.update(task);
+        taskDatabaseGateway.update(task);
         return new TaskResponseModel(true, "Description changed successfully");
     }
 }

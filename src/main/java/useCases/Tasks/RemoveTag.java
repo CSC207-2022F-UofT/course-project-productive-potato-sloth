@@ -1,7 +1,7 @@
 package useCases.Tasks;
 
 import entities.Task;
-import gateways.Tasks.TaskDatbaseGateway;
+import gateways.Tasks.TaskDataAccessInterface;
 import gateways.Tasks.TaskRequestModel;
 import gateways.Tasks.TaskResponseModel;
 
@@ -10,10 +10,10 @@ import gateways.Tasks.TaskResponseModel;
  */
 public class RemoveTag implements RemoveTagInputBoundary {
 
-    private final TaskDatbaseGateway taskDatbaseGateway;
+    private final TaskDataAccessInterface taskDatabaseGateway;
 
-    public RemoveTag(TaskDatbaseGateway taskDatbaseGateway) {
-        this.taskDatbaseGateway = taskDatbaseGateway;
+    public RemoveTag(TaskDataAccessInterface taskDatabaseGateway) {
+        this.taskDatabaseGateway = taskDatabaseGateway;
     }
 
     /**
@@ -23,9 +23,9 @@ public class RemoveTag implements RemoveTagInputBoundary {
      */
     @Override
     public TaskResponseModel removeTag(TaskRequestModel taskRequestModel) {
-        Task task = taskDatbaseGateway.get(taskRequestModel.getName());
+        Task task = taskDatabaseGateway.get(taskRequestModel.getName());
         task.removeTag(taskRequestModel.getTag());
-        taskDatbaseGateway.update(task);
+        taskDatabaseGateway.update(task);
         return new TaskResponseModel(true, "Tag removed successfully");
     }
 

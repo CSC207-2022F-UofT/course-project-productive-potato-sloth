@@ -1,6 +1,7 @@
 package useCases.Tags;
 
 import entities.Tag;
+import gateways.Tags.TagDataAccessInterface;
 import gateways.Tags.TagDatabaseGateway;
 import gateways.Tags.TagRequestModel;
 import gateways.Tags.TagResponseModel;
@@ -10,9 +11,9 @@ import gateways.Tags.TagResponseModel;
  */
 public class DeleteTag implements DeleteTagInputBoundary {
 
-    private final TagDatabaseGateway databaseGateway;
+    private final TagDataAccessInterface databaseGateway;
 
-    public DeleteTag(TagDatabaseGateway tagDatabaseGateway/*, TagPreseter tagPresenter */) {
+    public DeleteTag(TagDataAccessInterface tagDatabaseGateway/*, TagPreseter tagPresenter */) {
         this.databaseGateway = tagDatabaseGateway;
 //        this.tagPresenter = tagPresenter;
     }

@@ -1,7 +1,7 @@
 package useCases.Tasks;
 
 import entities.Task;
-import gateways.Tasks.TaskDatbaseGateway;
+import gateways.Tasks.TaskDataAccessInterface;
 import gateways.Tasks.TaskRequestModel;
 import gateways.Tasks.TaskResponseModel;
 
@@ -10,16 +10,16 @@ import gateways.Tasks.TaskResponseModel;
  */
 public class RemoveTask implements RemoveTaskInputBoundary {
 
-    private final TaskDatbaseGateway taskDatbaseGateway;
+    private final TaskDataAccessInterface taskDatabaseGateway;
 
-    public RemoveTask(TaskDatbaseGateway taskDatbaseGateway) {
-        this.taskDatbaseGateway = taskDatbaseGateway;
+    public RemoveTask(TaskDataAccessInterface taskDatabaseGateway) {
+        this.taskDatabaseGateway = taskDatabaseGateway;
     }
 
     @Override
     public TaskResponseModel removeTask(TaskRequestModel taskRequestModel) {
-        Task task = taskDatbaseGateway.get(taskRequestModel.getName());
-        taskDatbaseGateway.delete(task);
+        Task task = taskDatabaseGateway.get(taskRequestModel.getName());
+        taskDatabaseGateway.delete(task);
         return new TaskResponseModel(true, "Task removed successfully");
     }
 }

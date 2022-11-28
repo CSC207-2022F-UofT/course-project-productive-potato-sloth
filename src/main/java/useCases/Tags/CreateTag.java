@@ -2,7 +2,7 @@ package useCases.Tags;
 
 import entities.Tag;
 import entities.TagFactory;
-import gateways.Tags.TagDatabaseGateway;
+import gateways.Tags.TagDataAccessInterface;
 import gateways.Tags.TagRequestModel;
 import gateways.Tags.TagResponseModel;
 
@@ -12,11 +12,11 @@ import gateways.Tags.TagResponseModel;
  */
 public class CreateTag implements CreateTagInputBoundary {
 
-    final TagDatabaseGateway databaseGateway;
+    final TagDataAccessInterface databaseGateway;
     final TagFactory tagFactory;
 
 
-    public CreateTag(TagDatabaseGateway tagDatabaseGateway, TagFactory tagFactory /*, TagPreseter tagPresenter */) {
+    public CreateTag(TagDataAccessInterface tagDatabaseGateway, TagFactory tagFactory /*, TagPreseter tagPresenter */) {
         this.databaseGateway = tagDatabaseGateway;
         this.tagFactory = tagFactory;
 //        this.tagPresenter = tagPresenter;

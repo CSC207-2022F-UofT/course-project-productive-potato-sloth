@@ -1,6 +1,7 @@
 package useCases.Tags;
 
 import entities.Tag;
+import gateways.Tags.TagDataAccessInterface;
 import gateways.Tags.TagDatabaseGateway;
 import gateways.Tags.TagRequestModel;
 import gateways.Tags.TagResponseModel;
@@ -10,12 +11,12 @@ import gateways.Tags.TagResponseModel;
  */
 public class EditTag implements EditTagInputBoundary {
 
-    TagDatabaseGateway databaseGateway;
+    TagDataAccessInterface databaseGateway;
 
     /**
      * Instantiates a EditTag use case given a tag
      */
-    public EditTag(TagDatabaseGateway tagDatabaseGateway) {
+    public EditTag(TagDataAccessInterface tagDatabaseGateway) {
         this.databaseGateway = tagDatabaseGateway;
     }
 

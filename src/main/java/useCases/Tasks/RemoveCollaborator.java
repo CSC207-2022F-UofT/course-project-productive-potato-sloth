@@ -1,7 +1,7 @@
 package useCases.Tasks;
 
 import entities.Task;
-import gateways.Tasks.TaskDatbaseGateway;
+import gateways.Tasks.TaskDataAccessInterface;
 import gateways.Tasks.TaskRequestModel;
 import gateways.Tasks.TaskResponseModel;
 
@@ -10,17 +10,17 @@ import gateways.Tasks.TaskResponseModel;
  */
 public class RemoveCollaborator implements RemoveCollaboratorInputBoundary {
 
-    private final TaskDatbaseGateway taskDatbaseGateway;
+    private final TaskDataAccessInterface taskDatabaseGateway;
 
-    public RemoveCollaborator(TaskDatbaseGateway taskDatbaseGateway) {
-        this.taskDatbaseGateway = taskDatbaseGateway;
+    public RemoveCollaborator(TaskDataAccessInterface taskDatabaseGateway) {
+        this.taskDatabaseGateway = taskDatabaseGateway;
     }
 
     @Override
     public TaskResponseModel removeCollaborator(TaskRequestModel taskRequestModel) {
-        Task task = taskDatbaseGateway.get(taskRequestModel.getName());
+        Task task = taskDatabaseGateway.get(taskRequestModel.getName());
         task.removeCollaborator(taskRequestModel.getCollaborator());
-        taskDatbaseGateway.update(task);
+        taskDatabaseGateway.update(task);
         return new TaskResponseModel(true, "Collaborated removed successfully");
     }
 }

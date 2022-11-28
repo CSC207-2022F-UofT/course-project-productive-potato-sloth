@@ -1,7 +1,7 @@
 package useCases.Tasks;
 
 import entities.Task;
-import gateways.Tasks.TaskDatbaseGateway;
+import gateways.Tasks.TaskDataAccessInterface;
 import gateways.Tasks.TaskRequestModel;
 import gateways.Tasks.TaskResponseModel;
 
@@ -10,9 +10,9 @@ import gateways.Tasks.TaskResponseModel;
  */
 public class AddCollaborator implements AddCollaboratorInputBoundary {
 
-    private final TaskDatbaseGateway taskDatbaseGateway;
+    private final TaskDataAccessInterface taskDatbaseGateway;
 
-    public AddCollaborator(TaskDatbaseGateway taskDatbaseGateway) {
+    public AddCollaborator(TaskDataAccessInterface taskDatbaseGateway) {
         this.taskDatbaseGateway = taskDatbaseGateway;
     }
 

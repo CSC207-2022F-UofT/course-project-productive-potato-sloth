@@ -1,7 +1,7 @@
 package useCases.Tasks;
 
 import entities.Task;
-import gateways.Tasks.TaskDatbaseGateway;
+import gateways.Tasks.TaskDataAccessInterface;
 import gateways.Tasks.TaskRequestModel;
 import gateways.Tasks.TaskResponseModel;
 
@@ -10,10 +10,10 @@ import gateways.Tasks.TaskResponseModel;
  */
 public class AddTag implements AddTagInputBoundary {
 
-    private final TaskDatbaseGateway taskDatbaseGateway;
+    private final TaskDataAccessInterface taskDatabaseGateway;
 
-    public AddTag(TaskDatbaseGateway taskDatbaseGateway) {
-        this.taskDatbaseGateway = taskDatbaseGateway;
+    public AddTag(TaskDataAccessInterface taskDatabaseGateway) {
+        this.taskDatabaseGateway = taskDatabaseGateway;
     }
 
     /**
@@ -23,9 +23,9 @@ public class AddTag implements AddTagInputBoundary {
      */
     @Override
     public TaskResponseModel addTag(TaskRequestModel taskRequestModel) {
-        Task task = taskDatbaseGateway.get(taskRequestModel.getName());
+        Task task = taskDatabaseGateway.get(taskRequestModel.getName());
         task.addTag(taskRequestModel.getTag());
-        taskDatbaseGateway.update(task);
+        taskDatabaseGateway.update(task);
         return new TaskResponseModel(true, "Tag added successfully");
     }
 }
