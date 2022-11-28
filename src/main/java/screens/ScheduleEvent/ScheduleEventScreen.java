@@ -4,19 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.lang.reflect.Array;
-import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.github.lgooddatepicker.components.DateTimePicker;
-import screens.CheckboxListItem;
-import screens.CheckboxListRenderer;
-import screens.LabelTextPanel;
-import services.CurrentUserService;
-import useCases.ScheduleEvent.ScheduleEventInputBoundary;
+import screens.*;
 
 
 // From Paul's UserRegisterScreen
@@ -31,16 +21,7 @@ public class ScheduleEventScreen extends JPanel implements ActionListener {
 
     DateTimePicker end_time = new DateTimePicker();
 
-    /**
-     * The password
-     */
-    JPasswordField password = new JPasswordField(15);
-    /**
-     * The second password to make sure the user understands
-     */
-    JPasswordField repeatPassword = new JPasswordField(15);
-
-    JComboBox<String> tag_combo_box = new JComboBox<String>();
+    JList<String> tagSelectionList = new JList<>();
 
     JComboBox<String> task_combo_box;
 
@@ -83,52 +64,28 @@ public class ScheduleEventScreen extends JPanel implements ActionListener {
         task_info.add(task_combo_box);
         this.add(task_info);
 
+        JPanel tag_panel = new JPanel();
         JLabel tag_info_label = new JLabel("Select Tags: ");
-        JPanel tag_info = new JPanel();
-        tag_info.add(tag_info_label);
-        String[] tagNames = view_model.getTagNamesArray();
-        for(String tagName: tagNames){
-            tag_combo_box.addItem(tagName);
+        tag_panel.add(tag_info_label);
+
+        DefaultListModel<String> tagSelectionListModel = new DefaultListModel<>();
+        for(String tagName: view_model.getTagNamesArray()){
+            tagSelectionListModel.addElement(tagName);
         }
-        tag_info.add(tag_combo_box);
-        this.add(tag_info);
+        ListSelectionDocument listSelectionDocument = new ListSelectionDocument();
+        tagSelectionList.setCellRenderer(new CheckboxListCellRenderer<>());
+        tagSelectionList.setModel(tagSelectionListModel);
+        tagSelectionList.addListSelectionListener(listSelectionDocument);
+        tag_panel.add(tagSelectionList);
 
-        CheckboxListItem[] checkBoxes = new CheckboxListItem[]{};
-        CheckboxListItem checkBox = new CheckboxListItem("Hello");
-        JList<CheckboxListItem> list = new JList<>(new CheckboxListItem[]{});
-        list.setCellRenderer(new CheckboxListRenderer());
-        list.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent event) {
-                JList<CheckboxListItem> list =
-                        (JList<CheckboxListItem>) event.getSource();
-
-                // Get index of item clicked
-
-                int index = list.locationToIndex(event.getPoint());
-                CheckboxListItem item = (CheckboxListItem) list.getModel()
-                        .getElementAt(index);
-
-                // Toggle selected state
-
-                item.setSelected(!item.isSelected());
-
-                // Repaint cell
-
-                list.repaint(list.getCellBounds(index, index));
-            }
-        });
-        this.add(list);
-
+        this.add(tag_panel);
 
         JButton scheduleButton = new JButton("Schedule");
-        JButton cancel = new JButton("Cancel");
         JPanel buttons = new JPanel();
         buttons.add(scheduleButton);
-        buttons.add(cancel);
         this.add(buttons);
 
         scheduleButton.addActionListener(this);
-        cancel.addActionListener(this);
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     }
@@ -147,9 +104,15 @@ public class ScheduleEventScreen extends JPanel implements ActionListener {
                             end_time.getDateTimePermissive(),
                             task_combo_box.getItemAt(task_combo_box.getSelectedIndex()),
                             eventName.getText(),
-                            List.of(new String[]{"placeholder",})
+                            tagSelectionList.getSelectedValuesList()
                     );
-                    JOptionPane.showMessageDialog(this, responseModel.getEventName() + " created.");
+                    JOptionPane.showMessageDialog(this, "Event with name "
+                            + "\"" + responseModel.getEventName() + "\""
+                            + " created with start time " + start_time.getDateTimePermissive()
+                            + " end time " + end_time.getDateTimePermissive()
+                            + ", tagged with " + String.join(", ", tagSelectionList.getSelectedValuesList())
+                            + " and linked to " + task_combo_box.getItemAt(task_combo_box.getSelectedIndex())
+                            + ".");
                 } catch (Exception e){
                     JOptionPane.showMessageDialog(this, e.getMessage());
                 }
@@ -157,6 +120,6 @@ public class ScheduleEventScreen extends JPanel implements ActionListener {
             case "Cancel": {
 
             }
-        };
+        }
     }
 }
