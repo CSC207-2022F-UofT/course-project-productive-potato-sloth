@@ -10,14 +10,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TaskDatbaseGateway extends DatabaseGateway implements TaskDataAccessInterface {
+public class TaskDatabaseGateway extends DatabaseGateway implements TaskDataAccessInterface {
 
 
     private final CurrentUserService currentUserService;
     private UserDatabaseGateway userDatabaseGateway;
     private List<User> userList;
     private User currentUser;
-    private ArrayList<Task> taskList;
+    private List<Task> taskList;
 
     /**
      * Instantiating DatabaseGateway with a relative path will store the absolute path to the respective database.
@@ -26,7 +26,7 @@ public class TaskDatbaseGateway extends DatabaseGateway implements TaskDataAcces
      *
      * @throws IOException Throws exception if encountering failed or interrupted IO exceptions
      */
-    public TaskDatbaseGateway(CurrentUserService currentUserService, UserDatabaseGateway userDatabaseGateway) throws IOException {
+    public TaskDatabaseGateway(CurrentUserService currentUserService, UserDatabaseGateway userDatabaseGateway) throws IOException {
         super(userDatabaseGateway.getAbsoluteFilepath());
         this.currentUserService = currentUserService;
         this.userDatabaseGateway = userDatabaseGateway;

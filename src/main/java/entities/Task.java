@@ -2,11 +2,12 @@ package entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * An entity class representing a Task
  */
-public class Task implements Serializable {
+public class Task {
 
     /**
      * The User that this Task belongs to
@@ -30,17 +31,17 @@ public class Task implements Serializable {
     /**
      * A list of the associated tags of this Task
      */
-    ArrayList<Tag> tags;
+    List<Tag> tags;
 
     /**
      * A list of the associated events of this Task
      */
-    ArrayList<Event> events;
+    List<Event> events;
 
     /**
      * A list of the collaborators of this Task
      */
-    ArrayList<User> collaborators;
+    List<User> collaborators;
 
     /**
      * The ChatRoom associated with this Task
@@ -130,7 +131,7 @@ public class Task implements Serializable {
      *
      * @return tags A list of tags associated with this Task
      */
-    public ArrayList<Tag> getTags() {
+    public List<Tag> getTags() {
         return this.tags;
     }
 
@@ -189,7 +190,7 @@ public class Task implements Serializable {
      *
      * @return events A list of events associated with this Task
      */
-    public ArrayList<Event> getEvents() {
+    public List<Event> getEvents() {
         return this.events;
     }
 
@@ -217,7 +218,7 @@ public class Task implements Serializable {
      *
      * @return List of the collaborators of this task
      */
-    public ArrayList<User> getCollaborator(User collaborator) {
+    public List<User> getCollaborator(User collaborator) {
         return this.collaborators;
     }
 
