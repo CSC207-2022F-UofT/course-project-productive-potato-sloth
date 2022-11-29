@@ -1,7 +1,6 @@
 package entities;
 
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.List;
 
 /*
@@ -46,6 +45,14 @@ public class Event {
 
     public void setStartTime(LocalDateTime start_time) {
         this.start_time = start_time;
+    }
+
+    public List<Tag> getTags(){
+        return tags;
+    }
+
+    public void addTag(Tag tag){
+        tags.add(tag);
     }
 
     private List<Tag> tags;

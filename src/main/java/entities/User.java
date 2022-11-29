@@ -49,6 +49,16 @@ public class User implements Serializable {
      */
     boolean calendarView;
 
+    public User(String username, String password){
+        this.username = username;
+        this.password = password;
+        this.tasks = new ArrayList<>();
+        this.tags = new ArrayList<>();
+        this.events = new ArrayList<>();
+        this.incomingInvitations = new ArrayList<>();
+        this.outgoingInvitations = new ArrayList<>();
+    }
+
     /**
      * Adds a task to this User
      *
@@ -56,6 +66,10 @@ public class User implements Serializable {
      */
     public void addTask(Task task) {
         this.tasks.add(task);
+    }
+
+    public void addTag(Tag tag){
+        this.tags.add(tag);
     }
 
 //    /**
