@@ -31,10 +31,15 @@ public class ChatRoom implements Serializable{
     public List<Message> GetMessages(int number, int index){
         List<Message> return_list= new ArrayList<Message>();
         int len = this.messages.size();
-        for(int i = index + 1; i <= number; i++){
-            if(len - i >= 0) {
-                return_list.add(this.messages.get(len - i));
+        if(number > 0) {
+            for (int i = index + 1; i <= number; i++) {
+                if (len - i >= 0) {
+                    return_list.add(this.messages.get(len - i));
+                }
             }
+        }
+        else{
+            //TODO: implement loop for reversing; my brain's fried tonight
         }
         return return_list;
     }

@@ -39,7 +39,7 @@ public class MainUI {
         NextButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-
+            
             }
         });
         PrevButton.addActionListener(new ActionListener() {

@@ -5,24 +5,28 @@ import entities.User;
 import entities.ChatRoom;
 import entities.Message;
 import controllers.UpdateViewPresenterInterface;
+import useCases.responseModels.MessageResponseModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChatRoomInteractor {
+public class ChatRoomInteractor implements ChatRoomInteractorInterface{
     ChatRoom room;
+    int messageIndex;
     UpdateViewPresenterInterface presenter;
-
     public ChatRoomInteractor(ChatRoom room){
         this.room = room;
+        this.messageIndex = 0;
         this.presenter = new UpdateViewPresenter();
     }
+    @Override
     public void sendMessage(String message, User user){
         Message temp_message = new Message(message, user);
         this.room.AddMessage(temp_message);
-        List<Message> temp_list = room.GetMessages(3, 0);
+        List<Message> temp_list = this.room.GetMessages(3, 0);
         List out_list = extractInfo(temp_list);
-        presenter.updateView((List) out_list.get(0), (List) out_list.get(1), (List) out_list.get(2));
+        presenter.updateView(out_list);
+        this.messageIndex = 0;
     }
     /*Since Entities cannot be directly passed into Presenters, below is a helper
     class that takes in a List of Messages and returns a List, in which the first element is the list
@@ -30,20 +34,19 @@ public class ChatRoomInteractor {
     a list of timestamps.
      */
     private List extractInfo(List<Message> input_list){
-        List<List> out_list = new ArrayList<>();
-        List str_list = new ArrayList();
-        List user_list = new ArrayList();
-        List time_list = new ArrayList();
-        out_list.add(str_list);
-        out_list.add(user_list);
-        out_list.add(time_list);
+        List<MessageResponseModel> out_list = new ArrayList<>();
         for(Message i:input_list){
-            str_list.add(i.toString());
-            user_list.add(i.getAuthor());
-            time_list.add(i.getDateTime());
+            out_list.add(new MessageResponseModel(i));
         }
         return out_list;
     }
+    public List<MessageResponseModel> updateView(){
+        List<Message> temp_list = this.room.GetMessages(3, messageIndex);
+        List out_list = extractInfo(temp_list);
+        presenter.updateView(out_list);
+        return out_list;
+    }
+    @Override
     public void initializeView(){
         //InitializeViewInterface();--this is supposed th initialize the window with text fields and the like.
         //List temp_list = room.GetMessages(3);
