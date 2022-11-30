@@ -7,7 +7,7 @@ public class UpdateViewController {
     public UpdateViewController(ChatRoomInteractor interactor){
         this.interactor = interactor;
     }
-    public void UpdateViewController(String message, User user){
-        this.interactor.sendMessage(message, user);
+    public void UpdateViewController(){
+        this.interactor.updateView();
     }
 }

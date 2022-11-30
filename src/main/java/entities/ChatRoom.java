@@ -3,6 +3,7 @@ package entities;
 import java.util.ArrayList;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Collections;
 
 public class ChatRoom implements Serializable{
     List<Message> messages;
@@ -34,12 +35,17 @@ public class ChatRoom implements Serializable{
         if(number > 0) {
             for (int i = index + 1; i <= number; i++) {
                 if (len - i >= 0) {
-                    return_list.add(this.messages.get(len - i));
+                    return_list.add(this.messages.get(len-index - i));
                 }
             }
         }
         else{
-            //TODO: implement loop for reversing; my brain's fried tonight
+            for(int i = 0; i < -(number); i++){
+                if(0 <= len - index + i && len - index + i < len){
+                    return_list.add(this.messages.get(len-index+i));
+                }
+            }
+            Collections.reverse(return_list);
         }
         return return_list;
     }
