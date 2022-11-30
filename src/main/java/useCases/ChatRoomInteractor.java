@@ -44,6 +44,7 @@ public class ChatRoomInteractor implements ChatRoomInteractorInterface{
         List<Message> temp_list = this.room.GetMessages(3, messageIndex);
         List out_list = extractInfo(temp_list);
         presenter.updateView(out_list);
+        messageIndex -= 3;
         return out_list;
     }
     @Override

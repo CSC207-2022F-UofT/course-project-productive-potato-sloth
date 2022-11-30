@@ -29,6 +29,14 @@ public class ChatRoom implements Serializable{
         return this.messages;
     }
 
+    /**
+     * Returns a List of Messages from old to new (i.e. oldest messages first).
+     *
+     * @param number: how many Messages to retrieve.
+     * @param index: where to start the retrieval process. Index 0 means starting from the last
+     *             (most recently added) message.
+     * @return a List of Messages.
+     */
     public List<Message> GetMessages(int number, int index){
         List<Message> return_list= new ArrayList<Message>();
         int len = this.messages.size();
@@ -38,6 +46,7 @@ public class ChatRoom implements Serializable{
                     return_list.add(this.messages.get(len-index - i));
                 }
             }
+            Collections.reverse(return_list);
         }
         else{
             for(int i = 0; i < -(number); i++){
@@ -45,7 +54,6 @@ public class ChatRoom implements Serializable{
                     return_list.add(this.messages.get(len-index+i));
                 }
             }
-            Collections.reverse(return_list);
         }
         return return_list;
     }
