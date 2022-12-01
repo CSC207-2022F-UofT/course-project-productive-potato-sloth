@@ -28,7 +28,8 @@ public class ChatRoomInteractor implements ChatRoomInteractorInterface{
         presenter.updateView(out_list);
         this.messageIndex = 0;
     }
-    /*Since Entities cannot be directly passed into Presenters, below is a helper
+    /**
+     * Since Entities cannot be directly passed into Presenters, below is a helper
     class that takes in a List of Messages and returns a List, in which the first element is the list
     of Strings contained in the input messages the second is the list of usernames, and the third is
     a list of timestamps.
@@ -49,7 +50,7 @@ public class ChatRoomInteractor implements ChatRoomInteractorInterface{
     }
     @Override
     public void initializeView(){
-        //InitializeViewInterface();--this is supposed th initialize the window with text fields and the like.
+        //InitializeViewInterface();--this is supposed to initialize the window with text fields and the like.
         //List temp_list = room.GetMessages(3);
         //UpdateViewPresenterInterface.updateView(temp_list);
     }

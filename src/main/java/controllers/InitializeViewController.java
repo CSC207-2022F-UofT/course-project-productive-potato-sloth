@@ -1,18 +1,24 @@
 package controllers;
+import entities.ChatRoom;
+import entities.Task;
 import services.CurrentUserService;
 import entities.User;
+import useCases.ChatRoomInteractor;
 
 public class InitializeViewController {
-    public void InitializeViewController(){
+    public void InitializeViewController(char marker){
         //use the CurrentUserService to get the current user
         CurrentUserService service = new CurrentUserService();
         User current_user = service.getCurrentUser();
-        //get current Task from current User
-        //call interactor with current task's chatRoom
-        /*
-        The problem here is knowing which task is the current one being clicked. One possible solution is to
-        communicate with the controllers or get information from the adjacent Task area about which button is being
-        clicked, but I'll figure it out later.
-         */
+        Task current_task = current_user.getTasks().get((int)marker - 1);
+        ChatRoom room = current_task.getChatRoom();
+        //call interactor with current task's chatRoom; I wrote a new method within Task to do this.
+        //I don't know if calling Entities within a Controller breaks clean architecture or not.
+        ChatRoomInteractor interactor = new ChatRoomInteractor(room);
+        UpdateViewController viewController = new UpdateViewController(interactor);
+        SendMessageController messageController = new SendMessageController(interactor);
+        interactor.initializeView();
+        //then, call the initializeView method of the interactor, which initializes all the presenters.
+        //The presenter initializes the UI.
     }
 }

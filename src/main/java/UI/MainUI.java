@@ -91,23 +91,28 @@ public class MainUI {
      then the bottom part of the screen would be blank.
      */
     private List<List<JLabel>> responseSetUp(){
-        List<JLabel> panel3List = new ArrayList<>();
-        panel3List.add(this.Message3Display);
-        panel3List.add(this.Msg3UserDisp);
-        panel3List.add(this.Msg3TimeStamp);
-        List<JLabel> panel2List = new ArrayList<>();
-        panel2List.add(this.Message2Display);
-        panel2List.add(this.Msg2UserDisp);
-        panel2List.add(this.Msg2TimeStamp);
-        List<JLabel> panel1List = new ArrayList<>();
-        panel3List.add(this.Message1Display);
-        panel3List.add(this.Msg1UserDisp);
-        panel3List.add(this.Msg1TimeStamp);
-        List<List<JLabel>> panelList = new ArrayList<>();
-        panelList.add(panel1List);
-        panelList.add(panel2List);
-        panelList.add(panel3List);
-        return panelList;
+        if(this.organizer != null) {
+            return this.organizer;
+        }
+        else{
+            List<JLabel> panel3List = new ArrayList<>();
+            panel3List.add(this.Message3Display);
+            panel3List.add(this.Msg3UserDisp);
+            panel3List.add(this.Msg3TimeStamp);
+            List<JLabel> panel2List = new ArrayList<>();
+            panel2List.add(this.Message2Display);
+            panel2List.add(this.Msg2UserDisp);
+            panel2List.add(this.Msg2TimeStamp);
+            List<JLabel> panel1List = new ArrayList<>();
+            panel3List.add(this.Message1Display);
+            panel3List.add(this.Msg1UserDisp);
+            panel3List.add(this.Msg1TimeStamp);
+            List<List<JLabel>> panelList = new ArrayList<>();
+            panelList.add(panel1List);
+            panelList.add(panel2List);
+            panelList.add(panel3List);
+            return panelList;
+        }
     }
 }
 
