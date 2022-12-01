@@ -1,10 +1,10 @@
-package useCases.LoginPage;
+package useCases.CreateAccount;
 
-public class LoginResponseModel {
+public class CreateAccountResponseModel {
     private String username;
     private String password;
 
-    public LoginResponseModel(String username, String password) {
+    public CreateAccountResponseModel(String username, String password) {
         this.username = username;
         this.password = password;
     }

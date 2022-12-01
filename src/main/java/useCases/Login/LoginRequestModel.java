@@ -1,4 +1,4 @@
-package useCases.LoginPage;
+package useCases.Login;
 
 public class LoginRequestModel {
     private String username;

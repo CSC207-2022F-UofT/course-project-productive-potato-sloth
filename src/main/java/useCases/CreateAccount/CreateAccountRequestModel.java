@@ -1,4 +1,4 @@
-package useCases.LoginPage;
+package useCases.CreateAccount;
 
 public class CreateAccountRequestModel {
 

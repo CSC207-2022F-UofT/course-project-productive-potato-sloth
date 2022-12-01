@@ -1,4 +1,4 @@
-package useCases.LoginPage;
+package useCases.Login;
 
 import gateways.UserDatabaseGateway;
 import services.CurrentUserService;

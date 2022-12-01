@@ -1,0 +1,72 @@
+package screens.CreateAccount;
+
+import screens.LabelTextPanel;
+import useCases.CreateAccount.CreateAccountResponseModel;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class CreateAccountScreen extends JPanel implements ActionListener {
+    JTextField username = new JTextField(15);
+
+    JTextField password = new JTextField(15);
+
+    CreateAccountController accountController;
+
+
+    public CreateAccountScreen(CreateAccountController controller) {
+
+        this.accountController = controller;
+
+        JLabel title = new JLabel("Register Screen");
+        title.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        LabelTextPanel usernameInfo = new LabelTextPanel(
+                new JLabel("Enter username"), username);
+        LabelTextPanel passwordInfo = new LabelTextPanel(
+                new JLabel("Enter password"), password);
+
+        JButton createAccount = new JButton("Create Account");
+        JButton cancel = new JButton("Cancel");
+
+        JPanel buttons = new JPanel();
+        buttons.add(createAccount);
+        buttons.add(cancel);
+
+        createAccount.addActionListener(this);
+        cancel.addActionListener(this);
+
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+
+        this.add(title);
+        this.add(usernameInfo);
+        this.add(passwordInfo);
+        this.add(buttons);
+
+    }
+
+    /**
+     * React to a button click that results in evt.
+     */
+    public void actionPerformed(ActionEvent evt) {
+
+        switch (evt.getActionCommand()) {
+            case "Create Account": {
+                try {
+                    CreateAccountResponseModel responseModel = accountController.create(username.getText(),
+                            password.getText());
+                    JOptionPane.showMessageDialog(this, "User "
+                            + "\"" + responseModel.getUsername() + "\"" + " is created.");
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, e.getMessage());
+                }
+            }
+            case "Cancel": {
+
+            }
+        }
+
+    }
+}

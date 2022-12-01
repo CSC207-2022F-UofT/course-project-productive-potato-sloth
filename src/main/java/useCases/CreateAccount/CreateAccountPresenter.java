@@ -1,4 +1,4 @@
-package useCases.LoginPage;
+package useCases.CreateAccount;
 
 public interface CreateAccountPresenter {
     CreateAccountResponseModel prepareSuccessView(String success);
