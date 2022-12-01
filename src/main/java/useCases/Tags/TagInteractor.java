@@ -1,6 +1,7 @@
 package useCases.Tags;
 
 import entities.Tag;
+import entities.User;
 
 import java.awt.Color;
 
@@ -16,9 +17,9 @@ public class TagInteractor {
      * @param color The color of the tag
      * @return The new tag
      */
-    public static Tag createTag(String name, Color color) {
+    public static Tag createTag(String name, Color color, User user) {
         CreateTag createTag = new CreateTag();
-        return createTag.createTag(name, color);
+        return createTag.createTag(name, color, user);
     }
 
     /**

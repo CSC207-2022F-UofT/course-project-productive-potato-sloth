@@ -1,4 +1,3 @@
-
 package entities;
 
 import java.util.ArrayList;
@@ -35,17 +34,17 @@ public class Task {
     /**
      * A list of the associated events of this Task
      */
-//    ArrayList<Event> events;
+    ArrayList<Event> events;
 
     /**
      * A list of the collaborators of this Task
      */
-//    ArrayList<User> collaborators; User not yet implemented
+    ArrayList<User> collaborators;
 
     /**
      * The ChatRoom associated with this Task
      */
-//     ChatRoom chatRoom; ChatRoom not yet implemented
+    ChatRoom chatRoom;
 
     /**
      * Constructs a Task given the name of the new Task
@@ -165,56 +164,68 @@ public class Task {
         return this.completed;
     }
 
-    //    Event not yet implemented
-//    /**
-//     * Adds an event to this Task
-//     * @param tag The new tag to add
-//     */
-//    public void addEvent(Event event) {
-//        this.events.add(tag);
-//    }
-//
-//    /**
-//     * Removes an event from this Task
-//     * @param tag The new tag to add
-//     */
-//    public void removeEvent(Event event) {
-//        this.events.remove(tag);
-//    }
-//
-//    /**
-//     * Gets a list of events associated with this Task
-//     * @return events A list of events associated with this Task
-//     */
-//    public ArrayList<Tag> getEvents() {
-//        return this.events;
-//    }
-//
+    /**
+     * Adds an event to this Task
+     *
+     * @param event The new event to add
+     */
+    public void addEvent(Event event) {
+        this.events.add(event);
+    }
 
-    //    Collaborator not yet implemented
-//    /**
-//     * Adds a collaborator to this Task
-//     * @param collaborator The collaborator to add to this task
-//     */
-//    public void addCollaborator(User collaborator) {
-//        this.collaborators.add(collaborator);
-//    }
-//
-//    /**
-//     * Removes a collaborator to this Task
-//     * @param collaborator The collaborator to remove from this task
-//     */
-//    public void removeCollaborator(User collaborator) {
-//        this.collaborators.remove(collaborator);
-//    }
-//
-//    /**
-//     * Gets the collaborators of this Task
-//     * @return
-//     */
-//    public ArrayList<User> addCollaborator(User collaborator) {
-//        return this.collaborators;
-//    }
+    /**
+     * Removes an event from this Task
+     *
+     * @param event The event to remove
+     */
+    public void removeEvent(Event event) {
+        this.events.remove(event);
+    }
+
+    /**
+     * Gets a list of events associated with this Task
+     *
+     * @return events A list of events associated with this Task
+     */
+    public ArrayList<Event> getEvents() {
+        return this.events;
+    }
+
+
+    /**
+     * Adds a collaborator to this Task
+     *
+     * @param collaborator The collaborator to add to this task
+     */
+    public void addCollaborator(User collaborator) {
+        this.collaborators.add(collaborator);
+    }
+
+    /**
+     * Removes a collaborator to this Task
+     *
+     * @param collaborator The collaborator to remove from this task
+     */
+    public void removeCollaborator(User collaborator) {
+        this.collaborators.remove(collaborator);
+    }
+
+    /**
+     * Gets the collaborators of this Task
+     *
+     * @return The collaborators of this task
+     */
+    public ArrayList<User> getCollaborator() {
+        return this.collaborators;
+    }
+
+    public ChatRoom getChatRoom() {
+        return this.chatRoom;
+    }
+
+    public void setChatRoom(ChatRoom chatRoom) {
+        this.chatRoom = chatRoom;
+    }
 
 }
 
