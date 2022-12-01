@@ -41,8 +41,8 @@ public class ChatRoom implements Serializable{
         List<Message> return_list= new ArrayList<Message>();
         int len = this.messages.size();
         if(number > 0) {
-            for (int i = index + 1; i <= number; i++) {
-                if (len - i >= 0) {
+            for (int i = 1; i <= number; i++) {
+                if (len - index - i >= 0) {
                     return_list.add(this.messages.get(len-index - i));
                 }
             }
