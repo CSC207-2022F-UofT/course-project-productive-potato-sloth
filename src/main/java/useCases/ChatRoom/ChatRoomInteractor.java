@@ -53,7 +53,7 @@ public class ChatRoomInteractor implements ChatRoomInteractorInterface{
     public void initializeView(){
         InitializeViewInterface initializer = new InitializeViewPresenter((ChatRoomInteractorInterface) this);
         this.presenter = initializer.initializeView(new SendMessageController((ChatRoomInteractorInterface) this));
-        //List temp_list = room.GetMessages(3);
-        //UpdateViewPresenterInterface.updateView(temp_list);
+        List<MessageResponseModel> temp_list = extractInfo(this.room.GetMessages(3, 0));
+        this.presenter.updateView(temp_list);
     }
 }
