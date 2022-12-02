@@ -1,10 +1,10 @@
 package controllers;
 import entities.User;
-import useCases.ChatRoomInteractor;
+import useCases.ChatRoomInteractorInterface;
 
-public class SendMessageController {
-    ChatRoomInteractor interactor;
-    public SendMessageController(ChatRoomInteractor interactor){
+public class SendMessageController implements SendMessageInterface{
+    ChatRoomInteractorInterface interactor;
+    public SendMessageController(ChatRoomInteractorInterface interactor){
         this.interactor = interactor;
     }
     public void sendMessageController(String message, User user){

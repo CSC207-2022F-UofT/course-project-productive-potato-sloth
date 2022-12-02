@@ -1,10 +1,9 @@
 package useCases;
 
-import controllers.UpdateViewPresenter;
+import controllers.*;
 import entities.User;
 import entities.ChatRoom;
 import entities.Message;
-import controllers.UpdateViewPresenterInterface;
 import useCases.responseModels.MessageResponseModel;
 
 import java.util.ArrayList;
@@ -17,7 +16,6 @@ public class ChatRoomInteractor implements ChatRoomInteractorInterface{
     public ChatRoomInteractor(ChatRoom room){
         this.room = room;
         this.messageIndex = 0;
-        this.presenter = new UpdateViewPresenter();
     }
     @Override
     public void sendMessage(String message, User user){
@@ -25,7 +23,7 @@ public class ChatRoomInteractor implements ChatRoomInteractorInterface{
         this.room.AddMessage(temp_message);
         List<Message> temp_list = this.room.GetMessages(3, 0);
         List out_list = extractInfo(temp_list);
-        presenter.updateView(out_list);
+        this.presenter.updateView(out_list);
         this.messageIndex = 0;
     }
     /**
@@ -50,7 +48,8 @@ public class ChatRoomInteractor implements ChatRoomInteractorInterface{
     }
     @Override
     public void initializeView(){
-        //InitializeViewInterface();--this is supposed to initialize the window with text fields and the like.
+        InitializeViewInterface initializer = new InitializeViewPresenter((ChatRoomInteractorInterface) this);
+        this.presenter = initializer.initializeView(new SendMessageController((ChatRoomInteractorInterface) this));
         //List temp_list = room.GetMessages(3);
         //UpdateViewPresenterInterface.updateView(temp_list);
     }

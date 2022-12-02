@@ -9,11 +9,12 @@ import java.util.List;
 import controllers.SendMessageController;
 import services.CurrentUserService;
 import useCases.ChatRoomInteractor;
+import useCases.ChatRoomInteractorInterface;
 import useCases.responseModels.MessageResponseModel;
 
 public class MainUI {
     public SendMessageController messenger;
-    public ChatRoomInteractor interactor;
+    public ChatRoomInteractorInterface interactor;
     private JLabel Message1Display;
     private JLabel Message2Display;
     private JLabel Message3Display;
@@ -31,9 +32,9 @@ public class MainUI {
 
     private List<List<JLabel>> organizer;
 
-    public MainUI(ChatRoomInteractor interactor) {
+    public MainUI(ChatRoomInteractorInterface interactor, SendMessageController messenger) {
         this.interactor = interactor;
-        this.messenger = new SendMessageController(interactor);
+        this.messenger = messenger;
         this.organizer = responseSetUp();
         CurrentUserService service = new CurrentUserService();
         sendMessageButton.addActionListener(new ActionListener() {
