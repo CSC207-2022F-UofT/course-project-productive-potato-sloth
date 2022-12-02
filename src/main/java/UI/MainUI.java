@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import controllers.ChatRoomControllers.SendMessageController;
+import controllers.ChatRoomControllers.UpdateViewController;
 import services.CurrentUserService;
 import useCases.ChatRoom.ChatRoomInteractorInterface;
 import useCases.responseModels.MessageResponseModel;
@@ -14,6 +15,8 @@ import useCases.responseModels.MessageResponseModel;
 public class MainUI {
     public SendMessageController messenger;
     public ChatRoomInteractorInterface interactor;
+
+    public UpdateViewController updater;
     private JLabel Message1Display;
     private JLabel Message2Display;
     private JLabel Message3Display;
@@ -35,6 +38,7 @@ public class MainUI {
         this.interactor = interactor;
         this.messenger = messenger;
         this.organizer = responseSetUp();
+        this.updater = new UpdateViewController(this.interactor);
         CurrentUserService service = new CurrentUserService();
         sendMessageButton.addActionListener(new ActionListener() {
             @Override
@@ -45,13 +49,13 @@ public class MainUI {
         NextButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-            
+                MainUI.this.updater.UpdateViewController(false);
             }
         });
         PrevButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-
+                MainUI.this.updater.UpdateViewController(true);
             }
         });
 
