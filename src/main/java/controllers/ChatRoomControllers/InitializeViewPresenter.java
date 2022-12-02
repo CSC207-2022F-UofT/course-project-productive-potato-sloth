@@ -1,7 +1,7 @@
-package controllers;
+package controllers.ChatRoomControllers;
 
 import UI.MainUI;
-import useCases.ChatRoomInteractorInterface;
+import useCases.ChatRoom.ChatRoomInteractorInterface;
 
 public class InitializeViewPresenter implements InitializeViewInterface{
     ChatRoomInteractorInterface interactor;

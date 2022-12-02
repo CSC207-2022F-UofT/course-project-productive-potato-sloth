@@ -1,4 +1,4 @@
-package useCases;
+package useCases.ChatRoom;
 import entities.ChatRoom;
 import entities.User;
 

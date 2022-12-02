@@ -1,9 +1,9 @@
-package controllers;
+package controllers.ChatRoomControllers;
 import entities.ChatRoom;
 import entities.Task;
 import services.CurrentUserService;
 import entities.User;
-import useCases.ChatRoomInteractor;
+import useCases.ChatRoom.ChatRoomInteractor;
 
 public class InitializeViewController {
     public void InitializeViewController(char marker){

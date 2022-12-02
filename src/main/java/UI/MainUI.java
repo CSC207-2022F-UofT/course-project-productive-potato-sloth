@@ -6,10 +6,9 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import controllers.SendMessageController;
+import controllers.ChatRoomControllers.SendMessageController;
 import services.CurrentUserService;
-import useCases.ChatRoomInteractor;
-import useCases.ChatRoomInteractorInterface;
+import useCases.ChatRoom.ChatRoomInteractorInterface;
 import useCases.responseModels.MessageResponseModel;
 
 public class MainUI {

@@ -1,4 +1,4 @@
-package controllers;
+package controllers.ChatRoomControllers;
 
 import java.util.List;
 import useCases.responseModels.MessageResponseModel;

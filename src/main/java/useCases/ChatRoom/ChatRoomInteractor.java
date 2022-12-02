@@ -1,6 +1,9 @@
-package useCases;
+package useCases.ChatRoom;
 
-import controllers.*;
+import controllers.ChatRoomControllers.InitializeViewInterface;
+import controllers.ChatRoomControllers.InitializeViewPresenter;
+import controllers.ChatRoomControllers.SendMessageController;
+import controllers.ChatRoomControllers.UpdateViewPresenterInterface;
 import entities.User;
 import entities.ChatRoom;
 import entities.Message;

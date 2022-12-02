@@ -1,6 +1,6 @@
-package controllers;
+package controllers.ChatRoomControllers;
 import entities.User;
-import useCases.ChatRoomInteractorInterface;
+import useCases.ChatRoom.ChatRoomInteractorInterface;
 
 public class SendMessageController implements SendMessageInterface{
     ChatRoomInteractorInterface interactor;

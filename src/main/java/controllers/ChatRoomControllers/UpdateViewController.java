@@ -1,6 +1,5 @@
-package controllers;
-import entities.User;
-import useCases.ChatRoomInteractor;
+package controllers.ChatRoomControllers;
+import useCases.ChatRoom.ChatRoomInteractor;
 
 public class UpdateViewController {
     ChatRoomInteractor interactor;

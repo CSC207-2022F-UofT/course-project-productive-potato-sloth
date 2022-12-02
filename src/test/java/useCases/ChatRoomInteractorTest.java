@@ -3,6 +3,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.jupiter.api.*;
 import entities.*;
+import useCases.ChatRoom.ChatRoomInteractor;
 
 import static org.junit.Assert.*;
 
