@@ -30,7 +30,7 @@ public class ScheduleEventInteractor implements ScheduleEventInputBoundary{
         Check that the event name is not empty or whitespace.
          */
 
-        if(requestModel.eventName.isBlank()){
+        if(requestModel.getEventName().isBlank()){
             return presenter.prepareFailView("Your event name must not be empty.");
         }
 
@@ -42,9 +42,9 @@ public class ScheduleEventInteractor implements ScheduleEventInputBoundary{
 
         Task selectedTask = null;
 
-        if(requestModel.selectedTaskName != null){
+        if(requestModel.getSelectedTaskName() != null){
             for(Task task: currentUser.getTasks()){
-                if(task.getName().equals(requestModel.selectedTaskName)){
+                if(task.getName().equals(requestModel.getSelectedTaskName())){
                     selectedTask = task;
                     break;
                 }
@@ -61,7 +61,7 @@ public class ScheduleEventInteractor implements ScheduleEventInputBoundary{
          */
 
         List<Tag> eventTags = new ArrayList<>();
-        for(String tagName: requestModel.selectedTagNames){
+        for(String tagName: requestModel.getSelectedTagNames()){
             for(Tag tag: currentUser.getTags()){
                 if(tag.getName().equals(tagName)){
                     eventTags.add(tag);
@@ -74,15 +74,15 @@ public class ScheduleEventInteractor implements ScheduleEventInputBoundary{
         Check that the event ends after it starts.
          */
 
-        if(requestModel.start_time == null){
+        if(requestModel.getStartTime() == null){
             return presenter.prepareFailView("No start time provided.");
         }
 
-        if(requestModel.end_time == null){
+        if(requestModel.getEndTime() == null){
             return presenter.prepareFailView("No end time provided.");
         }
 
-        if(requestModel.start_time.isAfter(requestModel.end_time)){
+        if(requestModel.getStartTime().isAfter(requestModel.getEndTime())){
             return presenter.prepareFailView("The event must end after it begins.");
         }
 
@@ -91,16 +91,16 @@ public class ScheduleEventInteractor implements ScheduleEventInputBoundary{
          */
 
         Event newEvent = new Event(
-                requestModel.start_time,
-                requestModel.end_time,
+                requestModel.getStartTime(),
+                requestModel.getEndTime(),
                 selectedTask,
-                requestModel.eventName,
+                requestModel.getEventName(),
                 eventTags
         );
 
         currentUser.addEvent(newEvent);
 
-        ScheduleEventResponseModel response = new ScheduleEventResponseModel(requestModel.eventName);
+        ScheduleEventResponseModel response = new ScheduleEventResponseModel(requestModel.getEventName());
 
         return presenter.prepareSuccessView(response);
     }

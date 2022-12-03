@@ -163,13 +163,13 @@ public class User implements Serializable {
 //        this.events.remove(event);
 //    }
 //
-//    /**
-//     * Gets the list of events associated with this User
-//     * @return events A list of events associated with this User
-//     */
-//    public List<Event> getEvents() {
-//        return this.events;
-//    }
+    /**
+     * Gets the list of events associated with this User
+     * @return events A list of events associated with this User
+     */
+    public List<Event> getEvents() {
+        return this.events;
+    }
 
     /**
      * Adds a user to this User's outgoingInvitations

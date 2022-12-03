@@ -1,6 +1,10 @@
 package entities;
 
+import entities.dataObjects.EventDataResponseObject;
+import entities.dataObjects.TagDataObject;
+
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -68,5 +72,26 @@ public class Event {
         this.task = task;
         this.name = name;
         this.tags = tags;
+    }
+
+    public EventDataResponseObject prepareDataResponseObject() {
+
+        List<TagDataObject> tagDataObjects = new ArrayList<>();
+
+        for(Tag tag: this.getTags()){
+            TagDataObject tagDataObject = new TagDataObject(tag.getName(), tag.getColor());
+            tagDataObjects.add(tagDataObject);
+        }
+
+        EventDataResponseObject dataResponseObject = new EventDataResponseObject(
+                this.getName(),
+                this.getStartTime(),
+                this.getEndTime(),
+                this.getTask().getName(),
+                tagDataObjects
+        );
+
+        return dataResponseObject;
+
     }
 }
