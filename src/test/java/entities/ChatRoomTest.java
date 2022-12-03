@@ -1,6 +1,6 @@
 package entities;
 import org.junit.Before;
-import org.junit.jupiter.api.*;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
