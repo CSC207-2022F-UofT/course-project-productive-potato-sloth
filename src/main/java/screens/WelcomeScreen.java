@@ -5,12 +5,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-// Frameworks/Drivers layer
+import screens.Timer.TimerMainGUI;
+
+// GUI layer
 
 public class WelcomeScreen extends JFrame implements ActionListener {
 
     /**
-     * A window with a title and a JButton.
+     * The main welcome window of the application, acts like a home screen
      */
     public WelcomeScreen() {
 
@@ -38,11 +40,11 @@ public class WelcomeScreen extends JFrame implements ActionListener {
     }
 
     /**
-     * React to a button click that results in evt.
+     * Action Listener for the Timer Feature
      */
     public void actionPerformedTimer(ActionEvent evt) {
 
-        //TimerView.displayTimerScreen();
+        TimerMainGUI.displayTimerScreen();
     }
     public void actionPerformed(ActionEvent evt) {
         System.out.println("Click " + evt.getActionCommand());
