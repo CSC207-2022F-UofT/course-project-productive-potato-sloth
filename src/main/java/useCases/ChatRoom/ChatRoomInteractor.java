@@ -48,6 +48,7 @@ public class ChatRoomInteractor implements ChatRoomInteractorInterface{
         this.messageIndex = 0;
         updateView();
     }
+
     /**
      * Since Entities cannot be directly passed into Presenters, below is a helper
     class that takes in a List of Messages and returns a List, in which the first element is the list

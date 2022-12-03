@@ -1,12 +1,16 @@
 package controllers.ChatRoomControllers;
-import useCases.ChatRoom.ChatRoomInteractor;
+import useCases.ChatRoom.ChatRoomInteractorInterface;
 
 public class UpdateViewController {
-    ChatRoomInteractor interactor;
-    public UpdateViewController(ChatRoomInteractor interactor){
+    ChatRoomInteractorInterface interactor;
+    public UpdateViewController(ChatRoomInteractorInterface interactor){
         this.interactor = interactor;
     }
     public void UpdateViewController(){
         this.interactor.updateView();
+    }
+
+    public void UpdateViewController(boolean direction){
+        this.interactor.updateView(direction);
     }
 }
