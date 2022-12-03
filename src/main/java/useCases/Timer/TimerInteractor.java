@@ -1,7 +1,9 @@
 package useCases.Timer;
 
 import entities.Timer;
+import entities.User;
 import entities.TimerFactory;
+import services.CurrentUserService;
 
 import java.time.Duration;
 
@@ -27,6 +29,14 @@ public class TimerInteractor implements TimerInputBoundary{
 
         inputDuration = inputData.getInputDurationOfTimer();
         Timer t = timerFactory.create(inputDuration);
+
+        // using the current user service to get the current user object
+        CurrentUserService currentUserService = new CurrentUserService();
+        User currUser = currentUserService.getCurrentUser();
+        //TODO: add t to currUser timer list.
+        // currUser.
+
+
         TimerOutputData timerOutputData = new TimerOutputData(inputDuration);
         return timerPresenter.prepareSuccessView(timerOutputData);
     }
