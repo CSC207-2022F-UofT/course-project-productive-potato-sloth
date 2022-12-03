@@ -1,38 +1,39 @@
 package useCases.Timer;
-import entities.Timer;
 
-import java.time.LocalDateTime;
+import entities.Timer;
+import entities.TimerFactory;
+
 import java.time.Duration;
-import java.time.temporal.ChronoUnit;
 
 /**
  * A use case interactor class which manipulates the Timer entity
  */
-public class TimerInteractor {
+public class TimerInteractor implements TimerInputBoundary{
 
-
-    /**
-     * Stores input duration
-     */
+    final TimerPresenter timerPresenter;
+    final TimerFactory timerFactory;
     private Duration inputDuration;
 
     //constructor
-    /**
-     * Constructs TimerInputData object given the input duration
-     * @param inputDuration The duration for the Timer, how long of a Timer session do we want
-     */
-    TimerInteractor(Duration inputDuration){
-        this.inputDuration = inputDuration;
+    public TimerInteractor(TimerPresenter timerPresenter, TimerFactory timerFactory){
+
+        //this.inputDuration = inputDuration;
+        this.timerPresenter = timerPresenter;
+        this.timerFactory = timerFactory;
     }
 
+    @Override
+    public TimerResponseModel create(TimerRequestModel requestModel) {
 
+        inputDuration = requestModel.getInputDurationOfTimer();
+        Timer t = timerFactory.create(inputDuration);
+        TimerResponseModel timerOutputData = new TimerResponseModel(inputDuration);
+        return timerPresenter.prepareSuccessView(timerOutputData);
+    }
     /**
      * Creates timer object when user opens the timer window of the duration that user enters
      */
-    void createTimer(){
-        Timer t1 = new Timer(inputDuration);
 
-    }
 
     /**
      * Starts the countdown when user presses start
@@ -64,6 +65,7 @@ public class TimerInteractor {
      *     Calls startTimer to resume the Timer
      */
     void endBreak(){}
+
 
 
 }
