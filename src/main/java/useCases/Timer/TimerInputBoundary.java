@@ -4,5 +4,5 @@ package useCases.Timer;
 
 public interface TimerInputBoundary {
 
-    TimerResponseModel create(TimerRequestModel requestModel);
+    TimerOutputData create(TimerInputData inputData);
 }
