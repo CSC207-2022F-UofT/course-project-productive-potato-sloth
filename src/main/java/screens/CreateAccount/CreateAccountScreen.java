@@ -16,11 +16,12 @@ public class CreateAccountScreen extends JPanel implements ActionListener {
     CreateAccountController accountController;
 
 
+ //   public CreateAccountScreen(CreateAccountController controller) {
     public CreateAccountScreen() {
 
 //        this.accountController = controller;
 
-        JLabel title = new JLabel("Register Screen");
+        JLabel title = new JLabel("Create Your Account");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         LabelTextPanel usernameInfo = new LabelTextPanel(
@@ -34,6 +35,8 @@ public class CreateAccountScreen extends JPanel implements ActionListener {
         JPanel buttons = new JPanel();
         buttons.add(createAccount);
         buttons.add(cancel);
+
+
 
         createAccount.addActionListener(this);
         cancel.addActionListener(this);
@@ -54,10 +57,10 @@ public class CreateAccountScreen extends JPanel implements ActionListener {
         switch (evt.getActionCommand()) {
             case "Create Account": {
                 try {
-//                    CreateAccountResponseModel responseModel = accountController.create(username.getText(),
-//                            password.getText());
-//                    JOptionPane.showMessageDialog(this, "User "
-//                            + "\"" + responseModel.getUsername() + "\"" + " is created.");
+                    CreateAccountResponseModel responseModel = accountController.create(username.getText(),
+                            password.getText());
+                    JOptionPane.showMessageDialog(this, "User "
+                            + "\"" + responseModel.getUsername() + "\"" + " is created.");
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(this, e.getMessage());
                 }
@@ -69,21 +72,19 @@ public class CreateAccountScreen extends JPanel implements ActionListener {
 
     }
 
-    public static void main(String[] args) {
-        JFrame application  =  new JFrame("Create Account");
-        CardLayout cardLayout = new CardLayout();
-        JPanel screens = new JPanel(cardLayout);
+//    public static void main(String[] args) {
+//        JFrame application  =  new JFrame("Create Account");
+//        CardLayout cardLayout = new CardLayout();
+//        JPanel screens = new JPanel(cardLayout);
+//        application.add(screens);
 //
-//        Create
 //
-//        CreateAccountController controller = new CreateAccountController();
-
-        CreateAccountScreen createAccountScreen = new CreateAccountScreen();
-
-        screens.add(createAccountScreen);
-
-        cardLayout.show(screens, "create account");
-        application.pack();
-        application.setVisible(true);
-    }
+//        CreateAccountScreen createAccountScreen = new CreateAccountScreen();
+//
+//        screens.add(createAccountScreen, "hello");
+//
+//        cardLayout.show(screens, "create account");
+//        application.pack();
+//        application.setVisible(true);
+//    }
 }
