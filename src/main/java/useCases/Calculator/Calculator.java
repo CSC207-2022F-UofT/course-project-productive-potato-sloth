@@ -1,11 +1,9 @@
 package useCases.Calculator;
 
-import entities.Event;
 import entities.Task;
 import entities.User;
 
 import java.util.ArrayList;
-import java.util.List;
 
 abstract class Calculator {
      // should I include a default constructor?
