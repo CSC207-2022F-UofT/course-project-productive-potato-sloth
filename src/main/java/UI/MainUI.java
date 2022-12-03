@@ -31,8 +31,6 @@ public class MainUI {
     private JLabel Msg1TimeStamp;
     private JPanel mainPanel;
     private JLabel Msg1UserDisp;
-    private JLabel message1Display;
-    private JLabel message2Display;
 
     private List<List<JLabel>> organizer;
 
