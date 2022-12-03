@@ -1,4 +1,3 @@
-
 package entities;
 
 import java.io.Serializable;
@@ -46,7 +45,7 @@ public class Task implements Serializable {
     /**
      * The ChatRoom associated with this Task
      */
-//     ChatRoom chatRoom; ChatRoom not yet implemented
+    ChatRoom chatRoom;
 
     /**
      * Constructs a Task given the name of the new Task
