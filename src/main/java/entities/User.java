@@ -40,7 +40,6 @@ public class User {
         this.username = username;
     }
 
-
     /**
      * Gets the username of the User
      *
@@ -49,7 +48,6 @@ public class User {
     public String getUsername() {
         return this.username;
     }
-
 
     /**
      * Sets the password of this User
@@ -105,7 +103,6 @@ public class User {
                 return tag;}
         }
         return null;
-
     }
 
     /**
@@ -168,70 +165,6 @@ public class User {
         }
         return null;
     }
-    
-    /**
-     * Gets the password of the User
-     *
-     * @return password The string storing the password of the User
-     */
-    public String getPassword() {
-        return this.password;
-    }
-
-    /**
-     * Adds a tag to this User
-     *
-     * @param tag The new tag to add
-     */
-    public void addTag(Tag tag) {
-        this.tags.add(tag);
-    }
-
-    /**
-     * Removes a tag from this User
-     *
-     * @param tag The new tag to remove
-     */
-    public void removeTag(Tag tag) {
-        this.tags.remove(tag);
-    }
-
-    /**
-     * Gets a list of tags associated with this User
-     *
-     * @return tags A list of tags associated with this User
-     */
-    public List<Tag> getTags() {
-        return this.tags;
-    }
-
-    /**
-     * Adds an event to this User
-     *
-     * @param event The new event to add
-     */
-    public void addEvent(Event event) {
-        this.events.add(event);
-    }
-
-    /**
-     * Removes an event from this User
-     *
-     * @param event The new event to remove
-     */
-    public void removeEvent(Event event) {
-        this.events.remove(event);
-    }
-
-    /**
-     * Gets the list of events associated with this User
-     *
-     * @return events A list of events associated with this User
-     */
-    public List<Event> getEvents() {
-        return this.events;
-    }
-
 
     /**
      * Adds a timer to this User
