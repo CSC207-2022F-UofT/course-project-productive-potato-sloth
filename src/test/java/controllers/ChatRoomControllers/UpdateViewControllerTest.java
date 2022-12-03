@@ -22,6 +22,6 @@ public class UpdateViewControllerTest {
     }
     @Test
     public void TestUpdateView(){
-        String[] str_list = new String{"a", "b", "c", "d", "e", "f"};
+        String[] str_list = {"a", "b", "c", "d", "e", "f"};
     }
 }
