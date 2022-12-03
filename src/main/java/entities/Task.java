@@ -97,6 +97,10 @@ public class Task {
         return description;
     }
 
+    public ChatRoom getChatRoom(){
+        return this.chatRoom;
+    }
+
     /**
      * Sets the description of the Task
      *

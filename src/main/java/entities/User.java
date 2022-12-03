@@ -69,9 +69,9 @@ public class User {
 //     * Gets the list of tasks associated with this User
 //     * @return tasks A list of tasks associated with this User
 //     */
-//    public ArrayList<Task> getTasks() {
-//        return this.tasks;
-//    }
+    public List<Task> getTasks() {
+        return this.tasks;
+    }
 
     /**
      * Changes the username of this User
