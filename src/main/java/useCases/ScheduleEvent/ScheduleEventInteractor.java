@@ -4,6 +4,8 @@ import entities.Event;
 import entities.Tag;
 import entities.Task;
 import entities.User;
+import gateways.DataAccessInterface;
+import gateways.UserDataAccessInterface;
 import screens.ScheduleEvent.ScheduleEventResponseModel;
 import services.CurrentUserService;
 
@@ -17,9 +19,14 @@ public class ScheduleEventInteractor implements ScheduleEventInputBoundary{
 
     ScheduleEventPresenter presenter;
 
-    public ScheduleEventInteractor(CurrentUserService currentUserService, ScheduleEventPresenter scheduleEventPresenter){
+    UserDataAccessInterface gateway;
+
+    public ScheduleEventInteractor(CurrentUserService currentUserService,
+                                   ScheduleEventPresenter scheduleEventPresenter,
+                                   UserDataAccessInterface gateway){
         this.currentUserService = currentUserService;
         this.presenter = scheduleEventPresenter;
+        this.gateway = gateway;
     }
 
     public ScheduleEventResponseModel scheduleEvent(ScheduleEventRequestModel requestModel){
@@ -102,6 +109,10 @@ public class ScheduleEventInteractor implements ScheduleEventInputBoundary{
 
         ScheduleEventResponseModel response = new ScheduleEventResponseModel(requestModel.getEventName());
 
-        return presenter.prepareSuccessView(response);
+        if(gateway.persistData()){
+            return presenter.prepareSuccessView(response);
+        }else{
+            return presenter.prepareFailView("Unable to save your new event.");
+        }
     }
 }

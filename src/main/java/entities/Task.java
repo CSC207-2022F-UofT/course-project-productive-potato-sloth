@@ -1,12 +1,13 @@
 
 package entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * An entity class representing a Task
  */
-public class Task {
+public class Task implements Serializable {
 
     /**
      * The User that this Task belongs to

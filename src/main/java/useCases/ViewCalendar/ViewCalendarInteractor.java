@@ -8,25 +8,23 @@ import services.CurrentUserService;
 
 public class ViewCalendarInteractor implements ViewCalendarInputBoundary {
 
-    DataAccessInterface<User> gateway;
-
     CurrentUserService currentUserService;
     ViewCalendarPresenter presenter;
 
-    public ViewCalendarInteractor(DataAccessInterface<User> gateway, CurrentUserService currentUserService, ViewCalendarPresenter presenter){
-        this.gateway = gateway;
+    public ViewCalendarInteractor(CurrentUserService currentUserService, ViewCalendarPresenter presenter){
         this.presenter = presenter;
         this.currentUserService = currentUserService;
     }
 
     @Override
-    public ViewCalendarResponseModel getAllEvents() {
+    public void loadAllEvents() {
         ViewCalendarResponseModel response = new ViewCalendarResponseModel();
 
         User currentUser = currentUserService.getCurrentUser();
 
         if(currentUser == null){
-            return presenter.prepareFailView("User not logged in.");
+            presenter.prepareFailView("User not logged in.");
+            return;
         }
 
         for(Event event: currentUser.getEvents()){
@@ -35,7 +33,6 @@ public class ViewCalendarInteractor implements ViewCalendarInputBoundary {
             response.addEventResponseObject(eventDataResponseObject);
         }
 
-        return presenter.prepareSuccessView(response);
-
+        presenter.prepareSuccessView(response);
     }
 }

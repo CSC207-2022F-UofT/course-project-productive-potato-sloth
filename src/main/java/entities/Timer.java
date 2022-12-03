@@ -1,5 +1,6 @@
 package entities;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
@@ -7,7 +8,7 @@ import java.time.temporal.ChronoUnit;
 /**
  * An entity class representing a Timer object
  */
-public class Timer {
+public class Timer implements Serializable {
 
     LocalDateTime startTime;
     /**

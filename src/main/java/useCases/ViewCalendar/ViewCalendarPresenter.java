@@ -2,8 +2,8 @@ package useCases.ViewCalendar;
 
 public interface ViewCalendarPresenter {
 
-    ViewCalendarResponseModel prepareSuccessView(ViewCalendarResponseModel response);
+    void prepareSuccessView(ViewCalendarResponseModel response);
 
-    ViewCalendarResponseModel prepareFailView(String error);
+    void prepareFailView(String error);
 
 }

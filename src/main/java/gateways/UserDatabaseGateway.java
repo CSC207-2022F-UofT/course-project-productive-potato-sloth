@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDatabaseGateway extends DatabaseGateway implements DataAccessInterface<User> {
+public class UserDatabaseGateway extends DatabaseGateway implements UserDataAccessInterface {
 
     private List<User> userList;
 
@@ -119,11 +119,16 @@ public class UserDatabaseGateway extends DatabaseGateway implements DataAccessIn
             fileOutputStream.close();
             return true;
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            return false;
         }
     }
 
     public void deleteAll(){
         this.userList = new ArrayList<>();
+    }
+
+    @Override
+    public boolean persistData() {
+        return saveToFile();
     }
 }

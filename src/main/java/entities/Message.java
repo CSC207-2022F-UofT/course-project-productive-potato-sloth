@@ -1,6 +1,7 @@
 package entities;
+import java.io.Serializable;
 import java.time.LocalDateTime;
-public class Message {
+public class Message implements Serializable {
     String content;
     String author;
     LocalDateTime timestamp;

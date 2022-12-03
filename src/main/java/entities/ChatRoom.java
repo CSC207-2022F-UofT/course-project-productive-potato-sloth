@@ -1,8 +1,9 @@
 package entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ChatRoom {
+public class ChatRoom implements Serializable {
     ArrayList<Message> messages;
 
     public ChatRoom(){

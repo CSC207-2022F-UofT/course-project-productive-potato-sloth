@@ -1,25 +1,19 @@
 import entities.Tag;
 import entities.Task;
 import entities.User;
-import screens.ScheduleEvent.ScheduleEventController;
-import screens.ScheduleEvent.ScheduleEventScreen;
-import screens.ScheduleEvent.ScheduleEventViewModel;
+import gateways.DataAccessInterface;
+import gateways.UserDataAccessInterface;
+import gateways.UserDatabaseGateway;
+import screens.ScheduleEvent.ScheduleEventMainFrame;
 import services.CurrentUserService;
-import useCases.ScheduleEvent.ScheduleEventInputBoundary;
-import useCases.ScheduleEvent.ScheduleEventInteractor;
-import useCases.ScheduleEvent.ScheduleEventPresenter;
-import useCases.ScheduleEvent.ScheduleEventResponseFormatter;
 
-import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
 public class Main {
 
-    private static CurrentUserService currentUserService;
-
-    public static void setupDefaultCurrentUserService() {
-        currentUserService = new CurrentUserService();
+    public static CurrentUserService setupDefaultCurrentUserService() {
+        CurrentUserService currentUserService = new CurrentUserService();
         User testUser = new User("testUsername", "testPassword");
 
         Tag tag1 = new Tag("tag1", Color.RED);
@@ -35,40 +29,15 @@ public class Main {
         testUser.addTask(task2);
 
         currentUserService.setCurrentUser(testUser);
-    }
 
-    public static void setupScheduleEvent() {
-
-        // doesn't work as the current user service doesn't have anyone logged in
-
-        JFrame application = new JFrame("Schedule Event");
-        CardLayout cardLayout = new CardLayout();
-        JPanel screens = new JPanel(cardLayout);
-        application.add(screens);
-
-        setupDefaultCurrentUserService();
-
-        ScheduleEventPresenter presenter = new ScheduleEventResponseFormatter();
-        ScheduleEventInputBoundary interactor = new ScheduleEventInteractor(currentUserService, presenter);
-        ScheduleEventController controller = new ScheduleEventController(interactor);
-
-        ScheduleEventViewModel viewModel = new ScheduleEventViewModel();
-        for(Tag tag: currentUserService.getCurrentUser().getTags()){
-            viewModel.addTagName(tag.getName());
-        }
-        for(Task task: currentUserService.getCurrentUser().getTasks()){
-            viewModel.addTaskName(task.getName());
-        }
-
-        ScheduleEventScreen scheduleEventScreen = new ScheduleEventScreen(controller, viewModel);
-
-        screens.add(scheduleEventScreen, "welcome");
-        cardLayout.show(screens, "register");
-        application.pack();
-        application.setVisible(true);
+        return currentUserService;
     }
 
     public static void main(String[] args) throws IOException {
-        setupScheduleEvent();
+        CurrentUserService currentUserService1 = setupDefaultCurrentUserService();
+        UserDataAccessInterface gateway = new UserDatabaseGateway("database/UserFile1.ser");
+        gateway.insert(currentUserService1.getCurrentUser());
+        ScheduleEventMainFrame scheduleEventMainFrame = new ScheduleEventMainFrame(currentUserService1, gateway);
+        scheduleEventMainFrame.runScheduleEventUseCase();
     }
 }

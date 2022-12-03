@@ -3,6 +3,7 @@ package entities;
 import entities.dataObjects.EventDataResponseObject;
 import entities.dataObjects.TagDataObject;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.List;
 An entity class representing an Event
 TODO: document this class
  */
-public class Event {
+public class Event implements Serializable {
     private LocalDateTime start_time;
     private LocalDateTime end_time;
 
