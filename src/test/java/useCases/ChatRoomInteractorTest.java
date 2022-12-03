@@ -1,4 +1,4 @@
-package usecases;
+package useCases;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.jupiter.api.*;
@@ -10,7 +10,7 @@ import useCases.responseModels.MessageResponseModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class chatRoomInteractorTest {
+public class ChatRoomInteractorTest {
     @Before
     public void setUp() {
     }
