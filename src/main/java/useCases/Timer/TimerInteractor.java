@@ -23,11 +23,11 @@ public class TimerInteractor implements TimerInputBoundary{
     }
 
     @Override
-    public TimerResponseModel create(TimerRequestModel requestModel) {
+    public TimerOutputData create(TimerInputData inputData) {
 
-        inputDuration = requestModel.getInputDurationOfTimer();
+        inputDuration = inputData.getInputDurationOfTimer();
         Timer t = timerFactory.create(inputDuration);
-        TimerResponseModel timerOutputData = new TimerResponseModel(inputDuration);
+        TimerOutputData timerOutputData = new TimerOutputData(inputDuration);
         return timerPresenter.prepareSuccessView(timerOutputData);
     }
     /**

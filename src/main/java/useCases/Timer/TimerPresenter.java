@@ -3,7 +3,7 @@ package useCases.Timer;
 // Use case layer
 
 public interface TimerPresenter {
-    TimerResponseModel prepareSuccessView(TimerResponseModel timerOutputData);
+    TimerOutputData prepareSuccessView(TimerOutputData timerOutputData);
 
-    TimerResponseModel prepareFailView(String error);
+    TimerOutputData prepareFailView(String error);
 }

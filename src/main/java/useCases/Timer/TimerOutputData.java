@@ -4,12 +4,12 @@ package useCases.Timer;
 
 import java.time.Duration;
 
-public class TimerResponseModel {
+public class TimerOutputData {
 
     Duration durationOfTimer;
-    String creationTime;
+    //String creationTime;
 
-    public TimerResponseModel(Duration durationOfTimer) {
+    public TimerOutputData(Duration durationOfTimer) {
         this.durationOfTimer = durationOfTimer;
         //this.creationTime = creationTime;
     }

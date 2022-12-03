@@ -4,11 +4,11 @@ package useCases.Timer;
 
 import java.time.Duration;
 
-public class TimerRequestModel {
+public class TimerInputData {
 
     private Duration inputDurationOfTimer;
 
-    public TimerRequestModel(Duration inputDuration){
+    public TimerInputData(Duration inputDuration){
 
         this.inputDurationOfTimer = inputDuration;
     }
