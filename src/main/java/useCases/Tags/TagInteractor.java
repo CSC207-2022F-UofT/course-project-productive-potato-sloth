@@ -1,6 +1,7 @@
 package useCases.Tags;
 
 import entities.Tag;
+import entities.User;
 
 import java.awt.Color;
 
@@ -8,6 +9,8 @@ import java.awt.Color;
  * A facade class that allows interactions with the Tag entity
  */
 public class TagInteractor {
+
+    static User user = new User();
 
     /**
      * Creates a tag instance
@@ -18,7 +21,7 @@ public class TagInteractor {
      */
     public static Tag createTag(String name, Color color) {
         CreateTag createTag = new CreateTag();
-        return createTag.createTag(name, color);
+        return createTag.createTag(name, color, user);
     }
 
     /**
