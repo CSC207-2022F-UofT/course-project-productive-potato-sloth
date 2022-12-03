@@ -100,9 +100,9 @@ public class TaskInteractor {
      * @param task The task to be removed
      *             // @param user The User to remove the task from
      */
-    public static void removeTask(Task task/*, User user*/) {
-        RemoveTask removeTask = new RemoveTask(/*user*/);
-//      removeTask.removeTask(task);
-    }
+//    public static void removeTask(Task task/*, User user*/) {
+//        RemoveTask removeTask = new RemoveTask(/*user*/);
+//        removeTask.removeTask(task);
+//    }
 
 }

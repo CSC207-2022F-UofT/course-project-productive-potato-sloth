@@ -23,7 +23,9 @@ public abstract class CreateAccountInteractor implements CreateAccountInputBound
                 } else {
                         User user = new User(requestModel.getUsername(), requestModel.getPassword());
                         gateway.insert(user);
-                        return userPresenter.prepareSuccessView("User is successfully created.");
+                        CreateAccountResponseModel createAccountResponse = new CreateAccountResponseModel(requestModel.getUsername(),
+                                requestModel.getPassword());
+                        return userPresenter.prepareSuccessView(createAccountResponse);
                 }
       }
 }

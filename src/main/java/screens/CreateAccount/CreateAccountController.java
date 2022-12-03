@@ -5,16 +5,16 @@ import useCases.CreateAccount.CreateAccountRequestModel;
 import useCases.CreateAccount.CreateAccountResponseModel;
 
 public class CreateAccountController {
-    final CreateAccountInputBoundary userInput;
+    final CreateAccountInputBoundary accountCreater;
 
     public CreateAccountController(CreateAccountInputBoundary accountCreater) {
-        this.userInput = accountCreater;
+        this.accountCreater = accountCreater;
     }
 
     CreateAccountResponseModel create(String username, String password) {
         CreateAccountRequestModel requestModel = new CreateAccountRequestModel(username, password);
 
-        return userInput.create(requestModel);
+        return accountCreater.create(requestModel);
     }
 
 }

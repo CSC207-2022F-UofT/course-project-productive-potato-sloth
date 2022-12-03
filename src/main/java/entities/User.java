@@ -62,7 +62,7 @@ public class User {
      * @param user The user corresponding to the username inputted
      * @return whether the password inputted is that of user
      */
-    public boolean checkCredentia(User user) {
+    public boolean checkCredential(User user) {
         return this.password.equals(user.password);
     }
 
@@ -90,6 +90,19 @@ public class User {
      */
     public List<Tag> getTags() {
         return this.tags;
+    }
+
+    /**
+     * Returns the tag corresponding to the tagName
+     * @param tagName The name of the tag to be returned
+     * @return tag The tag corresponding to tagName, else null
+     */
+    public Tag getTagByName(String tagName) {
+        for (Tag tag : this.tags) {
+            if (tag.getName().equals(tagName)){
+                return tag;}
+        }
+        return null;
     }
 
     /**
@@ -138,6 +151,19 @@ public class User {
      */
     public List<Task> getTasks() {
         return this.tasks;
+    }
+
+    /**
+     * Returns the task corresponding to the taskName
+     * @param taskName The name of the task to be returned
+     * @return task The task corresponding to taskName, else null
+     */
+    public Task getTaskByName(String taskName) {
+        for (Task task : this.tasks) {
+            if (task.getName().equals(taskName)){
+            return task;}
+        }
+        return null;
     }
 
     /**
