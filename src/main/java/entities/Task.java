@@ -1,4 +1,3 @@
-
 package entities;
 
 import java.util.ArrayList;
@@ -45,7 +44,7 @@ public class Task {
     /**
      * The ChatRoom associated with this Task
      */
-//     ChatRoom chatRoom; ChatRoom not yet implemented
+    ChatRoom chatRoom;
 
     /**
      * Constructs a Task given the name of the new Task
