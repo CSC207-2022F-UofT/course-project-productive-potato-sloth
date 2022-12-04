@@ -1,12 +1,16 @@
 package screens.CreateAccount;
 
+import gateways.UserDataAccessInterface;
+import gateways.UserDatabaseGateway;
 import screens.LabelTextPanel;
-import useCases.CreateAccount.CreateAccountResponseModel;
+import services.CurrentUserService;
+import useCases.CreateAccount.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class CreateAccountScreen extends JPanel implements ActionListener {
     JTextField username = new JTextField(15);
@@ -16,10 +20,10 @@ public class CreateAccountScreen extends JPanel implements ActionListener {
     CreateAccountController accountController;
 
 
- //   public CreateAccountScreen(CreateAccountController controller) {
-    public CreateAccountScreen() {
+    public CreateAccountScreen(CreateAccountController controller) {
+//    public CreateAccountScreen() {
 
-//        this.accountController = controller;
+        this.accountController = controller;
 
         JLabel title = new JLabel("Create Your Account");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -72,19 +76,31 @@ public class CreateAccountScreen extends JPanel implements ActionListener {
 
     }
 
-//    public static void main(String[] args) {
-//        JFrame application  =  new JFrame("Create Account");
-//        CardLayout cardLayout = new CardLayout();
-//        JPanel screens = new JPanel(cardLayout);
-//        application.add(screens);
-//
-//
-//        CreateAccountScreen createAccountScreen = new CreateAccountScreen();
-//
-//        screens.add(createAccountScreen, "hello");
-//
-//        cardLayout.show(screens, "create account");
-//        application.pack();
-//        application.setVisible(true);
-//    }
+    public static void main(String[] args) throws IOException {
+        JFrame application  =  new JFrame("Create Account");
+        CardLayout cardLayout = new CardLayout();
+        JPanel screens = new JPanel(cardLayout);
+        application.add(screens);
+
+        UserDataAccessInterface gateway = new UserDatabaseGateway("database/UserFile1.ser");
+        CurrentUserService service = new CurrentUserService();
+
+        System.out.println(gateway.getAll().get(0).getPassword());
+
+        CreateAccountPresenter presenter = new CreateAccountResponseFormatter();
+
+        CreateAccountInputBoundary createAccountInteractor = new CreateAccountInteractor(gateway, presenter);
+
+        CreateAccountController createAccountController = new CreateAccountController(createAccountInteractor);
+
+        CreateAccountScreen createAccountScreen = new CreateAccountScreen(createAccountController);
+
+        screens.add(createAccountScreen, "hello");
+
+        cardLayout.show(screens, "create account");
+        application.pack();
+        application.setVisible(true);
+
+
+    }
 }

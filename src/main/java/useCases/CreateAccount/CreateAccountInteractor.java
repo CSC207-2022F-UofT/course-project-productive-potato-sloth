@@ -1,25 +1,30 @@
 package useCases.CreateAccount;
 
 import entities.User;
-import gateways.UserDatabaseGateway;
+import gateways.UserDataAccessInterface;
 
 
-public abstract class CreateAccountInteractor implements CreateAccountInputBoundary {
+public class CreateAccountInteractor implements CreateAccountInputBoundary {
 
-    final UserDatabaseGateway gateway;
+    final UserDataAccessInterface gateway;
     final CreateAccountPresenter userPresenter;
 
 
-
-    public CreateAccountInteractor(UserDatabaseGateway gateway, CreateAccountPresenter userPresenter) {
+    public CreateAccountInteractor(UserDataAccessInterface gateway, CreateAccountPresenter userPresenter) {
         this.gateway = gateway;
         this.userPresenter = userPresenter;
     }
 
     public CreateAccountResponseModel create(CreateAccountRequestModel requestModel) {
 
-                if (gateway.get(requestModel.getUsername()) != null) {
-                        return userPresenter.prepareFailureView("Username already exists.");
+                if (requestModel.getUsername().isBlank()){
+                    return userPresenter.prepareFailureView("Enter username.");
+                }
+                if (gateway.get(requestModel.getUsername()) != null){
+                    return userPresenter.prepareFailureView("Username already exists.");
+                }
+                else if (requestModel.getPassword().isBlank()) {
+                    return userPresenter.prepareFailureView("Enter pasword.");
                 } else {
                         User user = new User(requestModel.getUsername(), requestModel.getPassword());
                         gateway.insert(user);

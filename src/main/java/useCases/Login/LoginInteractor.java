@@ -3,6 +3,8 @@ package useCases.Login;
 import gateways.UserDatabaseGateway;
 import services.CurrentUserService;
 
+import java.util.Objects;
+
 public abstract class LoginInteractor implements LoginInputBoundary {
     final UserDatabaseGateway gateway;
     final LoginPresenter loginPresenter;
@@ -21,7 +23,7 @@ public abstract class LoginInteractor implements LoginInputBoundary {
         if (gateway.get(requestModel.getUsername()) != null) {
             return loginPresenter.prepareFailureView("User does not exist. Please create an account.");
         }
-        else if (requestModel.getPassword() == (gateway.get(requestModel.getUsername()).getPassword())){
+        else if (Objects.equals(requestModel.getPassword(), gateway.get(requestModel.getUsername()).getPassword())){
             userService.setCurrentUser(gateway.get(requestModel.getUsername()));
             return loginPresenter.prepareSuccessView("User " + requestModel.getUsername() + " logged in.");
         }

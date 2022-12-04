@@ -42,6 +42,7 @@ public class UserDatabaseGateway extends DatabaseGateway implements UserDataAcce
     @Override
     public void insert(User user) {
         userList.add(user);
+        persistData();
     }
 
     @Override
