@@ -1,8 +1,9 @@
 package screens.CreateAccount;
 
 import screens.LabelTextPanel;
-import src.main.java.useCases.CreateAccount.CreateAccountInputBoundary;
-import src.main.java.useCases.CreateAccount.CreateAccountRequestModel;
+
+import useCases.CreateAccount.CreateAccountInputBoundary;
+import useCases.CreateAccount.CreateAccountRequestModel;
 import useCases.CreateAccount.CreateAccountResponseModel;
 
 import javax.swing.*;
@@ -38,7 +39,6 @@ public class CreateAccountScreen extends JPanel implements ActionListener {
         buttons.add(cancel);
 
 
-
         createAccount.addActionListener(this);
         cancel.addActionListener(this);
 
@@ -48,6 +48,29 @@ public class CreateAccountScreen extends JPanel implements ActionListener {
         this.add(buttons);
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+    }
+
+    public static void main(String[] args) {
+        JFrame application = new JFrame("Create Account");
+        CardLayout cardLayout = new CardLayout();
+        JPanel screens = new JPanel(cardLayout);
+        application.add(screens);
+        CreateAccountInputBoundary accountCreator = new CreateAccountInputBoundary() {
+            @Override
+            public CreateAccountResponseModel create(CreateAccountRequestModel requestModel) {
+                return null;
+            }
+        };
+        CreateAccountController accountController = new CreateAccountController(accountCreator);
+
+
+        CreateAccountScreen createAccountScreen = new CreateAccountScreen(accountController);
+
+        screens.add(createAccountScreen, "hello");
+
+        cardLayout.show(screens, "create account");
+        application.pack();
+        application.setVisible(true);
     }
 
     /**
@@ -71,29 +94,5 @@ public class CreateAccountScreen extends JPanel implements ActionListener {
             }
         }
 
-    }
-
-    public static void main(String[] args) {
-        JFrame application  =  new JFrame("Create Account");
-        CardLayout cardLayout = new CardLayout();
-        JPanel screens = new JPanel(cardLayout);
-        application.add(screens);
-
-        CreateAccountResponseModel responseModel = new CreateAccountResponseModel();
-        CreateAccountRequestModel requestModel = new CreateAccountRequestModel();
-        CreateAccountInputBoundary accountCreator = new CreateAccountInputBoundary() {
-        @Override
-        public CreateAccountResponseModel create(CreateAccountRequestModel requestModel) {
-            return null;}};
-        CreateAccountController accountController = new CreateAccountController();
-
-
-        CreateAccountScreen createAccountScreen = new CreateAccountScreen();
-
-        screens.add(createAccountScreen, "hello");
-
-        cardLayout.show(screens, "create account");
-        application.pack();
-        application.setVisible(true);
     }
 }
