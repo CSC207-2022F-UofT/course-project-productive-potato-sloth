@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDatabaseGateway extends DatabaseGateway implements DataAccessInterface<User> {
+public class UserDatabaseGateway extends DatabaseGateway implements UserDataAccessInterface {
 
     private List<User> userList;
 
@@ -25,9 +25,7 @@ public class UserDatabaseGateway extends DatabaseGateway implements DataAccessIn
 
     @Override
     public User get(String username) {
-        /**
-         *  Returns a user with the given username, if it exists.
-         */
+        // Returns a user with the given username, if it exists.
         for (User user: userList) {
             if(user.getUsername().equals(username)){
                 return user; // the user was found
@@ -48,6 +46,14 @@ public class UserDatabaseGateway extends DatabaseGateway implements DataAccessIn
 
     @Override
     public boolean update(User user) {
+        /*
+        Updates the given user in the linked list.
+        I don't even think we need this method, since
+        the linked list just contains pointers to users.
+        Will leave it in for now in case others are using
+        it -- I don't want to break the interface.
+        Vishnu 28/11/22
+         */
         User userToUpdate = this.get(user.getUsername());
         if (userToUpdate != null) {
             // replace the user with that username with the new user object
@@ -57,6 +63,7 @@ public class UserDatabaseGateway extends DatabaseGateway implements DataAccessIn
         } else {
             return false;
         }
+
     }
 
     @Override
@@ -112,11 +119,16 @@ public class UserDatabaseGateway extends DatabaseGateway implements DataAccessIn
             fileOutputStream.close();
             return true;
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            return false;
         }
     }
 
     public void deleteAll(){
         this.userList = new ArrayList<>();
+    }
+
+    @Override
+    public boolean persistData() {
+        return saveToFile();
     }
 }

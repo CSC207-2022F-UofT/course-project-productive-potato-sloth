@@ -1,9 +1,10 @@
 package entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class User {
+public class User implements Serializable {
     String username;
     String password;
     List<Tag> tags;
@@ -121,6 +122,7 @@ public class User {
 
     /**
      * Adds an event to this User
+     *
      * @param event The new event to add
      */
     public void addEvent(Event event) {
