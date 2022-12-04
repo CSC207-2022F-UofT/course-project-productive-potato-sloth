@@ -1,17 +1,16 @@
 package gateways;
 
-
-import java.util.ArrayList;
+import java.util.List;
 
 public interface DataAccessInterface<T> {
 
-    T get(int id);
+    T get(String identifier);
 
-    ArrayList<T> getAll();
+    List<T> getAll();
 
-    int insert(T t);
+    void insert(T t);
 
-    int update(T t);
+    boolean update(T t);
 
-    int delete(T t);
+    boolean delete(T t);
 }
