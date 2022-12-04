@@ -122,3 +122,11 @@ replay_pid*
 /gradlew.bat
 /.idea/misc.xml
 /.idea/vcs.xml
+
+
+gradlew
+gradlew.bat
+/gradle/wrapper/gradle-wrapper.jar
+/gradle/wrapper/gradle-wrapper.properties
+/.idea/misc.xml
+/.idea/vcs.xml
