@@ -5,6 +5,7 @@ import entities.Task;
 import entities.User;
 import gateways.UserDataAccessInterface;
 import gateways.UserDatabaseGateway;
+import screens.ScheduleEvent.ScheduleEventMainFrame;
 import screens.ScheduleEvent.ScheduleEventScreen;
 import services.CurrentUserService;
 import useCases.ViewCalendar.ViewCalendarInputBoundary;
@@ -44,6 +45,8 @@ public class ViewCalendarMainFrame {
         ViewCalendarScreen viewCalendarScreen = new ViewCalendarScreen(controller, viewModel);
         viewModel.addObserver(viewCalendarScreen);
         viewCalendarScreen.update();
+
+        ScheduleEventMainFrame scheduleEventMainFrame = new ScheduleEventMainFrame(currentUserService, gateway);
 
         screens.add(viewCalendarScreen);
 
