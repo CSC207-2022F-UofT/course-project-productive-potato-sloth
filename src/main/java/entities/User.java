@@ -4,8 +4,19 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * * An entity class representing a User
+ */
 public class User implements Serializable {
+
+    /**
+     * * The Username of the User
+     */
     String username;
+
+    /**
+     * * The Password of the User
+     */
     String password;
     List<Tag> tags;
     List<Event> events;

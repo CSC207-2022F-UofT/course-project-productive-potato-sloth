@@ -1,4 +1,4 @@
-package usecases;
+package useCases;
 
 import org.junit.jupiter.api.Test;
 import services.CurrentUserService;
@@ -8,7 +8,7 @@ public class ScheduleEventTest {
     CurrentUserService currentUserService;
 
     @Test
-    public void testScheduleEventOne(){
+    public void testScheduleEventOne() {
 
     }
 

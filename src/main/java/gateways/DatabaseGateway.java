@@ -24,7 +24,12 @@ abstract public class DatabaseGateway {
 
     protected void createFile(String relativePath) throws IOException {
         File f = new File(relativePath);
-        f.createNewFile();
+        try {
+            f.createNewFile();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
     }
 
     protected boolean fileExists(String relativePath) {

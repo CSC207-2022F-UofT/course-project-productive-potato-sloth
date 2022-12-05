@@ -49,7 +49,7 @@ public class TimerInteractor {
     }
 
     /**
-     * Stops the timer countdown and holds the duration of the timer constant till the user doesn’t press start again
+     * Stops the timer countdown and holds the duration of the timer constant till the user doesn't press start again
      * Updates the remainingDuration variable in Timer Class
      */
     void pauseTimer() {
