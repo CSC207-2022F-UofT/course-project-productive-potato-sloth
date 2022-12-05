@@ -75,7 +75,7 @@ public class ViewCalendarMainFrame {
 
     public static void main(String[] args) throws IOException {
         CurrentUserService service = new CurrentUserService();
-        UserDatabaseGateway gateway = new UserDatabaseGateway("database/UserFile1.ser");
+        UserDatabaseGateway gateway = new UserDatabaseGateway("database/ScheduleEventDemoUserFile.ser");
 
         User user = gateway.getAll().get(0);
 

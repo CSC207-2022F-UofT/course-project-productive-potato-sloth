@@ -123,12 +123,13 @@ public class UserDatabaseGateway extends DatabaseGateway implements UserDataAcce
         }
     }
 
-    public void deleteAll(){
-        this.userList = new ArrayList<>();
-    }
-
     @Override
     public boolean persistData() {
         return saveToFile();
+    }
+
+    @Override
+    public void deleteAllUsers() {
+        this.userList = new ArrayList<>();
     }
 }

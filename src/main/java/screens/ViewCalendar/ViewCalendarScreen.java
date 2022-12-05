@@ -21,18 +21,26 @@ public class ViewCalendarScreen extends JPanel implements ActionListener, ViewMo
         this.controller = controller;
         this.controller.loadEvents();
 
-        calendarPanel = new JPanel(new GridBagLayout());
+        calendarPanel = new JPanel();
+        calendarPanel.setPreferredSize(new Dimension(1000, 2000));
+//        JScrollPane scrollFrame = new JScrollPane(calendarPanel);
+//        calendarPanel.setAutoscrolls(true);
+//        scrollFrame.setPreferredSize(new Dimension( 800,300));
+//        this.add(scrollFrame);
         constraints = new GridBagConstraints();
 
         this.add(calendarPanel);
     }
 
     public void renderEvents(){
-//        calendarPanel.setLayout(new GridBagLayout());
+//        calendarPanel = new JPanel(new BoxLayout(calendarPanel, BoxLayout.X_AXIS));
+        calendarPanel.removeAll();
+        System.out.println("Rendering " + viewModel.getEventPanelList().size() + " events");
         for(EventPanel panel: viewModel.getEventPanelList()){
             calendarPanel.add(panel, constraints);
-            constraints.gridy += 1;
+//            constraints.gridy += 1;
         }
+        calendarPanel.revalidate();
         calendarPanel.repaint();
     }
 
