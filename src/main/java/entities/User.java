@@ -122,6 +122,7 @@ public class User implements Serializable {
 
     /**
      * Adds an event to this User
+     *
      * @param event The new event to add
      */
     public void addEvent(Event event) {

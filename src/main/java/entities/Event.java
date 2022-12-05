@@ -1,17 +1,20 @@
 package entities;
 
+import entities.dataObjects.EventDataResponseObject;
+import entities.dataObjects.TagDataObject;
+
+import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /*
 An entity class representing an Event
 TODO: document this class
  */
-public class Event {
+public class Event implements Serializable {
     private LocalDateTime start_time;
     private LocalDateTime end_time;
-    private List<String> collaborator_usernames;
 
     public Task getTask() {
         return task;
@@ -33,22 +36,6 @@ public class Event {
 
     private String name;
 
-    public boolean getRepeats() {
-        return repeats;
-    }
-
-    public void setRepeatFrequency(LocalTime repeatFrequency) {
-        this.repeats = true;
-        this.repeatFrequency = repeatFrequency;
-    }
-
-    public void clearRepeatFrequency(){
-        this.repeats = false;
-        this.repeatFrequency = null;
-    }
-
-    private boolean repeats;
-
     public LocalDateTime getEndTime() {
         return end_time;
     }
@@ -65,25 +52,47 @@ public class Event {
         this.start_time = start_time;
     }
 
-    private LocalTime repeatFrequency;
+    public List<Tag> getTags(){
+        return tags;
+    }
+
+    public void addTag(Tag tag){
+        tags.add(tag);
+    }
+
     private List<Tag> tags;
 
     public Event(LocalDateTime start_time,
                  LocalDateTime end_time,
-                 List<String> collaborator_usernames,
                  Task task,
                  String name,
-                 boolean repeats,
-                 LocalTime frequency,
                  List<Tag> tags
     ) {
         this.start_time = start_time;
         this.end_time = end_time;
-        this.collaborator_usernames = collaborator_usernames;
         this.task = task;
         this.name = name;
-        this.repeats = repeats;
-        this.repeatFrequency = frequency;
         this.tags = tags;
+    }
+
+    public EventDataResponseObject prepareDataResponseObject() {
+
+        List<TagDataObject> tagDataObjects = new ArrayList<>();
+
+        for(Tag tag: this.getTags()){
+            TagDataObject tagDataObject = new TagDataObject(tag.getName(), tag.getColor());
+            tagDataObjects.add(tagDataObject);
+        }
+
+        EventDataResponseObject dataResponseObject = new EventDataResponseObject(
+                this.getName(),
+                this.getStartTime(),
+                this.getEndTime(),
+                this.getTask().getName(),
+                tagDataObjects
+        );
+
+        return dataResponseObject;
+
     }
 }

@@ -17,7 +17,7 @@ public class TaskTest {
     @BeforeEach
     public void setup() {
         this.tag = new Tag("tag", Color.RED);
-        this.user = new User();
+        this.user = new User("testUsername", "testPassword");
     }
 
     /**
