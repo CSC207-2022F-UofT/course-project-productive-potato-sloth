@@ -37,8 +37,8 @@ public class ChatRoomInteractor implements ChatRoomInteractorInterface{
         return this.messageIndex;
     }
     @Override
-    public void sendMessage(String message, User user){
-        Message temp_message = new Message(message, user);
+    public void sendMessage(String message, User user1){
+        Message temp_message = new Message(message, user1);
         this.room.AddMessage(temp_message);
         List<Message> temp_list = this.room.GetMessages(3, 0);
         List out_list = extractInfo(temp_list);

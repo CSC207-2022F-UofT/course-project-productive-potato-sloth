@@ -1,14 +1,14 @@
 package entities;
-import java.io.Serializable;
 import java.time.LocalDateTime;
-public class Message implements Serializable {
+import java.io.Serializable;
+public class Message implements Serializable{
     String content;
-    String author;
+    User author;
     LocalDateTime timestamp;
 
-    public Message(String content/*, *User user*/){
+    public Message(String content, User user){
         this.content = content;
-        /*this.author = user.getName;*/
+        this.author = user;
         this.timestamp = LocalDateTime.now();
     }
 
@@ -28,7 +28,7 @@ public class Message implements Serializable {
     }
 
     public String getAuthor(){
-        return this.author;
+        return this.author.getUsername();
     }
 
     public LocalDateTime getDateTime(){
