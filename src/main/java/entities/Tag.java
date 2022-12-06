@@ -1,11 +1,12 @@
 package entities;
 
 import java.awt.Color;
+import java.io.Serializable;
 
 /**
  * A class representing a Tag in the system
  */
-public class Tag {
+public class Tag implements Serializable {
 
     /**
      * The name of the Tag
