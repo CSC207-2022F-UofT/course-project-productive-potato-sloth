@@ -2,15 +2,20 @@ package entities.InvitationEntities;
 import entities.Task;
 import entities.User;
 
+
+import java.io.Serializable;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
-public class Invitation implements InvitationInterface {
+public class Invitation implements Serializable, InvitationInterface  {
+
+    private static final long serialVersionUID = 6529685098267757692L;
     public User sender;
     public User receiver;
-    public String sentTime;
+    transient String sentTime;
 
     public Task task;
+
 
     public Invitation(User sender, User receiver, Task task){
         this.sender = sender;
@@ -46,14 +51,7 @@ public class Invitation implements InvitationInterface {
     public void setSender(User sender){this.sender = sender;}
 
     @Override
-    public void setReceiver(User receiver){this.receiver = sender;}
-
-//    @Override
-//    public String getSentTime(String str) {
-//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-//        LocalDateTime now = LocalDateTime.now();
-//        return dtf.format(now);
-//    }                  -- to be implemented --
+    public void setReceiver(User receiver){this.receiver = receiver;}
 
 
 }
