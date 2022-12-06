@@ -230,10 +230,6 @@ public class Task {
         return this.collaborators;
     }
 
-    public ChatRoom getChatRoom() {
-        return this.chatRoom;
-    }
-
 }
 
 
