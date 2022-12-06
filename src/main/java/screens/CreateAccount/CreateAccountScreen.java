@@ -13,15 +13,14 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 public class CreateAccountScreen extends JPanel implements ActionListener {
-    JTextField username = new JTextField(15);
+    JTextField username = new JTextField(20);
 
-    JTextField password = new JTextField(15);
+    JTextField password = new JTextField(20);
 
     CreateAccountController accountController;
 
 
     public CreateAccountScreen(CreateAccountController controller) {
-//    public CreateAccountScreen() {
 
         this.accountController = controller;
 
@@ -52,6 +51,7 @@ public class CreateAccountScreen extends JPanel implements ActionListener {
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     }
+
 
     /**
      * React to a button click that results in evt.

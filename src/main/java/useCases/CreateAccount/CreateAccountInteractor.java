@@ -24,7 +24,7 @@ public class CreateAccountInteractor implements CreateAccountInputBoundary {
                     return userPresenter.prepareFailureView("Username already exists.");
                 }
                 else if (requestModel.getPassword().isBlank()) {
-                    return userPresenter.prepareFailureView("Enter pasword.");
+                    return userPresenter.prepareFailureView("Enter password.");
                 } else {
                         User user = new User(requestModel.getUsername(), requestModel.getPassword());
                         gateway.insert(user);

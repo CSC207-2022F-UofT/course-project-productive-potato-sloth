@@ -11,8 +11,8 @@ public class User implements Serializable {
     List<Event> events;
     List<Task> tasks;
     List<Timer> timers;
-//    List<Invitation> incomingInvitations;
-//    List<Invitation> outgoingInvitations;
+    List<Invitation> incomingInvitations;
+    List<Invitation> outgoingInvitations;
 
     /**
      * Stores whether the Calendar shows weekends (1) or not (0)
@@ -29,8 +29,8 @@ public class User implements Serializable {
         this.events = new ArrayList<Event>();
         this.tasks = new ArrayList<Task>();
         this.timers = new ArrayList<Timer>();
-//        this.incomingInvitations = new ArrayList<Invitation>();
-//        this.outgoingInvitations = new ArrayList<Invitiation>();
+        this.incomingInvitations = new ArrayList<Invitation>();
+        this.outgoingInvitations = new ArrayList<Invitation>();
     }
 
     /**
@@ -43,8 +43,8 @@ public class User implements Serializable {
         this.events = new ArrayList<Event>();
         this.tasks = new ArrayList<Task>();
         this.timers = new ArrayList<Timer>();
-//        this.incomingInvitations = new ArrayList<Invitation>();
-//        this.outgoingInvitations = new ArrayList<Invitiation>();
+        this.incomingInvitations = new ArrayList<Invitation>();
+        this.outgoingInvitations = new ArrayList<Invitation>();
     }
 
     /**
@@ -210,51 +210,51 @@ public class User implements Serializable {
      * Adds an invitation to this User's outgoingInvitations
      * @param invitation The new invitation to add
      */
-//    public void addOutgoingInvitation(Invitation invitation) {
-//        this.outgoingInvitations.add(invitation);
-//    }
+    public void addOutgoingInvitation(Invitation invitation) {
+        this.outgoingInvitations.add(invitation);
+    }
 
     /**
      * Removes an invitation from this User's outgoingInvitations
      * @param invitation The new invitation to remove
      */
-//    public void removeOutgoingInvitation(Invitation invitation) {
-//        this.outgoingInvitations.remove(invitation);
-//    }
+    public void removeOutgoingInvitation(Invitation invitation) {
+        this.outgoingInvitations.remove(invitation);
+    }
 
     /**
      * Gets the list of outgoingInvitations associated with this User
      *
      * @return outgoingInvitations A list of outgoingInvitations associated with this User
      */
- //   public List<Invitation> getOutgoingInvitations() {
- //       return this.outgoingInvitations;
- //   }
+    public List<Invitation> getOutgoingInvitations() {
+        return this.outgoingInvitations;
+    }
 
     /**
      * Adds an invitation to this User's incomingInvitations
      * @param invitation The new invitation to add
      */
-//    public void addIncomingInvitation(Invitation invitation) {
-//        this.incomingInvitations.add(invitation);
-//    }
+    public void addIncomingInvitation(Invitation invitation) {
+        this.incomingInvitations.add(invitation);
+    }
 
     /**
      * Removes an invitation from this User's incomingInvitations
      * @param invitation The new invitation to remove
      */
-//    public void removeIncomingInvitation(Invitation invitation) {
-//        this.incomingInvitations.remove(invitation);
-//    }
+    public void removeIncomingInvitation(Invitation invitation) {
+        this.incomingInvitations.remove(invitation);
+    }
 
     /**
      * Gets the list of incomingInvitations associated with this User
      *
      * @return incomingInvitations A list of incomingInvitations associated with this User
      */
-//    public List<Invitation> getIncomingInvitations() {
-//        return this.incomingInvitations;
-//    }
+    public List<Invitation> getIncomingInvitations() {
+        return this.incomingInvitations;
+    }
 
     public void setCalendarView(boolean calendarView) {this.calendarView = calendarView;}
 

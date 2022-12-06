@@ -31,7 +31,7 @@ public class UserDatabaseGateway extends DatabaseGateway implements UserDataAcce
                 return user; // the user was found
             }
         }
-        return null; // the user was not found
+            return null; // the user was not found
     }
 
     @Override
