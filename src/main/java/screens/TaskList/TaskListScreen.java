@@ -28,6 +28,7 @@ public class TaskListScreen implements Observer {
     TaskScreen taskScreen;
     JButton newTask;
     NewTaskScreen newTaskScreen;
+    DeleteTaskPopUp deleteTaskPopUp;
 
     String selectedTask;
 
@@ -36,7 +37,8 @@ public class TaskListScreen implements Observer {
             GetTaskInfoController getTaskInfoController,
             RemoveTaskController removeTaskController,
             TaskScreen taskScreen,
-            NewTaskScreen newTaskScreen
+            NewTaskScreen newTaskScreen,
+            DeleteTaskPopUp deleteTaskPopUp
     ) {
 
         this.viewModel = viewModel;
@@ -44,6 +46,7 @@ public class TaskListScreen implements Observer {
         this.removeTaskController = removeTaskController;
         this.taskScreen = taskScreen;
         this.newTaskScreen = newTaskScreen;
+        this.deleteTaskPopUp = deleteTaskPopUp;
 
         listModel = new DefaultListModel<>();
         this.taskList = new JList<>();
@@ -63,34 +66,12 @@ public class TaskListScreen implements Observer {
                     setSelectedTask(selectedTask);
                     viewModel.setSelectedTask(selectedTask);
                     taskScreen.showScreen(viewModel);
+
                 } else if (SwingUtilities.isRightMouseButton(e) && taskList.getSelectedValue() != null) {
                     String selectedTask = taskList.getSelectedValue();
                     setSelectedTask(selectedTask);
-                    JPopupMenu popUp = new JPopupMenu("asdf");
-                    JButton deleteTask = new JButton("Delete Task");
-                    deleteTask.addActionListener(new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            int result = JOptionPane.showConfirmDialog(frame, "Are you sure you want to delete this task?", "Delete Task",
-                                    JOptionPane.YES_NO_OPTION,
-                                    JOptionPane.QUESTION_MESSAGE);
-
-
-                            if (result == 0) { // User selected yes
-
-                                TaskInfoResponseModel viewModel = getTaskInfoController.getInfo(selectedTask);
-                                viewModel.removeTask(selectedTask);
-                                removeTaskController.removeTask(selectedTask);
-                                update(viewModel);
-                            }
-
-
-                        }
-                    });
-
-
-                    popUp.add(deleteTask);
-                    popUp.show(frame, e.getXOnScreen(), e.getYOnScreen());
+                    deleteTaskPopUp.showScreen(selectedTask);
+                    deleteTaskPopUp.show(frame, e.getXOnScreen(), e.getYOnScreen());
                 }
             }
         });
@@ -131,12 +112,34 @@ public class TaskListScreen implements Observer {
         panel.removeAll();
 
         JList<String> newTaskList = new JList<>();
+        newTaskList.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // Detecting a double click
+                if (e.getClickCount() == 2 && SwingUtilities.isLeftMouseButton(e)) {
+                    String selectedTask = newTaskList.getSelectedValue();
+                    setSelectedTask(selectedTask);
+                    TaskListViewModel newViewModel = new TaskListViewModel();
+                    newViewModel.setSelectedTask(selectedTask);
+                    taskScreen.showScreen(newViewModel);
+
+                } else if (SwingUtilities.isRightMouseButton(e) && newTaskList.getSelectedValue() != null) {
+                    String selectedTask = newTaskList.getSelectedValue();
+                    setSelectedTask(selectedTask);
+                    deleteTaskPopUp.showScreen(selectedTask);
+                    deleteTaskPopUp.show(frame, e.getXOnScreen(), e.getYOnScreen());
+                }
+            }
+        });
+
+
         DefaultListModel<String> newListModel = new DefaultListModel<>();
 
         for (String task : viewModel.getAllTasks()) {
             newListModel.addElement(task);
         }
         newTaskList.setModel(newListModel);
+
 
         panel.add(new JScrollPane(newTaskList));
         panel.add(Box.createRigidArea(new Dimension(10, 10))); // Empty space

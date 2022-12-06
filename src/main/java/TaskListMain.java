@@ -124,17 +124,24 @@ public class TaskListMain {
                 createTaskController
         );
 
+        DeleteTaskConfirmationDialog deleteTaskConfirmationDialog = new DeleteTaskConfirmationDialog(removeTaskController, getTaskInfoController);
+
+
+        DeleteTaskPopUp deleteTaskPopUp = new DeleteTaskPopUp(deleteTaskConfirmationDialog, "Delete Task");
+
         TaskListScreen taskListScreen = new TaskListScreen(
                 viewModel,
                 getTaskInfoController,
                 removeTaskController,
                 taskScreen,
-                newTaskScreen
+                newTaskScreen,
+                deleteTaskPopUp
         );
 
         taskEditScreen.registerObserver(taskScreen);
         taskEditScreen.registerObserver(taskListScreen);
         newTaskScreen.registerObserver(taskListScreen);
+        deleteTaskConfirmationDialog.registerObserver(taskListScreen);
 
     }
 
