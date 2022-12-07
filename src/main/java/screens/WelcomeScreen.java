@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 
 import screens.Timer.TimerMainGUI;
 
-// GUI layer
+//UI layer
 
 public class WelcomeScreen extends JFrame implements ActionListener {
 
