@@ -40,7 +40,6 @@ public class TaskListScreen implements Observer {
             NewTaskScreen newTaskScreen,
             DeleteTaskPopUp deleteTaskPopUp
     ) {
-
         this.viewModel = viewModel;
         this.getTaskInfoController = getTaskInfoController;
         this.removeTaskController = removeTaskController;
@@ -94,8 +93,11 @@ public class TaskListScreen implements Observer {
 
         frame.setPreferredSize(new Dimension(360, 500));
         frame.add(panel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
+        frame.setVisible(false);
+    }
+
+    public void showScreen() {
         frame.setVisible(true);
     }
 

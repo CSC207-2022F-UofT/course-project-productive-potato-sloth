@@ -127,7 +127,7 @@ public class TaskListMain {
         DeleteTaskConfirmationDialog deleteTaskConfirmationDialog = new DeleteTaskConfirmationDialog(removeTaskController, getTaskInfoController);
 
 
-        DeleteTaskPopUp deleteTaskPopUp = new DeleteTaskPopUp(deleteTaskConfirmationDialog, "Delete Task");
+        DeleteTaskPopUp deleteTaskPopUp = new DeleteTaskPopUp(deleteTaskConfirmationDialog);
 
         TaskListScreen taskListScreen = new TaskListScreen(
                 viewModel,

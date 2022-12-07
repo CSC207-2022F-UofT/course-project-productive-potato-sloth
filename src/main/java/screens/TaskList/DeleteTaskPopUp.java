@@ -12,9 +12,8 @@ public class DeleteTaskPopUp extends JPopupMenu implements ActionListener {
 
     DeleteTaskConfirmationDialog deleteTaskConfirmationDialog;
 
-    public DeleteTaskPopUp(DeleteTaskConfirmationDialog deleteTaskConfirmationDialog, String windowName) {
-        super(windowName);
-
+    public DeleteTaskPopUp(DeleteTaskConfirmationDialog deleteTaskConfirmationDialog) {
+        super("Delete Task");
         this.deleteTaskConfirmationDialog = deleteTaskConfirmationDialog;
     }
 

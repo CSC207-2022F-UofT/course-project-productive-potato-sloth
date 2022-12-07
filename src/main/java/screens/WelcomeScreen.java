@@ -1,5 +1,7 @@
 package screens;
 
+import screens.TaskList.TaskListScreen;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -11,24 +13,31 @@ import java.awt.event.ActionListener;
 
 public class WelcomeScreen extends JFrame implements ActionListener {
 
+    TaskListScreen taskListScreen;
+
     /**
      * The main welcome window of the application, acts like a home screen
      */
-    public WelcomeScreen() {
+    public WelcomeScreen(
+            TaskListScreen taskListScreen
+    ) {
+        this.taskListScreen = taskListScreen;
 
         JLabel title = new JLabel("Welcome Potato Sloths!");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JButton timer = new JButton("Start Timer");
         JButton viewSchedule = new JButton("View Schedule");
-        JButton createTask = new JButton("View Schedule");
+        JButton viewTasks = new JButton("View Tasks");
 
         JPanel buttons = new JPanel();
         buttons.add(timer);
         buttons.add(viewSchedule);
-        buttons.add(createTask);
+        buttons.add(viewTasks);
 
         timer.addActionListener(this::actionPerformedTimer);
+
+        viewTasks.addActionListener(this::actionPerformedTaskList);
 
         JPanel main = new JPanel();
         main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
@@ -45,6 +54,10 @@ public class WelcomeScreen extends JFrame implements ActionListener {
     public void actionPerformedTimer(ActionEvent evt) {
 
         //TimerMainGUI.displayTimerScreen();
+    }
+
+    public void actionPerformedTaskList(ActionEvent evt) {
+        taskListScreen.showScreen();
     }
 
     public void actionPerformed(ActionEvent evt) {
