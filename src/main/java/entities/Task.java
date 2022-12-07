@@ -60,6 +60,7 @@ public class Task {
         this.name = name;
         this.user = user;
         this.completed = false;
+        this.chatRoom = new ChatRoom();
     }
 
     /**
@@ -74,6 +75,7 @@ public class Task {
         this.user = user;
         this.description = description;
         this.completed = false;
+        this.chatRoom = new ChatRoom();
     }
 
     /**
