@@ -25,11 +25,9 @@ import java.io.IOException;
 
 public class Main {
 
-    static User user = new User();
+    static User user = new User("User", "Password");
 
     public static void main(String[] args) throws IOException {
-
-        setupTestData();
 
         // Instantiating all Factories
         TaskFactory taskFactory = new TaskFactory();
@@ -41,12 +39,16 @@ public class Main {
 
         // Instantiating all Services
         CurrentUserService currentUserService = new CurrentUserService();
-        currentUserService.setCurrentUser(user);
 
         // Instantiating all Database Gateways
         UserDatabaseGateway userDatabaseGateway = new UserDatabaseGateway("testDatabase.ser");
+
+        User user = userDatabaseGateway.get("User");
+        currentUserService.setCurrentUser(user);
+
         TagDataAccessInterface tagDatabaseGateway = new TagDatabaseGateway(currentUserService, userDatabaseGateway);
         TaskDataAccessInterface taskDataAccessInterface = new TaskDatabaseGateway(currentUserService, userDatabaseGateway);
+
 
         // Instantiating all Input Boundaries
         CreateTagInputBoundary createTagInteractor = new CreateTag(tagDatabaseGateway, userDatabaseGateway, tagFactory);

@@ -39,7 +39,9 @@ public class CreateTask implements CreateTaskInputBoundary {
         }
 
         Task newTask = taskFactory.create(taskRequestModel.getName(), currentUserService.getCurrentUser());
-        currentUserService.getCurrentUser().addTask(newTask);
+
+        taskDatabaseGateway.insert(newTask);
+
         TaskResponseModel response = new TaskResponseModel(
                 newTask.getName(),
                 null,

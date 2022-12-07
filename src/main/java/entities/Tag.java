@@ -1,11 +1,12 @@
 package entities;
 
 import java.awt.Color;
+import java.io.Serializable;
 
 /**
  * A class representing a Tag in the system
  */
-public class Tag {
+public class Tag implements Serializable {
     /**
      * The User (owner) of the tag
      */
@@ -41,6 +42,7 @@ public class Tag {
 
     /**
      * Gets the name of the Tag
+     *
      * @return The name of the tag
      */
     public String getName() {
@@ -49,6 +51,7 @@ public class Tag {
 
     /**
      * Sets the name of the string
+     *
      * @param name The new name of the string
      */
     public void setName(String name) {
@@ -57,6 +60,7 @@ public class Tag {
 
     /**
      * Gets the colour of the Tag
+     *
      * @return The colour of the Tag
      */
     public Color getColor() {
@@ -65,6 +69,7 @@ public class Tag {
 
     /**
      * Sets the colour of the Tag
+     *
      * @param color The new colour of the Tag
      */
     public void setColor(Color color) {
