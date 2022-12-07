@@ -14,10 +14,6 @@ public class User implements Serializable {
     List<Invitation> incomingInvitations;
     List<Invitation> outgoingInvitations;
 
-    /**
-     * Stores whether the Calendar shows weekends (1) or not (0)
-     */
-    boolean calendarView;
 
     /**
      * Initiaties a new User
@@ -72,14 +68,6 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    /**
-     * Checks whether the password inputted is the same as that of the User
-     * @param user The user corresponding to the username inputted
-     * @return whether the password inputted is that of user
-     */
-    public boolean checkCredential(User user) {
-        return this.password.equals(user.password);
-    }
 
     public String getPassword() {return this.password;}
 
@@ -256,6 +244,5 @@ public class User implements Serializable {
         return this.incomingInvitations;
     }
 
-    public void setCalendarView(boolean calendarView) {this.calendarView = calendarView;}
 
 }

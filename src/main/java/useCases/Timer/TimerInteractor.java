@@ -52,7 +52,7 @@ public class TimerInteractor {
     void pauseTimer(){}
 
     /**
-     * When user ends the timer session, output “end of session”
+     * When user ends the timer session, output "end of session"
      *     Is also automatically called when the Time on the clock runs out
      */
     void endTimer(){}
