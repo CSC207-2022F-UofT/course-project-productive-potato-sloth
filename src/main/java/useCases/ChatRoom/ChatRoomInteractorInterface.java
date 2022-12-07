@@ -12,5 +12,6 @@ public interface ChatRoomInteractorInterface {
     public List<MessageResponseModel> updateView(boolean direction);
     public int getMessageIndex();
 
+    public void sendMessage(String message);
     public void sendMessage(String message, User user);
 }

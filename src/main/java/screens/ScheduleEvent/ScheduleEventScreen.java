@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.github.lgooddatepicker.Project/src/main/java/com/github/lgooddatepicker/components/DateTimePicker.java;
+import com.github.lgooddatepicker.components.DateTimePicker;
 import screens.*;
 import screens.ViewCalendar.ViewModelObserver;
 import screens.ViewCalendar.ViewModelSubjectInterface;

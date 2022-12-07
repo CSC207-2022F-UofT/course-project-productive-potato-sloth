@@ -8,7 +8,7 @@
     <properties/>
     <border type="none"/>
     <children>
-      <component id="44132" class="javax.swing.JLabel" binding="message1Display">
+      <component id="44132" class="javax.swing.JLabel" binding="Message1Display">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="451" height="36"/>
@@ -21,7 +21,7 @@
           <text value="Message unavailable"/>
         </properties>
       </component>
-      <component id="5eb4a" class="javax.swing.JLabel" binding="message2Display">
+      <component id="5eb4a" class="javax.swing.JLabel" binding="Message2Display">
         <constraints>
           <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="451" height="95"/>

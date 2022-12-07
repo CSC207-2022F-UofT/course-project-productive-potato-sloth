@@ -16,9 +16,10 @@ public class UpdateViewPresenter implements UpdateViewPresenterInterface{
         return this.UI;
     }
     @Override
-    public void updateView(List<MessageResponseModel> response_models) {
+    public List<MessageResponseModel> updateView(List<MessageResponseModel> response_models) {
         if(!(this.UI.equals(null))){
             this.UI.setMessages(response_models);
         }
+        return response_models;
     }
 }

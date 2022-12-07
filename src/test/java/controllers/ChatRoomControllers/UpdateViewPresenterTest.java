@@ -21,8 +21,6 @@ public class UpdateViewPresenterTest {
     ChatRoom room = new ChatRoom();
     User user1 = new User();
     ChatRoomInteractorInterface interactor = new ChatRoomInteractor(room);
-    SendMessageController sender = new SendMessageController(interactor);
-    MainUI UI = new MainUI(interactor, sender);
     UpdateViewPresenter presenter = new UpdateViewPresenter();
     String[] str_list = {"a", "b", "c"};
     @After
@@ -36,8 +34,7 @@ public class UpdateViewPresenterTest {
             Message msg = new Message(i, user1);
             msg_list.add(new MessageResponseModel(msg));
         }
-        presenter.setUI(UI);
-        presenter.updateView(msg_list);
-        //TODO: finish this test
+        List<MessageResponseModel> temp_list = presenter.updateView(msg_list);
+        assertEquals(temp_list, msg_list);
     }
 }

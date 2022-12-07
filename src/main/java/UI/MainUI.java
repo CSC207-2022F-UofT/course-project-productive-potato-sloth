@@ -1,5 +1,10 @@
 package UI;
 
+import controllers.ChatRoomControllers.SendMessageController;
+import controllers.ChatRoomControllers.UpdateViewController;
+import useCases.ChatRoom.ChatRoomInteractorInterface;
+import useCases.responseModels.MessageResponseModel;
+
 import javax.swing.*;
 import javax.swing.plaf.FontUIResource;
 import javax.swing.text.StyleContext;
@@ -9,12 +14,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-
-import controllers.ChatRoomControllers.SendMessageController;
-import controllers.ChatRoomControllers.UpdateViewController;
-import services.CurrentUserService;
-import useCases.ChatRoom.ChatRoomInteractorInterface;
-import useCases.responseModels.MessageResponseModel;
 
 public class MainUI extends JFrame {
     public SendMessageController messenger;
@@ -35,8 +34,6 @@ public class MainUI extends JFrame {
     private JLabel Msg1TimeStamp;
     private JPanel mainPanel;
     private JLabel Msg1UserDisp;
-    private JLabel message1Display;
-    private JLabel message2Display;
 
     private List<List<JLabel>> organizer;
 
@@ -46,25 +43,23 @@ public class MainUI extends JFrame {
         $$$setupUI$$$();
         this.organizer = responseSetUp();
         this.updater = new UpdateViewController(this.interactor);
-        createUIComponents();
         /*
         //experimental segment so that Main runs
-        String default_msg_txt = "Message unavailable";
+        String default_msg_txt = "entities.Message unavailable";
         this.sendMessageButton = new JButton("send message");
         this.NextButton = new JButton("next message");
         this.PrevButton = new JButton("previous messages");
-         this.mainPanel = new JPanel();
-         setContentPane(this.mainPanel);
+         this.mainPanel = new JPanel();*/
+        setContentPane(this.mainPanel);
         //end of experimental segment
-         */
-        CurrentUserService service = new CurrentUserService();
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.pack();
         this.setVisible(true);
         sendMessageButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 if (!(MsgInputField.getText().equals(""))) {
-                    MainUI.this.messenger.sendMessageController(MsgInputField.getText(), service.getCurrentUser());
+                    MainUI.this.messenger.sendMessageController(MsgInputField.getText());
                 }
             }
         });
@@ -103,7 +98,7 @@ public class MainUI extends JFrame {
         if (i < 2) {
             while (i < 3) {
                 List<JLabel> temp_index = this.organizer.get(i);
-                temp_index.get(0).setText("Message unavailable");
+                temp_index.get(0).setText("entities.Message unavailable");
                 temp_index.get(1).setText("No author");
                 temp_index.get(2).setText("No timestamp");
                 i++;
@@ -119,36 +114,23 @@ public class MainUI extends JFrame {
      * then the bottom part of the screen would be blank.
      */
     private List<List<JLabel>> responseSetUp() {
-        if (this.organizer != null) {
-            return this.organizer;
-        } else {
-            List<JLabel> panel3List = new ArrayList<>();
-            panel3List.add(this.Message3Display);
-            panel3List.add(this.Msg3UserDisp);
-            panel3List.add(this.Msg3TimeStamp);
-            List<JLabel> panel2List = new ArrayList<>();
-            panel2List.add(this.Message2Display);
-            panel2List.add(this.Msg2UserDisp);
-            panel2List.add(this.Msg2TimeStamp);
-            List<JLabel> panel1List = new ArrayList<>();
-            panel3List.add(this.Message1Display);
-            panel3List.add(this.Msg1UserDisp);
-            panel3List.add(this.Msg1TimeStamp);
-            List<List<JLabel>> panelList = new ArrayList<>();
-            panelList.add(panel1List);
-            panelList.add(panel2List);
-            panelList.add(panel3List);
-            return panelList;
-        }
-    }
-
-    private void createUIComponents() {
-        JPanel panel1 = new JPanel();
-        this.mainPanel = panel1;
-        panel1.setLayout(new BorderLayout(0, 0));
-        this.sendMessageButton = new JButton();
-        this.sendMessageButton.setText("Send Message");
-        panel1.add(this.sendMessageButton, BorderLayout.EAST);
+        List<JLabel> panel3List = new ArrayList<>();
+        panel3List.add(this.Message3Display);
+        panel3List.add(this.Msg3UserDisp);
+        panel3List.add(this.Msg3TimeStamp);
+        List<JLabel> panel2List = new ArrayList<>();
+        panel2List.add(this.Message2Display);
+        panel2List.add(this.Msg2UserDisp);
+        panel2List.add(this.Msg2TimeStamp);
+        List<JLabel> panel1List = new ArrayList<>();
+        panel1List.add(this.Message1Display);
+        panel1List.add(this.Msg1UserDisp);
+        panel1List.add(this.Msg1TimeStamp);
+        List<List<JLabel>> panelList = new ArrayList<>();
+        panelList.add(panel1List);
+        panelList.add(panel2List);
+        panelList.add(panel3List);
+        return panelList;
     }
 
     /**
@@ -159,39 +141,39 @@ public class MainUI extends JFrame {
      * @noinspection ALL
      */
     private void $$$setupUI$$$() {
-        createUIComponents();
         mainPanel = new JPanel();
         mainPanel.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(7, 3, new Insets(0, 0, 0, 0), -1, -1));
-        message1Display = new JLabel();
-        message1Display.setBackground(new Color(-12828863));
-        Font message1DisplayFont = this.$$$getFont$$$(null, -1, 26, message1Display.getFont());
-        if (message1DisplayFont != null) message1Display.setFont(message1DisplayFont);
-        message1Display.setForeground(new Color(-4473925));
-        message1Display.setText("Message unavailable");
-        mainPanel.add(message1Display, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 1, 2, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(451, 36), null, 0, false));
-        message2Display = new JLabel();
-        Font message2DisplayFont = this.$$$getFont$$$(null, -1, 24, message2Display.getFont());
-        if (message2DisplayFont != null) message2Display.setFont(message2DisplayFont);
-        message2Display.setText("Message unavailable");
-        mainPanel.add(message2Display, new com.intellij.uiDesigner.core.GridConstraints(3, 0, 1, 2, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(451, 95), null, 0, false));
+        Message1Display = new JLabel();
+        Message1Display.setBackground(new Color(-12828863));
+        Font Message1DisplayFont = this.$$$getFont$$$(null, -1, 26, Message1Display.getFont());
+        if (Message1DisplayFont != null) Message1Display.setFont(Message1DisplayFont);
+        Message1Display.setForeground(new Color(-4473925));
+        Message1Display.setText("entities.Message unavailable");
+        mainPanel.add(Message1Display, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 1, 2, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(451, 36), null, 0, false));
+        Message2Display = new JLabel();
+        Font Message2DisplayFont = this.$$$getFont$$$(null, -1, 24, Message2Display.getFont());
+        if (Message2DisplayFont != null) Message2Display.setFont(Message2DisplayFont);
+        Message2Display.setText("entities.Message unavailable");
+        mainPanel.add(Message2Display, new com.intellij.uiDesigner.core.GridConstraints(3, 0, 1, 2, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(451, 95), null, 0, false));
         Message3Display = new JLabel();
         Font Message3DisplayFont = this.$$$getFont$$$(null, -1, 24, Message3Display.getFont());
         if (Message3DisplayFont != null) Message3Display.setFont(Message3DisplayFont);
-        Message3Display.setText("Message unavailable");
+        Message3Display.setText("entities.Message unavailable");
         mainPanel.add(Message3Display, new com.intellij.uiDesigner.core.GridConstraints(5, 0, 1, 2, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(451, 168), null, 0, false));
         MsgInputField = new JTextField();
         MsgInputField.setText("Input your message here...");
         MsgInputField.setToolTipText("Enter your message here");
         mainPanel.add(MsgInputField, new com.intellij.uiDesigner.core.GridConstraints(6, 0, 1, 2, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, new Dimension(451, 30), null, 0, false));
         PrevButton = new JButton();
-        PrevButton.setText("Prev Message");
+        PrevButton.setText("Prev entities.Message");
         PrevButton.setToolTipText("older messages");
         mainPanel.add(PrevButton, new com.intellij.uiDesigner.core.GridConstraints(1, 2, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-        NextButton.setText("Next Message");
+        NextButton = new JButton();
+        NextButton.setText("Next entities.Message");
         NextButton.setToolTipText("newer messages");
         mainPanel.add(NextButton, new com.intellij.uiDesigner.core.GridConstraints(5, 2, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(108, 168), null, 0, false));
         sendMessageButton = new JButton();
-        sendMessageButton.setText("Send Message");
+        sendMessageButton.setText("Send entities.Message");
         mainPanel.add(sendMessageButton, new com.intellij.uiDesigner.core.GridConstraints(6, 2, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         Msg3TimeStamp = new JLabel();
         Msg3TimeStamp.setText("Time");
@@ -203,13 +185,13 @@ public class MainUI extends JFrame {
         Msg1TimeStamp.setText("Time");
         mainPanel.add(Msg1TimeStamp, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         Msg3UserDisp = new JLabel();
-        Msg3UserDisp.setText("Retrieving User...");
+        Msg3UserDisp.setText("Retrieving entities.User...");
         mainPanel.add(Msg3UserDisp, new com.intellij.uiDesigner.core.GridConstraints(4, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         Msg2UserDisp = new JLabel();
-        Msg2UserDisp.setText("Retrieving User...");
+        Msg2UserDisp.setText("Retrieving entities.User...");
         mainPanel.add(Msg2UserDisp, new com.intellij.uiDesigner.core.GridConstraints(2, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         Msg1UserDisp = new JLabel();
-        Msg1UserDisp.setText("Retrieving User...");
+        Msg1UserDisp.setText("Retrieving entities.User...");
         mainPanel.add(Msg1UserDisp, new com.intellij.uiDesigner.core.GridConstraints(0, 1, 1, 2, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
     }
 
@@ -241,5 +223,9 @@ public class MainUI extends JFrame {
     public JComponent $$$getRootComponent$$$() {
         return mainPanel;
     }
+
+    /**
+     * @noinspection ALL
+     */
 }
 

@@ -27,7 +27,7 @@ public class SendMessageControllerTest {
 
     @Test
     public void TestSendMessage(){
-        sender.sendMessageController("abcd", user1);
+        sender.sendMessageController("abcd");
         List<Message> messages = room.GetMessages();
         assertEquals(messages.size(), 1);
         assertEquals(messages.get(0).toString(), "abcd");

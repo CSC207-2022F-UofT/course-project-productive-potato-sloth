@@ -4,9 +4,10 @@ import controllers.ChatRoomControllers.InitializeViewInterface;
 import controllers.ChatRoomControllers.InitializeViewPresenter;
 import controllers.ChatRoomControllers.SendMessageController;
 import controllers.ChatRoomControllers.UpdateViewPresenterInterface;
-import entities.User;
 import entities.ChatRoom;
 import entities.Message;
+import entities.User;
+import services.CurrentUserService;
 import useCases.responseModels.MessageResponseModel;
 
 import java.util.ArrayList;
@@ -16,12 +17,16 @@ public class ChatRoomInteractor implements ChatRoomInteractorInterface{
     ChatRoom room;
     int messageIndex;
     UpdateViewPresenterInterface presenter;
+    CurrentUserService service;
     public ChatRoomInteractor(ChatRoom room){
         this.room = room;
         this.messageIndex = 0;
     }
     public void setPresenter(UpdateViewPresenterInterface presenter){
         this.presenter = presenter;
+    }
+    public void setService(CurrentUserService service){
+        this.service = service;
     }
 
     public UpdateViewPresenterInterface getPresenter(){
@@ -37,7 +42,8 @@ public class ChatRoomInteractor implements ChatRoomInteractorInterface{
         return this.messageIndex;
     }
     @Override
-    public void sendMessage(String message, User user1){
+    public void sendMessage(String message){
+        User user1 = this.service.getCurrentUser();
         Message temp_message = new Message(message, user1);
         this.room.AddMessage(temp_message);
         List<Message> temp_list = this.room.GetMessages(3, 0);
@@ -46,8 +52,19 @@ public class ChatRoomInteractor implements ChatRoomInteractorInterface{
             this.presenter.updateView(out_list);
         }
         this.messageIndex = 0;
-        updateView();
+        //updateView();
     }
+
+    /**
+     * This overloaded method is only for testing purposes to ensure that 
+     * @param message
+     * @param user
+     */
+    public void sendMessage(String message, User user){
+        Message temp_message = new Message(message, user);
+        this.room.AddMessage(temp_message);
+    }
+
     /**
      * Since Entities cannot be directly passed into Presenters, below is a helper
     class that takes in a List of Messages and returns a List, in which the first element is the list
