@@ -5,7 +5,6 @@ package useCases.Timer;
 import java.time.Duration;
 
 public class TimerInputData {
-
     private Duration inputDurationOfTimer;
 
     public TimerInputData(Duration inputDuration){

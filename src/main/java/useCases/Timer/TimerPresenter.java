@@ -4,6 +4,5 @@ package useCases.Timer;
 
 public interface TimerPresenter {
     TimerOutputData prepareSuccessView(TimerOutputData timerOutputData);
-
     TimerOutputData prepareFailView(String error);
 }

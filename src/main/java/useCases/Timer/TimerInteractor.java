@@ -34,7 +34,6 @@ public class TimerInteractor implements TimerInputBoundary{
         CurrentUserService currentUserService = new CurrentUserService();
         User currUser = currentUserService.getCurrentUser();
         //TODO: add t to currUser timer list.
-        // currUser.
 
 
         TimerOutputData timerOutputData = new TimerOutputData(inputDuration);
