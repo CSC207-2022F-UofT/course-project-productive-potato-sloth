@@ -17,6 +17,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
+
 public class Main {
 
     static User user = new User("User", "Password");
