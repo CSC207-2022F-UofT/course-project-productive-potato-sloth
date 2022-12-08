@@ -25,8 +25,8 @@ public class DeleteTagController {
         this.inputBoundary = inputBoundary;
     }
 
-    public TagResponseModel createTag(String name, Color color) {
-        TagRequestModel tagRequestModel = new TagRequestModel(name, color);
+    public TagResponseModel delete(String name, Color color) {
+        TagRequestModel tagRequestModel = new TagRequestModel(name, null, color);
         return inputBoundary.delete(tagRequestModel);
     }
 

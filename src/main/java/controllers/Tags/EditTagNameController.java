@@ -25,8 +25,8 @@ public class EditTagNameController {
         this.inputBoundary = inputBoundary;
     }
 
-    public TagResponseModel createTag(String name, Color color) {
-        TagRequestModel tagRequestModel = new TagRequestModel(name, color);
+    public TagResponseModel editName(String name, String newName, Color color) {
+        TagRequestModel tagRequestModel = new TagRequestModel(name, newName, color);
         return inputBoundary.editTagName(tagRequestModel);
     }
 

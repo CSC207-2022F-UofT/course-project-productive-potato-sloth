@@ -8,6 +8,7 @@ import gateways.Tags.TagRequestModel;
 import gateways.Tags.TagResponseModel;
 import gateways.UserDatabaseGateway;
 import presenters.TagPresenter;
+import services.CurrentUserService;
 
 
 /**
@@ -29,7 +30,16 @@ public class CreateTag implements CreateTagInputBoundary {
      * The interface which allows access to the UserDatabase
      */
     private final UserDatabaseGateway userDatabaseGateway;
-//    private final TagPresenter tagPresenter;
+
+    /**
+     * The current user service
+     */
+    private final CurrentUserService currentUserService;
+
+    /**
+     * The tag presenter
+     */
+    private final TagPresenter tagPresenter;
 
 
     /**
@@ -38,17 +48,20 @@ public class CreateTag implements CreateTagInputBoundary {
      * @param tagDatabaseGateway  Interface for accessing Tag
      * @param userDatabaseGateway Interface for accessing Users
      * @param tagFactory          Factory for creating Tasks
+     * @param tagPresenter        The presenter for tags
      */
     public CreateTag(
             TagDataAccessInterface tagDatabaseGateway,
             UserDatabaseGateway userDatabaseGateway,
-            TagFactory tagFactory
-//            TagPresenter tagPresenter
+            TagFactory tagFactory,
+            TagPresenter tagPresenter,
+            CurrentUserService currentUserService
     ) {
         this.tagDatabaseGateway = tagDatabaseGateway;
         this.tagFactory = tagFactory;
         this.userDatabaseGateway = userDatabaseGateway;
-//        this.tagPresenter = tagPresenter;
+        this.tagPresenter = tagPresenter;
+        this.currentUserService = currentUserService;
     }
 
     /**
@@ -60,10 +73,10 @@ public class CreateTag implements CreateTagInputBoundary {
     @Override
     public TagResponseModel create(TagRequestModel tagRequestModel) {
         if (tagDatabaseGateway.contains(tagRequestModel.getName())) {
-//            return tagPresenter.prepareFailView("This tag already exists.");
+            return tagPresenter.prepareFailView("This tag already exists.");
         } else {
 
-            User user = userDatabaseGateway.get(tagRequestModel.getName());
+            User user = currentUserService.getCurrentUser();
 
             Tag tag = tagFactory.create(
                     tagRequestModel.getName(),
@@ -72,12 +85,14 @@ public class CreateTag implements CreateTagInputBoundary {
             );
 
             tagDatabaseGateway.insert(tag);
-            return new TagResponseModel(
+
+
+            TagResponseModel response = new TagResponseModel(
                     tagRequestModel.getName(),
                     tagRequestModel.getColor(),
                     true
             );
+            return tagPresenter.prepareSuccessView(response);
         }
-        return null;
     }
 }

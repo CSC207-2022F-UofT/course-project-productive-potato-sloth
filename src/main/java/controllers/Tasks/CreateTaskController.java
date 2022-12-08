@@ -2,7 +2,6 @@ package controllers.Tasks;
 
 import gateways.Tasks.TaskRequestModel;
 import gateways.Tasks.TaskResponseModel;
-import useCases.Tasks.AddTagInputBoundary;
 import useCases.Tasks.CreateTaskInputBoundary;
 
 /**

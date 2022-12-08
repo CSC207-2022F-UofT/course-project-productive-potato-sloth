@@ -1,14 +1,11 @@
 package screens.TaskList;
 
 import controllers.Tasks.*;
-import entities.Task;
-import gateways.Tasks.TaskInfoRequestModel;
 import gateways.Tasks.TaskInfoResponseModel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
 
 /**
  * A Screen which shows the one Task and its details of the logged-in User
@@ -18,28 +15,24 @@ public class TaskScreen implements Observer, ActionListener {
     /**
      * The window of the screen
      */
-    JFrame frame = new JFrame();
+    final JFrame frame = new JFrame();
 
     /**
      * The panel holding the content
      */
-    JPanel panel = new JPanel();
-
+    final JPanel panel = new JPanel();
+    /**
+     * A controller which retrieves Task information
+     */
+    final GetTaskInfoController getTaskInfoController;
+    /**
+     * The Task edit screen
+     */
+    final TaskEditScreen taskEditScreen;
     /**
      * The view model the screen is reflecting
      */
     TaskListViewModel viewModel;
-
-    /**
-     * A controller which retrieves Task information
-     */
-    GetTaskInfoController getTaskInfoController;
-
-    /**
-     * The Task edit screen
-     */
-    TaskEditScreen taskEditScreen;
-
     /**
      * All labels displayed on the screen
      */

@@ -1,23 +1,20 @@
 package gateways.Tasks;
 
-import entities.User;
-
 import java.util.List;
-import java.util.Stack;
 
 /**
  * A class which is returned from the GetTaskInfo use case as a Response
  */
 public class TaskInfoResponseModel {
 
-    String name;
-    String description;
-    Boolean completed;
+    final String name;
+    final String description;
+    final Boolean completed;
+    final List<String> events;
+    final List<String> collaborators;
+    final List<String> allTasks;
     List<String> tags;
-    List<String> events;
-    List<String> collaborators;
     String chatRoom;
-    List<String> allTasks;
 
     public TaskInfoResponseModel(
             String name,

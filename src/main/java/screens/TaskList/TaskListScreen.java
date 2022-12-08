@@ -1,12 +1,9 @@
 package screens.TaskList;
 
-import controllers.Tags.DeleteTagController;
 import controllers.Tasks.*;
-import entities.Task;
 import gateways.Tasks.TaskInfoResponseModel;
 
 import javax.swing.*;
-import java.util.List;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,57 +18,67 @@ public class TaskListScreen implements Observer {
     /**
      * The window of the screen
      */
-    JFrame frame = new JFrame("Task List");
+    final JFrame frame = new JFrame("Task List");
 
     /**
      * The panel holding the content
      */
-    JPanel panel = new JPanel();
+    final JPanel panel = new JPanel();
 
     /**
      * The view model the screen is reflecting
      */
-    TaskListViewModel viewModel;
+    final TaskListViewModel viewModel;
 
     /**
      * A controller which retrieves Task information
      */
-    GetTaskInfoController getTaskInfoController;
+    final GetTaskInfoController getTaskInfoController;
 
     /**
      * A controller which removes tasks from the list
      */
-    RemoveTaskController removeTaskController;
+    final RemoveTaskController removeTaskController;
 
     /**
      * The ListModel which the JList reflects
      */
-    DefaultListModel<String> listModel;
+    final DefaultListModel<String> listModel;
 
     /**
      * The JList displayed on the screen
      */
-    JList<String> taskList;
+    final JList<String> taskList;
 
     /**
      * The single-view Task screen
      */
-    TaskScreen taskScreen;
+    final TaskScreen taskScreen;
+
+    /**
+     * The Task screen
+     */
+    final TagScreen tagScreen;
 
     /**
      * The button to add a new Task
      */
-    JButton newTask;
+    final JButton newTask;
+
+    /**
+     * The button to access Tags
+     */
+    final JButton tags;
 
     /**
      * The screen to add a new Task
      */
-    NewTaskScreen newTaskScreen;
+    final NewTaskScreen newTaskScreen;
 
     /**
      * The right-click menu to delete a Task
      */
-    DeleteTaskPopUp deleteTaskPopUp;
+    final DeleteTaskPopUp deleteTaskPopUp;
 
     /**
      * The currently selected task in the JList
@@ -94,6 +101,7 @@ public class TaskListScreen implements Observer {
             GetTaskInfoController getTaskInfoController,
             RemoveTaskController removeTaskController,
             TaskScreen taskScreen,
+            TagScreen tagScreen,
             NewTaskScreen newTaskScreen,
             DeleteTaskPopUp deleteTaskPopUp
     ) {
@@ -101,6 +109,7 @@ public class TaskListScreen implements Observer {
         this.getTaskInfoController = getTaskInfoController;
         this.removeTaskController = removeTaskController;
         this.taskScreen = taskScreen;
+        this.tagScreen = tagScreen;
         this.newTaskScreen = newTaskScreen;
         this.deleteTaskPopUp = deleteTaskPopUp;
 
@@ -130,7 +139,7 @@ public class TaskListScreen implements Observer {
 
                     // Detecting a right click
                 } else if (SwingUtilities.isRightMouseButton(e) && taskList.getSelectedValue() != null) {
-                    // Setting the selected Task, showing the right-click menu popup at current mmouse location
+                    // Setting the selected Task, showing the right-click menu popup at current mouse location
                     // This can be refactored later
                     String selectedTask = taskList.getSelectedValue();
                     setSelectedTask(selectedTask);
@@ -143,13 +152,14 @@ public class TaskListScreen implements Observer {
         // New Task button configuration
         newTask = new JButton("New Task");
         newTask.setPreferredSize(new Dimension(140, 20));
-        newTask.addActionListener(new ActionListener() {
-            // Show the New Task Screen on button press
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                newTaskScreen.showScreen();
-            }
-        });
+        // Show the New Task Screen on button press
+        newTask.addActionListener(e -> newTaskScreen.showScreen());
+
+        // Tags button configuration
+        tags = new JButton("Tags");
+        tags.setPreferredSize(new Dimension(140, 20));
+        // Show the New Task Screen on button press
+        tags.addActionListener(e -> tagScreen.showScreen());
 
         // Panel sizing and layout configurations
         panel.setBorder(BorderFactory.createEmptyBorder(30, 100, 100, 100));
@@ -157,6 +167,7 @@ public class TaskListScreen implements Observer {
         panel.add(this.taskList);
         panel.add(Box.createRigidArea(new Dimension(10, 10))); // Empty space
         panel.add(newTask);
+        panel.add(tags);
 
         frame.setPreferredSize(new Dimension(360, 500));
         frame.add(panel);
@@ -206,7 +217,7 @@ public class TaskListScreen implements Observer {
                     String selectedTask = newTaskList.getSelectedValue();
                     setSelectedTask(selectedTask);
                     deleteTaskPopUp.showScreen(selectedTask);
-                    deleteTaskPopUp.show(frame, e.getXOnScreen(), e.getYOnScreen());
+                    deleteTaskPopUp.show(frame, e.getLocationOnScreen().x, e.getLocationOnScreen().y);
                 }
             }
         });
@@ -224,6 +235,7 @@ public class TaskListScreen implements Observer {
         panel.add(new JScrollPane(newTaskList));
         panel.add(Box.createRigidArea(new Dimension(10, 10))); // Empty space
         panel.add(newTask);
+        panel.add(tags);
         frame.add(panel);
         frame.setVisible(true);
 

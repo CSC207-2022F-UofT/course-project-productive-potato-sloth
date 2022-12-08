@@ -1,18 +1,16 @@
 package screens.TaskList;
 
-import controllers.Tasks.*;
-import gateways.Tasks.TaskInfoResponseModel;
+import controllers.Tags.CreateTagController;
+import controllers.Tags.GetTagsController;
+import entities.User;
+import gateways.Tags.TagInfoResponseModel;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * A Screen which allows Users to add new Tasks
- */
-public class NewTaskScreen implements Subject {
+public class NewTagScreen implements TagSubject {
 
     /**
      * The window of the screen
@@ -27,16 +25,16 @@ public class NewTaskScreen implements Subject {
     /**
      * A controller which retrieves Task information
      */
-    final GetTaskInfoController getTaskInfoController;
+    final GetTagsController getTagsController;
 
     /**
      * A controller which creates a new Task
      */
-    final CreateTaskController createTaskController;
+    final CreateTagController createTagController;
     /**
      * The Observers updated when a change occurs
      */
-    final List<Observer> observerList = new ArrayList<>();
+    final List<TagObserver> observerList = new ArrayList<>();
     /**
      * The Text Field where the User enters a name
      */
@@ -44,17 +42,17 @@ public class NewTaskScreen implements Subject {
 
 
     /**
-     * Instantiates NewTaskScreen with the required controllers
+     * Instantiates NewTagScreen with the required controllers
      *
-     * @param getTaskInfoController The controller to retrieve Task info
-     * @param createTaskController  The controller to create Tasks
+     * @param getTagsController   The controller to retrieve Tag info
+     * @param createTagController The controller to create Tags
      */
-    public NewTaskScreen(
-            GetTaskInfoController getTaskInfoController,
-            CreateTaskController createTaskController
+    public NewTagScreen(
+            GetTagsController getTagsController,
+            CreateTagController createTagController
     ) {
-        this.getTaskInfoController = getTaskInfoController;
-        this.createTaskController = createTaskController;
+        this.getTagsController = getTagsController;
+        this.createTagController = createTagController;
     }
 
     /**
@@ -71,17 +69,17 @@ public class NewTaskScreen implements Subject {
         nameField = new JTextField();
 
         // Creating the confirmation button
-        JButton addTask = new JButton("Add Task");
+        JButton addTask = new JButton("Add Tag");
         addTask.addActionListener(e -> {
             // Retrieves the name entered in the text field and creates the corresponding Task
             String name1 = nameField.getText();
             try {
-                createTaskController.createTask(name1);
+                createTagController.createTag(name1, Color.RED, new User());
             } catch (TaskError taskError) {
                 JOptionPane.showMessageDialog(frame, taskError.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
             // Updates all observers
-            TaskInfoResponseModel viewModel = getTaskInfoController.getInfo(name1);
+            TagInfoResponseModel viewModel = getTagsController.getTags();
             updateObservers(viewModel);
 
             // Make frame invisible
@@ -103,7 +101,7 @@ public class NewTaskScreen implements Subject {
      * @param o The new observer
      */
     @Override
-    public void registerObserver(Observer o) {
+    public void registerObserver(TagObserver o) {
         observerList.add(o);
     }
 
@@ -113,7 +111,7 @@ public class NewTaskScreen implements Subject {
      * @param o The observer to remove
      */
     @Override
-    public void removeObserver(Observer o) {
+    public void removeObserver(TagObserver o) {
         observerList.remove(o);
     }
 
@@ -123,9 +121,10 @@ public class NewTaskScreen implements Subject {
      * @param viewModel The view model that is updated
      */
     @Override
-    public void updateObservers(TaskInfoResponseModel viewModel) {
-        for (Observer o : observerList) {
+    public void updateObservers(TagInfoResponseModel viewModel) {
+        for (TagObserver o : observerList) {
             o.update(viewModel);
         }
     }
+
 }

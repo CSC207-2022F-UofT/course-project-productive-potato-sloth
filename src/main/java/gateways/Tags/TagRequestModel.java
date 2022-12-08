@@ -8,10 +8,12 @@ import java.awt.Color;
 public class TagRequestModel {
 
     private String name;
+    private String newName;
     private Color color;
 
-    public TagRequestModel(String name, Color color) {
+    public TagRequestModel(String name, String newName, Color color) {
         this.name = name;
+        this.newName = newName;
         this.color = color;
     }
 
@@ -21,6 +23,10 @@ public class TagRequestModel {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getNewName() {
+        return newName;
     }
 
     public Color getColor() {

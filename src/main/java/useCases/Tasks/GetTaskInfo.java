@@ -7,9 +7,7 @@ import entities.User;
 import gateways.Tasks.TaskDataAccessInterface;
 import gateways.Tasks.TaskInfoRequestModel;
 import gateways.Tasks.TaskInfoResponseModel;
-import presenters.TagPresenter;
 import presenters.TaskInfoPresenter;
-import presenters.TaskPresenter;
 import services.CurrentUserService;
 
 import java.util.ArrayList;
@@ -22,17 +20,17 @@ public class GetTaskInfo implements GetTaskInfoInputBoundary {
     /**
      * The interface which allows access to the TaskDatabase
      */
-    TaskDataAccessInterface taskDatabaseGateway;
+    final TaskDataAccessInterface taskDatabaseGateway;
 
     /**
      * The presenter for Task info
      */
-    TaskInfoPresenter taskInfoPresenter;
+    final TaskInfoPresenter taskInfoPresenter;
 
     /**
      * The service allowing access to the current user
      */
-    CurrentUserService currentUserService;
+    final CurrentUserService currentUserService;
 
     /**
      * Creates an instance of GetTaskInfo with the required fields

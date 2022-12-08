@@ -16,22 +16,20 @@ public class DeleteTaskConfirmationDialog extends JOptionPane implements Subject
     /**
      * The controller for removing Tasks
      */
-    RemoveTaskController removeTaskController;
+    final RemoveTaskController removeTaskController;
 
     /**
      * The controller for retrieving Task info
      */
-    GetTaskInfoController getTaskInfoController;
-
+    final GetTaskInfoController getTaskInfoController;
+    /**
+     * The Observers to be updated when an update occurs
+     */
+    final List<Observer> observerList = new ArrayList<>();
     /**
      * The Task selected for deletion
      */
     String selectedTask;
-
-    /**
-     * The Observers to be updated when an update occurs
-     */
-    List<Observer> observerList = new ArrayList<>();
 
     /**
      * Instantiates DeleteTaskConfirmationDialog with the necessary controllers
@@ -42,7 +40,6 @@ public class DeleteTaskConfirmationDialog extends JOptionPane implements Subject
     public DeleteTaskConfirmationDialog(RemoveTaskController removeTaskController, GetTaskInfoController getTaskInfoController) {
         this.removeTaskController = removeTaskController;
         this.getTaskInfoController = getTaskInfoController;
-        this.selectedTask = selectedTask;
     }
 
     /**

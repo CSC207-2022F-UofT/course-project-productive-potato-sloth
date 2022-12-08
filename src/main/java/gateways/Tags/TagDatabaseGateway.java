@@ -22,8 +22,7 @@ public class TagDatabaseGateway extends DatabaseGateway implements TagDataAccess
     /**
      * The interface which allows access to the UserDatabase
      */
-    private UserDatabaseGateway userDatabaseGateway;
-    private List<User> userList;
+    private final UserDatabaseGateway userDatabaseGateway;
 
     /**
      * The current user
@@ -54,7 +53,7 @@ public class TagDatabaseGateway extends DatabaseGateway implements TagDataAccess
      * Loads all users, the current user, and the tags of the current user
      */
     public void load() {
-        this.userList = userDatabaseGateway.getAll();
+        List<User> userList = userDatabaseGateway.getAll();
         this.currentUser = currentUserService.getCurrentUser();
         this.tagList = currentUser.getTags();
     }

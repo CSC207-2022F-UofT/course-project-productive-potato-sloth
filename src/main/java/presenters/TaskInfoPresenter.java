@@ -1,6 +1,5 @@
 package presenters;
 
-import gateways.Tasks.TaskInfoRequestModel;
 import gateways.Tasks.TaskInfoResponseModel;
 
 /**

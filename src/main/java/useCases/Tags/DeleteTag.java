@@ -4,6 +4,7 @@ import entities.Tag;
 import gateways.Tags.TagDataAccessInterface;
 import gateways.Tags.TagRequestModel;
 import gateways.Tags.TagResponseModel;
+import presenters.TagPresenter;
 
 /***
  * A use case which deletes a tag from a user's tags
@@ -16,13 +17,18 @@ public class DeleteTag implements DeleteTagInputBoundary {
     private final TagDataAccessInterface databaseGateway;
 
     /**
+     * The tag presenter
+     */
+    private final TagPresenter tagPresenter;
+
+    /**
      * Creates an instance of DeleteTag with the required fields
      *
      * @param tagDatabaseGateway Interface for accessing Tag
      */
-    public DeleteTag(TagDataAccessInterface tagDatabaseGateway/*, TagPreseter tagPresenter */) {
+    public DeleteTag(TagDataAccessInterface tagDatabaseGateway, TagPresenter tagPresenter) {
         this.databaseGateway = tagDatabaseGateway;
-//        this.tagPresenter = tagPresenter;
+        this.tagPresenter = tagPresenter;
     }
 
     /**
@@ -35,17 +41,17 @@ public class DeleteTag implements DeleteTagInputBoundary {
     public TagResponseModel delete(TagRequestModel tagRequestModel) {
 
         if (!databaseGateway.contains(tagRequestModel.getName())) {
-//            return tagPresenter.prepareFailView("Tag does not exist")
+            return tagPresenter.prepareFailView("Tag does not exist");
         } else {
 
             Tag tag = databaseGateway.get(tagRequestModel.getName());
             databaseGateway.delete(tag);
-            return new TagResponseModel(
+            TagResponseModel response = new TagResponseModel(
                     tagRequestModel.getName(),
                     tagRequestModel.getColor(),
                     true
             );
+            return tagPresenter.prepareSuccessView(response);
         }
-        return null; // temp for compiling
     }
 }

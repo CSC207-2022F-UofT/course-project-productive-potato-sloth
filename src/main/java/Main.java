@@ -1,7 +1,4 @@
-import controllers.Tags.CreateTagController;
-import controllers.Tags.DeleteTagController;
-import controllers.Tags.EditTagColorController;
-import controllers.Tags.EditTagNameController;
+import controllers.Tags.*;
 import controllers.Tasks.*;
 import entities.*;
 import gateways.Tags.TagDataAccessInterface;
@@ -9,10 +6,7 @@ import gateways.Tags.TagDatabaseGateway;
 import gateways.Tasks.TaskDataAccessInterface;
 import gateways.Tasks.TaskDatabaseGateway;
 import gateways.UserDatabaseGateway;
-import presenters.TaskInfoPresenter;
-import presenters.TaskInfoResponseFormatter;
-import presenters.TaskPresenter;
-import presenters.TaskResponseFormatter;
+import presenters.*;
 import screens.TaskList.*;
 import screens.WelcomeScreen;
 import services.CurrentUserService;
@@ -36,6 +30,7 @@ public class Main {
         // Instantiating all Presenters
         TaskPresenter taskPresenter = new TaskResponseFormatter();
         TaskInfoPresenter taskInfoPresenter = new TaskInfoResponseFormatter();
+        TagPresenter tagPresenter = new TagResponseFormatter();
 
         // Instantiating all Services
         CurrentUserService currentUserService = new CurrentUserService();
@@ -44,6 +39,9 @@ public class Main {
         UserDatabaseGateway userDatabaseGateway = new UserDatabaseGateway("testDatabase.ser");
 
         User user = userDatabaseGateway.get("User");
+        if (user == null) {
+            user = new User("user", "password");
+        }
         currentUserService.setCurrentUser(user);
 
         TagDataAccessInterface tagDatabaseGateway = new TagDatabaseGateway(currentUserService, userDatabaseGateway);
@@ -51,10 +49,11 @@ public class Main {
 
 
         // Instantiating all Input Boundaries
-        CreateTagInputBoundary createTagInteractor = new CreateTag(tagDatabaseGateway, userDatabaseGateway, tagFactory);
-        DeleteTagInputBoundary deleteTagInteractor = new DeleteTag(tagDatabaseGateway);
-        EditTagInputBoundary editTagInteractor = new EditTag(tagDatabaseGateway);
+        CreateTagInputBoundary createTagInteractor = new CreateTag(tagDatabaseGateway, userDatabaseGateway, tagFactory, tagPresenter, currentUserService);
+        DeleteTagInputBoundary deleteTagInteractor = new DeleteTag(tagDatabaseGateway, tagPresenter);
+        EditTagInputBoundary editTagInteractor = new EditTag(tagDatabaseGateway, tagPresenter);
         GetTaskInfoInputBoundary getTaskInfoInputBoundary = new GetTaskInfo(taskDataAccessInterface, taskInfoPresenter, currentUserService);
+        GetTagsInputBoundary getTagsInputBoundary = new GetTags(tagDatabaseGateway, taskInfoPresenter, currentUserService);
 
         AddCollaboratorInputBoundary addCollaboratorInteractor = new AddCollaborator(taskDataAccessInterface, userDatabaseGateway, taskPresenter);
         AddTagInputBoundary addTagInteractor = new AddTag(taskDataAccessInterface, tagDatabaseGateway, taskPresenter);
@@ -71,6 +70,7 @@ public class Main {
         EditTagColorController editTagColorController = new EditTagColorController(editTagInteractor);
         EditTagNameController editTagNameController = new EditTagNameController(editTagInteractor);
         GetTaskInfoController getTaskInfoController = new GetTaskInfoController(getTaskInfoInputBoundary);
+        GetTagsController getTagsController = new GetTagsController(getTagsInputBoundary);
 
         AddCollaboratorController addCollaboratorController = new AddCollaboratorController(addCollaboratorInteractor);
         AddTagController addTagController = new AddTagController(addTagInteractor);
@@ -123,11 +123,31 @@ public class Main {
                 deleteTaskConfirmationDialog
         );
 
+        NewTagScreen newTagScreen = new NewTagScreen(
+                getTagsController,
+                createTagController
+        );
+
+        DeleteTagConfirmationDialogue deleteTagConfirmationDialogue = new DeleteTagConfirmationDialogue(deleteTagController, getTagsController);
+
+        EditTagScreen editTagScreen = new EditTagScreen(editTagNameController, getTagsController);
+
+        DeleteEditTagPopUp deleteTagPopUp = new DeleteEditTagPopUp(deleteTagConfirmationDialogue, editTagScreen);
+
+        TagScreen tagScreen = new TagScreen(
+                getTagsController,
+                currentUserService,
+                newTagScreen,
+                deleteTagPopUp,
+                editTagScreen
+        );
+
         TaskListScreen taskListScreen = new TaskListScreen(
                 viewModel,
                 getTaskInfoController,
                 removeTaskController,
                 taskScreen,
+                tagScreen,
                 newTaskScreen,
                 deleteTaskPopUp
         );
@@ -137,6 +157,9 @@ public class Main {
         taskEditScreen.registerObserver(taskListScreen);
         newTaskScreen.registerObserver(taskListScreen);
         deleteTaskConfirmationDialog.registerObserver(taskListScreen);
+        newTagScreen.registerObserver(tagScreen);
+        deleteTagConfirmationDialogue.registerObserver(tagScreen);
+        editTagScreen.registerObserver(tagScreen);
 
 
         WelcomeScreen applicationFrame = new WelcomeScreen(taskListScreen);

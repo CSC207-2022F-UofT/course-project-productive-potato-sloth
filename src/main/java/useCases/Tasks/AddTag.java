@@ -6,7 +6,6 @@ import gateways.Tags.TagDataAccessInterface;
 import gateways.Tasks.TaskDataAccessInterface;
 import gateways.Tasks.TaskRequestModel;
 import gateways.Tasks.TaskResponseModel;
-import presenters.TagPresenter;
 import presenters.TaskPresenter;
 
 /***

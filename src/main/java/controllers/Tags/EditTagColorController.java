@@ -25,8 +25,8 @@ public class EditTagColorController {
         this.inputBoundary = inputBoundary;
     }
 
-    public TagResponseModel createTag(String name, Color color) {
-        TagRequestModel tagRequestModel = new TagRequestModel(name, color);
+    public TagResponseModel editColor(String name, Color color) {
+        TagRequestModel tagRequestModel = new TagRequestModel(name, null, color);
         return inputBoundary.editTagColor(tagRequestModel);
     }
 

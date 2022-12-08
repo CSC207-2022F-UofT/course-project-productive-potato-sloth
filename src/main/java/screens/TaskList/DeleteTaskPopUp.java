@@ -1,7 +1,5 @@
 package screens.TaskList;
 
-import gateways.Tasks.TaskInfoResponseModel;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,14 +7,13 @@ import java.awt.event.ActionListener;
 public class DeleteTaskPopUp extends JPopupMenu implements ActionListener {
 
     /**
+     * The confirmation dialogue for deletion
+     */
+    final DeleteTaskConfirmationDialog deleteTaskConfirmationDialog;
+    /**
      * The selected task to be potentially deleted
      */
     String selectedTask;
-
-    /**
-     * The confirmation dialogue for deletion
-     */
-    DeleteTaskConfirmationDialog deleteTaskConfirmationDialog;
 
     /**
      * Instantiates DeleteTaskPopUp with the dialogue

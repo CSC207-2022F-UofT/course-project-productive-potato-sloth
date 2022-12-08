@@ -29,13 +29,12 @@ abstract public class DatabaseGateway {
      * Creates a new file with the name and path specified by the argument
      *
      * @param relativePath The name and path to create the new file
-     * @throws IOException An input/output exception
      */
-    protected void createFile(String relativePath) throws IOException {
+    protected void createFile(String relativePath) {
         File f = new File(relativePath);
         try {
             f.createNewFile();
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.out.println(e);
         }
 

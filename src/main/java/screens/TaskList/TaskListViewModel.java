@@ -1,7 +1,5 @@
 package screens.TaskList;
 
-import entities.Task;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,13 +8,13 @@ import java.util.List;
  */
 public class TaskListViewModel {
 
-    private List<String> taskList;
-    private List<String> tagList;
+    private final List<String> taskList;
+    private final List<String> tagList;
     private String selectedTask;
 
     public TaskListViewModel() {
-        taskList = new ArrayList<String>();
-        tagList = new ArrayList<String>();
+        taskList = new ArrayList<>();
+        tagList = new ArrayList<>();
     }
 
     public void addTask(String name) {

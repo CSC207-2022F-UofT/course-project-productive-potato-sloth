@@ -23,8 +23,7 @@ public class TaskDatabaseGateway extends DatabaseGateway implements TaskDataAcce
     /**
      * The interface which allows access to the UserDatabase
      */
-    private UserDatabaseGateway userDatabaseGateway;
-    private List<User> userList;
+    private final UserDatabaseGateway userDatabaseGateway;
 
     /**
      * The current user
@@ -54,9 +53,9 @@ public class TaskDatabaseGateway extends DatabaseGateway implements TaskDataAcce
      * Loads all users, the current user, and the tasks of the current user
      */
     public void load() {
-        this.userList = userDatabaseGateway.loadFromFile();
+        List<User> userList = userDatabaseGateway.loadFromFile();
         this.currentUser = currentUserService.getCurrentUser();
-        this.taskList = (ArrayList<Task>) currentUser.getTasks();
+        this.taskList = currentUser.getTasks();
     }
 
     /**

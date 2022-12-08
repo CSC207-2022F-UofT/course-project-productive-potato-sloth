@@ -5,7 +5,7 @@ package gateways.Tasks;
  */
 public class TaskInfoRequestModel {
 
-    String name;
+    final String name;
 
     public TaskInfoRequestModel(String name) {
         this.name = name;

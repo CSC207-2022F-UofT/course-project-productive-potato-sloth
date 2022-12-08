@@ -2,20 +2,14 @@ package screens.TaskList;
 
 import controllers.Tasks.*;
 import entities.Tag;
-import entities.Task;
-import gateways.Tasks.TaskInfoRequestModel;
 import gateways.Tasks.TaskInfoResponseModel;
-import gateways.Tasks.TaskResponseModel;
 import services.CurrentUserService;
-import useCases.Tasks.RemoveTag;
 
 import javax.swing.*;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,36 +21,36 @@ public class TaskEditScreen implements Subject, ActionListener {
     /**
      * The window of the screen
      */
-    JFrame frame = new JFrame("Edit Task");
+    final JFrame frame = new JFrame("Edit Task");
 
     /**
      * The panel holding the content
      */
-    JPanel panel = new JPanel();
-
+    final JPanel panel = new JPanel();
+    /**
+     * All controllers and services necessary for editing tasks
+     */
+    final CurrentUserService currentUserService;
+    final GetTaskInfoController getTaskInfoController;
+    final AddCollaboratorController addCollaboratorController;
+    final AddTagController addTagController;
+    final EditTaskDescriptionController editTaskDescriptionController;
+    final EditTaskNameController editTaskNameController;
+    final MarkTaskCompletenessController markTaskCompletenessController;
+    final RemoveCollaboratorController removeCollaboratorController;
+    final RemoveTagController removeTagController;
+    /**
+     * The Observers updated when a change happens
+     */
+    final List<Observer> observerList = new ArrayList<>();
     /**
      * The name of the task to be edited
      */
     String taskName;
-
     /**
      * The information about the selected task
      */
     TaskInfoResponseModel response;
-
-    /**
-     * All controllers and services necessary for editing tasks
-     */
-    CurrentUserService currentUserService;
-    GetTaskInfoController getTaskInfoController;
-    AddCollaboratorController addCollaboratorController;
-    AddTagController addTagController;
-    EditTaskDescriptionController editTaskDescriptionController;
-    EditTaskNameController editTaskNameController;
-    MarkTaskCompletenessController markTaskCompletenessController;
-    RemoveCollaboratorController removeCollaboratorController;
-    RemoveTagController removeTagController;
-
     /**
      * The new fields the user has entered
      */
@@ -67,11 +61,6 @@ public class TaskEditScreen implements Subject, ActionListener {
     String existingTag;
     JComboBox<String> newCollaborators;
     String existingCollaborators;
-
-    /**
-     * The Observers updated when a change happens
-     */
-    List<Observer> observerList = new ArrayList<Observer>();
 
     /**
      * Instantiates TaskEditScreen with all controllers necessary for Task editing
@@ -127,7 +116,7 @@ public class TaskEditScreen implements Subject, ActionListener {
         this.completed = completed;
 
         JLabel tagsLabel = new JLabel("Tags: ");
-        JComboBox<String> newTags = new JComboBox<String>();
+        JComboBox<String> newTags = new JComboBox<>();
         this.newTags = newTags;
         newTags.addItem("None");
         for (Tag tag : currentUserService.getCurrentUser().getTags()) {
@@ -144,7 +133,7 @@ public class TaskEditScreen implements Subject, ActionListener {
 
 
         JLabel collaboratorsLabel = new JLabel("Collaborators: ");
-        JComboBox<String> newCollaborators = new JComboBox<String>();
+        JComboBox<String> newCollaborators = new JComboBox<>();
         this.newCollaborators = newCollaborators;
 
 

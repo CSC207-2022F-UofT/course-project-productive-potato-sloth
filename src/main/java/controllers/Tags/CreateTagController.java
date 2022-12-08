@@ -27,7 +27,7 @@ public class CreateTagController {
     }
 
     public TagResponseModel createTag(String name, Color color, User user) {
-        TagRequestModel tagRequestModel = new TagRequestModel(name, color);
+        TagRequestModel tagRequestModel = new TagRequestModel(name, null, color);
         return inputBoundary.create(tagRequestModel);
     }
 

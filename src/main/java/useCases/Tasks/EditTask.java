@@ -5,7 +5,6 @@ import gateways.Tasks.TaskDataAccessInterface;
 import gateways.Tasks.TaskRequestModel;
 import gateways.Tasks.TaskResponseModel;
 import presenters.TaskPresenter;
-import presenters.TaskResponseFormatter;
 
 /**
  * A use case which edits the attributes of a Task

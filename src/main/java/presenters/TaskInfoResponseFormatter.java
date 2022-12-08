@@ -1,11 +1,7 @@
 package presenters;
 
-import gateways.Tasks.TaskInfoRequestModel;
 import gateways.Tasks.TaskInfoResponseModel;
 import screens.TaskList.TaskError;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 
 /**
  * A presenter which formats the Tag response into a view model

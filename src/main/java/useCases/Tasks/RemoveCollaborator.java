@@ -5,6 +5,7 @@ import entities.User;
 import gateways.Tasks.TaskDataAccessInterface;
 import gateways.Tasks.TaskRequestModel;
 import gateways.Tasks.TaskResponseModel;
+import gateways.UserDataAccessInterface;
 import gateways.UserDatabaseGateway;
 import presenters.TaskPresenter;
 
@@ -48,8 +49,15 @@ public class RemoveCollaborator implements RemoveCollaboratorInputBoundary {
     @Override
     public TaskResponseModel removeCollaborator(TaskRequestModel taskRequestModel) {
         Task task = taskDatabaseGateway.get(taskRequestModel.getName());
-        User collaborator = userDatabaseGateway.get(taskRequestModel.getCollaborator());
-        task.removeCollaborator(collaborator);
+        String collaboratorName = "";
+        for (User collaborator : task.getCollaborator()) {
+            if (collaborator.getUsername().equals(taskRequestModel.getCollaborator())) {
+                task.removeCollaborator(collaborator);
+                collaboratorName = collaborator.getUsername();
+                break;
+            }
+        }
+
         taskDatabaseGateway.update(task);
         TaskResponseModel response = new TaskResponseModel(
                 null,
@@ -57,7 +65,7 @@ public class RemoveCollaborator implements RemoveCollaboratorInputBoundary {
                 null,
                 null,
                 null,
-                collaborator.getUsername(),
+                collaboratorName,
                 true,
                 "Collaborated removed successfully"
         );

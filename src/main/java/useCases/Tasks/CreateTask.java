@@ -17,27 +17,22 @@ public class CreateTask implements CreateTaskInputBoundary {
     /**
      * The interface which allows access to the TaskDatabase
      */
-    private TaskDataAccessInterface taskDatabaseGateway;
-
-    /**
-     * The interface which allows access to the UserDatabase
-     */
-    private UserDatabaseGateway userDatabaseGateway;
+    private final TaskDataAccessInterface taskDatabaseGateway;
 
     /**
      * The service allowing access to the current user
      */
-    private CurrentUserService currentUserService;
+    private final CurrentUserService currentUserService;
 
     /**
      * The required factory for creating Tasks
      */
-    private TaskFactory taskFactory;
+    private final TaskFactory taskFactory;
 
     /**
      * The presenter for Tasks
      */
-    private TaskPresenter taskPresenter;
+    private final TaskPresenter taskPresenter;
 
     /**
      * Creates an instance of CreateTask with the required fields
@@ -56,7 +51,9 @@ public class CreateTask implements CreateTaskInputBoundary {
             TaskPresenter taskPresenter
     ) {
         this.taskDatabaseGateway = taskDatabaseGateway;
-        this.userDatabaseGateway = userDatabaseGateway;
+        /**
+         * The interface which allows access to the UserDatabase
+         */
         this.currentUserService = currentUserService;
         this.taskFactory = taskFactory;
         this.taskPresenter = taskPresenter;
