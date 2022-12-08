@@ -12,14 +12,24 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+/**
+ * A Screen which allows users to create a new Account (User)
+ */
 public class CreateAccountScreen extends JPanel implements ActionListener {
     JTextField username = new JTextField(20);
 
     JTextField password = new JTextField(20);
 
+    /**
+     * A controller which creates a new User
+     */
     CreateAccountController accountController;
 
-
+    /**
+     * Instantiates CreateAccountScreen with the required controller
+     *
+     * @param controller The controller to create an account (User)
+     */
     public CreateAccountScreen(CreateAccountController controller) {
 
         this.accountController = controller;
@@ -32,14 +42,13 @@ public class CreateAccountScreen extends JPanel implements ActionListener {
         LabelTextPanel passwordInfo = new LabelTextPanel(
                 new JLabel("Enter password"), password);
 
+        // Creating the confirmation button
         JButton createAccount = new JButton("Create Account");
         JButton cancel = new JButton("Cancel");
 
         JPanel buttons = new JPanel();
         buttons.add(createAccount);
         buttons.add(cancel);
-
-
 
         createAccount.addActionListener(this);
         cancel.addActionListener(this);
@@ -76,31 +85,4 @@ public class CreateAccountScreen extends JPanel implements ActionListener {
 
     }
 
-    public static void main(String[] args) throws IOException {
-        JFrame application  =  new JFrame("Create Account");
-        CardLayout cardLayout = new CardLayout();
-        JPanel screens = new JPanel(cardLayout);
-        application.add(screens);
-
-        UserDataAccessInterface gateway = new UserDatabaseGateway("database/UserFile1.ser");
-        CurrentUserService service = new CurrentUserService();
-
-        System.out.println(gateway.getAll().get(0).getPassword());
-
-        CreateAccountPresenter presenter = new CreateAccountResponseFormatter();
-
-        CreateAccountInputBoundary createAccountInteractor = new CreateAccountInteractor(gateway, presenter);
-
-        CreateAccountController createAccountController = new CreateAccountController(createAccountInteractor);
-
-        CreateAccountScreen createAccountScreen = new CreateAccountScreen(createAccountController);
-
-        screens.add(createAccountScreen, "hello");
-
-        cardLayout.show(screens, "create account");
-        application.pack();
-        application.setVisible(true);
-
-
-    }
 }

@@ -18,6 +18,8 @@ public class User implements Serializable {
 
     /**
      * Initiaties a new User
+     * @param username the username of the new User
+     * @param password the password of the new User
      */
     public User(String username, String password){
         this.username = username;

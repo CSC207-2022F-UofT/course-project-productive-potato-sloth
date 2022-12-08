@@ -22,8 +22,6 @@ public class LoginMain {
         UserDataAccessInterface gateway = new UserDatabaseGateway("database/UserFile1.ser");
         CurrentUserService service = new CurrentUserService();
 
-        //       System.out.println(gateway.getAll().get(0).getPassword());
-
         LoginPresenter presenter = new LoginResponseFormatter();
 
         LoginInputBoundary loginInteractor = new LoginInteractor(gateway, presenter, service) {

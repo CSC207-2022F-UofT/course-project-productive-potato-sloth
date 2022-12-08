@@ -2,15 +2,8 @@ package screens.Login;
 
 import gateways.UserDataAccessInterface;
 import gateways.UserDatabaseGateway;
-import screens.CreateAccount.CreateAccount.CreateAccountScreen;
-import screens.CreateAccount.CreateAccountController;
-import screens.CreateAccount.CreateAccountResponseFormatter;
 import screens.LabelTextPanel;
 import services.CurrentUserService;
-import useCases.CreateAccount.CreateAccountInputBoundary;
-import useCases.CreateAccount.CreateAccountInteractor;
-import useCases.CreateAccount.CreateAccountPresenter;
-import useCases.CreateAccount.CreateAccountResponseModel;
 import useCases.Login.LoginInputBoundary;
 import useCases.Login.LoginInteractor;
 import useCases.Login.LoginPresenter;
@@ -22,17 +15,25 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+/**
+ * A Screen which allows users to log in
+ */
 public class LoginScreen extends JPanel {
 
     static JFrame application;
     JTextField username = new JTextField(15);
     JTextField password = new JTextField(15);
 
+    /**
+     * A controller which logs in a User
+     */
     LoginController loginController;
 
 
     /**
-     * A window with a title and a JButton.
+     * Instantiates LoginScreen with the required controller
+     *
+     * @param loginController The controller to log in a User
      */
     public LoginScreen(LoginController loginController) {
         this.loginController = loginController;
@@ -45,6 +46,7 @@ public class LoginScreen extends JPanel {
         LabelTextPanel passwordInfo = new LabelTextPanel(
                 new JLabel("Password"), password);
 
+        // Creating the confirmation button
         JButton logIn = new JButton("Log In");
         JButton createAccount = new JButton("Create Account");
 
@@ -65,13 +67,6 @@ public class LoginScreen extends JPanel {
                 }
             }
         });
-        createAccount.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                CreateAccountScreen createAccountScreen = new CreateAccountScreen();
-
-            }
-        });
 
         this.add(title);
         this.add(usernameInfo);
@@ -79,35 +74,6 @@ public class LoginScreen extends JPanel {
         this.add(buttons);
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-    }
-
-
-    public static void main(String[] args) throws IOException {
-        JFrame application  =  new JFrame("Log In");
-        LoginScreen.application = application;
-        CardLayout cardLayout = new CardLayout();
-        JPanel screens = new JPanel(cardLayout);
-        application.add(screens);
-
-        UserDataAccessInterface gateway = new UserDatabaseGateway("database/UserFile1.ser");
-        CurrentUserService service = new CurrentUserService();
-
- //       System.out.println(gateway.getAll().get(0).getPassword());
-
-        LoginPresenter presenter = new LoginResponseFormatter();
-
-        LoginInputBoundary loginInteractor = new LoginInteractor(gateway, presenter, service) {
-        };
-
-        LoginController loginController = new LoginController(loginInteractor);
-
-        LoginScreen loginScreen = new LoginScreen(loginController);
-
-        screens.add(loginScreen, "hello");
-
-        cardLayout.show(screens, "login");
-        application.pack();
-        application.setVisible(true);
     }
 
 }
