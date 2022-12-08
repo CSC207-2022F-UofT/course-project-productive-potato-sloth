@@ -1,4 +1,4 @@
-package UI;
+package screens.CreateAccount.UI;
 
 import javax.swing.*;
 
