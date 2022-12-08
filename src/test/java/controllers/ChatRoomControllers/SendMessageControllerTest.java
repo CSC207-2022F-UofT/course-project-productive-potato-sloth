@@ -6,6 +6,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
+
+import services.CurrentUserService;
 import useCases.ChatRoom.ChatRoomInteractor;
 import useCases.ChatRoom.ChatRoomInteractorInterface;
 
@@ -18,6 +20,7 @@ public class SendMessageControllerTest {
     }
     ChatRoom room = new ChatRoom();
     ChatRoomInteractorInterface interactor = new ChatRoomInteractor(room);
+    CurrentUserService service1 = new CurrentUserService();
     User user1 = new User();
     SendMessageController sender = new SendMessageController(interactor);
 
@@ -27,6 +30,8 @@ public class SendMessageControllerTest {
 
     @Test
     public void TestSendMessage(){
+        service1.setCurrentUser(user1);
+        interactor.setService(service1);
         sender.sendMessageController("abcd");
         List<Message> messages = room.GetMessages();
         assertEquals(messages.size(), 1);

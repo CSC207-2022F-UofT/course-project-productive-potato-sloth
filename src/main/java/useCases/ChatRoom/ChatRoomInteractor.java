@@ -22,9 +22,11 @@ public class ChatRoomInteractor implements ChatRoomInteractorInterface{
         this.room = room;
         this.messageIndex = 0;
     }
+    @Override
     public void setPresenter(UpdateViewPresenterInterface presenter){
         this.presenter = presenter;
     }
+    @Override
     public void setService(CurrentUserService service){
         this.service = service;
     }
