@@ -17,7 +17,7 @@ public class ChatRoom implements Serializable{
         return "chatRoom with messages " + this.messages.toString();
     }
 
-    /**Adds message to ArrayList of Messages.
+    /**Adds message to List of Messages.
      *
      * @param message: Message to be added.
      */

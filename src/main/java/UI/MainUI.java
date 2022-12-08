@@ -43,13 +43,6 @@ public class MainUI extends JFrame {
         $$$setupUI$$$();
         this.organizer = responseSetUp();
         this.updater = new UpdateViewController(this.interactor);
-        /*
-        //experimental segment so that Main runs
-        String default_msg_txt = "entities.Message unavailable";
-        this.sendMessageButton = new JButton("send message");
-        this.NextButton = new JButton("next message");
-        this.PrevButton = new JButton("previous messages");
-         this.mainPanel = new JPanel();*/
         setContentPane(this.mainPanel);
         //end of experimental segment
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
