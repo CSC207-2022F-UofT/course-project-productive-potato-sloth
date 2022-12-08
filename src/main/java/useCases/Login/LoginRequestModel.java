@@ -1,8 +1,5 @@
 package useCases.Login;
 
-/**
- * A class which is passed into Login-relevant use cases as a Request
- */
 public class LoginRequestModel {
     private String username;
     private String password;

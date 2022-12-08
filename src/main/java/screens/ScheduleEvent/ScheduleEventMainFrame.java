@@ -25,33 +25,21 @@ public class ScheduleEventMainFrame {
         this.gateway = gateway;
     }
 
-    public void runScheduleEventUseCase() {
+    public ScheduleEventScreen setupScheduleEventScreen() {
 
-        // doesn't work as the current user service doesn't have anyone logged in
+        ScheduleEventPresenter scheduleEventResponseFormatter = new ScheduleEventResponseFormatter();
+        ScheduleEventInputBoundary scheduleEventInteractor = new ScheduleEventInteractor(currentUserService, scheduleEventResponseFormatter, gateway);
+        ScheduleEventController scheduleEventController = new ScheduleEventController(scheduleEventInteractor);
 
-        JFrame application = new JFrame("Schedule Event");
-        CardLayout cardLayout = new CardLayout();
-        JPanel screens = new JPanel(cardLayout);
-        application.add(screens);
-
-        ScheduleEventPresenter presenter = new ScheduleEventResponseFormatter();
-        ScheduleEventInputBoundary interactor = new ScheduleEventInteractor(currentUserService, presenter, gateway);
-        ScheduleEventController controller = new ScheduleEventController(interactor);
-
-        ScheduleEventViewModel viewModel = new ScheduleEventViewModel();
+        ScheduleEventViewModel scheduleEventViewModel = new ScheduleEventViewModel();
         for(Tag tag: currentUserService.getCurrentUser().getTags()){
-            viewModel.addTagName(tag.getName());
+            scheduleEventViewModel.addTagName(tag.getName());
         }
         for(Task task: currentUserService.getCurrentUser().getTasks()){
-            viewModel.addTaskName(task.getName());
+            scheduleEventViewModel.addTaskName(task.getName());
         }
 
-        ScheduleEventScreen scheduleEventScreen = new ScheduleEventScreen(controller, viewModel);
-
-        screens.add(scheduleEventScreen, "welcome");
-        cardLayout.show(screens, "register");
-        application.pack();
-        application.setVisible(true);
+        return new ScheduleEventScreen(scheduleEventController, scheduleEventViewModel);
     }
 
 }

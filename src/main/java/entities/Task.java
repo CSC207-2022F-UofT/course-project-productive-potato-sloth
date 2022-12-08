@@ -1,13 +1,15 @@
-
 package entities;
 
+import javax.lang.model.type.ArrayType;
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * An entity class representing a Task
  */
-public class Task implements Serializable {
+public class Task {
 
     /**
      * The User that this Task belongs to
@@ -31,22 +33,22 @@ public class Task implements Serializable {
     /**
      * A list of the associated tags of this Task
      */
-    ArrayList<Tag> tags;
+    List<Tag> tags = new ArrayList<>();
 
     /**
      * A list of the associated events of this Task
      */
-//    ArrayList<Event> events;
+    List<Event> events = new ArrayList<>();
 
     /**
      * A list of the collaborators of this Task
      */
-//    ArrayList<User> collaborators; User not yet implemented
+    List<User> collaborators = new ArrayList<>();
 
     /**
      * The ChatRoom associated with this Task
      */
-//     ChatRoom chatRoom; ChatRoom not yet implemented
+    ChatRoom chatRoom;
 
     /**
      * Constructs a Task given the name of the new Task
@@ -57,6 +59,7 @@ public class Task implements Serializable {
     public Task(String name, User user) {
         this.name = name;
         this.user = user;
+        this.completed = false;
     }
 
     /**
@@ -70,6 +73,7 @@ public class Task implements Serializable {
         this.name = name;
         this.user = user;
         this.description = description;
+        this.completed = false;
     }
 
     /**
@@ -131,7 +135,7 @@ public class Task implements Serializable {
      *
      * @return tags A list of tags associated with this Task
      */
-    public ArrayList<Tag> getTags() {
+    public List<Tag> getTags() {
         return this.tags;
     }
 
@@ -166,56 +170,65 @@ public class Task implements Serializable {
         return this.completed;
     }
 
-    //    Event not yet implemented
-//    /**
-//     * Adds an event to this Task
-//     * @param tag The new tag to add
-//     */
-//    public void addEvent(Event event) {
-//        this.events.add(tag);
-//    }
-//
-//    /**
-//     * Removes an event from this Task
-//     * @param tag The new tag to add
-//     */
-//    public void removeEvent(Event event) {
-//        this.events.remove(tag);
-//    }
-//
-//    /**
-//     * Gets a list of events associated with this Task
-//     * @return events A list of events associated with this Task
-//     */
-//    public ArrayList<Tag> getEvents() {
-//        return this.events;
-//    }
-//
 
-    //    Collaborator not yet implemented
-//    /**
-//     * Adds a collaborator to this Task
-//     * @param collaborator The collaborator to add to this task
-//     */
-//    public void addCollaborator(User collaborator) {
-//        this.collaborators.add(collaborator);
-//    }
-//
-//    /**
-//     * Removes a collaborator to this Task
-//     * @param collaborator The collaborator to remove from this task
-//     */
-//    public void removeCollaborator(User collaborator) {
-//        this.collaborators.remove(collaborator);
-//    }
-//
-//    /**
-//     * Gets the collaborators of this Task
-//     * @return
-//     */
-//    public ArrayList<User> addCollaborator(User collaborator) {
-//        return this.collaborators;
-//    }
+    /**
+     * Adds an event to this Task
+     *
+     * @param event The new event to add
+     */
+    public void addEvent(Event event) {
+        this.events.add(event);
+    }
+
+    /**
+     * Removes an event from this Task
+     *
+     * @param event The new event to add
+     */
+    public void removeEvent(Event event) {
+        this.events.remove(event);
+    }
+
+    /**
+     * Gets a list of events associated with this Task
+     *
+     * @return events A list of events associated with this Task
+     */
+    public List<Event> getEvents() {
+        return this.events;
+    }
+
+
+    /**
+     * Adds a collaborator to this Task
+     *
+     * @param collaborator The collaborator to add to this task
+     */
+    public void addCollaborator(User collaborator) {
+        this.collaborators.add(collaborator);
+    }
+
+    /**
+     * Removes a collaborator to this Task
+     *
+     * @param collaborator The collaborator to remove from this task
+     */
+    public void removeCollaborator(User collaborator) {
+        this.collaborators.remove(collaborator);
+    }
+
+    /**
+     * Gets the collaborators of this Task
+     *
+     * @return List of the collaborators of this task
+     */
+    public List<User> getCollaborator() {
+        return this.collaborators;
+    }
+
+    public ChatRoom getChatRoom() {
+        return this.chatRoom;
+    }
 
 }
 

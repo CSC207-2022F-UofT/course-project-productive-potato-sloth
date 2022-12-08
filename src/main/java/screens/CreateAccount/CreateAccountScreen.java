@@ -1,35 +1,24 @@
 package screens.CreateAccount;
 
-import gateways.UserDataAccessInterface;
-import gateways.UserDatabaseGateway;
 import screens.LabelTextPanel;
-import services.CurrentUserService;
-import useCases.CreateAccount.*;
+
+import useCases.CreateAccount.CreateAccountInputBoundary;
+import useCases.CreateAccount.CreateAccountRequestModel;
+import useCases.CreateAccount.CreateAccountResponseModel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
-/**
- * A Screen which allows users to create a new Account (User)
- */
 public class CreateAccountScreen extends JPanel implements ActionListener {
-    JTextField username = new JTextField(20);
+    JTextField username = new JTextField(15);
 
-    JTextField password = new JTextField(20);
+    JTextField password = new JTextField(15);
 
-    /**
-     * A controller which creates a new User
-     */
     CreateAccountController accountController;
 
-    /**
-     * Instantiates CreateAccountScreen with the required controller
-     *
-     * @param controller The controller to create an account (User)
-     */
+
     public CreateAccountScreen(CreateAccountController controller) {
 
         this.accountController = controller;
@@ -42,13 +31,13 @@ public class CreateAccountScreen extends JPanel implements ActionListener {
         LabelTextPanel passwordInfo = new LabelTextPanel(
                 new JLabel("Enter password"), password);
 
-        // Creating the confirmation button
         JButton createAccount = new JButton("Create Account");
         JButton cancel = new JButton("Cancel");
 
         JPanel buttons = new JPanel();
         buttons.add(createAccount);
         buttons.add(cancel);
+
 
         createAccount.addActionListener(this);
         cancel.addActionListener(this);
@@ -61,6 +50,28 @@ public class CreateAccountScreen extends JPanel implements ActionListener {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     }
 
+    public static void main(String[] args) {
+        JFrame application = new JFrame("Create Account");
+        CardLayout cardLayout = new CardLayout();
+        JPanel screens = new JPanel(cardLayout);
+        application.add(screens);
+        CreateAccountInputBoundary accountCreator = new CreateAccountInputBoundary() {
+            @Override
+            public CreateAccountResponseModel create(CreateAccountRequestModel requestModel) {
+                return null;
+            }
+        };
+        CreateAccountController accountController = new CreateAccountController(accountCreator);
+
+
+        CreateAccountScreen createAccountScreen = new CreateAccountScreen(accountController);
+
+        screens.add(createAccountScreen, "hello");
+
+        cardLayout.show(screens, "create account");
+        application.pack();
+        application.setVisible(true);
+    }
 
     /**
      * React to a button click that results in evt.
@@ -84,5 +95,4 @@ public class CreateAccountScreen extends JPanel implements ActionListener {
         }
 
     }
-
 }

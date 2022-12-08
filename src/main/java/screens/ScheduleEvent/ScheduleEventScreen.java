@@ -4,14 +4,18 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.github.lgooddatepicker.components.DateTimePicker;
 import screens.*;
+import screens.ViewCalendar.ViewModelObserver;
+import screens.ViewCalendar.ViewModelSubjectInterface;
 
 
 // From Paul's UserRegisterScreen
 
-public class ScheduleEventScreen extends JPanel implements ActionListener {
+public class ScheduleEventScreen extends JPanel implements ActionListener, UseCaseSubjectInterface {
     /**
      * The name of the event chosen by the user
      */
@@ -29,6 +33,8 @@ public class ScheduleEventScreen extends JPanel implements ActionListener {
 
     ScheduleEventViewModel view_model;
 
+    List<UseCaseObserver> observerList;
+
     /**
      * A window with a title and a JButton.
      */
@@ -36,6 +42,7 @@ public class ScheduleEventScreen extends JPanel implements ActionListener {
 
         this.view_model = view_model;
         this.scheduleEventController = controller;
+        this.observerList = new ArrayList<>();
 
         JLabel title = new JLabel("Schedule a new event");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -113,6 +120,7 @@ public class ScheduleEventScreen extends JPanel implements ActionListener {
                             + ", tagged with " + String.join(", ", tagSelectionList.getSelectedValuesList())
                             + " and linked to " + task_combo_box.getItemAt(task_combo_box.getSelectedIndex())
                             + ".");
+                    this.updateUseCaseObservers();
                 } catch (Exception e){
                     JOptionPane.showMessageDialog(this, e.getMessage());
                 }
@@ -120,6 +128,23 @@ public class ScheduleEventScreen extends JPanel implements ActionListener {
             case "Cancel": {
 
             }
+        }
+    }
+
+    @Override
+    public void addUseCaseObserver(UseCaseObserver observer) {
+        this.observerList.add(observer);
+    }
+
+    @Override
+    public void removeUseCaseObserver(UseCaseObserver observer) {
+        this.observerList.remove(observer);
+    }
+
+    @Override
+    public void updateUseCaseObservers() {
+        for(UseCaseObserver observer: this.observerList){
+            observer.useCaseUpdate();
         }
     }
 }

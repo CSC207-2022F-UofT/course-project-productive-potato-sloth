@@ -1,8 +1,5 @@
 package useCases.CreateAccount;
 
-/**
- * A class which is returned from CreateAccount-relevant use cases as a Response
- */
 public class CreateAccountResponseModel {
     private String username;
     private String password;

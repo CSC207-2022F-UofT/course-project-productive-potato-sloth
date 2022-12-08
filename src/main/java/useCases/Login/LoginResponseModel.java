@@ -1,8 +1,5 @@
 package useCases.Login;
 
-/**
- * A class which is returned from Login-relevant use cases as a Response
- */
 public class LoginResponseModel {
     private String username;
     private String password;
