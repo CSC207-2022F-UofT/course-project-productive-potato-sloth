@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User implements Serializable {
+    static final long serialVersionUID = -8517925638591337103L;
     String username;
     String password;
     List<Tag> tags;
