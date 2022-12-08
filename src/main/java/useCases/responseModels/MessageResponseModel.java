@@ -7,6 +7,13 @@ public class MessageResponseModel {
     String content;
     String author;
     String timeStamp;
+
+    /**
+     * This is the constructor of the MessageResponseModel. Note that the timestamp
+     * is a String instead of LocalDateTime, since we want to pass this into the presenter and UI and Strings are easier
+     * for the UI to render.
+     * @param message: Message object containing our data.
+     */
     public MessageResponseModel(Message message){
         this.content = message.toString();
         this.author = message.getAuthor();
@@ -17,6 +24,10 @@ public class MessageResponseModel {
         this.timeStamp = Integer.toString(message.getDateTime().getHour()) +
                 ":" + minutes;
     }
+
+    /**
+     * Getter and setter methods for instance variables.
+     */
     public String getAuthor(){
         return this.author;
     }

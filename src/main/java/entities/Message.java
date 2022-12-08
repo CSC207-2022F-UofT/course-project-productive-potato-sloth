@@ -6,6 +6,12 @@ public class Message implements Serializable{
     User author;
     LocalDateTime timestamp;
 
+    /**
+     * A Message is an entity containing a String (the message itself), the timestamp (when the message was
+     * sent), and a reference to the User who sent it.
+     * @param content: String, contents of message
+     * @param user: User entity, representing user who sent the message
+     */
     public Message(String content, User user){
         this.content = content;
         this.author = user;
@@ -27,10 +33,18 @@ public class Message implements Serializable{
         this.content = content;
     }
 
+    /**
+     * Getter for author. Returns author's username String.
+     * @return String: username of author.
+     */
     public String getAuthor(){
         return this.author.getUsername();
     }
 
+    /**
+     * Getter for timestamp: returns when this Message was created.
+     * @return LocalDateTime: time when this message was created.
+     */
     public LocalDateTime getDateTime(){
         return this.timestamp;
     }

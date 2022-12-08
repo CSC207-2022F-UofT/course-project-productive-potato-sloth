@@ -8,6 +8,10 @@ import java.util.Collections;
 public class ChatRoom implements Serializable{
     List<Message> messages;
 
+    /**
+     * A ChatRoom is an entity that contains a List of Message entities. It can add Messages to the List and get
+     * Messages from it.
+     */
     public ChatRoom(){
         this.messages = new ArrayList<>();
     }

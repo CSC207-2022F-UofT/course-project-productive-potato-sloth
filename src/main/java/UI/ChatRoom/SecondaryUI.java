@@ -7,6 +7,13 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.Locale;
 
+/**
+ * This class is same as the MainUI class but without any actionListeners. I have created this class solely for
+ * testing purposes as the MainUI is liable to not render in certain IntelliJ environment conditions
+ * (i.e. when I was working on the UI and trying to test it, IntelliJ threw an error saying it cannot use the Content
+ * Pane. I eventually fixed it but keeping this class around to check if the UI, IntelliJ or other classes is causing
+ * errors can be convenient).
+ */
 public class SecondaryUI extends JFrame {
     private JPanel mainPanel;
     private JLabel message1Display;

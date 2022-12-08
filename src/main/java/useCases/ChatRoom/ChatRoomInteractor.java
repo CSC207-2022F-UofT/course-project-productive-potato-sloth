@@ -43,6 +43,12 @@ public class ChatRoomInteractor implements ChatRoomInteractorInterface{
     public int getMessageIndex(){
         return this.messageIndex;
     }
+
+    /**
+     * This is the sendMessage method that will be used in the actual program. It takes in a String, constructs a
+     * new Message, adds it to the ChatRoom and calls the presenter interface to get the presenter to update the view.
+     * @param message: the contents of the Message to be sent.
+     */
     @Override
     public void sendMessage(String message){
         User user1 = this.service.getCurrentUser();
@@ -54,14 +60,15 @@ public class ChatRoomInteractor implements ChatRoomInteractorInterface{
             this.presenter.updateView(out_list);
         }
         this.messageIndex = 0;
-        //updateView();
     }
 
     /**
-     * This overloaded method is only for testing purposes to ensure that 
-     * @param message
-     * @param user
+     * This overloaded method is only for testing purposes to ensure that the UI and controllers do not need to be
+     * initialized for the Interactor to be called.
+     * @param message: String that forms the content of the new Message
+     * @param user: User who sent the message
      */
+    @Override
     public void sendMessage(String message, User user){
         Message temp_message = new Message(message, user);
         this.room.AddMessage(temp_message);
@@ -122,6 +129,11 @@ public class ChatRoomInteractor implements ChatRoomInteractorInterface{
         }
         return out_list;
     }
+
+    /**
+     * This is the use case method for initializing the UI. It initializes the InitializeViewPresenter and
+     * calls it to initialize the UI, then calls the presenter to initialize the messages in the View.
+     */
     @Override
     public void initializeView(){
         InitializeViewInterface initializer = new InitializeViewPresenter((ChatRoomInteractorInterface) this);

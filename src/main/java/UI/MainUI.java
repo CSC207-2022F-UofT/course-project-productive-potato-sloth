@@ -15,6 +15,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+/**
+ * This is the UI for the ChatRoom. Please ignore the 73 errors IntelliJ shows because
+ * the errors all come from automatically generated code, which I cannot change (if I changed it, next time the UI is
+ * rendered, the errors will be back). The UI works fine, so they are nothing to worry about.
+ *
+ * The UI class uses JFrame to render the user interface.
+ */
 public class MainUI extends JFrame {
     public SendMessageController messenger;
     public ChatRoomInteractorInterface interactor;
@@ -34,20 +41,43 @@ public class MainUI extends JFrame {
     private JLabel Msg1TimeStamp;
     private JPanel mainPanel;
     private JLabel Msg1UserDisp;
-
+    /**
+     * The Organizer is something that needs to be set up every time the UI is initialized, by ResponseSetUp().
+     * It is a way of grouping the labels for username, timestamp and message content on the screen so that
+     * updating the screens do not require a lot of repeated code. See more at the Javadoc for ResponseSetUp().
+     */
     private List<List<JLabel>> organizer;
 
+    /**
+     * Here is the constructor method. It takes in the interface for the interactor (i.e. output boundary)
+     * and a SendMessageController that is already associated with the interactor in order to initialize
+     * the UI. There are several helper methods.
+     * @param interactor: ChatRoomInteractorInterface object (output boundary). This is how the UI can initialize
+     *                  its other controllers (i.e. updateViewController). The methods of the interactor will not be
+     *                  called by the UI.
+     * @param messenger: a SendMessageController object that is associated with the interactor. The SendMessage-
+     *                 -Controller does not have a reference to the UI, so it has to be passed into the UI
+     *                 for the UI to call it.
+     */
     public MainUI(ChatRoomInteractorInterface interactor, SendMessageController messenger) {
         this.interactor = interactor;
         this.messenger = messenger;
         $$$setupUI$$$();
         this.organizer = responseSetUp();
         this.updater = new UpdateViewController(this.interactor);
+        //This line sets the content to be same as the MainUI.form file.
+        //Without it, the UI will render as blank.
         setContentPane(this.mainPanel);
-        //end of experimental segment
+        //program will terminate when window is closed
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        //below two lines are for setting the UI as visible
         this.pack();
         this.setVisible(true);
+        /**
+         * ActionListener method for the "send message" button. This method gets text from the message input field
+         * (a JTextField where users type their message in) and passes it onto  the controller if the field is not
+         * empty.
+         */
         sendMessageButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -56,6 +86,11 @@ public class MainUI extends JFrame {
                 }
             }
         });
+        /**
+         * The two methods below are the listeners for the "scroll down/up" button. It passes a boolean into the
+         * controller to tell it to scroll to more recent messages or older messages. See the javadoc of
+         * UpdateViewController for more details.
+         */
         NextButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {

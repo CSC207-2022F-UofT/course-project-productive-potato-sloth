@@ -1,6 +1,5 @@
 package useCases.ChatRoom;
 import controllers.ChatRoomControllers.UpdateViewPresenterInterface;
-import entities.ChatRoom;
 import entities.User;
 import services.CurrentUserService;
 import useCases.responseModels.MessageResponseModel;
@@ -8,7 +7,9 @@ import useCases.responseModels.MessageResponseModel;
 import java.util.List;
 
 public interface ChatRoomInteractorInterface {
-
+    /**
+     * This is the interface for the interactor.
+     */
     public void initializeView();
     public void setService(CurrentUserService service);
     public void setPresenter(UpdateViewPresenterInterface presenter);
