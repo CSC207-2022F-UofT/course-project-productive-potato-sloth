@@ -2,6 +2,9 @@ package gateways.Tags;
 
 import java.awt.Color;
 
+/**
+ * A class which is passed into Tag-relevant use cases as a Request
+ */
 public class TagRequestModel {
 
     private String name;

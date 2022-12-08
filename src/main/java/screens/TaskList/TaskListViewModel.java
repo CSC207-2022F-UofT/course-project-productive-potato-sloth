@@ -5,6 +5,9 @@ import entities.Task;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A View Model containing all the tasks and tags of the current user, along with the selected task
+ */
 public class TaskListViewModel {
 
     private List<String> taskList;

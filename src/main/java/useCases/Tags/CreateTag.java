@@ -15,12 +15,30 @@ import presenters.TagPresenter;
  */
 public class CreateTag implements CreateTagInputBoundary {
 
+    /**
+     * The interface which allows access to the TagDatabase
+     */
     private final TagDataAccessInterface tagDatabaseGateway;
+
+    /**
+     * The Factory class required for creating Tags
+     */
     private final TagFactory tagFactory;
+
+    /**
+     * The interface which allows access to the UserDatabase
+     */
     private final UserDatabaseGateway userDatabaseGateway;
 //    private final TagPresenter tagPresenter;
 
 
+    /**
+     * Creates an instance of CreateTag with the required fields
+     *
+     * @param tagDatabaseGateway  Interface for accessing Tag
+     * @param userDatabaseGateway Interface for accessing Users
+     * @param tagFactory          Factory for creating Tasks
+     */
     public CreateTag(
             TagDataAccessInterface tagDatabaseGateway,
             UserDatabaseGateway userDatabaseGateway,
@@ -34,12 +52,11 @@ public class CreateTag implements CreateTagInputBoundary {
     }
 
     /**
-     * Constructs a CreateTag use case given a name and a color
+     * Creates a Tag with the fields specified in the Request Model
      *
-     * @param tagRequestModel The input data with all required fields
-     * @return The output data with all required fields
+     * @param tagRequestModel The input data with all required fields relevant to creating a Tag
+     * @return The Response Model with all the Tag fields of the new Tag
      */
-
     @Override
     public TagResponseModel create(TagRequestModel tagRequestModel) {
         if (tagDatabaseGateway.contains(tagRequestModel.getName())) {

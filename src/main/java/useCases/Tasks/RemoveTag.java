@@ -13,24 +13,43 @@ import presenters.TaskPresenter;
  */
 public class RemoveTag implements RemoveTagInputBoundary {
 
+    /**
+     * The interface which allows access to the TaskDatabase
+     */
     private final TaskDataAccessInterface taskDatabaseGateway;
+
+    /**
+     * The interface which allows access to the TagDatabase
+     */
     private final TagDataAccessInterface tagDatabaseGateway;
+
+    /**
+     * The presenter for Tasks
+     */
     private final TaskPresenter taskPresenter;
 
+    /**
+     * Creates an instance of RemoveTag with the required fields
+     *
+     * @param taskDatabaseGateway Interface for accessing Tasks
+     * @param tagDatabaseGateway  Interface for accessing Tags
+     * @param taskPresenter       Presenter for Tasks
+     */
     public RemoveTag(
             TaskDataAccessInterface taskDatabaseGateway,
-            TagDataAccessInterface tagDataAccessInterface,
+            TagDataAccessInterface tagDatabaseGateway,
             TaskPresenter taskPresenter
     ) {
         this.taskDatabaseGateway = taskDatabaseGateway;
-        this.tagDatabaseGateway = tagDataAccessInterface;
+        this.tagDatabaseGateway = tagDatabaseGateway;
         this.taskPresenter = taskPresenter;
     }
 
     /**
-     * Adds a tag to a task
+     * Removes a Tag from a Task
      *
-     * @param taskRequestModel Contains tag to be added
+     * @param taskRequestModel Contains information about the tag to be removed
+     * @return A Response Model containing the name of the tag removed
      */
     @Override
     public TaskResponseModel removeTag(TaskRequestModel taskRequestModel) {

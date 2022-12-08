@@ -10,19 +10,25 @@ import gateways.Tags.TagResponseModel;
  */
 public class EditTag implements EditTagInputBoundary {
 
+    /**
+     * The interface which allows access to the TagDatabase
+     */
     TagDataAccessInterface databaseGateway;
 
     /**
-     * Instantiates a EditTag use case given a tag
+     * Creates an instance of EditTag with the required fields
+     *
+     * @param tagDatabaseGateway Interface for accessing Tag
      */
     public EditTag(TagDataAccessInterface tagDatabaseGateway) {
         this.databaseGateway = tagDatabaseGateway;
     }
 
     /**
-     * Edits the name of the tag
+     * Edits a Tag with the fields specified in the Request Model
      *
-     * @param tagRequestModel
+     * @param tagRequestModel The input data with all required fields relevant to editing a Tag name
+     * @return The Response Model with all the Tag fields
      */
     @Override
     public TagResponseModel editTagName(TagRequestModel tagRequestModel) {
@@ -36,9 +42,10 @@ public class EditTag implements EditTagInputBoundary {
     }
 
     /**
-     * Edits the color of the tag
+     * Edits a Tag with the fields specified in the Request Model
      *
-     * @param tagRequestModel
+     * @param tagRequestModel The input data with all required fields relevant to editing a Tag description
+     * @return The Response Model with all the Tag fields
      */
     @Override
     public TagResponseModel editTagColor(TagRequestModel tagRequestModel) {

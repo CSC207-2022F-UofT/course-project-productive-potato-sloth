@@ -1,5 +1,8 @@
 package screens.TaskList;
 
+/**
+ * A View Model which contains the state of the current Task the User has selected
+ */
 public class TaskScreenViewModel {
 
     private final String name;

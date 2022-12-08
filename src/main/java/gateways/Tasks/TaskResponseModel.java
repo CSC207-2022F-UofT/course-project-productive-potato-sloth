@@ -1,5 +1,8 @@
 package gateways.Tasks;
 
+/**
+ * A class which is returned from Task-relevant use cases as a Response
+ */
 public class TaskResponseModel {
 
     private final String name;

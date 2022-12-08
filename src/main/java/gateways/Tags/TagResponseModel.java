@@ -2,6 +2,9 @@ package gateways.Tags;
 
 import java.awt.*;
 
+/**
+ * A class which is returned from Tag-relevant use cases as a Response
+ */
 public class TagResponseModel {
 
     private final String name;

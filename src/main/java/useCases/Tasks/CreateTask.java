@@ -9,32 +9,70 @@ import gateways.UserDatabaseGateway;
 import presenters.TaskPresenter;
 import services.CurrentUserService;
 
+/**
+ * A use case which adds a new Task to the User's list
+ */
 public class CreateTask implements CreateTaskInputBoundary {
 
+    /**
+     * The interface which allows access to the TaskDatabase
+     */
     private TaskDataAccessInterface taskDatabaseGateway;
+
+    /**
+     * The interface which allows access to the UserDatabase
+     */
     private UserDatabaseGateway userDatabaseGateway;
+
+    /**
+     * The service allowing access to the current user
+     */
     private CurrentUserService currentUserService;
+
+    /**
+     * The required factory for creating Tasks
+     */
     private TaskFactory taskFactory;
+
+    /**
+     * The presenter for Tasks
+     */
     private TaskPresenter taskPresenter;
 
+    /**
+     * Creates an instance of CreateTask with the required fields
+     *
+     * @param taskDatabaseGateway Interface for accessing Tasks
+     * @param userDatabaseGateway Interface for accessing Users
+     * @param currentUserService  Service for accessing the logged-in user
+     * @param taskFactory         Factory for creating Tasks
+     * @param taskPresenter       Presenter for Tasks
+     */
     public CreateTask(
-            TaskDataAccessInterface taskDataAccessInterface,
+            TaskDataAccessInterface taskDatabaseGateway,
             UserDatabaseGateway userDatabaseGateway,
             CurrentUserService currentUserService,
             TaskFactory taskFactory,
             TaskPresenter taskPresenter
     ) {
-        this.taskDatabaseGateway = taskDataAccessInterface;
+        this.taskDatabaseGateway = taskDatabaseGateway;
         this.userDatabaseGateway = userDatabaseGateway;
         this.currentUserService = currentUserService;
         this.taskFactory = taskFactory;
         this.taskPresenter = taskPresenter;
     }
 
+    /**
+     * Creates a new Task with the fields specified in the Request model
+     * Calling this method will persist the data: no additional calls to DataInterfaces are necessary
+     *
+     * @param taskRequestModel Contains all the fields required for creating a Task
+     * @return A Response Model containing the information about the new Task
+     */
     @Override
     public TaskResponseModel create(TaskRequestModel taskRequestModel) {
 
-        if (taskDatabaseGateway.contains(taskRequestModel.getNewName()) && !(taskRequestModel.getName().equals(taskRequestModel.getNewName()))) {
+        if (taskDatabaseGateway.contains(taskRequestModel.getName())) {
             return taskPresenter.prepareFailView("Task already exists!");
         }
 

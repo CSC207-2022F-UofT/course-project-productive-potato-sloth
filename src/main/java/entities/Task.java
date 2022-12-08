@@ -224,6 +224,11 @@ public class Task implements Serializable {
         return this.collaborators;
     }
 
+    /**
+     * Gets the Chatroom associated with this Task
+     *
+     * @return The Chatroom for this Task
+     */
     public ChatRoom getChatRoom() {
         return this.chatRoom;
     }

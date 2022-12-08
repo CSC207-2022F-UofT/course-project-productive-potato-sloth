@@ -5,6 +5,9 @@ import entities.User;
 import java.util.List;
 import java.util.Stack;
 
+/**
+ * A class which is returned from the GetTaskInfo use case as a Response
+ */
 public class TaskInfoResponseModel {
 
     String name;

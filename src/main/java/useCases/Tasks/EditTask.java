@@ -12,15 +12,35 @@ import presenters.TaskResponseFormatter;
  */
 public class EditTask implements EditTaskInputBoundary {
 
+    /**
+     * The interface which allows access to the TaskDatabase
+     */
     private final TaskDataAccessInterface taskDatabaseGateway;
+
+    /**
+     * The presenter for Tasks
+     */
     private final TaskPresenter taskPresenter;
 
+    /**
+     * Creates an instance of EditTask with the required fields
+     *
+     * @param taskDatabaseGateway Interface for accessing Tasks
+     * @param taskPresenter       Presenter for Tasks
+     */
     public EditTask(TaskDataAccessInterface taskDatabaseGateway, TaskPresenter taskPresenter) {
         this.taskDatabaseGateway = taskDatabaseGateway;
         this.taskPresenter = taskPresenter;
     }
 
 
+    /**
+     * Edits the name of the task with the fields specified in the Request
+     * Calling this method will persist the data: no additional calls to DataInterfaces are necessary
+     *
+     * @param taskRequestModel Contains all the fields required for editing the name of a Task
+     * @return A Response Model containing the new name
+     */
     @Override
     public TaskResponseModel editName(TaskRequestModel taskRequestModel) {
         Task task = taskDatabaseGateway.get(taskRequestModel.getName());
@@ -48,6 +68,13 @@ public class EditTask implements EditTaskInputBoundary {
 
     }
 
+    /**
+     * Edits the description of the task with the fields specified in the Request
+     * Calling this method will persist the data: no additional calls to DataInterfaces are necessary
+     *
+     * @param taskRequestModel Contains all the fields required for editing the description of a Task
+     * @return A Response Model containing the new description
+     */
     @Override
     public TaskResponseModel editDescription(TaskRequestModel taskRequestModel) {
         Task task = taskDatabaseGateway.get(taskRequestModel.getName());

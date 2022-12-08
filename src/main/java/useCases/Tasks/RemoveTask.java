@@ -11,14 +11,33 @@ import presenters.TaskPresenter;
  */
 public class RemoveTask implements RemoveTaskInputBoundary {
 
+    /**
+     * The interface which allows access to the TaskDatabase
+     */
     private final TaskDataAccessInterface taskDatabaseGateway;
+
+    /**
+     * The presenter for Tasks
+     */
     private final TaskPresenter taskPresenter;
 
+    /**
+     * Creates an instance of RemoveTask with the required fields
+     *
+     * @param taskDatabaseGateway Interface for accessing Tasks
+     * @param taskPresenter       Presenter for Tasks
+     */
     public RemoveTask(TaskDataAccessInterface taskDatabaseGateway, TaskPresenter taskPresenter) {
         this.taskDatabaseGateway = taskDatabaseGateway;
         this.taskPresenter = taskPresenter;
     }
 
+    /**
+     * Removes a Task from a User's list
+     *
+     * @param taskRequestModel Contains information about the task to be removed
+     * @return A Response Model containing the name of the task removed
+     */
     @Override
     public TaskResponseModel removeTask(TaskRequestModel taskRequestModel) {
         Task task = taskDatabaseGateway.get(taskRequestModel.getName());

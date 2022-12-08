@@ -1,5 +1,8 @@
 package gateways.Tasks;
 
+/**
+ * A class which is passed into Task-relevant use cases as a Request
+ */
 public class TaskRequestModel {
 
     private final String name;

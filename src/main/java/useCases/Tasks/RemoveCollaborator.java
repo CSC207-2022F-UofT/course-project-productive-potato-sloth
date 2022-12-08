@@ -9,14 +9,32 @@ import gateways.UserDatabaseGateway;
 import presenters.TaskPresenter;
 
 /***
- * A use case which adds a collaborator to a User's Task
+ * A use case which removes a collaborator from a User's Task
  */
 public class RemoveCollaborator implements RemoveCollaboratorInputBoundary {
 
+    /**
+     * The interface which allows access to the TaskDatabase
+     */
     private final TaskDataAccessInterface taskDatabaseGateway;
+
+    /**
+     * The interface which allows access to the UserDatabase
+     */
     private final UserDatabaseGateway userDatabaseGateway;
+
+    /**
+     * The presenter for Tasks
+     */
     private final TaskPresenter taskPresenter;
 
+    /**
+     * Creates an instance of RemoveCollaborator with the required fields
+     *
+     * @param taskDatabaseGateway Interface for accessing Tasks
+     * @param userDatabaseGateway Interface for accessing Users
+     * @param taskPresenter       Presenter for Tasks
+     */
     public RemoveCollaborator(
             TaskDataAccessInterface taskDatabaseGateway,
             UserDatabaseGateway userDatabaseGateway,

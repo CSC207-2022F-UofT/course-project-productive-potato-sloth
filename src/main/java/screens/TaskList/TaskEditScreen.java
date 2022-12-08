@@ -19,14 +19,34 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A Screen which shows the edit menu of a Task
+ */
 public class TaskEditScreen implements Subject, ActionListener {
 
+    /**
+     * The window of the screen
+     */
     JFrame frame = new JFrame("Edit Task");
 
+    /**
+     * The panel holding the content
+     */
     JPanel panel = new JPanel();
+
+    /**
+     * The name of the task to be edited
+     */
     String taskName;
+
+    /**
+     * The information about the selected task
+     */
     TaskInfoResponseModel response;
 
+    /**
+     * All controllers and services necessary for editing tasks
+     */
     CurrentUserService currentUserService;
     GetTaskInfoController getTaskInfoController;
     AddCollaboratorController addCollaboratorController;
@@ -37,6 +57,9 @@ public class TaskEditScreen implements Subject, ActionListener {
     RemoveCollaboratorController removeCollaboratorController;
     RemoveTagController removeTagController;
 
+    /**
+     * The new fields the user has entered
+     */
     JTextField newName;
     JTextField newDescription;
     JCheckBox completed;
@@ -45,8 +68,14 @@ public class TaskEditScreen implements Subject, ActionListener {
     JComboBox<String> newCollaborators;
     String existingCollaborators;
 
+    /**
+     * The Observers updated when a change happens
+     */
     List<Observer> observerList = new ArrayList<Observer>();
 
+    /**
+     * Instantiates TaskEditScreen with all controllers necessary for Task editing
+     */
     public TaskEditScreen(
             CurrentUserService currentUserService,
             GetTaskInfoController getTaskInfoController,
@@ -69,12 +98,22 @@ public class TaskEditScreen implements Subject, ActionListener {
         this.removeTagController = removeTagController;
     }
 
+    /**
+     * Displays the frame on the User's screen
+     * Requires a Task name to know which Task is being edited
+     *
+     * @param taskName The name of the Task to be edited
+     */
     public void showScreen(String taskName) {
         panel.removeAll();
         this.taskName = taskName;
+
+        // Retrieving the state of the Task before edit
         TaskInfoResponseModel response = getTaskInfoController.getInfo(taskName);
         this.response = response;
 
+        // Creating labels and fields for Users to enter their new data
+        // Fields and labels will reflect the Task state before any edits
         JLabel nameLabel = new JLabel("Name: ");
         JTextField newName = new JTextField(response.getName(), 10);
         this.newName = newName;
@@ -108,9 +147,12 @@ public class TaskEditScreen implements Subject, ActionListener {
         JComboBox<String> newCollaborators = new JComboBox<String>();
         this.newCollaborators = newCollaborators;
 
+
+        // Creating the buttons
         JButton save = new JButton("Save");
         save.addActionListener(this);
 
+        // Adding buttons on the panel and setting frame and panel configurations
         panel.setBorder(BorderFactory.createEmptyBorder(30, 300, 300, 300));
         panel.setLayout(new GridLayout(0, 1));
 
@@ -137,10 +179,16 @@ public class TaskEditScreen implements Subject, ActionListener {
     }
 
 
+    /**
+     * Edits the task to match the inputs the User specified
+     *
+     * @param e the event to be processed
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         TaskInfoResponseModel viewModel;
 
+        // Calling all controllers
         try {
             editTaskNameController.editName(response.getName(), newName.getText());
             editTaskDescriptionController.editDescription(newName.getText(), newDescription.getText());
@@ -156,28 +204,42 @@ public class TaskEditScreen implements Subject, ActionListener {
                 addTagController.addTag(newName.getText(), newTags.getSelectedItem().toString());
             }
 
-
-//            removeCollaboratorController.removeCollaborator(newName.getText(), existingCollaborators);
-//            addCollaboratorController.addCollaborator(newName.getText(), newCollaborators.getSelectedItem().toString());
+            // Updating all observers
             viewModel = getTaskInfoController.getInfo(newName.getText());
             updateObservers(viewModel);
             frame.setVisible(false);
 
+            // Catching any errors
         } catch (TaskError error) {
             JOptionPane.showMessageDialog(frame, error.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
+    /**
+     * Register an observer to receive updates
+     *
+     * @param o The new observer
+     */
     @Override
     public void registerObserver(Observer o) {
         this.observerList.add(o);
     }
 
+    /**
+     * Removes an observer from receiving updates
+     *
+     * @param o The observer to remove
+     */
     @Override
     public void removeObserver(Observer o) {
         this.observerList.remove(o);
     }
 
+    /**
+     * Updates all observers which are registered
+     *
+     * @param viewModel The view model that is updated
+     */
     @Override
     public void updateObservers(TaskInfoResponseModel viewModel) {
         for (Observer o : observerList) {

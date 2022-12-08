@@ -14,18 +14,45 @@ import services.CurrentUserService;
 
 import java.util.ArrayList;
 
+/**
+ * A use case which retrieves all the fields of a Task
+ */
 public class GetTaskInfo implements GetTaskInfoInputBoundary {
 
+    /**
+     * The interface which allows access to the TaskDatabase
+     */
     TaskDataAccessInterface taskDatabaseGateway;
+
+    /**
+     * The presenter for Task info
+     */
     TaskInfoPresenter taskInfoPresenter;
+
+    /**
+     * The service allowing access to the current user
+     */
     CurrentUserService currentUserService;
 
+    /**
+     * Creates an instance of GetTaskInfo with the required fields
+     *
+     * @param taskDatabaseGateway Interface for accessing Tasks
+     * @param taskInfoPresenter   Presenter for Task info
+     * @param currentUserService  Service for accessing the logged-in user
+     */
     public GetTaskInfo(TaskDataAccessInterface taskDatabaseGateway, TaskInfoPresenter taskInfoPresenter, CurrentUserService currentUserService) {
         this.taskDatabaseGateway = taskDatabaseGateway;
         this.taskInfoPresenter = taskInfoPresenter;
         this.currentUserService = currentUserService;
     }
 
+    /**
+     * Gets all the info about a certain task specified in the Request
+     *
+     * @param taskInfoRequestModel Contains the name of the Task for which to return information
+     * @return A Response Model containing the information about the Task
+     */
     @Override
     public TaskInfoResponseModel getInfo(TaskInfoRequestModel taskInfoRequestModel) {
         Task task = taskDatabaseGateway.get(taskInfoRequestModel.getName());
@@ -34,6 +61,7 @@ public class GetTaskInfo implements GetTaskInfoInputBoundary {
         ArrayList<String> eventList = new ArrayList<>();
         ArrayList<String> collaboratorList = new ArrayList<>();
 
+        // Querying all Tags, Events, Collaborators into the response
         if (task.getTags() != null) {
             for (Tag tag : task.getTags()) {
                 tagList.add(tag.getName());
@@ -57,7 +85,7 @@ public class GetTaskInfo implements GetTaskInfoInputBoundary {
             allTasks.add(tempTask.getName());
         }
 
-
+        // Returning the response
         TaskInfoResponseModel response = new TaskInfoResponseModel(
                 task.getName(),
                 task.getDescription(),

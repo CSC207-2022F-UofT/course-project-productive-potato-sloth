@@ -23,11 +23,6 @@ public class Tag implements Serializable {
     Color color;
 
     /**
-     * The User (owner) of the tag
-     */
-//    final User user;
-
-    /**
      * Instantiates a new Tag with a name and colour
      *
      * @param name  The name of the Tag

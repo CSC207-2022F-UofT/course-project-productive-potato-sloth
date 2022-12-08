@@ -24,15 +24,9 @@ import java.io.IOException;
 
 public class TaskListMain {
 
-    int clicks = 0;
-
-    JLabel label;
-    User user;
-
-
     public TaskListMain() throws IOException {
 
-        user = new User();
+        User user = new User();
         User collaborator = new User("collaborator", "collaborator");
         User collaborator2 = new User("collaborator2", "collaborator2");
         Task task1 = new Task("task1", user);
@@ -142,6 +136,8 @@ public class TaskListMain {
         taskEditScreen.registerObserver(taskListScreen);
         newTaskScreen.registerObserver(taskListScreen);
         deleteTaskConfirmationDialog.registerObserver(taskListScreen);
+
+        taskListScreen.showScreen();
 
     }
 
