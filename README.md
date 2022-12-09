@@ -165,6 +165,7 @@ Design choices:
 Roadmap:
 > From the Login screen, I wanted to allow the User to go to the Create Account page so create an account that then redirects them back to the login page once the account is created. 
 > Additionally, we have a Welcome Screen that allows Users to edit Tasks, schedule Events, etc, and Login and Create an Account. This of course is not ideal as we would like the User to see and interact with the Welcome Screen after logging in (so after they've created an account too). So this is something I want to update at a later stage. 
+> Another thing I would like to implement is a log out function to allow a new User to log into the application.
 > Finally, I wanted to implement a Settings page that, at the basic level, allowed Users to change their Calendar view (to either include / remove weekends from their View) and change their password, which I was unable to within my given timeframe. 
 
 
