@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import screens.Timer.TimerMainGUI;
+import screens.Timer.TimerMain;
 
 //UI layer
 
@@ -44,7 +44,7 @@ public class WelcomeScreen extends JFrame implements ActionListener {
      */
     public void actionPerformedTimer(ActionEvent evt) {
 
-        TimerMainGUI.displayTimerScreen();
+        TimerMain.displayTimerScreen();
     }
     public void actionPerformed(ActionEvent evt) {
         System.out.println("Click " + evt.getActionCommand());

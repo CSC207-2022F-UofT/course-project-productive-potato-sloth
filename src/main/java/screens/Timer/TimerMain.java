@@ -8,7 +8,7 @@ import useCases.Timer.TimerPresenter;
 import javax.swing.*;
 import java.awt.*;
 
-public class TimerMainGUI {
+public class TimerMain {
     public static void displayTimerScreen() {
 
         JFrame timerFrame = new JFrame("Timer");
