@@ -21,7 +21,7 @@ A Java application created for the CSC207 Final Project
 6. Task Statistics 
 
 7. Login and Creating an Account (Chhavi Shah, ConverseScholar)
-> The user is able to create a new account and 
+> The user is able to create a new account and log into the application.
 
 
 ## Getting Started
@@ -138,6 +138,14 @@ Design patterns:
     > This separates the cause and the effect of the change, and additionally follows clean architecture as creating a new info screen requires simply subscribing it to the subject
 
 ### Chhavi Shah (ConverseScholar)
+Roadmap:
+> From the Login screen, I wanted to allow the User to go to the Create Account page so create an account that then redirects them back to the login page once the account is created. 
+> Additionally, we have a Welcome Screen that allows Users to edit Tasks, schedule Events, etc, and Login and Create an Account. This of course is not ideal as we would like the User to see and interact with the Welcome Screen after logging in (so after they've created an account too). So this is something I want to update at a later stage. 
+> Finally, I wanted to implement a Settings page that, at the basic level, allowed Users to change their Calendar view (to either include / remove weekends from their View) and change their password, which I was unable to within my given timeframe. 
+
+
+Design Patters:
+I haven't really used any design patterns as the code I needed to implement was rather straight-forward and I thought that using a design pattern would complicate the simplicity of the implementation. There is of course scope to use a design pattern for what I've implemented (like Factory for User).
 
 
 ## Licence
