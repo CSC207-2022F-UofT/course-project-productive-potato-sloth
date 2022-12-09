@@ -38,10 +38,18 @@ My code review consisted of general comments, like documentation, and uses of as
 
 ## Dawei He (Dawei-He2022)
 
-Pull request 1: Code Contribution () ()
+[Pull request 1] (https://github.com/CSC207-2022F-UofT/course-project-productive-potato-sloth/pull/43)
+This is my pull request. It consists of all my controllers' tests and the UI. Although this may not sound important, in this pull request I fixed all of the errors preventing my UI from rendering and setting the contents as blank, which enabled me to identify problems within my demo class and controllers, and fix them in time.
+
+In this pull request, I was able to completely integrate my code with that of the other group members and get my program to run properly, which is the final step toward completing the program. Writing unit tests for controllers and presenters also enabled me to detect and fix errors much more efficiently, and eliminate potential sources of error when rendering the UI. This greatly helped in meeting the submission deadline (because a lot of time was saved in debugging). 
+
+I also wrote detailed docstrings for every class and method, and adhered to SOLID principles, especially Dependency Inversion, throughout. This will help in improving readability of my code for code reviews.
+
+In a large part, the significance of this pull request can also be attributed to the fact that I spent nearly a week debugging the UI before I solved it in an office hour with Prof.Gries. Without a working UI, any amount of architecture will remain untested and this pull request gave me the ability to test and integrate my program as a whole, instead of as individual parts.
 
 
-Pull Request 2: Code Review () ()
+[Pull Request 2](https://github.com/CSC207-2022F-UofT/course-project-productive-potato-sloth/pull/45)
+This is my code review. I reviewed Chhavi (ConverseScholar)'s commit and left a detailed review to the best of my ability. Whenever possible, I analyzed what the author of the pull request was trying to do, her intentions as well as her implementation, and tried to raise questions about why a particular design decision was made or why a class was implemented the way it is. I tried to give constructive criticism and raise questions whenever I saw something I could not understand the necessity of. I believe that by combing through the code, giving constructive criticism and questioning design decisions, I can facilitate the upkeep and elevation of the quality of the written code in our project.
 
 
 ## Chhavi Shah (ConvserseScholar)
@@ -66,30 +74,13 @@ Also, my initial use case plan was to have a settings page too from which Users 
 [Pull Request 2](https://github.com/CSC207-2022F-UofT/course-project-productive-potato-sloth/pull/24) - Code Review <br />
 Despite this being the same review I talked about in milestone 4, I still think this was my best review contribution. I brought up points that I think helped Paridhi with her implementation and how it would contribute wholly to our project - such as ensuring we were all being uniform in how we set up our implementations so that the code is more clean. 
 
-## Paridhi Goel (paridhi26)
+## Paridhi Goel (Paridhi)
 
-[Pull Request](https://github.com/CSC207-2022F-UofT/course-project-productive-potato-sloth/pull/39) - Code Review <br />
+[Pull Request]() 
 
-This pull request includes a large proportion of the code contribution made by me to get the Timer feature running.
-Although, I made more pull requests after this to refactor code, add further enhancements and tests, the code in this pull request forms the major
-body of the Timer feature. The title of the pull request is "Timer UI layer and controller" because I initially only intended 
-to merge the screens and controller layer with this PR. I previously made separate PRs for useCase layer, entity layer, Main and Welcome Screen. 
-However, someone pushed to the main branch deleting all my work that existed on the main branch. Therefore, I had to recommit my entities, usecases etc. 
 
-The code follows clean architecture and SOLID Design principles.
+[Code Review]() 
 
-I added the timer factory design pattern because that would allow easy extension of this application because in the future if we decide to add different 
-types of timers that store different kinds of data. For example, workout timer, study timer, cooking. 
-
-The TimerInputBoundary Interface and Presenter Interface exist to invert dependencies between controller and use case layer.   
-
-[Code Review](https://github.com/CSC207-2022F-UofT/course-project-productive-potato-sloth/pull/31) - Code Review <br />
-
-I think this code review by me helped the team keep our main class clean and small, avoiding the large class code smell. 
-I thought it was better to have separate classes and methods that setup the screens for particular features, and then 
-have the welcome screen call these classes and methods. The main method of Main 
-class then just has to set up the welcome screen. This allowed us all to work on our separate classes and connect them in the end 
-instead of everyone adding their work to one Main class, which could have been messy.
 
 ## Steven Jiang (1StevenJiang1)
 
