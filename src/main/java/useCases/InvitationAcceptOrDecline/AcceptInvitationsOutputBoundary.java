@@ -1,5 +1,5 @@
 package useCases.InvitationAcceptOrDecline;
 
 public interface AcceptInvitationsOutputBoundary {
-    void prepareAcceptView(AcceptInvitationOutputModel output);
+    AcceptInvitationOutputModel prepareAcceptView(AcceptInvitationOutputModel output);
 }

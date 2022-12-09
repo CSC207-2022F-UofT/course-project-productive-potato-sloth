@@ -1,15 +1,16 @@
 package useCases.InvitationAcceptOrDecline;
 
 public class AcceptInvitationOutputModel extends AcceptInvitationInputModel{
-    String timeAccepted;
+    String timeResponded;
 
     public AcceptInvitationOutputModel(String sender, String receiver, String task, boolean accept, String time) {
         super(sender, receiver, task, accept);
-        this.timeAccepted = time;
+        this.timeResponded = time;
 
     }
 
-    public String getTimeAccepted(){
-        return this.timeAccepted;
+    public String getTimeResponded(){
+        return this.timeResponded;
     }
+    public void setTimeResponded(String timeResponded){this.timeResponded = timeResponded;}
 }

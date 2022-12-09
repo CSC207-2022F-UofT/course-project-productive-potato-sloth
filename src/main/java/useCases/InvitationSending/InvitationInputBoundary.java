@@ -1,5 +1,5 @@
 package useCases.InvitationSending;
 
 public interface InvitationInputBoundary {
-    void sendInvitation(InvitationInputModel input);
+    InvitationOutputModel sendInvitation(InvitationInputModel input);
 }

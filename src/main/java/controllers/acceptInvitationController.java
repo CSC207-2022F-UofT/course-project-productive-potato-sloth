@@ -1,7 +1,8 @@
-package InvitationcontrollerAndPresenter;
+package controllers;
 
 import useCases.InvitationAcceptOrDecline.AcceptInvitationInputBoundary;
 import useCases.InvitationAcceptOrDecline.AcceptInvitationInputModel;
+import useCases.InvitationAcceptOrDecline.AcceptInvitationOutputModel;
 
 public class acceptInvitationController {
 
@@ -11,11 +12,11 @@ public class acceptInvitationController {
         this.userInput = userInput;
     }
 
-    public void acceptInvitations(String sender, String receiver, String task, boolean accept){
+    public AcceptInvitationOutputModel acceptInvitations(String sender, String receiver, String task, boolean accept){
         AcceptInvitationInputModel requestModel = new AcceptInvitationInputModel(
                 sender, receiver, task, accept);
 
-        userInput.acceptInvitations(requestModel);
+        return userInput.acceptInvitations(requestModel);
     }
 
 }

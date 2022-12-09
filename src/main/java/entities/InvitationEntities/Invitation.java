@@ -7,9 +7,9 @@ import java.io.Serializable;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
-public class Invitation implements Serializable, InvitationInterface  {
+public class Invitation implements InvitationInterface  {
 
-    private static final long serialVersionUID = 6529685098267757692L;
+
     public User sender;
     public User receiver;
     transient String sentTime;

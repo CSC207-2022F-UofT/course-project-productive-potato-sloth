@@ -9,4 +9,5 @@ public class InvitationOutputModel extends InvitationInputModel{
     public String getTimeSent(){
         return this.timeSent;
     }
+    public void setTimeSent(String timeSent){this.timeSent = timeSent;}
 }
