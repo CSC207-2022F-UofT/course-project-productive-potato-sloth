@@ -39,6 +39,7 @@ I haven't really used any design patterns as the code I needed to implement was 
 
 
 [Pull Request 2](https://github.com/CSC207-2022F-UofT/course-project-productive-potato-sloth/pull/24) - Code Review <br />
+Despite this being the same review I talked about in milestone 4, I still think this was my best review contribution. I brought up points that I think helped Paridhi with her implementation and how it would contribute wholly to our project - such as ensuring we were all being uniform in how we set up our implementations so that the code is more clean. 
 
 ## Paridhi Goel (Paridhi)
 
