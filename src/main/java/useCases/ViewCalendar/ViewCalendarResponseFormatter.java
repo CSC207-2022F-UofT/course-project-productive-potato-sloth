@@ -8,14 +8,29 @@ import screens.ViewCalendar.ViewCalendarViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A response formatter that implements the presenter.
+ */
 public class ViewCalendarResponseFormatter implements ViewCalendarPresenter {
 
+    /**
+     * The view model that this response formatter
+     * updates.
+     */
     ViewCalendarViewModel viewModel;
 
+    /**
+     * A constructor for the response formatter.
+     * @param viewModel the view model needed to be updated when methods of the presenter are called.
+     */
     public ViewCalendarResponseFormatter(ViewCalendarViewModel viewModel){
         this.viewModel = viewModel;
     }
 
+    /**
+     * Prepare a success view.
+     * @param response a response model for updating the view model
+     */
     @Override
     public void prepareSuccessView(ViewCalendarResponseModel response) {
 
@@ -30,6 +45,10 @@ public class ViewCalendarResponseFormatter implements ViewCalendarPresenter {
 
     }
 
+    /**
+     * Prepare a failure view.
+     * @param errorMessage an error to add into the view model
+     */
     @Override
     public void prepareFailView(String errorMessage) {
 

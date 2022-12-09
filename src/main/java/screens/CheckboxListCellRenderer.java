@@ -3,6 +3,10 @@ package screens;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * A class that renders a checkbox list.
+ * @param <E> a type parameter for what this list stores.
+ */
 public class CheckboxListCellRenderer<E> extends JCheckBox implements
         ListCellRenderer<E> {
 

@@ -24,20 +24,20 @@ public class OutPutHistogram {
         int saturday = calc.rawTime(user, unit);
         int sunday = calc.rawTime(user, unit);
         HistogramPanel histogram = new HistogramPanel();
-            EventQueue.invokeLater(new Runnable()
-            {
-                public void run()
-                {
-                    createAndShowGUI(monday, tuseday, wednesday, thursday, friday, saturday, sunday);
-                }
-            });
-//        EventQueue.invokeLater(new Runnable()
-//        {
-//            public void run()
+//            EventQueue.invokeLater(new Runnable()
 //            {
-//                createAndShowGUI(1, 5, 10, 21, 4, 6, 10);
-//            }
-//        });
+//                public void run()
+//                {
+//                    createAndShowGUI(monday, tuseday, wednesday, thursday, friday, saturday, sunday);
+//                }
+//            });
+        EventQueue.invokeLater(new Runnable()
+        {
+            public void run()
+            {
+                createAndShowGUI(1, 5, 10, 21, 4, 6, 10);
+            }
+        });
 
     }}
 

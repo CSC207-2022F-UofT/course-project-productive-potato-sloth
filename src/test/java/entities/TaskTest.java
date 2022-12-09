@@ -75,6 +75,7 @@ public class TaskTest {
      */
     @Test
     public void testTaskAddTag() {
+        Tag tag = new Tag("tag1", Color.BLACK, this.user);
         Tag tag2 = new Tag("tag2", Color.RED, this.user);
         Task task = new Task("tag", user, "");
         task.addTag(tag);

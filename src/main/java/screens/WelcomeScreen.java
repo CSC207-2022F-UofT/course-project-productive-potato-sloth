@@ -23,6 +23,7 @@ import screens.Timer.TimerMainGUI;
 import screens.Calculator.OutPutHistogram;
 import screens.Timer.TimerMainGUI;
 import services.CurrentUserService;
+import screens.ViewCalendar.ViewCalendarMainFrame;
 
 
 //UI layer
@@ -32,6 +33,7 @@ public class WelcomeScreen extends JFrame implements ActionListener {
     JButton invitation; // the button that calls the main invitation screen
     MainInvitationMethod invitation_main;
     TaskListScreen taskListScreen;
+    ViewCalendarMainFrame viewCalendarMainFrame;
     CurrentUserService service;
     ChatRoomDemo demo;
 
@@ -40,11 +42,18 @@ public class WelcomeScreen extends JFrame implements ActionListener {
      */
 
     public WelcomeScreen(
+
             TaskListScreen taskListScreen, CurrentUserService service, MainInvitationMethod invitation_main
+
+            TaskListScreen taskListScreen,
+            CurrentUserService service,
+            ViewCalendarMainFrame viewCalendarMainFrame
+
     ) {
         this.taskListScreen = taskListScreen;
         this.service = service;
         this.demo = new ChatRoomDemo(service);
+        this.viewCalendarMainFrame = viewCalendarMainFrame;
 
 
         JLabel title = new JLabel("Welcome Potato Sloths!");
@@ -79,8 +88,14 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 
 
         timer.addActionListener(this::actionPerformedTimer);
+
+        viewSchedule.addActionListener(this::actionPerformedViewCalendar);
+
+
         viewTasks.addActionListener(this::actionPerformedTaskList);
         invitation.addActionListener(this);
+
+        viewChatRoom.addActionListener(this::actionPerformedViewChatRoom);
 
         login.addActionListener(this::actionPerfectLogin);
         createAccount.addActionListener(this::actionPerformedCreateAccount);
@@ -111,6 +126,10 @@ public class WelcomeScreen extends JFrame implements ActionListener {
     private void actionPerformedCalculator(ActionEvent actionEvent) {
         OutPutHistogram histogram = new OutPutHistogram();
         histogram.produce_graph();
+    }
+
+    public void actionPerformedViewCalendar(ActionEvent evt){
+        viewCalendarMainFrame.runViewCalendarUseCase();
     }
 
     /**
