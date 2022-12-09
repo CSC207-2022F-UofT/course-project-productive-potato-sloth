@@ -27,8 +27,6 @@ public class ScheduleEventInteractorTest {
     CurrentUserService currentUserService;
     UserDataAccessInterface gateway;
 
-    Task task;
-
     @BeforeEach
     /**
      * Setup a default CurrentUserService and a gateway.
@@ -58,7 +56,7 @@ public class ScheduleEventInteractorTest {
 
         currentUserService.setCurrentUser(testUser);
 
-        gateway = new UserDatabaseGateway("data_files/emptyUserFile.ser");
+        gateway = new UserDatabaseGateway("database/emptyUserFile.ser");
     }
 
     @Test
