@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.jupiter.api.*;
 import entities.ChatRoom;
 import entities.User;
+import services.CurrentUserService;
 import useCases.ChatRoom.ChatRoomInteractor;
 import useCases.responseModels.MessageResponseModel;
 
@@ -30,6 +31,22 @@ public class chatRoomInteractorTest {
         interactor.sendMessage("abcd", user1);
         //assertion
         Assertions.assertEquals("chatRoom with messages [abcd]", room.toString());
+    }
+
+    /**
+     * This test tests that the SendMessage method call (overloaded) with one parameter correctly identifies the active
+     * User with the CurrentUserService, creates a Message entity with the String parameter and the User and
+     * correctly updates the ChatRoom entity.
+     */
+    @Test
+    public void testSendMessage(){
+        CurrentUserService service = new CurrentUserService();
+        service.setCurrentUser(user1);
+        user1.setUsername("Kerensky");
+        interactor.setService(service);
+        interactor.sendMessage("abcd");
+        Assertions.assertEquals("chatRoom with messages [abcd]", room.toString());
+        Assertions.assertEquals("Kerensky", room.GetMessages().get(0).getAuthor());
     }
 
     /**
