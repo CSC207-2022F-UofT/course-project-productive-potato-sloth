@@ -27,7 +27,7 @@ public class TimerScreen extends JPanel implements ActionListener {
         this.timerController = controller;
         this.countDown.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        LabelTextPanel userInput = new LabelTextPanel(new JLabel("Enter Duration (in minutes)"), timerDuration);
+        LabelTextPanel userInput = new LabelTextPanel(new JLabel("Enter Duration (in whole number of minutes)"), timerDuration);
         JButton start = new JButton("Start");
         JButton pause = new JButton("Pause");
 
@@ -88,17 +88,25 @@ public class TimerScreen extends JPanel implements ActionListener {
         }
 
         else {
-
-            Long durationOfTimer = Long.parseLong(timerDuration.getText());
-            Long durationInMillis = Long.parseLong(timerDuration.getText())*60000;
-
-            timerController.create(Duration.ofMinutes(durationOfTimer));
-            if (!this.timer.isRunning()) {
-                this.lastTickTime = durationInMillis;
-                timer.start();
-                flag = 1;
+            try {
+                Long durationOfTimer = Long.parseLong(timerDuration.getText());
+                Long durationInMillis = Long.parseLong(timerDuration.getText()) * 60000;
+                if (durationOfTimer < 0){
+                    JOptionPane.showMessageDialog(this, "Enter positive whole number!\nTime Travel is not possible for now.");
+                }
+                timerController.create(Duration.ofMinutes(durationOfTimer));
+                if (!this.timer.isRunning()) {
+                    this.lastTickTime = durationInMillis;
+                    timer.start();
+                    flag = 1;
+                }
+                }
+            catch(Exception e) {
+                JOptionPane.showMessageDialog(this, "Enter whole number!");
+                System.out.println("Enter whole number!");
             }
-        }
+            }
+
 
     }
 
