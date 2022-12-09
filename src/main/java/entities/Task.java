@@ -1,8 +1,6 @@
 package entities;
 
-import javax.lang.model.type.ArrayType;
 import java.io.Serializable;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 

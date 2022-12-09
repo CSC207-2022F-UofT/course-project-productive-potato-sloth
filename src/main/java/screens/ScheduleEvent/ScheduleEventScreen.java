@@ -8,31 +8,56 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.github.lgooddatepicker.components.DateTimePicker;
+import controllers.Events.ScheduleEventController;
 import screens.*;
-import screens.ViewCalendar.ViewModelObserver;
-import screens.ViewCalendar.ViewModelSubjectInterface;
 
-
-// From Paul's UserRegisterScreen
-
+/**
+ * A screen for the ScheduleEvent use case containing a form
+ * and a submit button.
+ */
 public class ScheduleEventScreen extends JPanel implements ActionListener, UseCaseSubjectInterface {
     /**
      * The name of the event chosen by the user
      */
     JTextField eventName = new JTextField(15);
 
+    /**
+     * the start time field chosen by the user.
+     */
     DateTimePicker start_time = new DateTimePicker();
 
+    /**
+     * the end time field chosen by the user.
+     */
     DateTimePicker end_time = new DateTimePicker();
 
+    /**
+     * A JList that contains the tags that the user
+     * may select.
+     */
     JList<String> tagSelectionList = new JList<>();
 
+    /**
+     * A Combo box that contains the task that the user
+     * may select.
+     */
     JComboBox<String> task_combo_box;
 
+    /**
+     * The ScheduleEventController.
+     */
     ScheduleEventController scheduleEventController;
 
+    /**
+     * The ScheduleEventViewModel containing the tasks and tags
+     * of the user for them to choose from.
+     */
     ScheduleEventViewModel view_model;
 
+    /**
+     * The list of observers which are use cases that are observing
+     * this use case.
+     */
     List<UseCaseObserver> observerList;
 
     /**
@@ -131,16 +156,27 @@ public class ScheduleEventScreen extends JPanel implements ActionListener, UseCa
         }
     }
 
+    /**
+     * Add an observer that listens to when this use case succeeds
+     * @param observer a use case which will now observe this one.
+     */
     @Override
     public void addUseCaseObserver(UseCaseObserver observer) {
         this.observerList.add(observer);
     }
 
+    /**
+     * Remove an observer that listened to when this use case succeeds.
+     * @param observer a use case which observes this one.
+     */
     @Override
     public void removeUseCaseObserver(UseCaseObserver observer) {
         this.observerList.remove(observer);
     }
 
+    /**
+     * Update all observers which are use cases that observe this one.
+     */
     @Override
     public void updateUseCaseObservers() {
         for(UseCaseObserver observer: this.observerList){

@@ -8,6 +8,7 @@ import gateways.Tasks.TaskDatabaseGateway;
 import gateways.UserDatabaseGateway;
 import presenters.*;
 import screens.TaskList.*;
+import screens.ViewCalendar.ViewCalendarMainFrame;
 import screens.WelcomeScreen;
 import services.CurrentUserService;
 import useCases.Tags.*;
@@ -163,7 +164,12 @@ public class Main {
         editTagScreen.registerObserver(tagScreen);
 
 
-        WelcomeScreen applicationFrame = new WelcomeScreen(taskListScreen, currentUserService);
+        // Setup the view calendar use case
+
+        ViewCalendarMainFrame viewCalendarMainFrame = new ViewCalendarMainFrame(currentUserService, userDatabaseGateway);
+
+
+        WelcomeScreen applicationFrame = new WelcomeScreen(taskListScreen, currentUserService, viewCalendarMainFrame);
 
         // everyone add your buttons and action listener in the WelcomeScreen class
 
