@@ -1,5 +1,6 @@
 package screens;
 
+import main.ChatRoomDemo;
 import screens.CreateAccount.CreateAccountMain;
 import screens.Login.LoginMain;
 import screens.TaskList.TaskListScreen;
@@ -11,20 +12,25 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import screens.Timer.TimerMainGUI;
+import services.CurrentUserService;
 
 // GUI layer
 
 public class WelcomeScreen extends JFrame implements ActionListener {
 
     TaskListScreen taskListScreen;
+    CurrentUserService service;
+    ChatRoomDemo demo;
 
     /**
      * The main welcome window of the application, acts like a home screen
      */
     public WelcomeScreen(
-            TaskListScreen taskListScreen
+            TaskListScreen taskListScreen, CurrentUserService service
     ) {
         this.taskListScreen = taskListScreen;
+        this.service = service;
+        this.demo = new ChatRoomDemo(service);
 
         JLabel title = new JLabel("Welcome Potato Sloths!");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -32,6 +38,7 @@ public class WelcomeScreen extends JFrame implements ActionListener {
         JButton timer = new JButton("Start Timer");
         JButton viewSchedule = new JButton("View Schedule");
         JButton viewTasks = new JButton("View Tasks");
+        JButton viewChatRoom = new JButton("view ChatRoom");
         JButton login = new JButton("Login");
         JButton createAccount = new JButton("Create Account");
 
@@ -39,6 +46,7 @@ public class WelcomeScreen extends JFrame implements ActionListener {
         buttons.add(timer);
         buttons.add(viewSchedule);
         buttons.add(viewTasks);
+        buttons.add(viewChatRoom);
         buttons.add(login);
         buttons.add(createAccount);
 
@@ -86,5 +94,8 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent evt) {
         System.out.println("Click " + evt.getActionCommand());
+    }
+    public void actionPerformedViewChatRoom(ActionEvent evt){
+        demo.initialize();
     }
 }

@@ -8,8 +8,12 @@ import useCases.ChatRoom.ChatRoomInteractorInterface;
  */
 public class SendMessageController implements SendMessageInterface{
     ChatRoomInteractorInterface interactor;
+
     public SendMessageController(ChatRoomInteractorInterface interactor){
         this.interactor = interactor;
+    }
+    public ChatRoomInteractorInterface getInteractor(){
+        return this.interactor;
     }
 
     /**
