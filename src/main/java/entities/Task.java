@@ -60,6 +60,7 @@ public class Task {
         this.name = name;
         this.user = user;
         this.completed = false;
+        this.chatRoom = new ChatRoom();
     }
 
     /**
@@ -74,6 +75,7 @@ public class Task {
         this.user = user;
         this.description = description;
         this.completed = false;
+        this.chatRoom = new ChatRoom();
     }
 
     /**
@@ -101,6 +103,10 @@ public class Task {
      */
     public String getDescription() {
         return description;
+    }
+
+    public ChatRoom getChatRoom(){
+        return this.chatRoom;
     }
 
     /**
@@ -224,10 +230,6 @@ public class Task {
      */
     public List<User> getCollaborator() {
         return this.collaborators;
-    }
-
-    public ChatRoom getChatRoom() {
-        return this.chatRoom;
     }
 
 }
