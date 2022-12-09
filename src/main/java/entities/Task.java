@@ -1,13 +1,16 @@
 package entities;
 
+import javax.lang.model.type.ArrayType;
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * An entity class representing a Task
  */
-public class Task{
+public class Task {
+
     /**
      * The User that this Task belongs to
      */
@@ -57,6 +60,7 @@ public class Task{
         this.name = name;
         this.user = user;
         this.completed = false;
+        this.chatRoom = new ChatRoom();
     }
 
     /**
@@ -71,6 +75,7 @@ public class Task{
         this.user = user;
         this.description = description;
         this.completed = false;
+        this.chatRoom = new ChatRoom();
     }
 
     /**
@@ -98,6 +103,10 @@ public class Task{
      */
     public String getDescription() {
         return description;
+    }
+
+    public ChatRoom getChatRoom(){
+        return this.chatRoom;
     }
 
     /**
@@ -223,9 +232,6 @@ public class Task{
         return this.collaborators;
     }
 
-    public ChatRoom getChatRoom() {
-        return this.chatRoom;
-    }
-
 }
+
 

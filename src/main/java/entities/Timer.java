@@ -1,5 +1,6 @@
 package entities;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
@@ -7,7 +8,7 @@ import java.time.temporal.ChronoUnit;
 /**
  * An entity class representing a Timer object
  */
-public class Timer {
+public class Timer implements Serializable {
 
     LocalDateTime startTime;
     /**
@@ -54,7 +55,7 @@ public class Timer {
         this.numOfBreaks = 0;
         //TODO:  add it to current user's list
         // currentUserService??
-        //User curruser.timers.add(this);
+        //User curruser.timers.add(this)
     }
 
 // getters
@@ -127,9 +128,7 @@ public class Timer {
      * adds to the total study time of the timer the specified duration
      * @param studyTime the break duration that needs to be added to totalBreakTime
      */
-    public void addToTotalStudyTime(Duration studyTime) {
-        totalStudyTime = totalStudyTime.plus(studyTime);
-    }
+    public void addToTotalStudyTime(Duration studyTime) {totalStudyTime = totalStudyTime.plus(studyTime);}
 
     /**
      * Increases the value of numOfBreaks by 1

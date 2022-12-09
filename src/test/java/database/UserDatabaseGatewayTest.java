@@ -1,27 +1,28 @@
-//package database;
-//
-//import entities.User;
-//import gateways.UserDatabaseGateway;
-//import org.junit.jupiter.api.Test;
-//
-//import java.io.IOException;
-//
-//public class UserDatabaseGatewayTest {
-//    @Test public void testLoadUsersFromEmptyFile() {
-//        try {
-//            UserDatabaseGateway userGateway = new UserDatabaseGateway("src/main/java/database/emptyUserFile.ser");
-//        } catch (IOException e){
-//            assert false;
-//            throw new RuntimeException(e);
-//        }
-//    }
-//
-//    @Test public void testSaveUsers(){
-//        /**
-//         * This test creates users in a stupid way, and may break if the user class constructor changes.
-//         */
+package database;
+
+import entities.User;
+import gateways.UserDatabaseGateway;
+import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
+
+public class UserDatabaseGatewayTest {
+    @Test public void testLoadUsersFromEmptyFile() {
+        try {
+            UserDatabaseGateway userGateway = new UserDatabaseGateway("database/emptyUserFile.ser");
+        } catch (IOException e){
+            assert false;
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Test public void testSaveUsers(){
+        /**
+         * This test creates users in a stupid way, and may break if the user class constructor changes.
+         * Update 26/11/22: needs to be rewritten.
+         */
 //        try{
-//            UserDatabaseGateway userGateway = new UserDatabaseGateway("src/main/java/database/testSaveUsersUserfile.ser");
+//            UserDatabaseGateway userGateway = new UserDatabaseGateway("database/testSaveUsersUserfile.ser");
 //            userGateway.deleteAll();
 //            User user1 = new User();
 //            user1.changeUsername("user1");
@@ -37,13 +38,14 @@
 ////            assert false;
 //            throw new RuntimeException(e);
 //        }
-//    }
-//
-//    @Test public void testLoadUsersFromNonemptyFile(){
-//        /**
-//         * This test depends on the one above.
-//         */
-//
+    }
+
+    @Test public void testLoadUsersFromNonemptyFile(){
+        /**
+         * This test depends on the one above.
+         * * Update 26/11/22: needs to be rewritten.
+         */
+
 //        try{
 //            testSaveUsers();
 //            UserDatabaseGateway userGateway = new UserDatabaseGateway("src/main/java/database/testSaveUsersUserfile.ser");
@@ -57,5 +59,5 @@
 //            assert false;
 //            throw new RuntimeException(e);
 //        }
-//    }
-//}
+    }
+}
