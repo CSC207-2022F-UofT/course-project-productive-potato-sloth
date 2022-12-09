@@ -65,6 +65,8 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 
         viewTasks.addActionListener(this::actionPerformedTaskList);
 
+        viewChatRoom.addActionListener(this::actionPerformedViewChatRoom);
+
         login.addActionListener(this::actionPerfectLogin);
         createAccount.addActionListener(this::actionPerformedCreateAccount);
 
