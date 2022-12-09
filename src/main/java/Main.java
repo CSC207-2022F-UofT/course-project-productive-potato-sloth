@@ -169,7 +169,7 @@ public class Main {
         ViewCalendarMainFrame viewCalendarMainFrame = new ViewCalendarMainFrame(currentUserService, userDatabaseGateway);
 
 
-        WelcomeScreen applicationFrame = new WelcomeScreen(taskListScreen, viewCalendarMainFrame);
+        WelcomeScreen applicationFrame = new WelcomeScreen(taskListScreen, currentUserService, viewCalendarMainFrame);
 
         // everyone add your buttons and action listener in the WelcomeScreen class
 

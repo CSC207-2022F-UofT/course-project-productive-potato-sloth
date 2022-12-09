@@ -29,8 +29,8 @@ public class WelcomeScreen extends JFrame implements ActionListener {
      * The main welcome window of the application, acts like a home screen
      */
     public WelcomeScreen(
-            TaskListScreen taskListScreen, CurrentUserService service
             TaskListScreen taskListScreen,
+            CurrentUserService service,
             ViewCalendarMainFrame viewCalendarMainFrame
     ) {
         this.taskListScreen = taskListScreen;
