@@ -4,58 +4,54 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * * An entity class representing a User
- */
 public class User implements Serializable {
-
-    /**
-     * * The Username of the User
-     */
+    static final long serialVersionUID = -7885536364676166522L;
     String username;
-
-    /**
-     * * The Password of the User
-     */
     String password;
     List<Tag> tags;
     List<Event> events;
     List<Task> tasks;
     List<Timer> timers;
-//    List<Invitation> incomingInvitations;
-//    List<Invitation> outgoingInvitations;
+    List<Invitation> incomingInvitations;
+    List<Invitation> outgoingInvitations;
 
-    /**
-     * Stores whether the Calendar shows weekends (1) or not (0)
-     */
-    boolean calendarView;
 
     /**
      * Initiaties a new User
+     * @param username the username of the new User
+     * @param password the password of the new User
      */
-    public User(String username, String password) {
+    public User(String username, String password){
         this.username = username;
         this.password = password;
-        this.tags = new ArrayList<>();
+        this.tags = new ArrayList<Tag>();
         this.events = new ArrayList<Event>();
         this.tasks = new ArrayList<Task>();
         this.timers = new ArrayList<Timer>();
-//        this.incomingInvitations = new ArrayList<Invitation>();
-//        this.outgoingInvitations = new ArrayList<Invitiation>();
+        this.incomingInvitations = new ArrayList<Invitation>();
+        this.outgoingInvitations = new ArrayList<Invitation>();
     }
 
     /**
      * Initiaties a new User without given a username and password
      */
-    public User() {
+    public User(){
         this.username = "";
         this.password = "";
         this.tags = new ArrayList<Tag>();
         this.events = new ArrayList<Event>();
         this.tasks = new ArrayList<Task>();
         this.timers = new ArrayList<Timer>();
-//        this.incomingInvitations = new ArrayList<Invitation>();
-//        this.outgoingInvitations = new ArrayList<Invitiation>();
+        this.incomingInvitations = new ArrayList<Invitation>();
+        this.outgoingInvitations = new ArrayList<Invitation>();
+    }
+
+    /**
+     * Sets the username of this User
+     * @param username The new username of the User
+     */
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     /**
@@ -68,40 +64,18 @@ public class User implements Serializable {
     }
 
     /**
-     * Sets the username of this User
-     *
-     * @param username The new username of the User
-     */
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    /**
-     * Checks whether the password inputted is the same as that of the User
-     *
-     * @param user The user corresponding to the username inputted
-     * @return whether the password inputted is that of user
-     */
-    public boolean checkCredential(User user) {
-        return this.password.equals(user.password);
-    }
-
-    public String getPassword() {
-        return this.password;
-    }
-
-    /**
      * Sets the password of this User
-     *
      * @param password The new password of the User
      */
     public void setPassword(String password) {
         this.password = password;
     }
 
+
+    public String getPassword() {return this.password;}
+
     /**
      * Adds a tag to this User
-     *
      * @param tag The new tag to add
      */
     public void addTag(Tag tag) {
@@ -110,7 +84,6 @@ public class User implements Serializable {
 
     /**
      * Removes a tag from this User
-     *
      * @param tag The new tag to remove
      */
     public void removeTag(Tag tag) {
@@ -119,7 +92,6 @@ public class User implements Serializable {
 
     /**
      * Gets a list of tags associated with this User
-     *
      * @return tags A list of tags associated with this User
      */
     public List<Tag> getTags() {
@@ -128,15 +100,13 @@ public class User implements Serializable {
 
     /**
      * Returns the tag corresponding to the tagName
-     *
      * @param tagName The name of the tag to be returned
      * @return tag The tag corresponding to tagName, else null
      */
     public Tag getTagByName(String tagName) {
         for (Tag tag : this.tags) {
-            if (tag.getName().equals(tagName)) {
-                return tag;
-            }
+            if (tag.getName().equals(tagName)){
+                return tag;}
         }
         return null;
     }
@@ -153,7 +123,6 @@ public class User implements Serializable {
 
     /**
      * Removes an event from this User
-     *
      * @param event The new event to remove
      */
     public void removeEvent(Event event) {
@@ -169,7 +138,6 @@ public class User implements Serializable {
 
     /**
      * Gets the list of events associated with this User
-     *
      * @return events A list of events associated with this User
      */
     public List<Event> getEvents() {
@@ -178,7 +146,6 @@ public class User implements Serializable {
 
     /**
      * Adds a task to this User
-     *
      * @param task The new task to add
      */
     public void addTask(Task task) {
@@ -187,7 +154,6 @@ public class User implements Serializable {
 
     /**
      * Removes a task from this User
-     *
      * @param task The new task to remove
      */
     public void removeTask(Task task) {
@@ -196,7 +162,6 @@ public class User implements Serializable {
 
     /**
      * Gets the list of tasks associated with this User
-     *
      * @return tasks A list of tasks associated with this User
      */
     public List<Task> getTasks() {
@@ -205,22 +170,19 @@ public class User implements Serializable {
 
     /**
      * Returns the task corresponding to the taskName
-     *
      * @param taskName The name of the task to be returned
      * @return task The task corresponding to taskName, else null
      */
     public Task getTaskByName(String taskName) {
         for (Task task : this.tasks) {
-            if (task.getName().equals(taskName)) {
-                return task;
-            }
+            if (task.getName().equals(taskName)){
+            return task;}
         }
         return null;
     }
 
     /**
      * Adds a timer to this User
-     *
      * @param timer The new timer to add
      */
     public void addTimer(Timer timer) {
@@ -229,7 +191,6 @@ public class User implements Serializable {
 
     /**
      * Removes a timer from this User
-     *
      * @param timer The new timer to remove
      */
     public void removeTimer(Timer timer) {
@@ -238,7 +199,6 @@ public class User implements Serializable {
 
     /**
      * Gets the list of timers associated with this User
-     *
      * @return timers A list of timers associated with this User
      */
     public List<Timer> getTimers() {
@@ -249,53 +209,51 @@ public class User implements Serializable {
      * Adds an invitation to this User's outgoingInvitations
      * @param invitation The new invitation to add
      */
-//    public void addOutgoingInvitation(Invitation invitation) {
-//        this.outgoingInvitations.add(invitation);
-//    }
+    public void addOutgoingInvitation(Invitation invitation) {
+        this.outgoingInvitations.add(invitation);
+    }
 
     /**
      * Removes an invitation from this User's outgoingInvitations
      * @param invitation The new invitation to remove
      */
-//    public void removeOutgoingInvitation(Invitation invitation) {
-//        this.outgoingInvitations.remove(invitation);
-//    }
+    public void removeOutgoingInvitation(Invitation invitation) {
+        this.outgoingInvitations.remove(invitation);
+    }
 
     /**
      * Gets the list of outgoingInvitations associated with this User
      *
      * @return outgoingInvitations A list of outgoingInvitations associated with this User
      */
-    //   public List<Invitation> getOutgoingInvitations() {
-    //       return this.outgoingInvitations;
-    //   }
+    public List<Invitation> getOutgoingInvitations() {
+        return this.outgoingInvitations;
+    }
 
     /**
      * Adds an invitation to this User's incomingInvitations
      * @param invitation The new invitation to add
      */
-//    public void addIncomingInvitation(Invitation invitation) {
-//        this.incomingInvitations.add(invitation);
-//    }
+    public void addIncomingInvitation(Invitation invitation) {
+        this.incomingInvitations.add(invitation);
+    }
 
     /**
      * Removes an invitation from this User's incomingInvitations
      * @param invitation The new invitation to remove
      */
-//    public void removeIncomingInvitation(Invitation invitation) {
-//        this.incomingInvitations.remove(invitation);
-//    }
+    public void removeIncomingInvitation(Invitation invitation) {
+        this.incomingInvitations.remove(invitation);
+    }
 
     /**
      * Gets the list of incomingInvitations associated with this User
      *
      * @return incomingInvitations A list of incomingInvitations associated with this User
      */
-//    public List<Invitation> getIncomingInvitations() {
-//        return this.incomingInvitations;
-//    }
-    public void setCalendarView(boolean calendarView) {
-        this.calendarView = calendarView;
+    public List<Invitation> getIncomingInvitations() {
+        return this.incomingInvitations;
     }
+
 
 }

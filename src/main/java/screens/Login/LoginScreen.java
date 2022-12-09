@@ -1,20 +1,35 @@
 package screens.Login;
 
 import screens.LabelTextPanel;
+import useCases.Login.LoginResponseModel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class LoginScreen extends JPanel implements ActionListener {
+/**
+ * A Screen which allows users to log in
+ */
+public class LoginScreen extends JPanel {
+
+    static JFrame application;
     JTextField username = new JTextField(15);
     JTextField password = new JTextField(15);
 
     /**
-     * A window with a title and a JButton.
+     * A controller which logs in a User
      */
-    public LoginScreen() {
+    LoginController loginController;
+
+
+    /**
+     * Instantiates LoginScreen with the required controller
+     *
+     * @param loginController The controller to log in a User
+     */
+    public LoginScreen(LoginController loginController) {
+        this.loginController = loginController;
 
         JLabel title = new JLabel("Log In / Create Account");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -24,6 +39,7 @@ public class LoginScreen extends JPanel implements ActionListener {
         LabelTextPanel passwordInfo = new LabelTextPanel(
                 new JLabel("Password"), password);
 
+        // Creating the confirmation button
         JButton logIn = new JButton("Log In");
         JButton createAccount = new JButton("Create Account");
 
@@ -31,8 +47,19 @@ public class LoginScreen extends JPanel implements ActionListener {
         buttons.add(logIn);
         buttons.add(createAccount);
 
-        logIn.addActionListener(this);
-        createAccount.addActionListener(this);
+        logIn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    LoginResponseModel responseModel = loginController.create(username.getText(),
+                            password.getText());
+                    JOptionPane.showMessageDialog(application, "User "
+                            + "\"" + responseModel.getUsername() + "\"" + " is logged in.");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(application, ex.getMessage());
+                }
+            }
+        });
 
         this.add(title);
         this.add(usernameInfo);
@@ -40,28 +67,6 @@ public class LoginScreen extends JPanel implements ActionListener {
         this.add(buttons);
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-    }
-
-    /**
-     * React to a button click that results in evt.
-     */
-    public void actionPerformed(ActionEvent evt) {
-        System.out.println("Click " + evt.getActionCommand());
-    }
-
-    public static void main(String[] args) {
-        JFrame application  =  new JFrame("Log In");
-        CardLayout cardLayout = new CardLayout();
-        JPanel screens = new JPanel(cardLayout);
-        application.add(screens);
-
-        LoginScreen loginScreen = new LoginScreen();
-
-        screens.add(loginScreen, "hello");
-
-        cardLayout.show(screens, "login");
-        application.pack();
-        application.setVisible(true);
     }
 
 }

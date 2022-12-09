@@ -16,7 +16,7 @@ import javax.swing.text.PlainDocument;
  * A {@link PlainDocument} that listens to {@link ListSelectionEvent}s to change
  * its text in order to the selected list elements.
  *
- * @author René Link [rene.link@link-intersystems.com]
+ * @author Rene Link [rene.link@link-intersystems.com]
  *
  */
 public class ListSelectionDocument extends PlainDocument implements

@@ -1,5 +1,8 @@
 package useCases.CreateAccount;
 
+/**
+ * A class which is passed into CreateAccount-relevant use cases as a Request
+ */
 public class CreateAccountRequestModel {
 
     private String username;
