@@ -3,12 +3,15 @@ package gateways;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * An abstract class which defines base functionality all Database Gateways should inherit
+ */
 abstract public class DatabaseGateway {
 
     protected final String absoluteFilepath;
 
     /**
-     * Instantiating DatabaseGateway with a relative path will store the absolute path to the respective database.
+     * Instantiating any subclasses of DatabaseGateway with a relative path will store the absolute path to the respective database.
      * If the file at the path does not exist, one will be created
      * This absolute path can be fetched using the getAbsoluteFilepath method
      *
@@ -22,21 +25,50 @@ abstract public class DatabaseGateway {
         this.absoluteFilepath = fetchAbsolutePath(relativePath);
     }
 
-    protected void createFile(String relativePath) throws IOException {
+    /**
+     * Creates a new file with the name and path specified by the argument
+     *
+     * @param relativePath The name and path to create the new file
+     */
+    protected void createFile(String relativePath) {
         File f = new File(relativePath);
-        f.createNewFile();
+        try {
+            f.createNewFile();
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+
     }
 
+    /**
+     * Check if a file exists at the relative path
+     *
+     * @param relativePath The location to check for the file
+     * @return A boolean representing if a file exists at this path
+     */
     protected boolean fileExists(String relativePath) {
         File f = new File(relativePath);
         return f.isFile();
     }
 
+    /**
+     * Saves the absolute path of a file given its relative path
+     * This function is essential for the program to run on different machines,
+     * where the absolute filepath varies
+     *
+     * @param relativePath The relative path of the file
+     * @return The absolute path of the file, as a String
+     */
     protected String fetchAbsolutePath(String relativePath) {
         File f = new File(relativePath);
         return f.getAbsolutePath();
     }
 
+    /**
+     * Gets the absolute filepath of the database for any outside class
+     *
+     * @return The absolute filepath, as a String
+     */
     public String getAbsoluteFilepath() {
         return absoluteFilepath;
     }

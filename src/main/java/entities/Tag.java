@@ -7,6 +7,10 @@ import java.io.Serializable;
  * A class representing a Tag in the system
  */
 public class Tag implements Serializable {
+    /**
+     * The User (owner) of the tag
+     */
+    final User user;
 
     /**
      * The name of the Tag
@@ -19,24 +23,21 @@ public class Tag implements Serializable {
     Color color;
 
     /**
-     * The User (owner) of the tag
-     */
-//    final User user;
-
-    /**
      * Instantiates a new Tag with a name and colour
-     * @param name The name of the Tag
+     *
+     * @param name  The name of the Tag
      * @param color The colour of the Tag
-     * // @param user The owner of the Tag
+     *              // @param user The owner of the Tag
      */
-    public Tag(String name, Color color /* User user */) {
+    public Tag(String name, Color color, User user) {
         this.name = name;
         this.color = color;
-//        this.user = user;
+        this.user = user;
     }
 
     /**
      * Gets the name of the Tag
+     *
      * @return The name of the tag
      */
     public String getName() {
@@ -45,6 +46,7 @@ public class Tag implements Serializable {
 
     /**
      * Sets the name of the string
+     *
      * @param name The new name of the string
      */
     public void setName(String name) {
@@ -53,6 +55,7 @@ public class Tag implements Serializable {
 
     /**
      * Gets the colour of the Tag
+     *
      * @return The colour of the Tag
      */
     public Color getColor() {
@@ -61,6 +64,7 @@ public class Tag implements Serializable {
 
     /**
      * Sets the colour of the Tag
+     *
      * @param color The new colour of the Tag
      */
     public void setColor(Color color) {
@@ -70,7 +74,8 @@ public class Tag implements Serializable {
     /**
      * Gets the owner of the Tag
      */
-//    public User getUser() {
-//        return this.user;
-//    }
+    public User getUser() {
+        return this.user;
+    }
+
 }
