@@ -1,9 +1,12 @@
 package screens;
 
+
+
 import main.ChatRoomDemo;
 import screens.CreateAccount.CreateAccountMain;
 import screens.Login.LoginMain;
 import screens.TaskList.TaskListScreen;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,15 +14,24 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+
+import screens.MainInvitationScreen.MainInvitationMethod;
+import screens.TaskList.TaskListScreen;
+import screens.Timer.TimerMainGUI;
+//import screens.Timer.TimerMainGUI;
+
 import screens.Calculator.OutPutHistogram;
 import screens.Timer.TimerMainGUI;
 import services.CurrentUserService;
 import screens.ViewCalendar.ViewCalendarMainFrame;
 
+
 //UI layer
 
 public class WelcomeScreen extends JFrame implements ActionListener {
 
+    JButton invitation; // the button that calls the main invitation screen
+    MainInvitationMethod invitation_main;
     TaskListScreen taskListScreen;
     ViewCalendarMainFrame viewCalendarMainFrame;
     CurrentUserService service;
@@ -28,21 +40,29 @@ public class WelcomeScreen extends JFrame implements ActionListener {
     /**
      * The main welcome window of the application, acts like a home screen
      */
+
     public WelcomeScreen(
+
+            TaskListScreen taskListScreen, CurrentUserService service, MainInvitationMethod invitation_main
+
             TaskListScreen taskListScreen,
             CurrentUserService service,
             ViewCalendarMainFrame viewCalendarMainFrame
+
     ) {
         this.taskListScreen = taskListScreen;
         this.service = service;
         this.demo = new ChatRoomDemo(service);
         this.viewCalendarMainFrame = viewCalendarMainFrame;
 
+
         JLabel title = new JLabel("Welcome Potato Sloths!");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JButton timer = new JButton("Start Timer");
         JButton viewSchedule = new JButton("View Schedule");
+        JButton createTask = new JButton("View Schedule");
+        invitation = new JButton("Manage invitations");
         JButton viewTasks = new JButton("View Tasks");
         JButton viewChatRoom = new JButton("view ChatRoom");
         JButton login = new JButton("Login");
@@ -52,6 +72,11 @@ public class WelcomeScreen extends JFrame implements ActionListener {
         JPanel buttons = new JPanel();
         buttons.add(timer);
         buttons.add(viewSchedule);
+
+        buttons.add(createTask);
+        buttons.add(invitation);
+
+
         buttons.add(viewTasks);
         buttons.add(viewChatRoom);
         buttons.add(login);
@@ -61,9 +86,14 @@ public class WelcomeScreen extends JFrame implements ActionListener {
         timer.addActionListener(this::actionPerformedTimer);
         seePerformance.addActionListener(this::actionPerformedCalculator);
 
+
+        timer.addActionListener(this::actionPerformedTimer);
+
         viewSchedule.addActionListener(this::actionPerformedViewCalendar);
 
+
         viewTasks.addActionListener(this::actionPerformedTaskList);
+        invitation.addActionListener(this);
 
         viewChatRoom.addActionListener(this::actionPerformedViewChatRoom);
 
@@ -113,9 +143,12 @@ public class WelcomeScreen extends JFrame implements ActionListener {
     public void actionPerformedTaskList(ActionEvent evt) {
         taskListScreen.showScreen();
     }
-
     public void actionPerformed(ActionEvent evt) {
         System.out.println("Click " + evt.getActionCommand());
+
+        if (evt.getSource() == invitation){
+            invitation_main.setVisible(true);
+        }
     }
     public void actionPerformedViewChatRoom(ActionEvent evt){
         demo.initialize();

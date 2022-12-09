@@ -1,12 +1,14 @@
 import controllers.Tags.*;
 import controllers.Tasks.*;
 import entities.*;
+import gateways.DataAccessInterface;
 import gateways.Tags.TagDataAccessInterface;
 import gateways.Tags.TagDatabaseGateway;
 import gateways.Tasks.TaskDataAccessInterface;
 import gateways.Tasks.TaskDatabaseGateway;
 import gateways.UserDatabaseGateway;
 import presenters.*;
+import screens.MainInvitationScreen.MainInvitationMethod;
 import screens.TaskList.*;
 import screens.ViewCalendar.ViewCalendarMainFrame;
 import screens.WelcomeScreen;
@@ -22,8 +24,18 @@ import java.io.IOException;
 public class Main {
 
     static User user = new User("User", "Password");
+    static DataAccessInterface<User> userGateway; //
+    static DataAccessInterface<Task> taskGateway; //
+    static CurrentUserService current_user_service;
 
     public static void main(String[] args) throws IOException {
+
+        userGateway = new UserDatabaseGateway("dummyUserFile");
+        taskGateway = new gateways.TaskDatabaseGateway(current_user_service, (UserDatabaseGateway) userGateway);
+
+
+        MainInvitationMethod main_invitation = new MainInvitationMethod(userGateway, taskGateway, current_user_service);
+
 
         // Instantiating all Factories
         TaskFactory taskFactory = new TaskFactory();
@@ -164,12 +176,14 @@ public class Main {
         editTagScreen.registerObserver(tagScreen);
 
 
-        // Setup the view calendar use case
+
+        WelcomeScreen applicationFrame = new WelcomeScreen(main_invitation, taskListScreen, currentUserService, viewCalendarMainFrame);
+
+
+      // Setup the view calendar use case
 
         ViewCalendarMainFrame viewCalendarMainFrame = new ViewCalendarMainFrame(currentUserService, userDatabaseGateway);
 
-
-        WelcomeScreen applicationFrame = new WelcomeScreen(taskListScreen, currentUserService, viewCalendarMainFrame);
 
         // everyone add your buttons and action listener in the WelcomeScreen class
 

@@ -1,11 +1,16 @@
 package entities;
 
+import entities.InvitationEntities.Invitation;
+
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class User implements Serializable {
+
     static final long serialVersionUID = -7885536364676166522L;
+
     String username;
     String password;
     List<Tag> tags;
@@ -44,6 +49,7 @@ public class User implements Serializable {
         this.timers = new ArrayList<Timer>();
         this.incomingInvitations = new ArrayList<Invitation>();
         this.outgoingInvitations = new ArrayList<Invitation>();
+
     }
 
     /**
@@ -66,10 +72,45 @@ public class User implements Serializable {
     /**
      * Sets the password of this User
      * @param password The new password of the User
+=======
+    }
+
+    /**
+     * Sets the username of this User
+     * @param username The new username of the User
      */
     public void setPassword(String password) {
         this.password = password;
     }
+
+    /**
+
+     * Checks whether the password inputted is the same as that of the User
+     * @param user The user corresponding to the username inputted
+     * @return whether the password inputted is that of user
+     */
+    public boolean checkCredential(User user) {
+        return this.password.equals(user.password);
+    }
+
+    public String getPassword() {return this.password;}
+
+     * Gets the username of the User
+     *
+     * @return username The string storing the username of the User
+     */
+    public String getUsername() {
+        return this.username;
+    }
+
+    /**
+     * Sets the password of this User
+     * @param password The new password of the User
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
 
 
     public String getPassword() {return this.password;}
@@ -113,7 +154,6 @@ public class User implements Serializable {
 
     /**
      * Adds an event to this User
-     *
      * @param event The new event to add
      */
     public void addEvent(Event event) {
@@ -176,7 +216,9 @@ public class User implements Serializable {
     public Task getTaskByName(String taskName) {
         for (Task task : this.tasks) {
             if (task.getName().equals(taskName)){
-            return task;}
+
+                return task;}
+
         }
         return null;
     }
@@ -218,17 +260,25 @@ public class User implements Serializable {
      * @param invitation The new invitation to remove
      */
     public void removeOutgoingInvitation(Invitation invitation) {
-        this.outgoingInvitations.remove(invitation);
+
+        this.outgoingInvitations.removeIf(inv -> inv.getSender() == invitation.getSender() &
+                inv.getReceiver() == invitation.getReceiver() &
+                inv.getTask() == invitation.getTask());
+
     }
+    //this.outgoingInvitations.remove(invitation);
+
 
     /**
      * Gets the list of outgoingInvitations associated with this User
      *
      * @return outgoingInvitations A list of outgoingInvitations associated with this User
      */
-    public List<Invitation> getOutgoingInvitations() {
-        return this.outgoingInvitations;
-    }
+
+       public List<Invitation> getOutgoingInvitations() {
+           return this.outgoingInvitations;
+       }
+
 
     /**
      * Adds an invitation to this User's incomingInvitations
@@ -243,9 +293,14 @@ public class User implements Serializable {
      * @param invitation The new invitation to remove
      */
     public void removeIncomingInvitation(Invitation invitation) {
-        this.incomingInvitations.remove(invitation);
-    }
 
+        this.incomingInvitations.removeIf(inv -> inv.getSender() == invitation.getSender() &
+                inv.getReceiver() == invitation.getReceiver() &
+                inv.getTask() == invitation.getTask());
+
+
+    }
+//this.incomingInvitations.remove(invitation);
     /**
      * Gets the list of incomingInvitations associated with this User
      *
@@ -254,6 +309,8 @@ public class User implements Serializable {
     public List<Invitation> getIncomingInvitations() {
         return this.incomingInvitations;
     }
+
+    public void setCalendarView(boolean calendarView) {this.calendarView = calendarView;}
 
 
 }
