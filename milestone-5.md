@@ -93,7 +93,7 @@ Despite this being the same review I talked about in milestone 4, I still think 
 
 ## Steven Jiang (1StevenJiang1)
 
-[Pull Request]() 
+[Pull Request](https://github.com/CSC207-2022F-UofT/course-project-productive-potato-sloth/pull/40) 
 
 
-[Code Review](https://github.com/CSC207-2022F-UofT/course-project-productive-potato-sloth/pull/47#pullrequestreview-1211167457) 
+[Code Review](https://github.com/CSC207-2022F-UofT/course-project-productive-potato-sloth/pull/47) 
