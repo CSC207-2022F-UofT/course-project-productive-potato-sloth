@@ -94,9 +94,4 @@ public class ChatRoomInteractorTest {
         Assertions.assertEquals(interactor.getMessageIndex(), 0);
         Assertions.assertEquals(list2Str.toString(), "[d, e, f]");
     }
-
-    @Test
-    public void testInitializeView(){
-        //test not yet implemented because view initialization method needs to be moved into Main
-    }
 }
