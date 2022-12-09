@@ -15,9 +15,9 @@
           </grid>
         </constraints>
         <properties>
-          <background color="-12828863"/>
+          <background color="-4473925"/>
           <font size="26"/>
-          <foreground color="-4473925"/>
+          <foreground color="-12828863"/>
           <text value="Message unavailable"/>
         </properties>
       </component>
