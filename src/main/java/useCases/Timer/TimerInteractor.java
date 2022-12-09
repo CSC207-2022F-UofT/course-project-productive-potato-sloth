@@ -6,6 +6,7 @@ import entities.TimerFactory;
 import services.CurrentUserService;
 
 import java.time.Duration;
+import java.time.LocalDateTime;
 
 /**
  * A use case interactor class which manipulates the Timer entity
@@ -15,6 +16,8 @@ public class TimerInteractor implements TimerInputBoundary{
     final TimerPresenter timerPresenter;
     final TimerFactory timerFactory;
     private Duration inputDuration;
+
+    private Timer timer;
 
     //constructor
     public TimerInteractor(TimerPresenter timerPresenter, TimerFactory timerFactory){
@@ -29,7 +32,7 @@ public class TimerInteractor implements TimerInputBoundary{
 
         inputDuration = inputData.getInputDurationOfTimer();
         Timer t = timerFactory.create(inputDuration);
-
+        this.timer = t;
         // using the current user service to get the current user object
         CurrentUserService currentUserService = new CurrentUserService();
         User currUser = currentUserService.getCurrentUser();
@@ -43,19 +46,20 @@ public class TimerInteractor implements TimerInputBoundary{
      * Creates timer object when user opens the timer window of the duration that user enters
      */
 
-
-    /**
-     * Starts the countdown when user presses start
-     */
-    void startTimer(){
-
-    }
-
     /**
      * Stops the timer countdown and holds the duration of the timer constant till the user does not press start again
      *     Updates the remainingDuration variable in Timer Class
      */
-    void pauseTimer(){}
+    @Override
+    public void pause(){
+
+        timer.setRemainingDuration(LocalDateTime.now());
+    }
+
+    @Override
+    public void pause(LocalDateTime restartTime) {
+        timer.setRemainingDurationAfterPause(restartTime);
+    }
 
     /**
      * When user ends the timer session, output end of session

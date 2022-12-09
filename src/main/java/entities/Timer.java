@@ -1,6 +1,7 @@
 package entities;
 
 import java.io.Serializable;
+import java.sql.SQLOutput;
 import java.time.LocalDateTime;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
@@ -8,37 +9,43 @@ import java.time.temporal.ChronoUnit;
 /**
  * An entity class representing a Timer object
  */
-public class Timer implements Serializable {
+public class Timer {
 
-    LocalDateTime startTime;
     /**
      * Stores starting Time of the Timer
      */
+    LocalDateTime startTime;
 
-    Duration startDuration;
+
     /**
      * Stores starting Duration of the Timer
      */
+    Duration startDuration;
 
-    Duration remainingDuration;
+
     /**
      * Stores remaining duration of the Timer
      */
+    Duration remainingDuration;
 
+
+    /**
+     * Stores numOfBreaks
+     */
     int numOfBreaks;
-    /**
-     * Stores starting Duration of the Timer
-     */
 
+
+    /**
+     * Stores total duration spent on breaks
+     */
     Duration totalBreakTime;
-    /**
-     * Stores starting Duration of the Timer
-     */
 
-    Duration totalStudyTime;
+
     /**
-     * Stores starting Duration of the Timer
+     * Stores total duration spent on study
      */
+    Duration totalStudyTime;
+
 
 // constructor
     /**
@@ -53,9 +60,6 @@ public class Timer implements Serializable {
         this.totalBreakTime = Duration.of(0, ChronoUnit.MINUTES);
         this.totalStudyTime = Duration.of(0, ChronoUnit.MINUTES);
         this.numOfBreaks = 0;
-        //TODO:  add it to current user's list
-        // currentUserService??
-        //User curruser.timers.add(this)
     }
 
 // getters
@@ -113,7 +117,30 @@ public class Timer implements Serializable {
      */
     public void setRemainingDuration(LocalDateTime currentDateTime) {
         Duration duration = Duration.between(this.startTime, currentDateTime);
-        this.remainingDuration = duration;
+        remainingDuration = getStartDuration().minus(duration);
+        if (remainingDuration.getSeconds() <= 0){
+            this.remainingDuration = Duration.ofSeconds(0);
+        }
+        else{
+            this.remainingDuration = remainingDuration;
+        }
+        setTotalStudyTime(duration);
+    }
+    /**
+     * Sets the remaining duration of the Timer
+     * @param restartTime the DateTime at which the Timer was restarted after being paused for a while
+     */
+    public void setRemainingDurationAfterPause(LocalDateTime restartTime) {
+        Duration duration = Duration.between(restartTime, LocalDateTime.now());
+        remainingDuration = getRemainingDuration().minus(duration);
+        if (remainingDuration.getSeconds() <= 0){
+            this.remainingDuration = Duration.ofSeconds(0);
+        }
+        else{
+            this.remainingDuration = remainingDuration;
+        }
+
+        setTotalStudyTime(getTotalStudyTime().plus(duration));
     }
 
     /**
@@ -128,7 +155,9 @@ public class Timer implements Serializable {
      * adds to the total study time of the timer the specified duration
      * @param studyTime the break duration that needs to be added to totalBreakTime
      */
-    public void addToTotalStudyTime(Duration studyTime) {totalStudyTime = totalStudyTime.plus(studyTime);}
+    public void setTotalStudyTime(Duration studyTime) {
+        this.totalStudyTime = studyTime;
+    }
 
     /**
      * Increases the value of numOfBreaks by 1

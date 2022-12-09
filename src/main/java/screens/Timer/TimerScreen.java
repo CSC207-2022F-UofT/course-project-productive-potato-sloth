@@ -5,14 +5,18 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.Duration;
+import java.time.LocalDateTime;
 
 // Frameworks/Drivers layer
 
 public class TimerScreen extends JPanel implements ActionListener {
     JLabel countDown = new JLabel("00:00:00");
-    private long lastTickTime;
+    private long lastTickTime = 0;
     Timer timer = new Timer(1, this::actionPerformed);
     JTextField timerDuration = new JTextField(15);
+
+    LocalDateTime restartTime;
+    int flag = 0;
     /**
      * The input duration of the timer
      */
@@ -83,9 +87,12 @@ public class TimerScreen extends JPanel implements ActionListener {
 
         if (!this.timer.isRunning() && lastTickTime != 0) {
             timer.start();
+            flag = 2;
+            this.restartTime = LocalDateTime.now();
         }
 
         else {
+
             System.out.println("Click " + evt.getActionCommand());
             Long durationOfTimer = Long.parseLong(timerDuration.getText());
             Long durationInMillis = Long.parseLong(timerDuration.getText())*60000;
@@ -94,18 +101,21 @@ public class TimerScreen extends JPanel implements ActionListener {
             if (!this.timer.isRunning()) {
             this.lastTickTime = durationInMillis;
             timer.start();
-
-
+            flag = 1;
             }
         }
 
     }
     public void actionPerformedPause(ActionEvent evt) {
-
-        Long durationOfTimer=Long.parseLong(timerDuration.getText());
-        timerController.create(Duration.ofMinutes(durationOfTimer));
-        timer.stop();
-
+        if (flag == 1) {
+            timerController.pause();
+            timer.stop();
+            flag = 0;
+        } else if (flag == 2) {
+            timerController.pause(restartTime);
+            timer.stop();
+            flag = 0;
+        }
     }
 
 }
