@@ -19,9 +19,9 @@ Addressing Feedback:
 > Screens also implement the observer pattern, where the cause and the effect of a change in view model are separated. This makes creating and updating future screens extremely simple (I even felt the benefits of the observer pattern while I was coding my screens!)
 
 
+[Pull Request 2](https://github.com/CSC207-2022F-UofT/course-project-productive-potato-sloth/pull/40) - Code Review <br />
 
-
-[Pull Request 2]() - Code Review <br />
+My code review consisted of general comments, like documentation, and uses of aspects of clean architecture, like abstract classes and custom exceptions. Additionally, I noticed minor errors like empty classes, strange class names, and formatting consistency etc. I also pointed out areas of improvement like consolidating a couple lines of code into one code, and clean architectures violations, including a magic number.
 
 
 ## Khai Nguyen (kldtntg)
