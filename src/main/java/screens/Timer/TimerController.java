@@ -9,7 +9,7 @@ import useCases.Timer.TimerInputData;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
-// Interface adapters layer
+// Controller layer
 
 public class TimerController {
 
@@ -21,8 +21,8 @@ public class TimerController {
     }
 
     TimerOutputData create(Duration timerDuration) {
-        TimerInputData inputData = new TimerInputData(timerDuration);
 
+        TimerInputData inputData = new TimerInputData(timerDuration);
         return timerInput.create(inputData);
     }
 

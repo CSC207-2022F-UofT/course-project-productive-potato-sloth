@@ -9,12 +9,6 @@ import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
 public class TimerTest {
-
-//    @BeforeClass
-//    public static void testSetup() {
-//        Duration inputDuration = Duration.ofSeconds(50);
-//        tester = new Timer(inputDuration);
-//    }
     @Test
     public void testConstructor() {
         Duration inputDuration = Duration.ofSeconds(50);
