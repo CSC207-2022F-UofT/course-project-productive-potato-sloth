@@ -1,5 +1,5 @@
 package controllers.ChatRoomControllers;
-import useCases.ChatRoom.ChatRoomInteractorInterface;
+import usecases.ChatRoom.ChatRoomInteractorInterface;
 
 public class UpdateViewController {
     /**

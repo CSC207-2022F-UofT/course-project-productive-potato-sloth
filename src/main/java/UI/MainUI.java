@@ -2,8 +2,8 @@ package UI;
 
 import controllers.ChatRoomControllers.SendMessageController;
 import controllers.ChatRoomControllers.UpdateViewController;
-import useCases.ChatRoom.ChatRoomInteractorInterface;
-import useCases.responseModels.MessageResponseModel;
+import usecases.ChatRoom.ChatRoomInteractorInterface;
+import usecases.responseModels.MessageResponseModel;
 
 import javax.swing.*;
 import javax.swing.plaf.FontUIResource;

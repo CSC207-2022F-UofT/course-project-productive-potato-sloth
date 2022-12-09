@@ -5,13 +5,13 @@ import org.junit.jupiter.api.*;
 import entities.ChatRoom;
 import entities.User;
 import services.CurrentUserService;
-import useCases.ChatRoom.ChatRoomInteractor;
-import useCases.responseModels.MessageResponseModel;
+import usecases.ChatRoom.ChatRoomInteractor;
+import usecases.responseModels.MessageResponseModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class chatRoomInteractorTest {
+public class ChatRoomInteractorTest {
     @Before
     public void setUp() {
     }

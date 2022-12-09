@@ -1,4 +1,4 @@
-package useCases.ChatRoom;
+package usecases.ChatRoom;
 
 import controllers.ChatRoomControllers.InitializeViewInterface;
 import controllers.ChatRoomControllers.InitializeViewPresenter;
@@ -8,7 +8,7 @@ import entities.ChatRoom;
 import entities.Message;
 import entities.User;
 import services.CurrentUserService;
-import useCases.responseModels.MessageResponseModel;
+import usecases.responseModels.MessageResponseModel;
 
 import java.util.ArrayList;
 import java.util.List;

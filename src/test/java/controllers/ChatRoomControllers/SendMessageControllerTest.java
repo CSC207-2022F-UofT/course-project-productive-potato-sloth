@@ -8,10 +8,9 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 import services.CurrentUserService;
-import useCases.ChatRoom.ChatRoomInteractor;
-import useCases.ChatRoom.ChatRoomInteractorInterface;
+import usecases.ChatRoom.ChatRoomInteractor;
+import usecases.ChatRoom.ChatRoomInteractorInterface;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SendMessageControllerTest {

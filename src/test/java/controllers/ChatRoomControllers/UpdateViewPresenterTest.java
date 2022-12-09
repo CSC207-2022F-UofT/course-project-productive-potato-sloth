@@ -1,5 +1,4 @@
 package controllers.ChatRoomControllers;
-import UI.MainUI;
 import entities.ChatRoom;
 import entities.Message;
 import entities.User;
@@ -7,9 +6,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import useCases.ChatRoom.ChatRoomInteractor;
-import useCases.ChatRoom.ChatRoomInteractorInterface;
-import useCases.responseModels.MessageResponseModel;
+import usecases.ChatRoom.ChatRoomInteractor;
+import usecases.ChatRoom.ChatRoomInteractorInterface;
+import usecases.responseModels.MessageResponseModel;
 
 import java.util.ArrayList;
 import java.util.List;

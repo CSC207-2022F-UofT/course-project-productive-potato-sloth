@@ -1,4 +1,4 @@
-package useCases;
+package usecases;
 
 public interface ChatRoomInteractorInterface {
 }

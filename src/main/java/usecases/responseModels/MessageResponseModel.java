@@ -1,4 +1,4 @@
-package useCases.responseModels;
+package usecases.responseModels;
 import entities.Message;
 
 public class MessageResponseModel {

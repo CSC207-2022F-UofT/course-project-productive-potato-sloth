@@ -6,7 +6,7 @@ import controllers.ChatRoomControllers.UpdateViewPresenter;
 import entities.Task;
 import entities.User;
 import services.CurrentUserService;
-import useCases.ChatRoom.ChatRoomInteractor;
+import usecases.ChatRoom.ChatRoomInteractor;
 
 public class main {
     public static void main(String[] args) {

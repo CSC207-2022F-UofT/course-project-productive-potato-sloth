@@ -1,8 +1,8 @@
-package useCases.ChatRoom;
+package usecases.ChatRoom;
 import controllers.ChatRoomControllers.UpdateViewPresenterInterface;
 import entities.User;
 import services.CurrentUserService;
-import useCases.responseModels.MessageResponseModel;
+import usecases.responseModels.MessageResponseModel;
 
 import java.util.List;
 
