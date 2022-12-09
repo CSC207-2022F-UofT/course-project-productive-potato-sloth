@@ -9,6 +9,7 @@ import java.util.List;
 
 public class User implements Serializable {
 
+    static final long serialVersionUID = -7885536364676166522L;
 
     String username;
     String password;
@@ -19,13 +20,11 @@ public class User implements Serializable {
     List<Invitation> incomingInvitations;
     List<Invitation> outgoingInvitations;
 
-    /**
-     * Stores whether the Calendar shows weekends (1) or not (0)
-     */
-    boolean calendarView;
 
     /**
      * Initiaties a new User
+     * @param username the username of the new User
+     * @param password the password of the new User
      */
     public User(String username, String password){
         this.username = username;
@@ -50,6 +49,7 @@ public class User implements Serializable {
         this.timers = new ArrayList<Timer>();
         this.incomingInvitations = new ArrayList<Invitation>();
         this.outgoingInvitations = new ArrayList<Invitation>();
+
     }
 
     /**
@@ -72,12 +72,19 @@ public class User implements Serializable {
     /**
      * Sets the password of this User
      * @param password The new password of the User
+=======
+    }
+
+    /**
+     * Sets the username of this User
+     * @param username The new username of the User
      */
     public void setPassword(String password) {
         this.password = password;
     }
 
     /**
+
      * Checks whether the password inputted is the same as that of the User
      * @param user The user corresponding to the username inputted
      * @return whether the password inputted is that of user
@@ -85,6 +92,26 @@ public class User implements Serializable {
     public boolean checkCredential(User user) {
         return this.password.equals(user.password);
     }
+
+    public String getPassword() {return this.password;}
+
+     * Gets the username of the User
+     *
+     * @return username The string storing the username of the User
+     */
+    public String getUsername() {
+        return this.username;
+    }
+
+    /**
+     * Sets the password of this User
+     * @param password The new password of the User
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+
 
     public String getPassword() {return this.password;}
 
@@ -181,7 +208,9 @@ public class User implements Serializable {
     public Task getTaskByName(String taskName) {
         for (Task task : this.tasks) {
             if (task.getName().equals(taskName)){
+
                 return task;}
+
         }
         return null;
     }
@@ -223,6 +252,7 @@ public class User implements Serializable {
      * @param invitation The new invitation to remove
      */
     public void removeOutgoingInvitation(Invitation invitation) {
+
         this.outgoingInvitations.removeIf(inv -> inv.getSender() == invitation.getSender() &
                 inv.getReceiver() == invitation.getReceiver() &
                 inv.getTask() == invitation.getTask());
@@ -230,14 +260,17 @@ public class User implements Serializable {
     }
     //this.outgoingInvitations.remove(invitation);
 
+
     /**
      * Gets the list of outgoingInvitations associated with this User
      *
      * @return outgoingInvitations A list of outgoingInvitations associated with this User
      */
+
        public List<Invitation> getOutgoingInvitations() {
            return this.outgoingInvitations;
        }
+
 
     /**
      * Adds an invitation to this User's incomingInvitations
@@ -252,9 +285,11 @@ public class User implements Serializable {
      * @param invitation The new invitation to remove
      */
     public void removeIncomingInvitation(Invitation invitation) {
+
         this.incomingInvitations.removeIf(inv -> inv.getSender() == invitation.getSender() &
                 inv.getReceiver() == invitation.getReceiver() &
                 inv.getTask() == invitation.getTask());
+
 
     }
 //this.incomingInvitations.remove(invitation);
@@ -268,5 +303,6 @@ public class User implements Serializable {
     }
 
     public void setCalendarView(boolean calendarView) {this.calendarView = calendarView;}
+
 
 }

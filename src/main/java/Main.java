@@ -175,7 +175,8 @@ public class Main {
         editTagScreen.registerObserver(tagScreen);
 
 
-        WelcomeScreen applicationFrame = new WelcomeScreen(main_invitation, taskListScreen);
+        WelcomeScreen applicationFrame = new WelcomeScreen(main_invitation, taskListScreen, currentUserService);
+
 
         // everyone add your buttons and action listener in the WelcomeScreen class
 

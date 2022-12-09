@@ -1,4 +1,4 @@
-package useCases;
+package usecases;
 
 import org.junit.jupiter.api.Test;
 import services.CurrentUserService;

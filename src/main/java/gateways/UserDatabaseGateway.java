@@ -31,7 +31,7 @@ public class UserDatabaseGateway extends DatabaseGateway implements UserDataAcce
                 return user; // the user was found
             }
         }
-        return null; // the user was not found
+            return null; // the user was not found
     }
 
     @Override
@@ -42,6 +42,7 @@ public class UserDatabaseGateway extends DatabaseGateway implements UserDataAcce
     @Override
     public void insert(User user) {
         userList.add(user);
+        persistData();
     }
 
     @Override
