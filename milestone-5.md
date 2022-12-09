@@ -53,7 +53,7 @@ This is my code review. I reviewed Chhavi (ConverseScholar)'s commit and left a 
 
 
 ## Chhavi Shah (ConvserseScholar)
-[Pull Request 1](https://github.com/CSC207-2022F-UofT/course-project-productive-potato-sloth/pull/42) - Implementation <br />
+[Pull Request 1](https://github.com/CSC207-2022F-UofT/course-project-productive-potato-sloth/pull/50) - Implementation <br />
 This pull request consisted of my complete implemention of the User entity, createAccount and Login usecases and relevant screens, and tests, with all required documentation. 
 
 My code runs (as seen in the demo too). The User class implements Serializable. The UI works. 
