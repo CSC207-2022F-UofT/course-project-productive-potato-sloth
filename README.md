@@ -6,9 +6,9 @@ A Java application created for the CSC207 Final Project
 
 #### Specifications and Features
 1. Task List and View (Leon Cai, chazzybearr)
-    1. The user has access to a list of tasks, where they can view details and edit tasks. 
-    2. The user can also create new and delete tasks
-    3. Users can also create Tags on a tag view screen, and add those tags to Tasks
+>The user has access to a list of tasks, where they can view details and edit tasks. 
+>The user can also create new and delete tasks
+>Users can also create Tags on a tag view screen, and add those tags to Tasks
 
 2. Text Chat Room
 
@@ -82,6 +82,61 @@ git push origin <your-amazing-feature>
 
 ## Contributer Specific Notes
 ### Leon Cai (chazzybearr)
+
+For some design choices I made:
+
+> I chose to have only one TaskRequestModel and TaskResponse model class, rather than having request and response model classes for each use case.
+> 
+> As stated above, with 12 use cases, I would have to have an additional 24 classes (one TaskRequest and one TaskResponse).
+> 
+> For a program of this size, I concluded it would be unnecessary to have such a titanic quantity of lazy classes.
+> 
+> Thus, I made the choice to combine all the request and response models into one class each.
+> 
+> Though this does break clean architecture in the Single Responsibility Principle, I concluded that if this program were to expand, it would be trivial to break the generic TaskRequest and Response models for their separate use cases.
+> 
+> Same comments and reasoning with the TagResponse and Request Models
+
+Tests: 
+
+> I've added many extensive tests to my use cases and controllers. 
+> 
+> I've made effective use of the @ParamaterizedTest feature, ensuring that I test every edge case of string, including multiple characters, one character, and the empty string
+> 
+> Additionally, I've used the @BeforeEach and @AfterEach to instantiate a simulated database and saved it in a temporary file. 
+> 
+> After the tests have finished, the method annotatied with @AfterEach removes all objects in the simulated database, ensuring that the next test that is run starts from a clean state.
+
+Roadmap:
+> One of the features I planned to implement was the ability to add colours to tags, and have the corresponding tasks appear with those colours. 
+> 
+> This feature has not been implemented in the latest commit, so throughout my code, I have used placeholder colours. 
+> 
+> Implementing the feature will require minimal changes to the code, as I simply have to replace the placeholder values with the values submitted by the user
+
+Design patterns:
+
+1. Simple Factory
+
+
+    > I've used the Simple Factory to abstract away the process of creating tasks. 
+    > 
+    > This ensures that any future changes to the constructor(s) of Task will only require changes to the Factory, as the only hard dependency occurs in this class.
+    > 
+    > This choice has followed the Open/Closed principle, as this factory can easily be extended for additional constructors, but closed for changes, as the constructors which already exist in the factory will never change
+    > 
+    > In the future, implementing a builder design pattern would make more sense, as a Task can be instantiated in multiple ways (with/without a description, w/wo tags etc)
+
+2. Observer
+
+    
+    > The observer pattern is used between my screens, where the observers are the screens which display the list of Tasks and Tags to the user. 
+    > 
+    > Any potential sources of change to the view model implement subject, which the observers will reflect.
+    > 
+    > This separates the cause and the effect of the change, and additionally follows clean architecture as creating a new info screen requires simply subscribing it to the subject
+    
+
 
 ## Licence
 This project is under the MIT Licence
