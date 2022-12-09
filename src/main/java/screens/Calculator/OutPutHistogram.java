@@ -14,23 +14,9 @@ public class OutPutHistogram {
     public void produce_graph() {
         String unit = "day";
         CurrentUserService service = new CurrentUserService();
-        User user = service.getCurrentUser();
-        TotCalculator calc = new TotCalculator();
-        int monday = calc.rawTime(user, unit);
-        int tuseday = calc.rawTime(user, unit);
-        int wednesday = calc.rawTime(user, unit);
-        int thursday = calc.rawTime(user, unit);
-        int friday = calc.rawTime(user, unit);
-        int saturday = calc.rawTime(user, unit);
-        int sunday = calc.rawTime(user, unit);
+
         HistogramPanel histogram = new HistogramPanel();
-//            EventQueue.invokeLater(new Runnable()
-//            {
-//                public void run()
-//                {
-//                    createAndShowGUI(monday, tuseday, wednesday, thursday, friday, saturday, sunday);
-//                }
-//            });
+
         EventQueue.invokeLater(new Runnable()
         {
             public void run()
