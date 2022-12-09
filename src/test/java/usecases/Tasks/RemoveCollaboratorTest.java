@@ -6,13 +6,11 @@ import gateways.Tasks.TaskDataAccessInterface;
 import gateways.Tasks.TaskDatabaseGateway;
 import gateways.Tasks.TaskRequestModel;
 import gateways.UserDatabaseGateway;
-import org.junit.BeforeClass;
 import org.junit.jupiter.api.*;
 import presenters.TaskPresenter;
 import presenters.TaskResponseFormatter;
 import services.CurrentUserService;
 
-import java.io.File;
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -20,15 +18,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class RemoveCollaboratorTest {
 
-    static User user = new User("user", "password");
-    static Task task = new Task("task", user);
-    static User collaborator = new User("collaborator", "password");
-    static User collaborator2 = new User("collaborator2", "password");
+    static final User user = new User("user", "password");
+    static final Task task = new Task("task", user);
+    static final User collaborator = new User("collaborator", "password");
+    static final User collaborator2 = new User("collaborator2", "password");
+    static final CurrentUserService currentUserService = new CurrentUserService();
+    static final TaskPresenter taskPresenter = new TaskResponseFormatter();
     static UserDatabaseGateway userDatabaseGateway;
     static TaskDataAccessInterface taskDatabaseGateway;
-    static CurrentUserService currentUserService = new CurrentUserService();
-    static TaskPresenter taskPresenter = new TaskResponseFormatter();
-
 
     /**
      * To test the use case:
@@ -64,7 +61,6 @@ public class RemoveCollaboratorTest {
     public void TestRemoveCollaborator() {
         RemoveCollaborator removeCollaborator = new RemoveCollaborator(
                 taskDatabaseGateway,
-                userDatabaseGateway,
                 taskPresenter
         );
 

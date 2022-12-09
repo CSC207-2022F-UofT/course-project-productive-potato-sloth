@@ -1,7 +1,6 @@
 package useCases.Tasks;
 
 import entities.Tag;
-import entities.Task;
 import entities.TaskFactory;
 import entities.User;
 import gateways.Tags.TagDataAccessInterface;
@@ -18,26 +17,23 @@ import presenters.TaskResponseFormatter;
 import services.CurrentUserService;
 
 import java.awt.*;
-import java.io.File;
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CreateTaskTest {
 
+    static final User collaborator = new User("collaborator", "password");
+    static final User collaborator2 = new User("collaborator2", "password");
+    static final CurrentUserService currentUserService = new CurrentUserService();
+    static final TaskPresenter taskPresenter = new TaskResponseFormatter();
+    static final TaskFactory taskFactory = new TaskFactory();
     static User user = new User("user", "password");
-    static User collaborator = new User("collaborator", "password");
-    static User collaborator2 = new User("collaborator2", "password");
-    static Tag tag = new Tag("tag", Color.RED, user);
-    static Tag tag2 = new Tag("tag2", Color.RED, user);
+    static final Tag tag = new Tag("tag", Color.RED, user);
+    static final Tag tag2 = new Tag("tag2", Color.RED, user);
     static UserDatabaseGateway userDatabaseGateway;
     static TaskDataAccessInterface taskDatabaseGateway;
     static TagDataAccessInterface tagDatabaseGateway;
-    static CurrentUserService currentUserService = new CurrentUserService();
-    static TaskPresenter taskPresenter = new TaskResponseFormatter();
-    static TaskFactory taskFactory = new TaskFactory();
-
 
     /**
      * To test the use case:
@@ -79,7 +75,6 @@ public class CreateTaskTest {
     public void TestCreateTask(String taskName) {
         CreateTask createTask = new CreateTask(
                 taskDatabaseGateway,
-                userDatabaseGateway,
                 currentUserService,
                 taskFactory,
                 taskPresenter

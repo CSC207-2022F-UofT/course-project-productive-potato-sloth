@@ -1,6 +1,5 @@
 package useCases.Tags;
 
-import entities.Tag;
 import entities.TagFactory;
 import entities.Task;
 import entities.User;
@@ -16,14 +15,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import presenters.TagPresenter;
 import presenters.TagResponseFormatter;
-import presenters.TaskPresenter;
-import presenters.TaskResponseFormatter;
 import services.CurrentUserService;
 
 
-import java.awt.*;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -31,18 +26,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CreateTagTest {
 
-    static User user = new User("user", "password");
-    static Task task = new Task("task", user);
-    static User collaborator = new User("collaborator", "password");
-    static User collaborator2 = new User("collaborator2", "password");
-    static Tag tag = new Tag("tag", Color.RED, user);
-    static Tag tag2 = new Tag("tag2", Color.RED, user);
+    static final User user = new User("user", "password");
+    static final Task task = new Task("task", user);
+    static final User collaborator = new User("collaborator", "password");
+    static final User collaborator2 = new User("collaborator2", "password");
+    static final CurrentUserService currentUserService = new CurrentUserService();
+    static final TagPresenter tagPresenter = new TagResponseFormatter();
+    static final TagFactory tagFactory = new TagFactory();
     static UserDatabaseGateway userDatabaseGateway;
     static TaskDataAccessInterface taskDatabaseGateway;
     static TagDataAccessInterface tagDatabaseGateway;
-    static CurrentUserService currentUserService = new CurrentUserService();
-    static TagPresenter tagPresenter = new TagResponseFormatter();
-    static TagFactory tagFactory = new TagFactory();
 
     /**
      * To test the use case:
@@ -76,7 +69,6 @@ public class CreateTagTest {
     public void TestCreateTag() {
         CreateTag createTag = new CreateTag(
                 tagDatabaseGateway,
-                userDatabaseGateway,
                 tagFactory,
                 tagPresenter,
                 currentUserService

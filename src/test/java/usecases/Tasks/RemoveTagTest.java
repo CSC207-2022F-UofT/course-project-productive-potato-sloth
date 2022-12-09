@@ -15,7 +15,6 @@ import presenters.TaskResponseFormatter;
 import services.CurrentUserService;
 
 import java.awt.*;
-import java.io.File;
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -23,18 +22,17 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class RemoveTagTest {
 
-    static User user = new User("user", "password");
-    static Task task = new Task("task", user);
-    static User collaborator = new User("collaborator", "password");
-    static User collaborator2 = new User("collaborator2", "password");
-    static Tag tag = new Tag("tag", Color.RED, user);
-    static Tag tag2 = new Tag("tag2", Color.RED, user);
+    static final User user = new User("user", "password");
+    static final Task task = new Task("task", user);
+    static final User collaborator = new User("collaborator", "password");
+    static final User collaborator2 = new User("collaborator2", "password");
+    static final Tag tag = new Tag("tag", Color.RED, user);
+    static final Tag tag2 = new Tag("tag2", Color.RED, user);
+    static final CurrentUserService currentUserService = new CurrentUserService();
+    static final TaskPresenter taskPresenter = new TaskResponseFormatter();
     static UserDatabaseGateway userDatabaseGateway;
     static TaskDataAccessInterface taskDatabaseGateway;
     static TagDataAccessInterface tagDatabaseGateway;
-    static CurrentUserService currentUserService = new CurrentUserService();
-    static TaskPresenter taskPresenter = new TaskResponseFormatter();
-
 
     /**
      * To test the use case:
