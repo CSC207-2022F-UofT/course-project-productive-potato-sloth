@@ -14,7 +14,8 @@ A Java application created for the CSC207 Final Project
 
 2. Text Chat Room
 
-3. Collaborators Page
+3. Invitation Mangement System
+Users are able to send invitations to different users to collaborate on different tasks. Users can also accept and decline the invitations sent to them.
 
 4. Timer (Paridhi Goel, paridhi26)
 
