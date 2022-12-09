@@ -7,8 +7,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * A panel for displaying events.
+ */
 public class EventPanel extends JPanel {
 
+
+    /**
+     * Initialize a panel for displaying the information from one event
+     * @param eventDataResponseObject the pure data object containing the vital event information
+     */
     public EventPanel(EventDataResponseObject eventDataResponseObject) {
 
         setLayout(new GridBagLayout());

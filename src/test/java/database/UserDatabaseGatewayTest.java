@@ -7,14 +7,13 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 
 public class UserDatabaseGatewayTest {
-//    @Test public void testLoadUsersFromEmptyFile() {
-//        try {
-//            UserDatabaseGateway userGateway = new UserDatabaseGateway("database/emptyUserFile.ser");
-//        } catch (IOException e){
-//            assert false;
-//            throw new RuntimeException(e);
-//        }
-//    }
+    @Test public void testLoadUsersFromEmptyFile() {
+        try {
+            UserDatabaseGateway userGateway = new UserDatabaseGateway("database/emptyUserFile.ser");
+        } catch (IOException e){
+            throw new RuntimeException(e);
+        }
+    }
 
     @Test public void testSaveUsers(){
         /**

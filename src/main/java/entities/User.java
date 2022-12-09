@@ -120,12 +120,20 @@ public class User implements Serializable {
         this.events.add(event);
     }
 
+
     /**
      * Removes an event from this User
      * @param event The new event to remove
      */
     public void removeEvent(Event event) {
         this.events.remove(event);
+    }
+
+    /**
+     * Delete all events of this User.
+     */
+    public void deleteAllEvents(){
+        this.events = new ArrayList<>();
     }
 
     /**
