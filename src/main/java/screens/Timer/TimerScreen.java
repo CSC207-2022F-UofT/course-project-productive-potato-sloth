@@ -91,14 +91,16 @@ public class TimerScreen extends JPanel implements ActionListener {
             try {
                 Long durationOfTimer = Long.parseLong(timerDuration.getText());
                 Long durationInMillis = Long.parseLong(timerDuration.getText()) * 60000;
+
                 if (durationOfTimer < 0){
                     JOptionPane.showMessageDialog(this, "Enter positive whole number!\nTime Travel is not possible for now.");
                 }
-                timerController.create(Duration.ofMinutes(durationOfTimer));
-                if (!this.timer.isRunning()) {
-                    this.lastTickTime = durationInMillis;
-                    timer.start();
-                    flag = 1;
+                else{
+                    timerController.create(Duration.ofMinutes(durationOfTimer));
+                    if (!this.timer.isRunning()) {
+                        this.lastTickTime = durationInMillis;
+                        timer.start();
+                        flag = 1;}
                 }
                 }
             catch(Exception e) {
