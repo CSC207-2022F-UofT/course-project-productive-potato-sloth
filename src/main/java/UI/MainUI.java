@@ -126,7 +126,7 @@ public class MainUI extends JFrame {
         if (i < 2) {
             while (i < 3) {
                 List<JLabel> temp_index = this.organizer.get(i);
-                temp_index.get(0).setText("entities.Message unavailable");
+                temp_index.get(0).setText("Message unavailable");
                 temp_index.get(1).setText("No author");
                 temp_index.get(2).setText("No timestamp");
                 i++;

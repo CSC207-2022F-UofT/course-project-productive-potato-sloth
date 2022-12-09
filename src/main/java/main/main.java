@@ -8,6 +8,11 @@ import entities.User;
 import services.CurrentUserService;
 import useCases.ChatRoom.ChatRoomInteractor;
 
+/**
+ * This is the main class for demonstrating the ChatRoom feature and only the ChatRoom feature. It
+ * creates a dummy User with username "Soyuz Nerushimy", a dummy task "Generic assignment" and a complete ChatRoom
+ * feature based on the two. The User should be able to send messages and scroll through messages.
+ */
 public class main {
     public static void main(String[] args) {
         User user1 = new User();
