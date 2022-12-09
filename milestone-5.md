@@ -25,9 +25,12 @@ My code review consisted of general comments, like documentation, and uses of as
 
 
 ## Khai Nguyen (kldtntg)
-[Pull Request 1]() - Implementation <br />
+[Pull Request 1](https://github.com/CSC207-2022F-UofT/course-project-productive-potato-sloth/pull/46) - Implementation <br />
 
-[Pull Request 2]() - Code Review <br />
+This pull request contains my code for the building blocks of my feature: entities, interactors, controllers, presenters and screens. The code are implemented with clean architecture and the SOLID principles in mind. The initializations of necessary componenents of the feature are also refractored to make combining my feature with the rest of the application easier.
+
+[Pull Request 2](https://github.com/CSC207-2022F-UofT/course-project-productive-potato-sloth/pull/50) - Code Review <br />
+My code review carefully checks for consistency between this pull request and what we agreed upon before hand. I also checked for clean architecture and SOLID principles being applied, making sure the commit is ready for merging.
 
 ## Vishnu Nittoor (nitvishn)
 
