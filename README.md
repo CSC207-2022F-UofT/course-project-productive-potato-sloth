@@ -144,8 +144,12 @@ Roadmap:
 > Finally, I wanted to implement a Settings page that, at the basic level, allowed Users to change their Calendar view (to either include / remove weekends from their View) and change their password, which I was unable to within my given timeframe. 
 
 
+Tests:
+> I have ran tests for my two use cases of Login and CreateAccount which ensure that both work as required. 
+
+
 Design Patters:
-I haven't really used any design patterns as the code I needed to implement was rather straight-forward and I thought that using a design pattern would complicate the simplicity of the implementation. There is of course scope to use a design pattern for what I've implemented (like Factory for User).
+> I haven't really used any design patterns as the code I needed to implement was rather straight-forward and I thought that using a design pattern would complicate the simplicity of the implementation. There is of course scope to use a design pattern for what I've implemented (like Factory for User).
 
 
 ## Licence
