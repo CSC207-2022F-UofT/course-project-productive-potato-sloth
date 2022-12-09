@@ -79,7 +79,7 @@ public class TaskTest {
         Task task = new Task("tag", user, "");
         task.addTag(tag);
         assertEquals(task.getTags().size(), 1);
-        assertEquals(task.getTags().get(1), tag);
+        assertEquals(task.getTags().get(0), tag);
         task.addTag(tag2);
         assertEquals(task.getTags().size(), 2);
         assertEquals(task.getTags().get(0), tag);

@@ -1,4 +1,4 @@
-package test.java.usecases;
+package usecases;
 
 import entities.User;
 import gateways.UserDataAccessInterface;

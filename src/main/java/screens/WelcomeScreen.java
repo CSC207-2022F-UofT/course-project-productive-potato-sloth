@@ -11,10 +11,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+import screens.Calculator.OutPutHistogram;
 import screens.Timer.TimerMainGUI;
 import services.CurrentUserService;
 
-// GUI layer
+//UI layer
 
 public class WelcomeScreen extends JFrame implements ActionListener {
 
@@ -41,6 +42,7 @@ public class WelcomeScreen extends JFrame implements ActionListener {
         JButton viewChatRoom = new JButton("view ChatRoom");
         JButton login = new JButton("Login");
         JButton createAccount = new JButton("Create Account");
+        JButton seePerformance = new JButton("See Performance");
 
         JPanel buttons = new JPanel();
         buttons.add(timer);
@@ -49,8 +51,10 @@ public class WelcomeScreen extends JFrame implements ActionListener {
         buttons.add(viewChatRoom);
         buttons.add(login);
         buttons.add(createAccount);
+        buttons.add(seePerformance);
 
         timer.addActionListener(this::actionPerformedTimer);
+        seePerformance.addActionListener(this::actionPerformedCalculator);
 
         viewTasks.addActionListener(this::actionPerformedTaskList);
 
@@ -78,6 +82,11 @@ public class WelcomeScreen extends JFrame implements ActionListener {
         } catch (IOException e) {
         }
 
+    }
+
+    private void actionPerformedCalculator(ActionEvent actionEvent) {
+        OutPutHistogram histogram = new OutPutHistogram();
+        histogram.produce_graph();
     }
 
     /**
