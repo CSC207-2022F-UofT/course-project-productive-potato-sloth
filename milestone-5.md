@@ -1,7 +1,24 @@
 # milestone-4.md
 
 ## Leon Cai (chazzybearr)
-[Pull Request 1]() - Implementation <br />
+[Pull Request 1](https://github.com/CSC207-2022F-UofT/course-project-productive-potato-sloth/pull/15) - Implementation <br />
+
+This pull request contains the code for my use cases, controllers, presenters, and screens. This pull request changed all my use cases to take a request mode and return a response model, rather than raw paramaters.
+
+Addressing Feedback:
+> Tests have been significantly improved. 
+> Paramaterized tasks which use various strings rather than hardcoding strings are implemented throughout the tests of use cases and controllers.
+
+> This pull request is still quite large, but I have managed to keep it updated with master and kept everything documented where it is clear to any reader what any class or method does.
+
+> I've tried to add comments throughout my pull request to add additional information unable to fit in the commit message. 
+> I've also included justifications for the code patterns and the choices I made throughout the code.
+
+> Design patterns are used to a much more significant extend. 
+> Dependency injection is evident through my screens, where my screens references all other screens it needs to show, rather than creating using the "new" keyword, creating a hard dependency. 
+> Screens also implement the observer pattern, where the cause and the effect of a change in view model are separated. This makes creating and updating future screens extremely simple (I even felt the benefits of the observer pattern while I was coding my screens!)
+
+
 
 
 [Pull Request 2]() - Code Review <br />
