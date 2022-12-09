@@ -57,6 +57,13 @@ https://github.com/CSC207-2022F-UofT/course-project-productive-potato-sloth.git
 ### the ChatRoom screen
 ![Screenshot (559)](https://user-images.githubusercontent.com/113304165/206635355-a03068c0-7066-45c9-bbf3-5a4787c3dd32.png)
 
+### Log In Page
+![image](https://user-images.githubusercontent.com/97484565/206642536-8d206bb0-35d5-4c55-b7b1-6f3530ce4520.png)
+
+### Create Account Page
+![image](https://user-images.githubusercontent.com/97484565/206642786-875e8017-7cc8-4064-a5fc-6f8f195532e9.png)
+
+
 
 ## Roadmap
 
