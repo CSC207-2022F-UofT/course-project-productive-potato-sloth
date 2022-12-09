@@ -19,6 +19,12 @@ public class UpdateViewControllerTest {
     @After
     public void TearDown(){
     }
+
+    /**
+     * This test tests if the UpdateViewController successfully invokes the interactor's UpdateView
+     * method via MessageIndex, and tests that passing true into SendMessageController scrolls to
+     * older messages and passing false into the sendmessagecontroller scrolls to newer ones.
+     */
     @Test
     public void TestUpdateView(){
         String[] str_list = {"a", "b", "c", "d", "e", "f"};

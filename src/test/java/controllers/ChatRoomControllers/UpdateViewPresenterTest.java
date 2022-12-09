@@ -27,6 +27,11 @@ public class UpdateViewPresenterTest {
     public void TearDown(){
     }
 
+    /**
+     * This test tests that the presenter returns the correct List of ResponseModel objects.
+     * Since that is going to be the same List passed into the UI (which is the only thing the presenter does),
+     * this is how we know the correct object is being passed.
+     */
     @Test
     public void TestUpdateView(){
         List<MessageResponseModel> msg_list = new ArrayList<>();

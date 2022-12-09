@@ -16,6 +16,12 @@ public class ChatRoomTest {
     User user1 = new User();
     Message message1 = new Message("abcd", user1);
 
+    @After
+    public void TearDown() {
+    }
+    /**
+     * This test tests the ChatRoom is constructed and its ToString method is overridden correctly.
+     */
     @Test
     public void testChatRoomConstructor(){
 
@@ -24,6 +30,9 @@ public class ChatRoomTest {
         assertEquals("chatRoom with messages []", temp.toString());
     }
 
+    /**
+     * This test tests that the AddMessage method works correctly.
+     */
     @Test
     public void testChatRoomAddMessage(){
         temp.AddMessage(message1);
@@ -32,6 +41,9 @@ public class ChatRoomTest {
         assertEquals("chatRoom with messages [abcd]", temp.toString());
     }
 
+    /**
+     * This test tests that the GetMessages method returns a List of all of its Messages, from old to new.
+     */
     @Test
     public void testChatRoomGetMessages(){
         assertEquals(temp.GetMessages().size(), 0);
@@ -46,6 +58,14 @@ public class ChatRoomTest {
         assertEquals(temp.GetMessages(1, 0).size(), 1);
     }
 
+    /**
+     * This method checks that the second GetMessages method by testing that the second parameter corresponds to the
+     * index of the newest/oldest returned message on the reverse of the list of messages (i.e. how far that message is
+     * from the end of the list, not the start), and the first corresponds to how many messages to get, with positive
+     * numbers meaning "get messages at and older than indexed message" and negative ones meaning "get messages at
+     * and newer than indexed message". The method should also not throw an error when the number of messages requested
+     * is more than the number of Messages contained in this ChatRoom.
+     */
     @Test
     public void testChatRoomGetMessagesIndexed(){
         List<Message> str_list = new ArrayList<>();

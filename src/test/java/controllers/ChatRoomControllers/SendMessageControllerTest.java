@@ -18,6 +18,12 @@ public class SendMessageControllerTest {
     @Before
     public void setUp() {
     }
+
+    /**
+     * Here we set up a ChatRoom, an interactor associated with the ChatRoom with a CurrentUserService
+     * to facilitate the interactor getting the current user (which is needed for creating a Message),
+     * a User and a SendMessageController.
+     */
     ChatRoom room = new ChatRoom();
     ChatRoomInteractorInterface interactor = new ChatRoomInteractor(room);
     CurrentUserService service1 = new CurrentUserService();
@@ -28,6 +34,10 @@ public class SendMessageControllerTest {
     public void tearDown() {
     }
 
+    /**
+     *This test tests that when the SendMessageController's send message method is called,
+     * the SendMessageController calls the interactor and the Messages inside ChatRoom are updated.
+     */
     @Test
     public void TestSendMessage(){
         service1.setCurrentUser(user1);

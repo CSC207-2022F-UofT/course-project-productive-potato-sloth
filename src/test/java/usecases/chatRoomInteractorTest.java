@@ -22,6 +22,9 @@ public class chatRoomInteractorTest {
     public void tearDown() {
     }
 
+    /**
+     *This test tests that the SendMessage method updates the ChatRoom.
+     */
     @Test
     public void testMessageToString(){
         interactor.sendMessage("abcd", user1);
@@ -29,6 +32,10 @@ public class chatRoomInteractorTest {
         Assertions.assertEquals("chatRoom with messages [abcd]", room.toString());
     }
 
+    /**
+     * This test tests that the interactor correctly retrieves and returns the 3 newest Messages
+     * when the UpdateView method is called with no parameters.
+     */
     @Test
     public void testUpdateView(){
         String[] str_array = new String[]{"a", "b", "c", "d", "e", "f"};
@@ -44,6 +51,10 @@ public class chatRoomInteractorTest {
         Assertions.assertEquals(list1Str.toString(), "[d, e, f]");
     }
 
+    /**
+     * This test tests that the interactor correctly retrieves the 3 messages at and older/newer than the MessageIndex
+     * depending on the boolean passed into UpdateView.
+     */
     @Test
     public void testUpdateViewScroll(){
         String[] str_array = new String[]{"a", "b", "c", "d", "e", "f"};
