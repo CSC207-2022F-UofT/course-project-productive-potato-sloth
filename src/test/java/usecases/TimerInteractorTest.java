@@ -1,16 +1,16 @@
-package usecases;
-
-import entities.TimerFactory;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import useCases.Timer.TimerInputData;
-//import screens.InMemoryUser;
-
-import java.time.Duration;
-
-import static org.junit.jupiter.api.Assertions.*;
-
-class TimerInteractorTest {
+////package usecases;
+//
+//import entities.TimerFactory;
+//import org.junit.jupiter.api.BeforeEach;
+//import org.junit.jupiter.api.Test;
+//import useCases.Timer.TimerInputData;
+////import screens.InMemoryUser;
+//
+//import java.time.Duration;
+//
+//import static org.junit.jupiter.api.Assertions.*;
+//
+//class TimerInteractorTest {
 
 //    @Test
 //    void create() {
@@ -63,4 +63,4 @@ class TimerInteractorTest {
 //        // 3) Run the use case
 //        interactor.create(inputData);
 //    }
-}
+//}
