@@ -11,42 +11,49 @@ public class MessageTest {
     @Before
     public void setUp() {
     }
+    User user1 = new User();
+    Message temp = new Message("abcd", user1);
 
-    @After
-    public void tearDown() {
-    }
-
+    /**
+     * Tests if the ToString method returns the Message's content String.
+     */
     @Test
     public void testMessageToString(){
-        Message temp = new Message("abcd");
-
         //assertion
         assertEquals("abcd", temp.toString());
     }
 
+    /**
+     * Tests the setter method for the content String. This method may be necessary for future feature enabling
+     * message editing.
+     */
     @Test
     public void testMessageSetContent(){
-        Message temp = new Message("efgh");
-        temp.setContent("abcd");
+        temp.setContent("efgh");
 
         //assertion
-        assertEquals("abcd", temp.toString());
+        assertEquals("efgh", temp.toString());
     }
 
-    /*
-    This test is not yet implemented because it depends on the User entity.
+    /**
+     * Tests getter method for author, specifically that it returns the current username of the author.
+     */
     @Test
-    public void testMessageGetAuthor(){
-        user1 = new User();
-        Message temp = new Message("abcd", user1);
+    public void testMessageGetAuthor() {
+        user1.setUsername("Kerensky");
+        Message temp2 = new Message("", user1);
 
         //assertion
-        assertEquals("abcd", temp.getAuthor());
-    }*/
+        assertEquals("Kerensky", temp2.getAuthor());
+        assertEquals("Kerensky", temp.getAuthor());
+    }
 
+    /**
+     * Test that Message entity correctly records when it was created.
+     */
     @Test
     public void testMessageGetDateTime(){
-        Message temp = new Message("abcd");
+        Message temp = new Message("abcd", user1);
         LocalDateTime tempDate = LocalDateTime.now();
 
         //assertion

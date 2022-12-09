@@ -1,6 +1,8 @@
 package entities;
 
+import javax.lang.model.type.ArrayType;
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,29 +16,35 @@ public class Task implements Serializable {
      */
     final User user;
     /**
-     * A list of the associated tags of this Task
-     */
-    final List<Tag> tags = new ArrayList<>();
-    /**
-     * A list of the associated events of this Task
-     */
-    final List<Event> events = new ArrayList<>();
-    /**
-     * A list of the collaborators of this Task
-     */
-    final List<User> collaborators = new ArrayList<>();
-    /**
      * The name of the Task
      */
     String name;
+
     /**
      * The description of the Task
      */
     String description;
+
     /**
      * A boolean indicating if the Task is completed
      */
     Boolean completed;
+
+    /**
+     * A list of the associated tags of this Task
+     */
+    List<Tag> tags = new ArrayList<>();
+
+    /**
+     * A list of the associated events of this Task
+     */
+    List<Event> events = new ArrayList<>();
+
+    /**
+     * A list of the collaborators of this Task
+     */
+    List<User> collaborators = new ArrayList<>();
+
     /**
      * The ChatRoom associated with this Task
      */
@@ -52,6 +60,7 @@ public class Task implements Serializable {
         this.name = name;
         this.user = user;
         this.completed = false;
+        this.chatRoom = new ChatRoom();
     }
 
     /**
@@ -66,6 +75,7 @@ public class Task implements Serializable {
         this.user = user;
         this.description = description;
         this.completed = false;
+        this.chatRoom = new ChatRoom();
     }
 
     /**
@@ -93,6 +103,10 @@ public class Task implements Serializable {
      */
     public String getDescription() {
         return description;
+    }
+
+    public ChatRoom getChatRoom(){
+        return this.chatRoom;
     }
 
     /**
@@ -216,15 +230,6 @@ public class Task implements Serializable {
      */
     public List<User> getCollaborator() {
         return this.collaborators;
-    }
-
-    /**
-     * Gets the Chatroom associated with this Task
-     *
-     * @return The Chatroom for this Task
-     */
-    public ChatRoom getChatRoom() {
-        return this.chatRoom;
     }
 
 }
