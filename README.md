@@ -135,7 +135,8 @@ Design patterns:
     > Any potential sources of change to the view model implement subject, which the observers will reflect.
     > 
     > This separates the cause and the effect of the change, and additionally follows clean architecture as creating a new info screen requires simply subscribing it to the subject
-    
+
+### Chhavi Shah (ConverseScholar)
 
 
 ## Licence
