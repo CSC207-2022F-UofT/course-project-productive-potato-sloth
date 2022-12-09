@@ -1,22 +1,98 @@
 package useCases.Tags;
 
 import entities.Tag;
+import entities.TagFactory;
+import entities.User;
+import gateways.Tags.TagDataAccessInterface;
+import gateways.Tags.TagRequestModel;
+import gateways.Tags.TagResponseModel;
+import gateways.UserDatabaseGateway;
+import presenters.TagPresenter;
+import services.CurrentUserService;
 
-import java.awt.Color;
 
 /**
  * A use case which creates a new tag for a user
  */
-public class CreateTag {
+public class CreateTag implements CreateTagInputBoundary {
 
     /**
-     * Constructs a CreateTag use case given a name and a color
-     *
-     * @param name  The name of the new Tag
-     * @param color The colour of the new Tag
-     * @return The new Tag
+     * The interface which allows access to the TagDatabase
      */
-    public Tag createTag(String name, Color color) {
-        return new Tag(name, color);
+    private final TagDataAccessInterface tagDatabaseGateway;
+
+    /**
+     * The Factory class required for creating Tags
+     */
+    private final TagFactory tagFactory;
+
+    /**
+     * The interface which allows access to the UserDatabase
+     */
+    private final UserDatabaseGateway userDatabaseGateway;
+
+    /**
+     * The current user service
+     */
+    private final CurrentUserService currentUserService;
+
+    /**
+     * The tag presenter
+     */
+    private final TagPresenter tagPresenter;
+
+
+    /**
+     * Creates an instance of CreateTag with the required fields
+     *
+     * @param tagDatabaseGateway  Interface for accessing Tag
+     * @param userDatabaseGateway Interface for accessing Users
+     * @param tagFactory          Factory for creating Tasks
+     * @param tagPresenter        The presenter for tags
+     */
+    public CreateTag(
+            TagDataAccessInterface tagDatabaseGateway,
+            UserDatabaseGateway userDatabaseGateway,
+            TagFactory tagFactory,
+            TagPresenter tagPresenter,
+            CurrentUserService currentUserService
+    ) {
+        this.tagDatabaseGateway = tagDatabaseGateway;
+        this.tagFactory = tagFactory;
+        this.userDatabaseGateway = userDatabaseGateway;
+        this.tagPresenter = tagPresenter;
+        this.currentUserService = currentUserService;
+    }
+
+    /**
+     * Creates a Tag with the fields specified in the Request Model
+     *
+     * @param tagRequestModel The input data with all required fields relevant to creating a Tag
+     * @return The Response Model with all the Tag fields of the new Tag
+     */
+    @Override
+    public TagResponseModel create(TagRequestModel tagRequestModel) {
+        if (tagDatabaseGateway.contains(tagRequestModel.getName())) {
+            return tagPresenter.prepareFailView("This tag already exists.");
+        } else {
+
+            User user = currentUserService.getCurrentUser();
+
+            Tag tag = tagFactory.create(
+                    tagRequestModel.getName(),
+                    tagRequestModel.getColor(),
+                    user
+            );
+
+            tagDatabaseGateway.insert(tag);
+
+
+            TagResponseModel response = new TagResponseModel(
+                    tagRequestModel.getName(),
+                    tagRequestModel.getColor(),
+                    true
+            );
+            return tagPresenter.prepareSuccessView(response);
+        }
     }
 }

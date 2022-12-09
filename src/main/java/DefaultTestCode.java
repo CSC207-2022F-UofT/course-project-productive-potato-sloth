@@ -11,9 +11,9 @@ public class DefaultTestCode {
         CurrentUserService currentUserService = new CurrentUserService();
         User testUser = new User("testUsername", "testPassword");
 
-        Tag tag1 = new Tag("tag1", Color.RED);
-        Tag tag2 = new Tag("tag2", Color.BLACK);
-        Tag tag3 = new Tag("tag3", Color.BLUE);
+        Tag tag1 = new Tag("tag1", Color.RED, testUser);
+        Tag tag2 = new Tag("tag2", Color.BLACK, testUser);
+        Tag tag3 = new Tag("tag3", Color.BLUE, testUser);
         testUser.addTag(tag1);
         testUser.addTag(tag2);
         testUser.addTag(tag3);
