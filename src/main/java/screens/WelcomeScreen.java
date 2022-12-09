@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import screens.Calculator.OutPutHistogram;
 import screens.Timer.TimerMainGUI;
 
 //UI layer
@@ -22,13 +23,16 @@ public class WelcomeScreen extends JFrame implements ActionListener {
         JButton timer = new JButton("Start Timer");
         JButton viewSchedule = new JButton("View Schedule");
         JButton createTask = new JButton("View Schedule");
+        JButton seePerformance = new JButton("See Performance");
 
         JPanel buttons = new JPanel();
         buttons.add(timer);
         buttons.add(viewSchedule);
         buttons.add(createTask);
+        buttons.add(seePerformance);
 
         timer.addActionListener(this::actionPerformedTimer);
+        seePerformance.addActionListener(this::actionPerformedCalculator);
 
         JPanel main = new JPanel();
         main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
@@ -37,6 +41,11 @@ public class WelcomeScreen extends JFrame implements ActionListener {
         main.add(buttons);
         this.setContentPane(main);
         this.pack();
+    }
+
+    private void actionPerformedCalculator(ActionEvent actionEvent) {
+        OutPutHistogram histogram = new OutPutHistogram();
+        histogram.produce_graph();
     }
 
     /**
