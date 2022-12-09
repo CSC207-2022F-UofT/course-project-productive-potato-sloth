@@ -8,7 +8,7 @@ public class ScheduleEventTest {
     CurrentUserService currentUserService;
 
     @Test
-    public void testScheduleEventOne(){
+    public void testScheduleEventOne() {
 
     }
 
