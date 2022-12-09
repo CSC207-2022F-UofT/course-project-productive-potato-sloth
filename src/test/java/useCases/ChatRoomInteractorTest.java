@@ -1,6 +1,7 @@
 package useCases;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.jupiter.api.*;
 import entities.ChatRoom;
 import entities.User;
@@ -92,10 +93,5 @@ public class ChatRoomInteractorTest {
         }
         Assertions.assertEquals(interactor.getMessageIndex(), 0);
         Assertions.assertEquals(list2Str.toString(), "[d, e, f]");
-    }
-
-    @Test
-    public void testInitializeView(){
-        //test not yet implemented because view initialization method needs to be moved into Main
     }
 }

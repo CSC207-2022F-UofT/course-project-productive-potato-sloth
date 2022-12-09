@@ -17,7 +17,7 @@ public class InitializeViewPresenter implements InitializeViewInterface{
     @Override
     public UpdateViewPresenterInterface initializeView(SendMessageController messenger){
         UpdateViewPresenterInterface updatePresenter = new UpdateViewPresenter();
-        MainUI UI = new MainUI(this.interactor, messenger);
+        MainUI UI = new MainUI(messenger);
         updatePresenter.setUI(UI);
         return updatePresenter;
     }

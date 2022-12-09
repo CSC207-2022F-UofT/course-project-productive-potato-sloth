@@ -49,18 +49,14 @@ public class MainUI extends JFrame {
     private List<List<JLabel>> organizer;
 
     /**
-     * Here is the constructor method. It takes in the interface for the interactor (i.e. output boundary)
-     * and a SendMessageController that is already associated with the interactor in order to initialize
-     * the UI. There are several helper methods.
-     * @param interactor: ChatRoomInteractorInterface object (output boundary). This is how the UI can initialize
-     *                  its other controllers (i.e. updateViewController). The methods of the interactor will not be
-     *                  called by the UI.
+     * Here is the constructor method. It takes in a SendMessageController that is already associated with the
+     * interactor in order to initialize the UI. There are several helper methods.
      * @param messenger: a SendMessageController object that is associated with the interactor. The SendMessage-
      *                 -Controller does not have a reference to the UI, so it has to be passed into the UI
      *                 for the UI to call it.
      */
-    public MainUI(ChatRoomInteractorInterface interactor, SendMessageController messenger) {
-        this.interactor = interactor;
+    public MainUI(SendMessageController messenger) {
+        this.interactor = messenger.getInteractor();
         this.messenger = messenger;
 //        $$$setupUI$$$();
         this.organizer = responseSetUp();
@@ -126,7 +122,7 @@ public class MainUI extends JFrame {
         if (i < 2) {
             while (i < 3) {
                 List<JLabel> temp_index = this.organizer.get(i);
-                temp_index.get(0).setText("entities.Message unavailable");
+                temp_index.get(0).setText("Message unavailable");
                 temp_index.get(1).setText("No author");
                 temp_index.get(2).setText("No timestamp");
                 i++;
