@@ -9,15 +9,14 @@ import java.awt.*;
 import java.io.IOException;
 
 public class DefaultTestCode {
-
     public static CurrentUserService setupDefaultCurrentUserService() {
         CurrentUserService currentUserService = new CurrentUserService();
         User testUser = new User("testUsername", "testPassword");
 
-        Tag tag1 = new Tag("csc207", Color.RED);
-        Tag tag2 = new Tag("coursework", Color.BLACK);
-        Tag tag3 = new Tag("academics", Color.BLUE);
-        Tag tag4 = new Tag("lifestyle", Color.BLUE);
+        Tag tag1 = new Tag("csc207", Color.RED, testUser);
+        Tag tag2 = new Tag("coursework", Color.BLACK, testUser);
+        Tag tag3 = new Tag("academics", Color.BLUE, testUser);
+        Tag tag4 = new Tag("lifestyle", Color.BLUE, testUser);
         testUser.addTag(tag1);
         testUser.addTag(tag2);
         testUser.addTag(tag3);

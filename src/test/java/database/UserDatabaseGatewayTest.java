@@ -11,7 +11,6 @@ public class UserDatabaseGatewayTest {
         try {
             UserDatabaseGateway userGateway = new UserDatabaseGateway("database/emptyUserFile.ser");
         } catch (IOException e){
-            assert false;
             throw new RuntimeException(e);
         }
     }

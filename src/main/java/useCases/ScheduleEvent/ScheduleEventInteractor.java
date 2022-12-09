@@ -12,15 +12,32 @@ import services.CurrentUserService;
 import java.util.ArrayList;
 import java.util.List;
 
-// TODO: document this class
+/**
+ * An interactor that executes the ScheduleEvent use case.
+ */
 public class ScheduleEventInteractor implements ScheduleEventInputBoundary{
 
+    /**
+     * The current user service.
+     */
     CurrentUserService currentUserService;
 
+    /**
+     * The presenter associated with this interactor.
+     */
     ScheduleEventPresenter presenter;
 
+    /**
+     * The user data access interface.
+     */
     UserDataAccessInterface gateway;
 
+    /**
+     * Constructs an interactor that schedules events.
+     * @param currentUserService the current user service to get the current user from.
+     * @param scheduleEventPresenter the presenter that formats the response model.
+     * @param gateway data access interface.
+     */
     public ScheduleEventInteractor(CurrentUserService currentUserService,
                                    ScheduleEventPresenter scheduleEventPresenter,
                                    UserDataAccessInterface gateway){
@@ -29,6 +46,13 @@ public class ScheduleEventInteractor implements ScheduleEventInputBoundary{
         this.gateway = gateway;
     }
 
+    /**
+     * The only responsibility of this class. Schedules a new event
+     * with the parameters in request model and call upon the presenter
+     * to format a response.
+     * @param requestModel the request model containing the parameters for scheduling the new event.
+     * @return
+     */
     public ScheduleEventResponseModel scheduleEvent(ScheduleEventRequestModel requestModel){
 
         User currentUser = currentUserService.getCurrentUser();

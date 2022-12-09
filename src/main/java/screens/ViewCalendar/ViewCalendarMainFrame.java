@@ -1,7 +1,6 @@
 package screens.ViewCalendar;
 
-import entities.Tag;
-import entities.Task;
+import controllers.Events.ViewCalendarController;
 import entities.User;
 import gateways.UserDataAccessInterface;
 import gateways.UserDatabaseGateway;
@@ -14,23 +13,39 @@ import useCases.ViewCalendar.ViewCalendarPresenter;
 import useCases.ViewCalendar.ViewCalendarResponseFormatter;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.text.View;
 import java.awt.*;
 import java.io.IOException;
 
+/**
+ * A class that contains the code for initializing an application
+ * for the ViewCalendar use case.
+ */
 public class ViewCalendarMainFrame {
 
+    /**
+     * The current user service.
+     */
     CurrentUserService currentUserService;
+    /**
+     * The data access gateway.
+     */
     UserDataAccessInterface gateway;
 
-
-
+    /**
+     * Construct the mainframe given a current user service and gateway
+     * @param currentUserService the service.
+     * @param gateway the data access interface for storing users.
+     */
     public ViewCalendarMainFrame(CurrentUserService currentUserService, UserDataAccessInterface gateway){
         this.currentUserService = currentUserService;
         this.gateway = gateway;
     }
 
+    /**
+     * Setup the main screen using the given gateway and service by initializing
+     * all relevant components of the CA.
+     * @return the ViewCalendarScreen after initializing it.
+     */
     public ViewCalendarScreen setupViewCalendarScreen(){
         ViewCalendarViewModel viewModel = new ViewCalendarViewModel();
         ViewCalendarPresenter presenter = new ViewCalendarResponseFormatter(viewModel);

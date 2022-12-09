@@ -11,6 +11,8 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 
 /**
+ *
+ * Taken from the internet and appropriately credited.
  * A {@link PlainDocument} that listens to {@link ListSelectionEvent}s to change
  * its text in order to the selected list elements.
  *

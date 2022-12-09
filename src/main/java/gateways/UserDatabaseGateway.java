@@ -125,7 +125,8 @@ public class UserDatabaseGateway extends DatabaseGateway implements UserDataAcce
         }
     }
 
-    public void deleteAll() {
+    @Override
+    public void deleteAllUsers() {
         this.userList = new ArrayList<>();
     }
 

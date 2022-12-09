@@ -8,20 +8,24 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import screens.Timer.TimerMainGUI;
+import screens.ViewCalendar.ViewCalendarMainFrame;
 
 // GUI layer
 
 public class WelcomeScreen extends JFrame implements ActionListener {
 
     TaskListScreen taskListScreen;
+    ViewCalendarMainFrame viewCalendarMainFrame;
 
     /**
      * The main welcome window of the application, acts like a home screen
      */
     public WelcomeScreen(
-            TaskListScreen taskListScreen
+            TaskListScreen taskListScreen,
+            ViewCalendarMainFrame viewCalendarMainFrame
     ) {
         this.taskListScreen = taskListScreen;
+        this.viewCalendarMainFrame = viewCalendarMainFrame;
 
         JLabel title = new JLabel("Welcome Potato Sloths!");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -37,6 +41,8 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 
         timer.addActionListener(this::actionPerformedTimer);
 
+        viewSchedule.addActionListener(this::actionPerformedViewCalendar);
+
         viewTasks.addActionListener(this::actionPerformedTaskList);
 
         JPanel main = new JPanel();
@@ -46,6 +52,10 @@ public class WelcomeScreen extends JFrame implements ActionListener {
         main.add(buttons);
         this.setContentPane(main);
         this.pack();
+    }
+
+    public void actionPerformedViewCalendar(ActionEvent evt){
+        viewCalendarMainFrame.runViewCalendarUseCase();
     }
 
     /**
