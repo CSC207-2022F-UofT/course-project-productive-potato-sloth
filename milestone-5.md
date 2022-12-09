@@ -88,7 +88,7 @@ The TimerInputBoundary Interface and Presenter Interface exist to invert depende
 I think this code review by me helped the team keep our main class clean and small, avoiding the large class code smell. 
 I thought it was better to have separate classes and methods that setup the screens for particular features, and then 
 have the welcome screen call these classes and methods. The main method of Main 
-class then just has to setup the welcome screen. This allowed us all to work on our separate classes and connect them in the end 
+class then just has to set up the welcome screen. This allowed us all to work on our separate classes and connect them in the end 
 instead of everyone adding their work to one Main class, which could have been messy.
 
 ## Steven Jiang (1StevenJiang1)
