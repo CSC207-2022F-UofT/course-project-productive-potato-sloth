@@ -27,12 +27,19 @@ public class TotCalculator extends Calculator{
         for (Event event : events) {
             CalculateLocalDateTime c = new CalculateLocalDateTime(event.getStartTime(), event.getEndTime());
             int diff = 0;
-            diff = diff + c.day_diff();
-            acc += diff;
+            diff = diff + c.hour_diff();
+            acc = acc + diff;
         }
         return acc;
     }
 
+    /**
+     * We use a naive implementation here. The total time a user had been focused on certain events
+     * are calculated by the dividing the raw time the person books for himself by the number of events he booked
+     * @param user for which user we need to output the rawTime
+     * @param unit the unit of time (Day/Week/Month/Year)
+     * @return the total focused time
+     */
     public int focusedTime(User user, String unit){
         TotCalculator t = new TotCalculator();
         int raw = t.rawTime(user, unit);

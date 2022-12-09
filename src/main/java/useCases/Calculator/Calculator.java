@@ -55,6 +55,7 @@ abstract class Calculator {
             if ((unit.equals("Day")) && (conv.Within_x_Days(1))){
                 acc.add(event);
             }
+
         }
         return acc;
     }

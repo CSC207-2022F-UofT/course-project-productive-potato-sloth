@@ -86,9 +86,8 @@ public class TimeConverter {
             return false;
         }
     }
-    /**
-     * @param today the localdatetime of today
-     * @param otherday the localdatetime of the other day to which we compare
+    /** This one takes no parameter because everything are predetermined. It will always gather events that
+     * happened one week from today.
      * @return whether the other day is within x months from today
      * This is a special case of Within_x_Days, this counts 7 days.
      */
