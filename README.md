@@ -20,7 +20,7 @@ A Java application created for the CSC207 Final Project
 
 6. Task Statistics 
 
-7. Settings
+7. Login and Creating an Account (Chhavi Shah, ConverseScholar)
 
 
 ## Getting Started
