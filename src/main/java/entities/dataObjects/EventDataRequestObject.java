@@ -5,7 +5,7 @@ import java.util.List;
 
 public class EventDataRequestObject extends EventDataObject {
 
-    // ˀonly stores the tag names instead of TagDataObject(s).
+    // only stores the tag names instead of TagDataObject(s).
 
     List<String> selectedTagNames;
 

@@ -5,22 +5,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User implements Serializable {
+    static final long serialVersionUID = -7885536364676166522L;
     String username;
     String password;
     List<Tag> tags;
     List<Event> events;
     List<Task> tasks;
     List<Timer> timers;
-//    List<Invitation> incomingInvitations;
-//    List<Invitation> outgoingInvitations;
+    List<Invitation> incomingInvitations;
+    List<Invitation> outgoingInvitations;
 
-    /**
-     * Stores whether the Calendar shows weekends (1) or not (0)
-     */
-    boolean calendarView;
 
     /**
      * Initiaties a new User
+     * @param username the username of the new User
+     * @param password the password of the new User
      */
     public User(String username, String password){
         this.username = username;
@@ -29,8 +28,8 @@ public class User implements Serializable {
         this.events = new ArrayList<Event>();
         this.tasks = new ArrayList<Task>();
         this.timers = new ArrayList<Timer>();
-//        this.incomingInvitations = new ArrayList<Invitation>();
-//        this.outgoingInvitations = new ArrayList<Invitiation>();
+        this.incomingInvitations = new ArrayList<Invitation>();
+        this.outgoingInvitations = new ArrayList<Invitation>();
     }
 
     /**
@@ -43,8 +42,8 @@ public class User implements Serializable {
         this.events = new ArrayList<Event>();
         this.tasks = new ArrayList<Task>();
         this.timers = new ArrayList<Timer>();
-//        this.incomingInvitations = new ArrayList<Invitation>();
-//        this.outgoingInvitations = new ArrayList<Invitiation>();
+        this.incomingInvitations = new ArrayList<Invitation>();
+        this.outgoingInvitations = new ArrayList<Invitation>();
     }
 
     /**
@@ -72,14 +71,6 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    /**
-     * Checks whether the password inputted is the same as that of the User
-     * @param user The user corresponding to the username inputted
-     * @return whether the password inputted is that of user
-     */
-    public boolean checkCredential(User user) {
-        return this.password.equals(user.password);
-    }
 
     public String getPassword() {return this.password;}
 
@@ -210,52 +201,51 @@ public class User implements Serializable {
      * Adds an invitation to this User's outgoingInvitations
      * @param invitation The new invitation to add
      */
-//    public void addOutgoingInvitation(Invitation invitation) {
-//        this.outgoingInvitations.add(invitation);
-//    }
+    public void addOutgoingInvitation(Invitation invitation) {
+        this.outgoingInvitations.add(invitation);
+    }
 
     /**
      * Removes an invitation from this User's outgoingInvitations
      * @param invitation The new invitation to remove
      */
-//    public void removeOutgoingInvitation(Invitation invitation) {
-//        this.outgoingInvitations.remove(invitation);
-//    }
+    public void removeOutgoingInvitation(Invitation invitation) {
+        this.outgoingInvitations.remove(invitation);
+    }
 
     /**
      * Gets the list of outgoingInvitations associated with this User
      *
      * @return outgoingInvitations A list of outgoingInvitations associated with this User
      */
- //   public List<Invitation> getOutgoingInvitations() {
- //       return this.outgoingInvitations;
- //   }
+    public List<Invitation> getOutgoingInvitations() {
+        return this.outgoingInvitations;
+    }
 
     /**
      * Adds an invitation to this User's incomingInvitations
      * @param invitation The new invitation to add
      */
-//    public void addIncomingInvitation(Invitation invitation) {
-//        this.incomingInvitations.add(invitation);
-//    }
+    public void addIncomingInvitation(Invitation invitation) {
+        this.incomingInvitations.add(invitation);
+    }
 
     /**
      * Removes an invitation from this User's incomingInvitations
      * @param invitation The new invitation to remove
      */
-//    public void removeIncomingInvitation(Invitation invitation) {
-//        this.incomingInvitations.remove(invitation);
-//    }
+    public void removeIncomingInvitation(Invitation invitation) {
+        this.incomingInvitations.remove(invitation);
+    }
 
     /**
      * Gets the list of incomingInvitations associated with this User
      *
      * @return incomingInvitations A list of incomingInvitations associated with this User
      */
-//    public List<Invitation> getIncomingInvitations() {
-//        return this.incomingInvitations;
-//    }
+    public List<Invitation> getIncomingInvitations() {
+        return this.incomingInvitations;
+    }
 
-    public void setCalendarView(boolean calendarView) {this.calendarView = calendarView;}
 
 }

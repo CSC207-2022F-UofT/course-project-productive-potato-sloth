@@ -26,12 +26,12 @@ public class UserDatabaseGateway extends DatabaseGateway implements UserDataAcce
     @Override
     public User get(String username) {
         // Returns a user with the given username, if it exists.
-        for (User user: userList) {
-            if(user.getUsername().equals(username)){
+        for (User user : userList) {
+            if (user.getUsername().equals(username)) {
                 return user; // the user was found
             }
         }
-        return null; // the user was not found
+            return null; // the user was not found
     }
 
     @Override
@@ -42,6 +42,7 @@ public class UserDatabaseGateway extends DatabaseGateway implements UserDataAcce
     @Override
     public void insert(User user) {
         userList.add(user);
+        persistData();
     }
 
     @Override
@@ -71,29 +72,31 @@ public class UserDatabaseGateway extends DatabaseGateway implements UserDataAcce
         return this.userList.remove(user);
     }
 
-    public List<User> loadFromFile(){
-        try{
+    public List<User> loadFromFile() {
+        try {
             List<User> usersRead = new ArrayList<>();
 
             FileInputStream inputStream = new FileInputStream(this.absoluteFilepath);
 
-            if(inputStream.available() == 0){
+            if (inputStream.available() == 0) {
                 return usersRead;
             }
 
             ObjectInputStream objectIn = new ObjectInputStream(inputStream);
 
             boolean cont = true;
-            while(cont){
-                try{
+            while (cont) {
+                try {
                     User user = (User) objectIn.readObject();
-                    if(user != null){
+                    if (user != null) {
                         usersRead.add(user);
-                    }else{
+                    } else {
                         cont = false;
                     }
-                } catch(EOFException e){
+                } catch (EOFException e) {
                     cont = false;
+                    objectIn.close();
+                    inputStream.close();
                 }
             }
 
@@ -101,17 +104,17 @@ public class UserDatabaseGateway extends DatabaseGateway implements UserDataAcce
             inputStream.close();
             return usersRead;
 
-        } catch(Exception ex){
+        } catch (Exception ex) {
             throw new RuntimeException(ex);
         }
     }
 
-    public boolean saveToFile(){
-        try{
+    public boolean saveToFile() {
+        try {
             FileOutputStream fileOutputStream = new FileOutputStream(this.absoluteFilepath);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
 
-            for(User user: this.userList){
+            for (User user : this.userList) {
                 objectOutputStream.writeObject(user);
             }
 
@@ -123,7 +126,7 @@ public class UserDatabaseGateway extends DatabaseGateway implements UserDataAcce
         }
     }
 
-    public void deleteAll(){
+    public void deleteAll() {
         this.userList = new ArrayList<>();
     }
 

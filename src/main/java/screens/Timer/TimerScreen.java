@@ -103,7 +103,6 @@ public class TimerScreen extends JPanel implements ActionListener {
 
     }
 
-
     /**
      * Action Listener associated with the Pause Button.
      * When user presses the pause button, it calls stop method of java swing timer that halts the countdown.
