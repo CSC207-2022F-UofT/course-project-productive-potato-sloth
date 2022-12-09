@@ -100,6 +100,8 @@ For some design choices I made:
 
 Tests: 
 
+> My tests are located in my [branch](https://github.com/CSC207-2022F-UofT/course-project-productive-potato-sloth/tree/1-feature-1-task-list/src/test/java)
+> 
 > I've added many extensive tests to my use cases and controllers. 
 > 
 > I've made effective use of the @ParamaterizedTest feature, ensuring that I test every edge case of string, including multiple characters, one character, and the empty string
