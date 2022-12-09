@@ -58,7 +58,7 @@ public class DefaultTestCode {
     }
 
     public static void main(String[] args) throws IOException {
-//        resetDatabaseWithDefaultUser("database/UserFile1.ser");
+        resetDatabaseWithDefaultUser("database/ScheduleEventDemoUserFile.ser");
     }
 
 }
