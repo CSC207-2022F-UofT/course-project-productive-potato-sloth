@@ -50,6 +50,8 @@ https://github.com/CSC207-2022F-UofT/course-project-productive-potato-sloth.git
 
 ### The tag list screen
 <img src="https://user-images.githubusercontent.com/82430669/206600686-729ceb59-dc5b-409e-bd9b-72421b5061fa.png" width=25% height=25%>
+### the ChatRoom screen
+![Screenshot (559)](https://user-images.githubusercontent.com/113304165/206635355-a03068c0-7066-45c9-bbf3-5a4787c3dd32.png)
 
 
 ## Roadmap
@@ -139,6 +141,15 @@ Design patterns:
     > 
     > This separates the cause and the effect of the change, and additionally follows clean architecture as creating a new info screen requires simply subscribing it to the subject
 
+### Dawei He (Dawei-He2002)
+Roadmap:
+> Originally, I had wanted to implement an editing message feature that would allow users to edit messages they sent to the view. This turned out to be not implemented because of time constraints. However, given some free time later I can easily add the requirred controllers, presenters, usecases and UI elements since it would require very little modification of existing code.
+Tests:
+> I have comprehensive tests for all classes except for the View and initialization methods. The View and initialization are not tested because they can be "tested" and debugged by running the local main (ChatRoomDemo) method and using the debugger to fix any errors.
+Design choices:
+> I have rigorously adhered to the Dependency Inversion Principle throughout the entirety of my project. I did not feel the need to implement any design patterns because of the relative simplicity and lack of complex inheritance hierarchies inside my feature. However, I did adhere to SOLID principles whenever possible.
+> In the initization controller class, I created an InputBoundary with the controller. Although this is a potential breach of Clean Architecture practices, there was no other way to initialize the ChatRoom without any initialized classes. Since a CHatRoom cannot be initialized without at least one Task and one User, it cannot be initialized directly on Main like many of the other screens, so I have to rely on Leon's Task view initializing my screen.
+
 ### Chhavi Shah (ConverseScholar)
 Roadmap:
 > From the Login screen, I wanted to allow the User to go to the Create Account page so create an account that then redirects them back to the login page once the account is created. 
@@ -150,7 +161,7 @@ Tests:
 > I have ran tests for my two use cases of Login and CreateAccount which ensure that both work as required. 
 
 
-Design Patters:
+Design Patterns:
 > I haven't really used any design patterns as the code I needed to implement was rather straight-forward and I thought that using a design pattern would complicate the simplicity of the implementation. There is of course scope to use a design pattern for what I've implemented (like Factory for User).
 
 
