@@ -1,4 +1,4 @@
-package usecases;
+package useCases;
 
 import entities.User;
 import gateways.UserDataAccessInterface;
