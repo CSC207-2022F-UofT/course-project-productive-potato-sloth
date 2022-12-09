@@ -37,6 +37,8 @@ I have tests for the User entity and Login and CreateAccount interactors that wo
 I understand that in my other commits / pull requests, I had a lot of commenting / uncommenting of code in the User entity as I waited for others to finish their implementations that User depended on. As all other entities were implemented and pulled to main by the time of my pull request, this is resolved and the final implementation of the User entity is there. 
 I haven't really used any design patterns as the code I needed to implement was rather straight-forward and I thought that using a design pattern would complicate the simplicity of the implementation. There is of course scope to use a design pattern for what I've implemented (like Factory for User). 
 
+Also, my initial use case plan was to have a settings page too from which Users could change their Calendar view and password, which I was unable to implement right now so it is something to do at a later stage. 
+
 
 [Pull Request 2](https://github.com/CSC207-2022F-UofT/course-project-productive-potato-sloth/pull/24) - Code Review <br />
 Despite this being the same review I talked about in milestone 4, I still think this was my best review contribution. I brought up points that I think helped Paridhi with her implementation and how it would contribute wholly to our project - such as ensuring we were all being uniform in how we set up our implementations so that the code is more clean. 
