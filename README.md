@@ -38,7 +38,16 @@ You will need an IDE which supports Java
 https://github.com/CSC207-2022F-UofT/course-project-productive-potato-sloth.git
 ```
 
-2. Run the Main file located at the program root
+2. Install the lgooddatetime picker library:
+
+   - Open `File -> Project Structure`.
+   - Open `Libraries`.
+   - Click the `+` button on the top left, and click `From Maven`.
+   - In the text box, type the beginning of the phrase`com.github.lgooddatepicke`, click search, and select the latest version.
+   - Check the box on the left of `Download to: <dir>`
+   - Click OK, and then Apply.
+
+3. Run the Main file located at the program root
 
 ## Usage
 
@@ -151,6 +160,37 @@ Design patterns:
     > Any potential sources of change to the view model implement subject, which the observers will reflect.
     > 
     > This separates the cause and the effect of the change, and additionally follows clean architecture as creating a new info screen requires simply subscribing it to the subject
+
+### Vishnu Nittoor (nitvishn)
+
+Some design choices:
+
+> I decided to use pure data classes EventDataResponseObject and EventDataRequestObject to use to pass information up and down the clean architecture. I found myself writing the same fields over and over again in the request and response models of my two use cases, which was a code smell. I believe that this fixes the code smell, and allows for greater modularity in the information contained in events.
+> 
+> I decided also to have classes ViewCalendarMainFrame and ScheduleEventMainFrame that are given gateways and the current user service and know how to create screens and run them. This makes embedding my use case into the Main method much, much easier -- note that this takes two lines of code rather than several. My teammates agree that this is a design decision that might be worth making homogenous across the code for the project.
+
+Tests:
+
+> My tests are located in [here.](https://github.com/CSC207-2022F-UofT/course-project-productive-potato-sloth/tree/2-feature-2-interactive-scheduler/src/test/java).
+> I've tested every success and failure case of the ScheduleEventInteractor. I've also tested the 
+> creation of EventDataResponseObjects from Events. A critical folder that needs to exist is `data_files` in the same
+> folder as `java` in the parent folder `test`. The gateway created in the interactor tests opens this file.
+
+Design Patterns:
+
+1. Observer:
+> The observer pattern is used twice across my ViewCalendar and ScheduleEvent use cases, once to allow the ViewCalendarScreen to observe the ViewModel and allow itself to re-render when it changes, and another time to allow the ViewCalendarScreen to observe the ScheduleEvent use case and entirely call its use case method again to fetch all the events again, and then re-render.
+> 
+> It is seen from this that there are two different update behaviours. I recognize that this could be a code smell and have detailed how to fix this in the future in Roadmap below.
+
+Roadmap:
+
+> I would have loved to have a real calendar interface instead of printing blocks that contain the information for each event. Further, Derek raised the fact that using two Observer interfaces is kind of superfluous, and I'd like to look for ways to have just one interface and get around the problem described in design patterns above. 
+> 
+> One solution is to change the Observer interface to use the Strategy design pattern to allow for multiple update methods. This seems like a clean way to solve the problem.
+> 
+> Further features to add are more fields for scheduling events, such as repeating events, optional tasks, and network integration with Google Calendar. 
+> 
 
 ### Dawei He (Dawei-He2002)
 Roadmap:
