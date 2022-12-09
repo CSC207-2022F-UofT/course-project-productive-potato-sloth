@@ -168,7 +168,17 @@ Tests:
 Design Patterns:
 > I haven't really used any design patterns as the code I needed to implement was rather straight-forward and I thought that using a design pattern would complicate the simplicity of the implementation. There is of course scope to use a design pattern for what I've implemented (like Factory for User).
 
+### Khai Nguyen (kldtntg)
+1. *Please run the class InvitationMainScreen to see the demonstration of the invitation management system*
+Clean architectures are used extensively across the programs, where concrete classes (such as controllers and interactors) depend on abstractions instead of one another. SOLID principles are also utilized to make the code clean and readable.
 
+Dependency injection is used throughout the program to help eliminate hard dependency across layers/ entities. An example would be the gateways being initialize in Main and passed to the screens to avoid hard dependencies. 
+
+2. The entity objects are tested thoroughly.
+
+The use cases are tested by checking whether the interactors result in appropriate changes to the entities. The output data sent to the presenters by the interactors are also tested to see if they are expected.
+
+3.Design patterns are not used in my implementation of the feature, but they will be utilized moving forward to write a cleaner/ more maintaiable code base. An example would be the observer pattern being used to update the accept/declineInvitation screen with tasks corresponding a sender as soon as that sender is chosen. 
 ## Licence
 This project is under the MIT Licence
 
