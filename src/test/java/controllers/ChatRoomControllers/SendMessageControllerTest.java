@@ -8,8 +8,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 import services.CurrentUserService;
-import usecases.ChatRoom.ChatRoomInteractor;
-import usecases.ChatRoom.ChatRoomInteractorInterface;
+import useCases.ChatRoom.ChatRoomInteractor;
+import useCases.ChatRoom.ChatRoomInteractorInterface;
 
 import java.util.List;
 

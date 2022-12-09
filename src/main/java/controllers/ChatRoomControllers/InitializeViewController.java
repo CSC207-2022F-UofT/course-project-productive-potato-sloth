@@ -3,7 +3,7 @@ import entities.ChatRoom;
 import entities.Task;
 import services.CurrentUserService;
 import entities.User;
-import usecases.ChatRoom.ChatRoomInteractor;
+import useCases.ChatRoom.ChatRoomInteractor;
 
 /**
  * This class is intended to begin the initialization process of the ChatRoom-interactor-UI system

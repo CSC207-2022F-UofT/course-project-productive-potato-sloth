@@ -3,7 +3,7 @@ package controllers.ChatRoomControllers;
 import java.util.List;
 
 import UI.MainUI;
-import usecases.responseModels.MessageResponseModel;
+import useCases.responseModels.MessageResponseModel;
 
 public interface UpdateViewPresenterInterface {
     public List<MessageResponseModel> updateView(List<MessageResponseModel> models);

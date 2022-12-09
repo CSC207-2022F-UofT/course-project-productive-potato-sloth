@@ -6,9 +6,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import usecases.ChatRoom.ChatRoomInteractor;
-import usecases.ChatRoom.ChatRoomInteractorInterface;
-import usecases.responseModels.MessageResponseModel;
+import useCases.ChatRoom.ChatRoomInteractor;
+import useCases.ChatRoom.ChatRoomInteractorInterface;
+import useCases.responseModels.MessageResponseModel;
 
 import java.util.ArrayList;
 import java.util.List;

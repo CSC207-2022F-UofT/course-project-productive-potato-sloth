@@ -1,6 +1,6 @@
 package controllers.ChatRoomControllers;
 
-import usecases.ChatRoom.ChatRoomInteractorInterface;
+import useCases.ChatRoom.ChatRoomInteractorInterface;
 
 /**
  * The only  purpose of this controller class is to call the interactor and pass along the message String.

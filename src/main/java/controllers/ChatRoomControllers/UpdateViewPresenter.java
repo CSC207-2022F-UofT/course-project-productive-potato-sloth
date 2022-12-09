@@ -1,7 +1,7 @@
 package controllers.ChatRoomControllers;
 
 import java.util.List;
-import usecases.responseModels.MessageResponseModel;
+import useCases.responseModels.MessageResponseModel;
 import UI.MainUI;
 
 /**
