@@ -55,7 +55,7 @@ class TimerInteractorTest {
 //        UserRegisterInputBoundary interactor = new UserRegisterInteractor(
 //                userRepository, presenter, timerFactory);
 //
-//        // 2) Input data — we can make this up for the test. Normally it would
+//        // 2) Input data - we can make this up for the test. Normally it would
 //        // be created by the Controller.
 //        Duration inputDuration = Duration.ofSeconds(60);
 //        TimerInputData inputData = new TimerInputData(inputDuration);

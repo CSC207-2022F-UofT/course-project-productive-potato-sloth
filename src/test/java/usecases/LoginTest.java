@@ -51,7 +51,7 @@ public class LoginTest {
             }
         };
 
-        // Input data — we can make this up for the test. Normally it would be created by the Controller.
+        // Input data: we can make this up for the test. Normally it would be created by the Controller.
         LoginRequestModel inputData = new LoginRequestModel("group91", "softwaredesign");
 
         // Run the use case

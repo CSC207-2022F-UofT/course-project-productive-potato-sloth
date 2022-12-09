@@ -47,7 +47,7 @@ public class CreateAccountTest {
             }
         };
 
-        // Input data — we can make this up for the test. Normally it would be created by the Controller.
+        // Input data: we can make this up for the test. Normally it would be created by the Controller.
         CreateAccountRequestModel inputData = new CreateAccountRequestModel("group91", "softwaredesign");
 
         // Run the use case
