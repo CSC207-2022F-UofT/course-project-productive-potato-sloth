@@ -14,7 +14,7 @@ public class ScheduleEventRequestModel {
                                      LocalDateTime end_time,
                                      String selectedTaskName,
                                      List<String> selectedTagNames
-                                  ) {
+    ) {
         eventDataObject = new EventDataRequestObject(eventName, start_time, end_time, selectedTaskName, selectedTagNames);
     }
 

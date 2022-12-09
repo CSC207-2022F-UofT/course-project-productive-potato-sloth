@@ -1,7 +1,6 @@
 package useCases.Calculator;
 
 import entities.Event;
-import entities.Task;
 import entities.User;
 import useCases.Calculator.helper.TimeConverter;
 
@@ -22,7 +21,7 @@ abstract class Calculator {
      * Precondition: unit must be "Month"/"Week"/"Day". Other strings are not considered as valid units.
      * This private method is created to ensure that all calculators read inputs in the exact same way.
      */
-     protected int unit_reader(String unit) {
+     public int unit_reader(String unit) {
          if (Objects.equals(unit, "Month")) {
              return MONTH;
          } else if (Objects.equals(unit, "day")) {
@@ -38,7 +37,7 @@ abstract class Calculator {
      * @param unit the time interval of interest
      * @return a list of events stored in user that is unit amount of time away from today.
      */
-    protected List<Event> gather_events(User user, String unit){
+    public List<Event> gather_events(User user, String unit){
         LocalDateTime today = LocalDateTime.now();
         List<Event> events = user.getEvents();
         int interval = this.unit_reader(unit);
@@ -59,50 +58,4 @@ abstract class Calculator {
         }
         return acc;
     }
-
-    /**
-     * Return the total amount of time the user had scheduled during the given time interval
-     * @param user for which user we need to output the rawTime
-     * @param unit the unit of time (Day/Week/Month/Year)
-     *
-     */
-    abstract int rawTime(User user, String unit);
-    // SOMETHING SUPER IMPORTANT!!!
-    //make sure to have a controller that could translate things like Day/Week/Month/Year to the actual arguments
-    // passed to usecases
-    /**
-     * Return then total amount of time the user had been focused during the given time interval
-     * @param user for which user we need to output the rawTime
-     * @param unit the unit of time (Day/Week/Month/Year)
-     *
-     */
-    abstract int focusedTime(User user, String unit);
-
-    /**
-     * Return the number of events marked as completed during the given time interval
-     * @param user for which user we need to output the rawTime
-     * @param unit the unit of time (Day/Week/Month/Year)
-     *
-     */
-    abstract int numberOfCompletion(User user, String unit);
-
-    /**
-     * Return a list of events that are marked as completed during the given time interval
-     * @param user for which user we need to output the rawTime
-     * @param unit the unit of time (Day/Week/Month/Year)
-     *
-     */
-    abstract ArrayList<Task> eventsCompletion(User user, String unit);
-    // make this a public method later.
-
-    // abstract double pauseTime(User user, String unit);
-
-
-
-
-
-
-
-
-
 }

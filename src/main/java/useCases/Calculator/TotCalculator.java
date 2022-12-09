@@ -1,6 +1,7 @@
 package useCases.Calculator;
 
 import entities.Event;
+import entities.Tag;
 import entities.Task;
 import entities.User;
 import useCases.Calculator.helper.CalculateLocalDateTime;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class TotCalculator extends Calculator{
+public class TotCalculator extends Calculator implements CalcByTag{
     public TotCalculator(){}
 
     /**
@@ -72,7 +73,7 @@ public class TotCalculator extends Calculator{
      * @param unit the unit of time (Day/Week/Month/Year)
      *
      */
-    public ArrayList<Task> eventsCompletion(User user, String unit){
+    public ArrayList<Task> taskCompletion(User user, String unit){
         List<Event> events = super.gather_events(user, unit);
         ArrayList<Task> lst = new ArrayList<Task>();
         for (Event event: events){
@@ -84,4 +85,29 @@ public class TotCalculator extends Calculator{
         return lst;
 
 
-    }}
+    }
+    public int rawTimeByTag(User user, String unit, Tag tag){
+        List<Event> events = super.gather_events(user, unit);
+        int acc = 0;
+        for (Event event : events) {
+            CalculateLocalDateTime c = new CalculateLocalDateTime(event.getStartTime(), event.getEndTime());
+            int diff = 0;
+            if (event.getTags() == tag){
+                diff = diff + c.hour_diff();
+                acc = acc + diff;
+            }
+        }
+        return acc;
+    }
+    public int completionByTag(User user, String unit, Tag tag){
+        List<Event> events = super.gather_events(user, unit);
+        int acc = 0;
+        for (Event event: events){
+            Task task = event.getTask();
+            if ((task.getCompleted()) && (event.getTags() == tag)){
+                acc += 1;
+            }
+        }
+        return acc;
+    }
+}
