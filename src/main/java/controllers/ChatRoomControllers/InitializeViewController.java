@@ -4,6 +4,7 @@ import entities.Task;
 import services.CurrentUserService;
 import entities.User;
 import useCases.ChatRoom.ChatRoomInteractor;
+import useCases.ChatRoom.ChatRoomInteractorInterface;
 
 /**
  * This class is intended to begin the initialization process of the ChatRoom-interactor-UI system
@@ -28,7 +29,7 @@ public class InitializeViewController {
         }
         ChatRoom room = current_task.getChatRoom();
         //call interactor with current task's chatRoom; I wrote a new method within Task to do this.
-        ChatRoomInteractor interactor = new ChatRoomInteractor(room);
+        ChatRoomInteractorInterface interactor = new ChatRoomInteractor(room);
         interactor.setService(service);
         interactor.initializeView();
         //then, call the initializeView method of the interactor, which initializes all the presenters.
