@@ -163,6 +163,10 @@ Design patterns:
 
 ### Vishnu Nittoor (nitvishn)
 
+Note about errors:
+
+> There seem to some errors in the autograding procedure. This is due to java Serialization not playing nicely with GitHub. Please ignore these errors <3 
+
 Some design choices:
 
 > I decided to use pure data classes EventDataResponseObject and EventDataRequestObject to use to pass information up and down the clean architecture. I found myself writing the same fields over and over again in the request and response models of my two use cases, which was a code smell. I believe that this fixes the code smell, and allows for greater modularity in the information contained in events.
