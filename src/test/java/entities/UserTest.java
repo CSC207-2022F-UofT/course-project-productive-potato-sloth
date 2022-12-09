@@ -12,6 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.time.Duration;
 
+/**
+ * A class which tests the User entity
+ */
 public class UserTest {
     User user = new User("group91", "softwaredesign");
     User user2 = new User();
@@ -22,6 +25,9 @@ public class UserTest {
     List<Invitation> user_incomingInvitations = new ArrayList<Invitation>();
     List<Invitation> user_outgoingInvitations = new ArrayList<Invitation>();
 
+    /**
+     * Tests to test the User constructor (given a username and password)
+     */
     @Test
     public void testUserConstructorWithParameters(){
         assertEquals("group91", user.getUsername());
@@ -34,6 +40,9 @@ public class UserTest {
         assertTrue(user.getOutgoingInvitations().isEmpty());
     }
 
+    /**
+     * Tests to test the User constructor (without username and password)
+     */
     @Test
     public void testUserConstructorWithoutParameters(){
         assertEquals("", user2.getUsername());
@@ -46,6 +55,9 @@ public class UserTest {
         assertTrue(user2.getOutgoingInvitations().isEmpty());
     }
 
+    /**
+     * Tests to test the User setters
+     */
     @Test
     public void testUserSetters() {
         user.setUsername("Productive Potato Sloth");
@@ -55,6 +67,9 @@ public class UserTest {
 
     }
 
+    /**
+     * Tests to test the User add-methods, remove-methods, and getters
+     */
     @Test
     public void testUserAddersAndRemoversAndGetters() {
         Tag tag = new Tag("csc207", Color.BLACK);
