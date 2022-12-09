@@ -58,7 +58,7 @@ This pull request consisted of my complete implemention of the User entity, crea
 
 My code runs (as seen in the demo too). The User class implements Serializable. The UI works. 
 
-For screens, I would like to have implemented the code such that the User is able to Create an Account from the Login Screen (there is a button for it), but I was not able to implement that yet so that is there to implement at a later stage. For now, we have a Welcome Screen that allows Users to edit Tasks, schedule Events, etc, and Login and Create an Account. This of course is not ideal as we would like the User to see and interact with the Welcome Screen after logging in (so after they've created an account too). For now, this is the implementation that's been implementated for simplicity. 
+For screens, I would like to have implemented the code such that the User is able to Create an Account from the Login Screen (there is a button for it), but I was not able to implement that yet so that is there to implement at a later stage. For now, we have a Welcome Screen that allows Users to edit Tasks, schedule Events, etc, and Login and Create an Account. This of course is not ideal as we would like the User to see and interact with the Welcome Screen after logging in (so after they've created an account too). For now, this is the implementation that's been implementated for simplicity. Another thing I would like to implement is a log out function to allow a new User to log into the application.
 
 I admit that this was a rather big PR (almost 50 files), but a lot of it was other people's code that I pulled from the main branch. 
 
