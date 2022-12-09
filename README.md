@@ -21,6 +21,7 @@ A Java application created for the CSC207 Final Project
 6. Task Statistics 
 
 7. Login and Creating an Account (Chhavi Shah, ConverseScholar)
+> The user is able to create a new account and 
 
 
 ## Getting Started
