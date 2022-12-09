@@ -66,13 +66,30 @@ Also, my initial use case plan was to have a settings page too from which Users 
 [Pull Request 2](https://github.com/CSC207-2022F-UofT/course-project-productive-potato-sloth/pull/24) - Code Review <br />
 Despite this being the same review I talked about in milestone 4, I still think this was my best review contribution. I brought up points that I think helped Paridhi with her implementation and how it would contribute wholly to our project - such as ensuring we were all being uniform in how we set up our implementations so that the code is more clean. 
 
-## Paridhi Goel (Paridhi)
+## Paridhi Goel (paridhi26)
 
-[Pull Request]() 
+[Pull Request](https://github.com/CSC207-2022F-UofT/course-project-productive-potato-sloth/pull/39) - Code Review <br />
 
+This pull request includes a large proportion of the code contribution made by me to get the Timer feature running.
+Although, I made more pull requests after this to refactor code, add further enhancements and tests, the code in this pull request forms the major
+body of the Timer feature. The title of the pull request is "Timer UI layer and controller" because I initially only intended 
+to merge the screens and controller layer with this PR. I previously made separate PRs for useCase layer, entity layer, Main and Welcome Screen. 
+However, someone pushed to the main branch deleting all my work that existed on the main branch. Therefore, I had to recommit my entities, usecases etc. 
 
-[Code Review]() 
+The code follows clean architecture and SOLID Design principles.
 
+I added the timer factory design pattern because that would allow easy extension of this application because in the future if we decide to add different 
+types of timers that store different kinds of data. For example, workout timer, study timer, cooking. 
+
+The TimerInputBoundary Interface and Presenter Interface exist to invert dependencies between controller and use case layer.   
+
+[Code Review](https://github.com/CSC207-2022F-UofT/course-project-productive-potato-sloth/pull/31) - Code Review <br />
+
+I think this code review by me helped the team keep our main class clean and small, avoiding the large class code smell. 
+I thought it was better to have separate classes and methods that setup the screens for particular features, and then 
+have the welcome screen call these classes and methods. The main method of Main 
+class then just has to setup the welcome screen. This allowed us all to work on our separate classes and connect them in the end 
+instead of everyone adding their work to one Main class, which could have been messy.
 
 ## Steven Jiang (1StevenJiang1)
 
