@@ -31,10 +31,16 @@ My code review consisted of general comments, like documentation, and uses of as
 
 ## Vishnu Nittoor (nitvishn)
 
-[Pull Request 1]() - Implementation 
+[Pull Request 1](https://github.com/CSC207-2022F-UofT/course-project-productive-potato-sloth/pull/31) - Implementation 
+
+This was my most significant pull request. I finished the ScheduleEvent use case to completion in a fashion in which all components are connected to each other functionally and meaningfully. I created and added the UI elements, and created a test for scheduling an event.
+
+Major progress was made in terms of initializing an application with the ScheduleEventScreen, and great care was taken to ensure that this is done in a manner which is easily integrable into the main method that would be implemented in subsequent commits.  
 
 
-[Pull Request 2]() - Code Review
+[Pull Request 2]()https://github.com/CSC207-2022F-UofT/course-project-productive-potato-sloth/pull/15 - Code Review
+
+This was my code review of Leon's pull request. I commented in detail on changes made to the User, Tag, and UserDatabaseGateway classes. My comments were varied in nature -- for example, although there was a comment challenging Leon's use of a task factory, I defended it since I thought it was good design. There were a few inconsistencies including the built-in data structures such as ArrayList being made instance variables of classes, which are problems. I made 20 comments in total, being sure to observe very crucial details in the implementation.  
 
 ## Dawei He (Dawei-He2022)
 
