@@ -14,7 +14,11 @@ A Java application created for the CSC207 Final Project
 
 3. Collaborators Page
 
-4. Timer
+4. Timer (Paridhi Goel, paridhi26)
+
+>The user can press the start timer button on welcome screen to navigate to the Timer screen.
+>The user can then set a countdown timer of a duration of their choice.
+>The user can pause the timer in between to take breaks and can resume it by pressing start again.
  
 5. Interactive Event Scheduler
 
