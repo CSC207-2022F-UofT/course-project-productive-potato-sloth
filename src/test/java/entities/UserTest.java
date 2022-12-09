@@ -72,7 +72,8 @@ public class UserTest {
      */
     @Test
     public void testUserAddersAndRemoversAndGetters() {
-        Tag tag = new Tag("csc207", Color.BLACK);
+        User u = new User("test", "testing");
+        Tag tag = new Tag("csc207", Color.BLACK, u);
         user_tags.add(tag);
         List<Tag> tags = new ArrayList<>();
         tags.add(tag);

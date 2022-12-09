@@ -60,7 +60,7 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 
     private void actionPerformedCreateAccount(ActionEvent actionEvent) {
         try {
-            CreateAccountMain.main();
+            CreateAccountMain.main(null);
         } catch (IOException ignored) {}
     }
 

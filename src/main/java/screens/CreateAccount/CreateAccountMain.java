@@ -11,13 +11,13 @@ import java.awt.*;
 import java.io.IOException;
 
 public class CreateAccountMain {
-    public static void main() throws IOException {
+    public static void main(String[] args) throws IOException {
         JFrame application  =  new JFrame("Create Account");
         CardLayout cardLayout = new CardLayout();
         JPanel screens = new JPanel(cardLayout);
         application.add(screens);
 
-        UserDataAccessInterface gateway = new UserDatabaseGateway("database/UserFile1.ser");
+        UserDataAccessInterface gateway = new UserDatabaseGateway("testDatabase.ser");
 
         CreateAccountPresenter presenter = new CreateAccountResponseFormatter();
 

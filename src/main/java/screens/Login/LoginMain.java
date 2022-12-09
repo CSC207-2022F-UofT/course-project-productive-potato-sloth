@@ -19,7 +19,7 @@ public class LoginMain {
         JPanel screens = new JPanel(cardLayout);
         application.add(screens);
 
-        UserDataAccessInterface gateway = new UserDatabaseGateway("database/UserFile1.ser");
+        UserDataAccessInterface gateway = new UserDatabaseGateway("testDatabase.ser");
         CurrentUserService service = new CurrentUserService();
 
         LoginPresenter presenter = new LoginResponseFormatter();
