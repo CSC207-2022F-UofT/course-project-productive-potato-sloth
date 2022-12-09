@@ -7,13 +7,14 @@ A Java application created for the CSC207 Final Project
 #### Specifications and Features
 1. Task List and View (Leon Cai, chazzybearr)
 >The user has access to a list of tasks, where they can view details and edit tasks. 
+
 >The user can also create new and delete tasks
+
 >Users can also create Tags on a tag view screen, and add those tags to Tasks
 
 2. Text Chat Room
 
-3. Invitation Mangement System
-Users are able to send invitations to different users to collaborate on different tasks. Users can also accept and decline the invitations sent to them.
+3. Collaborators Page
 
 4. Timer (Paridhi Goel, paridhi26)
 
@@ -76,6 +77,7 @@ https://github.com/CSC207-2022F-UofT/course-project-productive-potato-sloth.git
 
 
 ## Roadmap
+Detailed in the [contributer specific notes](#contributer-specific-notes)
 
 ## Contributing
 Contributions are **greatly appreciated**! 
@@ -125,6 +127,8 @@ Tests:
 
 > My tests are located in my [branch](https://github.com/CSC207-2022F-UofT/course-project-productive-potato-sloth/tree/1-feature-1-task-list/src/test/java)
 > 
+> My code refactoring (removing unnessary class fields, instance variables, import organization) are also located in the above branch
+>
 > I've added many extensive tests to my use cases and controllers. 
 > 
 > I've made effective use of the @ParamaterizedTest feature, ensuring that I test every edge case of string, including multiple characters, one character, and the empty string
