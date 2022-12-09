@@ -51,9 +51,7 @@ public class MarkTaskCompleteness implements MarkTaskCompletenessInputBoundary {
                     null,
                     task.getCompleted(),
                     null,
-                    null,
-                    true,
-                    "Task completed!"
+                    null
             );
             return taskPresenter.prepareSuccessView(response);
 
@@ -66,9 +64,7 @@ public class MarkTaskCompleteness implements MarkTaskCompletenessInputBoundary {
                     null,
                     task.getCompleted(),
                     null,
-                    null,
-                    true,
-                    "Task incomplete!"
+                    null
             );
             return taskPresenter.prepareSuccessView(response);
         }

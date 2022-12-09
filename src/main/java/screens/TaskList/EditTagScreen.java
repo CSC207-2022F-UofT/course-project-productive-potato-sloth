@@ -2,15 +2,18 @@ package screens.TaskList;
 
 import controllers.Tags.EditTagNameController;
 import controllers.Tags.GetTagsController;
-import controllers.Tasks.*;
-import entities.Tag;
 import gateways.Tags.TagInfoResponseModel;
 import gateways.Tasks.TaskInfoResponseModel;
-import services.CurrentUserService;
-import useCases.Tags.GetTagsInputBoundary;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
+import java.awt.GridLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;

@@ -2,14 +2,10 @@ package screens.TaskList;
 
 import controllers.Tags.DeleteTagController;
 import controllers.Tags.GetTagsController;
-import controllers.Tasks.GetTaskInfoController;
-import controllers.Tasks.RemoveTagController;
-import controllers.Tasks.RemoveTaskController;
 import gateways.Tags.TagInfoResponseModel;
-import gateways.Tasks.TaskInfoResponseModel;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JOptionPane;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 

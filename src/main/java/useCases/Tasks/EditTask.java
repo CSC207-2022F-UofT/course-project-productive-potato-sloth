@@ -59,9 +59,7 @@ public class EditTask implements EditTaskInputBoundary {
                 null,
                 null,
                 null,
-                null,
-                true,
-                "Name changed successfully"
+                null
         );
         return taskPresenter.prepareSuccessView(response);
 
@@ -85,9 +83,7 @@ public class EditTask implements EditTaskInputBoundary {
                 task.getDescription(),
                 null,
                 null,
-                null,
-                true,
-                "Description changed successfully"
+                null
         );
         return taskPresenter.prepareSuccessView(response);
     }

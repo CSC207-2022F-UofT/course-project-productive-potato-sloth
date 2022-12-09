@@ -7,8 +7,8 @@ import java.awt.Color;
  */
 public class TagRequestModel {
 
+    private final String newName;
     private String name;
-    private String newName;
     private Color color;
 
     public TagRequestModel(String name, String newName, Color color) {

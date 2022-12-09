@@ -2,11 +2,19 @@ package screens.TaskList;
 
 import controllers.Tags.CreateTagController;
 import controllers.Tags.GetTagsController;
-import entities.User;
 import gateways.Tags.TagInfoResponseModel;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.BorderFactory;
+
+import javax.swing.JOptionPane;
+import java.awt.GridLayout;
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,7 +82,7 @@ public class NewTagScreen implements TagSubject {
             // Retrieves the name entered in the text field and creates the corresponding Task
             String name1 = nameField.getText();
             try {
-                createTagController.createTag(name1, Color.RED, new User());
+                createTagController.createTag(name1, Color.RED);
             } catch (TaskError taskError) {
                 JOptionPane.showMessageDialog(frame, taskError.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }

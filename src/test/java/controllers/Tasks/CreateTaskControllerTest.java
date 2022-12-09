@@ -11,14 +11,11 @@ import gateways.Tasks.TaskDatabaseGateway;
 import gateways.UserDatabaseGateway;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import presenters.TaskPresenter;
 import presenters.TaskResponseFormatter;
 import services.CurrentUserService;
-import useCases.Tasks.AddTag;
-import useCases.Tasks.AddTagInputBoundary;
 import useCases.Tasks.CreateTask;
 import useCases.Tasks.CreateTaskInputBoundary;
 
@@ -32,22 +29,20 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CreateTaskControllerTest {
 
+    static final User collaborator = new User("collaborator", "password");
+    static final User collaborator2 = new User("collaborator2", "password");
+    static final CurrentUserService currentUserService = new CurrentUserService();
+    static final TaskFactory taskFactory = new TaskFactory();
+    static final TaskPresenter taskPresenter = new TaskResponseFormatter();
     static File testFile;
-
     static User user = new User("user", "password");
+    static final Tag tag = new Tag("tag", Color.RED, user);
+    static final Tag tag2 = new Tag("tag2", Color.RED, user);
     static Task task = new Task("task", user);
-    static Tag tag = new Tag("tag", Color.RED, user);
-    static Tag tag2 = new Tag("tag2", Color.RED, user);
-
-    static User collaborator = new User("collaborator", "password");
-    static User collaborator2 = new User("collaborator2", "password");
     static UserDatabaseGateway userDatabaseGateway;
     static TaskDataAccessInterface taskDatabaseGateway;
     static TagDataAccessInterface tagDatabaseGateway;
     static CreateTaskInputBoundary inputBoundary;
-    static CurrentUserService currentUserService = new CurrentUserService();
-    static TaskFactory taskFactory = new TaskFactory();
-    static TaskPresenter taskPresenter = new TaskResponseFormatter();
 
     /**
      * To test the controller:
@@ -68,7 +63,6 @@ public class CreateTaskControllerTest {
 
         inputBoundary = new CreateTask(
                 taskDatabaseGateway,
-                userDatabaseGateway,
                 currentUserService,
                 taskFactory,
                 taskPresenter

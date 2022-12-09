@@ -48,8 +48,7 @@ public class DeleteTag implements DeleteTagInputBoundary {
             databaseGateway.delete(tag);
             TagResponseModel response = new TagResponseModel(
                     tagRequestModel.getName(),
-                    tagRequestModel.getColor(),
-                    true
+                    tagRequestModel.getColor()
             );
             return tagPresenter.prepareSuccessView(response);
         }

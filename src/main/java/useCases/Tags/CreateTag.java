@@ -6,7 +6,6 @@ import entities.User;
 import gateways.Tags.TagDataAccessInterface;
 import gateways.Tags.TagRequestModel;
 import gateways.Tags.TagResponseModel;
-import gateways.UserDatabaseGateway;
 import presenters.TagPresenter;
 import services.CurrentUserService;
 
@@ -27,11 +26,6 @@ public class CreateTag implements CreateTagInputBoundary {
     private final TagFactory tagFactory;
 
     /**
-     * The interface which allows access to the UserDatabase
-     */
-    private final UserDatabaseGateway userDatabaseGateway;
-
-    /**
      * The current user service
      */
     private final CurrentUserService currentUserService;
@@ -45,21 +39,18 @@ public class CreateTag implements CreateTagInputBoundary {
     /**
      * Creates an instance of CreateTag with the required fields
      *
-     * @param tagDatabaseGateway  Interface for accessing Tag
-     * @param userDatabaseGateway Interface for accessing Users
-     * @param tagFactory          Factory for creating Tasks
-     * @param tagPresenter        The presenter for tags
+     * @param tagDatabaseGateway Interface for accessing Tag
+     * @param tagFactory         Factory for creating Tasks
+     * @param tagPresenter       The presenter for tags
      */
     public CreateTag(
             TagDataAccessInterface tagDatabaseGateway,
-            UserDatabaseGateway userDatabaseGateway,
             TagFactory tagFactory,
             TagPresenter tagPresenter,
             CurrentUserService currentUserService
     ) {
         this.tagDatabaseGateway = tagDatabaseGateway;
         this.tagFactory = tagFactory;
-        this.userDatabaseGateway = userDatabaseGateway;
         this.tagPresenter = tagPresenter;
         this.currentUserService = currentUserService;
     }
@@ -89,8 +80,7 @@ public class CreateTag implements CreateTagInputBoundary {
 
             TagResponseModel response = new TagResponseModel(
                     tagRequestModel.getName(),
-                    tagRequestModel.getColor(),
-                    true
+                    tagRequestModel.getColor()
             );
             return tagPresenter.prepareSuccessView(response);
         }

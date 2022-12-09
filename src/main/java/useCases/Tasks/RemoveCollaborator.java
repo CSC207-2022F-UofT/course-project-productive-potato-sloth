@@ -5,8 +5,6 @@ import entities.User;
 import gateways.Tasks.TaskDataAccessInterface;
 import gateways.Tasks.TaskRequestModel;
 import gateways.Tasks.TaskResponseModel;
-import gateways.UserDataAccessInterface;
-import gateways.UserDatabaseGateway;
 import presenters.TaskPresenter;
 
 /***
@@ -20,11 +18,6 @@ public class RemoveCollaborator implements RemoveCollaboratorInputBoundary {
     private final TaskDataAccessInterface taskDatabaseGateway;
 
     /**
-     * The interface which allows access to the UserDatabase
-     */
-    private final UserDatabaseGateway userDatabaseGateway;
-
-    /**
      * The presenter for Tasks
      */
     private final TaskPresenter taskPresenter;
@@ -33,16 +26,13 @@ public class RemoveCollaborator implements RemoveCollaboratorInputBoundary {
      * Creates an instance of RemoveCollaborator with the required fields
      *
      * @param taskDatabaseGateway Interface for accessing Tasks
-     * @param userDatabaseGateway Interface for accessing Users
      * @param taskPresenter       Presenter for Tasks
      */
     public RemoveCollaborator(
             TaskDataAccessInterface taskDatabaseGateway,
-            UserDatabaseGateway userDatabaseGateway,
             TaskPresenter taskPresenter
     ) {
         this.taskDatabaseGateway = taskDatabaseGateway;
-        this.userDatabaseGateway = userDatabaseGateway;
         this.taskPresenter = taskPresenter;
     }
 
@@ -65,9 +55,7 @@ public class RemoveCollaborator implements RemoveCollaboratorInputBoundary {
                 null,
                 null,
                 null,
-                collaboratorName,
-                true,
-                "Collaborated removed successfully"
+                collaboratorName
         );
         return taskPresenter.prepareSuccessView(response);
     }

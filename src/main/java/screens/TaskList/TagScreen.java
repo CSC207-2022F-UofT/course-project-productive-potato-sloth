@@ -4,10 +4,17 @@ import controllers.Tags.GetTagsController;
 import gateways.Tags.TagInfoResponseModel;
 import services.CurrentUserService;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
+import javax.swing.SwingUtilities;
+import javax.swing.Box;
+import javax.swing.BorderFactory;
+
+import java.awt.GridLayout;
+import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -31,27 +38,27 @@ public class TagScreen implements TagObserver {
     /**
      * The new tag screen
      */
-    NewTagScreen newTagScreen;
+    final NewTagScreen newTagScreen;
 
     /**
      * The delete tag popup
      */
-    DeleteEditTagPopUp deleteEditTagPopUp;
+    final DeleteEditTagPopUp deleteEditTagPopUp;
 
     /**
      * The edit tag screen
      */
-    EditTagScreen editTagScreen;
+    final EditTagScreen editTagScreen;
 
     /**
      * The controller for accessing Tags
      */
-    GetTagsController getTagsController;
+    final GetTagsController getTagsController;
 
     /**
      * The service for getting the logged-in user
      */
-    CurrentUserService currentUserService;
+    final CurrentUserService currentUserService;
 
     /**
      * The list model corresponding to the JList
@@ -61,7 +68,7 @@ public class TagScreen implements TagObserver {
     JList<String> tags;
 
     /**
-     * @param getTagsController
+     * Instantiates Tag Screen with necessary controllers
      */
     public TagScreen(
             GetTagsController getTagsController,
@@ -83,7 +90,6 @@ public class TagScreen implements TagObserver {
         TagInfoResponseModel tagList = getTagsController.getTags();
         listModel = new DefaultListModel<>();
         listModel.addAll(tagList.getTags());
-        ;
 
         tags = new JList<>();
         tags.setModel(listModel);
@@ -100,12 +106,7 @@ public class TagScreen implements TagObserver {
             }
         });
 
-        newTag.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                newTagScreen.showScreen();
-            }
-        });
+        newTag.addActionListener(e -> newTagScreen.showScreen());
 
 
         panel.setBorder(BorderFactory.createEmptyBorder(30, 100, 100, 100));

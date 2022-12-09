@@ -63,9 +63,7 @@ public class RemoveTag implements RemoveTagInputBoundary {
                 null,
                 null,
                 tag.getName(),
-                null,
-                true,
-                "Tag removed successfully"
+                null
         );
         return taskPresenter.prepareSuccessView(response);
     }

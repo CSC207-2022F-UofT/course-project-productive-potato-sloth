@@ -64,9 +64,7 @@ public class AddCollaborator implements AddCollaboratorInputBoundary {
                 null,
                 null,
                 null,
-                collaborator.getUsername(),
-                true,
-                "Collaborated added successfully"
+                collaborator.getUsername()
         );
         return taskPresenter.prepareSuccessView(response);
     }

@@ -1,19 +1,11 @@
 package useCases.Tags;
 
-import entities.Event;
 import entities.Tag;
-import entities.Task;
-import entities.User;
 import gateways.Tags.TagDataAccessInterface;
 import gateways.Tags.TagInfoRequestModel;
 import gateways.Tags.TagInfoResponseModel;
-import gateways.Tasks.TaskDataAccessInterface;
-import gateways.Tasks.TaskInfoRequestModel;
-import gateways.Tasks.TaskInfoResponseModel;
 import presenters.TaskInfoPresenter;
 import services.CurrentUserService;
-
-import java.util.ArrayList;
 
 public class GetTags implements GetTagsInputBoundary {
 

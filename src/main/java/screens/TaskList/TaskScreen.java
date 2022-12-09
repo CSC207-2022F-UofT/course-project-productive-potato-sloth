@@ -3,9 +3,16 @@ package screens.TaskList;
 import controllers.Tasks.*;
 import gateways.Tasks.TaskInfoResponseModel;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import javax.swing.BorderFactory;
+
+import java.awt.GridLayout;
+import java.awt.BorderLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 /**
  * A Screen which shows the one Task and its details of the logged-in User

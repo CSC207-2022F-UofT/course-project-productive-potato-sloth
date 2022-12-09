@@ -57,7 +57,7 @@ public class TaskListMain {
 
 
         // Instantiating all Input Boundaries
-        CreateTagInputBoundary createTagInteractor = new CreateTag(tagDatabaseGateway, userDatabaseGateway, tagFactory, tagPresenter, currentUserService);
+        CreateTagInputBoundary createTagInteractor = new CreateTag(tagDatabaseGateway, tagFactory, tagPresenter, currentUserService);
         DeleteTagInputBoundary deleteTagInteractor = new DeleteTag(tagDatabaseGateway, tagPresenter);
         EditTagInputBoundary editTagInteractor = new EditTag(tagDatabaseGateway, tagPresenter);
         GetTaskInfoInputBoundary getTaskInfoInputBoundary = new GetTaskInfo(taskDataAccessInterface, taskInfoPresenter, currentUserService);
@@ -65,10 +65,10 @@ public class TaskListMain {
 
         AddCollaboratorInputBoundary addCollaboratorInteractor = new AddCollaborator(taskDataAccessInterface, userDatabaseGateway, taskPresenter);
         AddTagInputBoundary addTagInteractor = new AddTag(taskDataAccessInterface, tagDatabaseGateway, taskPresenter);
-        CreateTaskInputBoundary createTaskInteractor = new CreateTask(taskDataAccessInterface, userDatabaseGateway, currentUserService, taskFactory, taskPresenter);
+        CreateTaskInputBoundary createTaskInteractor = new CreateTask(taskDataAccessInterface, currentUserService, taskFactory, taskPresenter);
         EditTaskInputBoundary editTaskInteractor = new EditTask(taskDataAccessInterface, taskPresenter);
         MarkTaskCompletenessInputBoundary markTaskCompletenessInteractor = new MarkTaskCompleteness(taskDataAccessInterface, taskPresenter);
-        RemoveCollaboratorInputBoundary removeCollaboratorInteractor = new RemoveCollaborator(taskDataAccessInterface, userDatabaseGateway, taskPresenter);
+        RemoveCollaboratorInputBoundary removeCollaboratorInteractor = new RemoveCollaborator(taskDataAccessInterface, taskPresenter);
         RemoveTagInputBoundary removeTagInteractor = new RemoveTag(taskDataAccessInterface, tagDatabaseGateway, taskPresenter);
         RemoveTaskInputBoundary removeTaskInteractor = new RemoveTask(taskDataAccessInterface, taskPresenter);
 

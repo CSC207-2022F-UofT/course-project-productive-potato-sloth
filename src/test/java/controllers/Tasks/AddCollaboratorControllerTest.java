@@ -4,11 +4,9 @@ import entities.Task;
 import entities.User;
 import gateways.Tasks.TaskDataAccessInterface;
 import gateways.Tasks.TaskDatabaseGateway;
-import gateways.Tasks.TaskRequestModel;
 import gateways.UserDatabaseGateway;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import presenters.TaskPresenter;
@@ -27,21 +25,18 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class AddCollaboratorControllerTest {
 
 
+    static final User user = new User("user", "password");
+    static final User collaborator = new User("collaborator", "password");
+    static final User collaborator2 = new User("collaborator2", "password");
+    static final User collaborator3 = new User("c", "password");
+    static final User collaborator4 = new User("", "password");
+    static final CurrentUserService currentUserService = new CurrentUserService();
+    static final TaskPresenter taskPresenter = new TaskResponseFormatter();
     static File testFile;
-
-    static User user = new User("user", "password");
     static Task task = new Task("task", user);
-    static User collaborator = new User("collaborator", "password");
-    static User collaborator2 = new User("collaborator2", "password");
-
-    static User collaborator3 = new User("c", "password");
-    static User collaborator4 = new User("", "password");
-
     static UserDatabaseGateway userDatabaseGateway;
     static TaskDataAccessInterface taskDatabaseGateway;
     static AddCollaboratorInputBoundary inputBoundary;
-    static CurrentUserService currentUserService = new CurrentUserService();
-    static TaskPresenter taskPresenter = new TaskResponseFormatter();
 
     /**
      * To test the controller:

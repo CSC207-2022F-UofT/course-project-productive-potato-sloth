@@ -1,14 +1,8 @@
 package controllers.Tags;
 
-import entities.User;
 import gateways.Tags.TagInfoRequestModel;
 import gateways.Tags.TagInfoResponseModel;
-import gateways.Tags.TagRequestModel;
-import gateways.Tags.TagResponseModel;
-import useCases.Tags.CreateTagInputBoundary;
 import useCases.Tags.GetTagsInputBoundary;
-
-import java.awt.*;
 
 public class GetTagsController {
 

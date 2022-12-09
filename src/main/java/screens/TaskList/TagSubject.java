@@ -1,7 +1,6 @@
 package screens.TaskList;
 
 import gateways.Tags.TagInfoResponseModel;
-import gateways.Tasks.TaskInfoResponseModel;
 
 public interface TagSubject {
 

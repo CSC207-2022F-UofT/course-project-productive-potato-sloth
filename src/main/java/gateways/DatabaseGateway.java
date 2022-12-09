@@ -16,9 +16,8 @@ abstract public class DatabaseGateway {
      * This absolute path can be fetched using the getAbsoluteFilepath method
      *
      * @param relativePath The relative path to the database
-     * @throws IOException Throws exception if encountering failed or interrupted IO exceptions
      */
-    public DatabaseGateway(String relativePath) throws IOException {
+    public DatabaseGateway(String relativePath) {
         if (!fileExists(relativePath)) {
             createFile(relativePath);
         }

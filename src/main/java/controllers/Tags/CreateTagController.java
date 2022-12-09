@@ -1,6 +1,5 @@
 package controllers.Tags;
 
-import entities.User;
 import gateways.Tags.TagRequestModel;
 import gateways.Tags.TagResponseModel;
 import useCases.Tags.CreateTagInputBoundary;
@@ -26,7 +25,7 @@ public class CreateTagController {
         this.inputBoundary = inputBoundary;
     }
 
-    public TagResponseModel createTag(String name, Color color, User user) {
+    public TagResponseModel createTag(String name, Color color) {
         TagRequestModel tagRequestModel = new TagRequestModel(name, null, color);
         return inputBoundary.create(tagRequestModel);
     }

@@ -4,7 +4,7 @@ import controllers.Tasks.GetTaskInfoController;
 import controllers.Tasks.RemoveTaskController;
 import gateways.Tasks.TaskInfoResponseModel;
 
-import javax.swing.*;
+import javax.swing.JOptionPane;
 import java.util.ArrayList;
 import java.util.List;
 

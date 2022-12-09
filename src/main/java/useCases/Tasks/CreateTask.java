@@ -5,7 +5,6 @@ import entities.TaskFactory;
 import gateways.Tasks.TaskDataAccessInterface;
 import gateways.Tasks.TaskRequestModel;
 import gateways.Tasks.TaskResponseModel;
-import gateways.UserDatabaseGateway;
 import presenters.TaskPresenter;
 import services.CurrentUserService;
 
@@ -38,22 +37,17 @@ public class CreateTask implements CreateTaskInputBoundary {
      * Creates an instance of CreateTask with the required fields
      *
      * @param taskDatabaseGateway Interface for accessing Tasks
-     * @param userDatabaseGateway Interface for accessing Users
      * @param currentUserService  Service for accessing the logged-in user
      * @param taskFactory         Factory for creating Tasks
      * @param taskPresenter       Presenter for Tasks
      */
     public CreateTask(
             TaskDataAccessInterface taskDatabaseGateway,
-            UserDatabaseGateway userDatabaseGateway,
             CurrentUserService currentUserService,
             TaskFactory taskFactory,
             TaskPresenter taskPresenter
     ) {
         this.taskDatabaseGateway = taskDatabaseGateway;
-        /**
-         * The interface which allows access to the UserDatabase
-         */
         this.currentUserService = currentUserService;
         this.taskFactory = taskFactory;
         this.taskPresenter = taskPresenter;
@@ -83,8 +77,6 @@ public class CreateTask implements CreateTaskInputBoundary {
                 newTask.getDescription(),
                 newTask.getCompleted(),
                 null,
-                null,
-                true,
                 null
         );
         return taskPresenter.prepareSuccessView(response);

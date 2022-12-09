@@ -48,9 +48,7 @@ public class RemoveTask implements RemoveTaskInputBoundary {
                 null,
                 null,
                 null,
-                null,
-                true,
-                "Task removed successfully"
+                null
         );
         return taskPresenter.prepareSuccessView(response);
     }

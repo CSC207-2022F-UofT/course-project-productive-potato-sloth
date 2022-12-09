@@ -5,13 +5,11 @@ import gateways.Tasks.TaskInfoResponseModel;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 /**
- * A Screen which shows the list of Tasks of the logged in User
+ * A Screen which shows the list of Tasks of the logged-in User
  */
 public class TaskListScreen implements Observer {
 

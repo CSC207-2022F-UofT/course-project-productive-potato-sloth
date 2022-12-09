@@ -64,9 +64,7 @@ public class AddTag implements AddTagInputBoundary {
                 null,
                 null,
                 tag.getName(),
-                null,
-                true,
-                "Tag added successfully"
+                null
         );
         return taskPresenter.prepareSuccessView(response);
     }

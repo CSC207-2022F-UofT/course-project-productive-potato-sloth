@@ -7,7 +7,6 @@ import gateways.UserDatabaseGateway;
 import services.CurrentUserService;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -53,7 +52,6 @@ public class TaskDatabaseGateway extends DatabaseGateway implements TaskDataAcce
      * Loads all users, the current user, and the tasks of the current user
      */
     public void load() {
-        List<User> userList = userDatabaseGateway.loadFromFile();
         this.currentUser = currentUserService.getCurrentUser();
         this.taskList = currentUser.getTasks();
     }

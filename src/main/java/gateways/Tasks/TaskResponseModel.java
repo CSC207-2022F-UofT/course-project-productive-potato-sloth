@@ -13,18 +13,13 @@ public class TaskResponseModel {
     private final String tagName;
     private final String collaboratorUsername;
 
-    private final boolean success;
-    private final String message;
-
     public TaskResponseModel(
             String name,
             String newName,
             String description,
             Boolean completed,
             String tagName,
-            String collaboratorUsername,
-            boolean success,
-            String message
+            String collaboratorUsername
     ) {
         this.name = name;
         this.newName = newName;
@@ -32,8 +27,6 @@ public class TaskResponseModel {
         this.completed = completed;
         this.tagName = tagName;
         this.collaboratorUsername = collaboratorUsername;
-        this.success = success;
-        this.message = message;
     }
 
     public String getName() {
@@ -60,12 +53,5 @@ public class TaskResponseModel {
         return collaboratorUsername;
     }
 
-    public boolean getSuccess() {
-        return success;
-    }
-
-    public String getMessage() {
-        return message;
-    }
 
 }

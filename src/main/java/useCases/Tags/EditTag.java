@@ -50,8 +50,7 @@ public class EditTag implements EditTagInputBoundary {
 
         TagResponseModel response = new TagResponseModel(
                 tagRequestModel.getNewName(),
-                tagRequestModel.getColor(),
-                true
+                tagRequestModel.getColor()
         );
         return tagPresenter.prepareSuccessView(response);
     }
@@ -70,8 +69,7 @@ public class EditTag implements EditTagInputBoundary {
 
         TagResponseModel response = new TagResponseModel(
                 tagRequestModel.getName(),
-                tagRequestModel.getColor(),
-                true
+                tagRequestModel.getColor()
         );
         return tagPresenter.prepareSuccessView(response);
     }
